@@ -1,0 +1,11 @@
+﻿Jeg vil gerne have at vi arbejder lidt med klassen String – til fredag.
+
+Gå til dokumentationen og se hvad der ligger af metoder til rådighed på denne klasse.
+
+Lav et program, der kan fortælle om et ord er et palindrom – og lad det være et indtastningsfelt - eks. ”regninger”.
+Hvis der findes en metode til dette, kan I så lave et program uden at bruge denne metode?
+
+Prøv at lave lidt forskellige test, ved at bruge forskellige metoder fra klasse.
+
+Anden del:
+Lav et program, som benytter et CPR. Nr. – lave nogle tjek på, om det er en dreng eller pige, hvor gammel vedkommende er og hvornår kan vedkommende gå på pension. 

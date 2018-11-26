@@ -1,0 +1,4 @@
+﻿	Lav jeres egen kode i vil fremvise.
+
+Til den 21/9
+Lav et postprogram, som kan beregne priserne på et a/b brev.

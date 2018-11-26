@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2037
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "primtal2", "primtal2\primtal2.csproj", "{FF8F3733-6960-4BC4-8E02-407FFCECB65F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FF8F3733-6960-4BC4-8E02-407FFCECB65F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF8F3733-6960-4BC4-8E02-407FFCECB65F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF8F3733-6960-4BC4-8E02-407FFCECB65F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF8F3733-6960-4BC4-8E02-407FFCECB65F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3CBC5686-1503-4753-B947-4AE486429245}
+	EndGlobalSection
+EndGlobal

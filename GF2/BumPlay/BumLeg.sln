@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2037
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BumLeg", "BumLeg\BumLeg.csproj", "{ED9E2074-BC72-4D2B-8B07-85BFB288D161}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ED9E2074-BC72-4D2B-8B07-85BFB288D161}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED9E2074-BC72-4D2B-8B07-85BFB288D161}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED9E2074-BC72-4D2B-8B07-85BFB288D161}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED9E2074-BC72-4D2B-8B07-85BFB288D161}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3EE71AB7-B64F-4CEE-A874-960FE861F522}
+	EndGlobalSection
+EndGlobal
