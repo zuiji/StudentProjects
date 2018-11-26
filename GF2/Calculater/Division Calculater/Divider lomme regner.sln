@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2024
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Divider lomme regner", "Divider lomme regner\Divider lomme regner.csproj", "{77F23B3E-03A3-4D70-825D-3A4D33D9BCA8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{77F23B3E-03A3-4D70-825D-3A4D33D9BCA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77F23B3E-03A3-4D70-825D-3A4D33D9BCA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77F23B3E-03A3-4D70-825D-3A4D33D9BCA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77F23B3E-03A3-4D70-825D-3A4D33D9BCA8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {040F101C-43E2-4EC7-B725-4B7521FEEE31}
+	EndGlobalSection
+EndGlobal
