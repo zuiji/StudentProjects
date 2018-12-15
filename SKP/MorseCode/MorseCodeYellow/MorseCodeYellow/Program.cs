@@ -148,8 +148,9 @@ namespace MorseCodeYellow
                     #endregion
                 }
 
-                Console.WriteLine(morse + "\n" + text);
+
             }
+            Console.WriteLine(text + "\n" + morse);
 
             Console.ReadLine();
         }
