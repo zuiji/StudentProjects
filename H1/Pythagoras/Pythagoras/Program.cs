@@ -10,12 +10,25 @@ namespace Pythagoras
     {
         static void Main(string[] args)
         {
-            // The code provided will print ‘Hello World’ to the console.
-            // Press Ctrl+F5 (or go to Debug > Start Without Debugging) to run your app.
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("intast første tal");
+            double a = double.Parse(Console.ReadLine());
+            Console.WriteLine("intast andet tal");
+            double b = double.Parse(Console.ReadLine());
+            double c = ((a * a) + (b * b));
+            Console.WriteLine("Dit Pythagoras er " + ("tal1 = " + a + "² tal2 =  " + b + "² = " + c + "² C = " + Math.Sqrt(c)));
+            if (a > b)
+            {
+                Console.WriteLine("A er størst");
+            }
+            else if (a < b)
+            {
+                Console.WriteLine("B er størst");
+            }
+            else
+            {
+                Console.WriteLine("A og B er lige store");
+            }
             Console.ReadKey();
-
-            // Go to http://aka.ms/dotnet-get-started-console to continue learning how to build a console app! 
         }
     }
 }
