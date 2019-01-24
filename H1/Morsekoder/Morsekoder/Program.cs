@@ -46,7 +46,7 @@ namespace Morsekoder
             #endregion
 
             Console.WriteLine("Enter the text you want to translate to morse code");
-            string inputfromuser = Console.ReadLine().ToLower();
+            string inputfromuser = Console.ReadLine().ToUpper();
             char[] chararray = inputfromuser.ToCharArray();
             StringBuilder morse = new StringBuilder();
             for (int i = 0; i < chararray.Length; i++)
@@ -152,7 +152,6 @@ namespace Morsekoder
 
                
             }
-            
             Console.WriteLine(morse);
         }
     }
