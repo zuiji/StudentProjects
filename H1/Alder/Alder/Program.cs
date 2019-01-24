@@ -10,12 +10,31 @@ namespace Alder
     {
         static void Main(string[] args)
         {
-            // The code provided will print ‘Hello World’ to the console.
-            // Press Ctrl+F5 (or go to Debug > Start Without Debugging) to run your app.
-            Console.WriteLine("Hello World!");
-            Console.ReadKey();
+            Console.WriteLine("intast dit navn");
+            string Navn = Console.ReadLine();
+            Console.WriteLine("intast din alder");
+            double Alder = double.Parse(Console.ReadLine());
 
-            // Go to http://aka.ms/dotnet-get-started-console to continue learning how to build a console app! 
+            if (Alder <= 3)
+            {
+                Console.WriteLine(Navn + " , du må gå med ble");
+            }
+
+            else if (Alder >= 4 && Alder <= 15)
+            {
+                Console.WriteLine(Navn + ", du må ingenting");
+            }
+
+            else if (Alder >= 15 && Alder < 18)
+            {
+                Console.WriteLine(Navn + ", du må drikke");
+            }
+            else if (Alder >= 18)
+            {
+                Console.WriteLine(Navn + " ,du må stemme og køre bil");
+            }
+
+            Console.ReadKey();
         }
     }
 }
