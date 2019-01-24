@@ -10,12 +10,39 @@ namespace Gæt_et_Tal
     {
         static void Main(string[] args)
         {
-            // The code provided will print ‘Hello World’ to the console.
-            // Press Ctrl+F5 (or go to Debug > Start Without Debugging) to run your app.
-            Console.WriteLine("Hello World!");
+            int inputFromUser = 0;
+            int tryFromUser = 1;
+            do
+            {
+
+                Console.WriteLine("Hello " + System.Environment.UserName + "\nHere you need to guess a number between 1 and 10");
+                Random random = new Random();
+                int RollOfTheDice = random.Next(1, 10);
+
+                inputFromUser = Convert.ToInt32(Convert.ToString(Console.ReadKey(false).KeyChar));
+                while (inputFromUser != RollOfTheDice)
+                {
+
+                    if (RollOfTheDice < inputFromUser)
+                    {
+                        Console.WriteLine(" Sorry.. But your guess was worng. try with a lower number");
+                    }
+                    else if (RollOfTheDice > inputFromUser)
+                    {
+                        Console.WriteLine(" Sorry.. But your guess was worng. try with a higher number");
+                    }
+                    inputFromUser = Convert.ToInt32(Convert.ToString(Console.ReadKey(false).KeyChar));
+                    tryFromUser++;
+                }
+
+                Console.WriteLine(" Hurra..! you did guess the number\n You used " + tryFromUser + " guess");
+
+
+                tryFromUser++;
+            } while (false);
+
             Console.ReadKey();
 
-            // Go to http://aka.ms/dotnet-get-started-console to continue learning how to build a console app! 
         }
     }
 }
