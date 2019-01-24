@@ -10,7 +10,7 @@ namespace Gæt_et_Tal
     {
         static void Main(string[] args)
         {
-            int inputFromUser = 0;
+            int inputFromUser;
             int tryFromUser = 1;
             do
             {
@@ -25,11 +25,11 @@ namespace Gæt_et_Tal
 
                     if (RollOfTheDice < inputFromUser)
                     {
-                        Console.WriteLine(" Sorry.. But your guess was worng. try with a lower number");
+                        Console.WriteLine(" Sorry.. But your guess was wrong. try with a lower number");
                     }
                     else if (RollOfTheDice > inputFromUser)
                     {
-                        Console.WriteLine(" Sorry.. But your guess was worng. try with a higher number");
+                        Console.WriteLine(" Sorry.. But your guess was wrong. try with a higher number");
                     }
                     inputFromUser = Convert.ToInt32(Convert.ToString(Console.ReadKey(false).KeyChar));
                     tryFromUser++;
