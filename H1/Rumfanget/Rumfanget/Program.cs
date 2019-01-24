@@ -23,6 +23,9 @@ namespace Rumfanget
             Console.WriteLine("Rumfanget af din kasse er : "+  Hight * Wirght * Lenth );
 
             Console.ReadKey();
+
+
+
         }
     }
 }
