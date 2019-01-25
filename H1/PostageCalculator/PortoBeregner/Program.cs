@@ -31,7 +31,7 @@ namespace PortoBeregner
                 post.Countrytype = GetAnswers.GetChoiceFromListAsInt("Hvad land vil du sende til\n\nEuropa1 = \"Belgien, Bulgarien, Cypern, Estland, Finland, Frankrig, Irland, Italien, Kroatien, Letland, Litauen, Luxembourg, Malta,Nederlandene, Polen, Portugal, Rumænien, Slovakiet, Slovenien, Spanien, Storbritannien, Sverige, Tjekkiet, Tyskland, Ungarn og Østrig\"\n\nEuropa 2 = Albanien, Andorra, Armenien, Azerbajdzhan, Azorerne, Bosnien Herzegovina, Canariske Øer, Cypern(tyrkiske del), Georgien, Gibraltar\"", "Danmark", "Færgøerne", "Grøndland", "Europa 1", "Europa 2", "Alle andre lande ");
             }
             Console.Clear();
-            var price = post.getprice();
+            decimal price = post.getprice();
             if (price == -1)
                 Console.WriteLine("Du kan ikke sænde så tunge pakke til den lokation");
             else

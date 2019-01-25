@@ -16,6 +16,7 @@ namespace IGangMedLøkkerV3._0
             }
 
             Console.ReadKey();
+            
 
         }
     }
