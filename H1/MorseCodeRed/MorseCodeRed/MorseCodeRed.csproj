@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D52FA0FF-7099-4FD9-8D58-9ADBE554757C}</ProjectGuid>
+    <ProjectGuid>{AEFDF11B-83D3-491D-BCB4-20B5D2107326}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>MorseCodeRed</RootNamespace>
     <AssemblyName>MorseCodeRed</AssemblyName>
