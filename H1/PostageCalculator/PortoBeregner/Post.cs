@@ -7,7 +7,7 @@
         public int Weight { get; set; }
 
         public int Countrytype { get; set; }
-        public int Type { get; internal set; }
+       // public int Type { get; internal set; }
 
         public decimal getprice()
         {

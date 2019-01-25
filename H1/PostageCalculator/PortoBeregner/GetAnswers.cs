@@ -8,6 +8,7 @@ namespace PortoBeregner
         /// The curser position after the question is written to the console
         /// </summary>
         private static int _afterquestionCurserTop;
+
         /// <summary>
         /// The string the user is searching after in the answers
         /// </summary>
@@ -22,7 +23,7 @@ namespace PortoBeregner
         public static int GetChoiceFromListAsInt(string question, params string[] answers)
         {
             int index = 0;
-            int cursertop = Console.CursorTop;
+            var cursertop = Console.CursorTop;
             ConsoleKey pressedKey = ConsoleKey.Enter;
             Console.CursorVisible = false;
 
@@ -30,7 +31,7 @@ namespace PortoBeregner
             _afterquestionCurserTop = Console.CursorTop;
 
             Answers(answers, index);
-            int afterAnswersCursertop = Console.CursorTop;
+            var afterAnswersCursertop = Console.CursorTop;
             Console.CursorTop = cursertop + 1;
             do
             {
@@ -149,6 +150,7 @@ namespace PortoBeregner
                     {
                         break;
                     }
+
                     _searchstring = pressedkey;
                     FindMachingAnswerIndex(answers, ref index);
                     break;
@@ -183,6 +185,7 @@ namespace PortoBeregner
                     return true;
                 }
             }
+
             return false;
         }
 
@@ -214,13 +217,15 @@ namespace PortoBeregner
         private static void PrintIndexAnswer(int index, string[] anwers)
         {
             Console.SetCursorPosition(0, _afterquestionCurserTop + index);
-            Console.foregroundColor = Console.ForegroundColor;
+            var foregroundColor = Console.ForegroundColor;
             Console.ForegroundColor = ConsoleColor.Cyan;
             if (foregroundColor == ConsoleColor.Cyan)
                 Console.ForegroundColor = ConsoleColor.Gray;
             Console.WriteLine(anwers[index]);
             Console.ForegroundColor = foregroundColor;
         }
+
+
         /// <summary>
         /// prints out the answer corresponding to the current index in the not highlighted form
         /// </summary>
