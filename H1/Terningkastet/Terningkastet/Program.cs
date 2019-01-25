@@ -14,34 +14,34 @@ namespace Terningkastet
 
             Console.ForegroundColor = ConsoleColor.Yellow;
             Random random = new Random();
-            int terningskast = random.Next(1, 7);
+            int diceThrow = random.Next(1, 7);
 
-            if (terningskast == 1)
+            if (diceThrow == 1)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Du slog en etter");
             }
-            else if (terningskast == 2)
+            else if (diceThrow == 2)
             {
                 Console.ForegroundColor = ConsoleColor.Blue;
                 Console.WriteLine("Du slog en to'er");
             }
-            else if (terningskast == 3)
+            else if (diceThrow == 3)
             {
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("Du slog en tre'er");
             }
-            else if (terningskast == 4)
+            else if (diceThrow == 4)
             {
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("Du slog en fire'er");
             }
-            else if (terningskast == 5)
+            else if (diceThrow == 5)
             {
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("Du slog en fem'er");
             }
-            else if (terningskast == 6)
+            else if (diceThrow == 6)
             {
                 Console.ForegroundColor = ConsoleColor.Magenta;
                 Console.WriteLine("Do slog en seks'er");
