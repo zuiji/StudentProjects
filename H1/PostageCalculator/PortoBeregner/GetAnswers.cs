@@ -22,7 +22,7 @@ namespace PortoBeregner
         public static int GetChoiceFromListAsInt(string question, params string[] answers)
         {
             int index = 0;
-            var cursertop = Console.CursorTop;
+            int cursertop = Console.CursorTop;
             ConsoleKey pressedKey = ConsoleKey.Enter;
             Console.CursorVisible = false;
 
@@ -30,7 +30,7 @@ namespace PortoBeregner
             _afterquestionCurserTop = Console.CursorTop;
 
             Answers(answers, index);
-            var afterAnswersCursertop = Console.CursorTop;
+            int afterAnswersCursertop = Console.CursorTop;
             Console.CursorTop = cursertop + 1;
             do
             {
@@ -214,7 +214,7 @@ namespace PortoBeregner
         private static void PrintIndexAnswer(int index, string[] anwers)
         {
             Console.SetCursorPosition(0, _afterquestionCurserTop + index);
-            var foregroundColor = Console.ForegroundColor;
+            Console.foregroundColor = Console.ForegroundColor;
             Console.ForegroundColor = ConsoleColor.Cyan;
             if (foregroundColor == ConsoleColor.Cyan)
                 Console.ForegroundColor = ConsoleColor.Gray;
