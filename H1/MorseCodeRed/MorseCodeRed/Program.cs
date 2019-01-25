@@ -15,7 +15,7 @@ namespace MorseCodeRed
             Console.WriteLine("Hello World!");
             Console.ReadKey();
 
-            // Go to http://aka.ms/dotnet-get-started-console to continue learning how to build a console app! 
+            // Go to http://aka.ms/dotnet-get-started-console to continue learning how to build a console app!    
         }
     }
 }
