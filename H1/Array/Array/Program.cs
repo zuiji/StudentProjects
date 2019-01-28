@@ -11,40 +11,62 @@ namespace Array
     {
         static void Main(string[] args)
         {
+
+            bool nameCheck = true;
             string[] userNameArrays = new string[5] { "user1", "user2", "user3", "User4", "user5" };
             string[] passwordArrays = new string[5] { "pass1", "pass2", "pass3", "pass4", "pass5" };
 
             Console.WriteLine("Enter your UserName");
             string username = Console.ReadLine();
-            for (int count = 3; count > 0; count--)
+
+            do
             {
+
                 for (int i = 0; i < userNameArrays.Length; i++)
                 {
                     if (username == userNameArrays[i])
                     {
                         Console.WriteLine("Enter your Password");
                         string password = Console.ReadLine();
-                        
-                        if (password != passwordArrays[i])
+
+                        for (int count = 3; count > 0; count--)
                         {
-                            Console.WriteLine("Username or Password don't match");
+                            if (password != passwordArrays[i])
+                            {
+
+                                Console.WriteLine("Username or Password don't match");
+                            }
+                            if (password == passwordArrays[i])
+                            {
+                                Console.WriteLine("you are logged in.");
+                                count = 0;
+                            }
                         }
 
-                        if (password == passwordArrays[i])
+                        while (nameCheck != false)
                         {
-                            Console.WriteLine("you are logged in.");
-                            count = 0;
+                            for (int count = 3; count > 0; count--)
+                            {
+                                if (password != passwordArrays[i])
+                                {
+
+                                    Console.WriteLine("Username or Password don't match");
+                                }
+                                if (password == passwordArrays[i])
+                                {
+                                    Console.WriteLine("you are logged in.");
+                                    count = 0;
+                                }
+                            }
+
                         }
-                        
-                    }
-                    else
-                    {
-                        Console.WriteLine("Username or Password don't match",count);
-                        //count = 0;
-                    }
+                    } 
+
+
                 }
-            }
-            Console.ReadLine();
+
+            } while (nameCheck == true);
+
 
         }
     }
