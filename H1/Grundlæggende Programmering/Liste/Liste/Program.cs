@@ -1,13 +1,10 @@
+
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
-using System.Security.Cryptography.X509Certificates;
-using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
-
 
 namespace Liste
 {
@@ -17,11 +14,15 @@ namespace Liste
         {
             List<int> numbers = new List<int>();
 
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i <= 20; i++) 
             {
                 numbers.Add(i);
                 Console.WriteLine(numbers);
+
             }
+
+
+            
         }
     }
 }
