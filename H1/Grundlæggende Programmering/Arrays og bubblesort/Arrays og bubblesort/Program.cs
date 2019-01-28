@@ -25,19 +25,30 @@ namespace Arrays_og_bubblesort
                 tal[i] = randomNumber;
                 //  Console.WriteLine(tal[i]);
 
-                for (int j = 0; j < (tal.Length-1) - i; j++)
+                
+            }
+
+            for (int i = 0; i < tal.Length; i++)
+            {
+                for (int j = 0; j < (tal.Length - 1); j++)
                 {
-                    //Her skal der indsættes tilfældige tal
-                    //for alle elementer i arrayet
-                    if (tal[j] > tal[j + 1])
+                    if (tal[j] < tal[j + 1])
+                        continue;
+                    else
                     {
-                        int temp = tal[j + 1];
-                        tal[j + 1] = tal[j];
-                        tal[j] = temp;
-                        
+                        int temp = tal[j];
+                        tal[j] = tal[j + 1];
+                        tal[j + 1] = temp;
 
                     }
+
                 }
+            }
+          
+
+            foreach (var int32 in tal)
+            {
+                System.Console.WriteLine(int32);
             }
         }
     }
