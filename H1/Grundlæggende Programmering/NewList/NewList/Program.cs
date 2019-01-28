@@ -11,26 +11,29 @@ namespace NewList
         static void Main(string[] args)
         {
 
-            List<int> numbers = new List<int>();
+            List<string> numbers = new List<string>();
 
-            for (int i = 0; i <= 20; i++)
+           for (int i = 0; i <= 20; i++)
             {
-                numbers.Add(i);
+                numbers.Add("i");
 
                 if (i % 3 == 0)
                 {
-                    numbers.Remove(i);
+                    numbers.Remove("i");
 
                 }
 
                 if (i == 17)
                 {
-                    numbers.Add(3);
+                    numbers.Insert(3, "17");
                 }
             }
 
-
-            Console.WriteLine(numbers);
+            foreach (string list in numbers)
+            {
+                Console.WriteLine(numbers + " ");
+            }
+            
 
 
         }
