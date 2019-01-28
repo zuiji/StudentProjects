@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -41,10 +42,11 @@ namespace Arrays_og_bubblesort
                         tal[j + 1] = temp;
 
                     }
+                    
 
                 }
             }
-          
+         Array.Reverse(tal);
 
             foreach (var int32 in tal)
             {
