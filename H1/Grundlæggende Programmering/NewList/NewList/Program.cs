@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace NewList
 {
     class Program
@@ -11,31 +12,30 @@ namespace NewList
         static void Main(string[] args)
         {
 
-            List<string> numbers = new List<string>();
-
-           for (int i = 0; i <= 20; i++)
+            List<int> numbers = new List<int>();
+            
+                
+            
+            for (int i = 0; i <= 20; i++)
             {
-                numbers.Add("i");
+                numbers.Add(i);
 
                 if (i % 3 == 0)
                 {
-                    numbers.Remove("i");
+                    numbers.Remove(i);
 
                 }
 
                 if (i == 17)
                 {
-                    numbers.Insert(3, "17");
+                    numbers.Insert(3, 17);
+                }
+                foreach (int list in numbers)
+                {
+                    Console.WriteLine(list + " ");
                 }
             }
-
-            foreach (string list in numbers)
-            {
-                Console.WriteLine(numbers + " ");
-            }
             
-
-
         }
     }
 }
