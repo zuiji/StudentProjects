@@ -27,7 +27,7 @@ namespace NewList
 
                 if (i == 17)
                 {
-                    numbers.Insert(2, 17);
+                    numbers.Insert(2,17);
                 }
 
             }
