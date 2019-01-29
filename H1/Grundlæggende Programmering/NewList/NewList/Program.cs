@@ -33,8 +33,11 @@ namespace NewList
             }
             foreach (int list in numbers)
             {
-                Console.WriteLine(list + " ");
+                Console.WriteLine(list);
             }
+
+            Console.WriteLine();
+            Console.WriteLine("you have " + numbers.Count + " numbers in your list");
 
             Console.WriteLine();
             List<int> numbersB = numbers;
