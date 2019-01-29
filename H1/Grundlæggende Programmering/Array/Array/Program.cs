@@ -11,16 +11,26 @@ namespace Array
     {
         static void Main(string[] args)
         {
+            #region Øvelse 1: login
 
-            bool nameCheck = true;
+            //arrays containing usernames and passwords, the index space in usernames corresponds to the index space in password
             string[] userNameArrays = new string[5] { "user1", "user2", "user3", "User4", "user5" };
             string[] passwordArrays = new string[5] { "pass1", "pass2", "pass3", "pass4", "pass5" };
 
-            Console.WriteLine("Enter your UserName");
-            string username = Console.ReadLine();
 
-            do
+            bool userPass = false;
+
+            int failPassword;
+            int failUsername;
+
+            bool login = true;
+
+            while (login == true)
             {
+                Console.WriteLine("Enter your UserName");
+                string username = Console.ReadLine();
+
+
 
                 for (int i = 0; i < userNameArrays.Length; i++)
                 {
@@ -43,7 +53,7 @@ namespace Array
                             }
                         }
 
-                        while (nameCheck != false)
+                        while (userPass != false)
                         {
                             for (int count = 3; count > 0; count--)
                             {
@@ -60,14 +70,16 @@ namespace Array
                             }
 
                         }
-                    } 
+                    }
 
 
                 }
 
-            } while (nameCheck == true);
+
+            }
 
 
+            #endregion
         }
     }
 }

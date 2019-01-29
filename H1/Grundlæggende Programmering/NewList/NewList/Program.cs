@@ -11,31 +11,38 @@ namespace NewList
     {
         static void Main(string[] args)
         {
-
             List<int> numbers = new List<int>();
-            
-                
-            
+
             for (int i = 0; i <= 20; i++)
             {
-                numbers.Add(i);
+                if (i != 20 || i == 20)
+                {
+                    numbers.Add(i);
+                }
 
                 if (i % 3 == 0)
                 {
                     numbers.Remove(i);
-
                 }
 
                 if (i == 17)
                 {
-                    numbers.Insert(3, 17);
+                    numbers.Insert(2, 17);
                 }
-                foreach (int list in numbers)
-                {
-                    Console.WriteLine(list + " ");
-                }
+
             }
-            
+            foreach (int list in numbers)
+            {
+                Console.WriteLine(list + " ");
+            }
+
+            Console.WriteLine();
+            List<int> numbersB = numbers;
+            numbersB.Reverse();
+            for (int i = 0; i < numbersB.Count; i++)
+            {
+                Console.WriteLine(numbersB[i]); 
+            }
         }
     }
 }
