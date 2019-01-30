@@ -8,9 +8,10 @@ namespace Metoder_1
 {
     class Logic
     {
-        public static void MainMenuLogic()
+        public static void Addition()
         {
-            
+           Result = FirstNumber + SecondNumber
+                return Result;
             
         }
     }
