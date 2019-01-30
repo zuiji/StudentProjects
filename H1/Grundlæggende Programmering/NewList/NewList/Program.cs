@@ -19,7 +19,6 @@ namespace NewList
                 {
                     numbers.Add(i);
                 }
-
                 if (i % 3 == 0)
                 {
                     numbers.Remove(i);
