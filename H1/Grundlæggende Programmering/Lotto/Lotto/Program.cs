@@ -14,7 +14,7 @@ namespace Lotto
             int[] lottoArray = new int[7];
             int[] kuponArray = new int[7];
             Random r = new Random();
-            
+
             for (int i = 0; i < lottoArray.Length; i++)
             {
                 int ran = r.Next(1, 20);
@@ -24,16 +24,16 @@ namespace Lotto
 
             for (int i = 0; i < lottoArray.Length; i++)
             {
-                for (int j = 0; j < (lottoArray.Length-1); j++)
+                for (int j = 0; j < (lottoArray.Length - 1); j++)
                 {
-                    if (lottoArray[j] < lottoArray[j + 1] )
+                    if (lottoArray[j] < lottoArray[j + 1])
                         continue;
                     else
                     {
                         int temp = lottoArray[j];
                         lottoArray[j] = lottoArray[j + 1];
                         lottoArray[j + 1] = temp;
-                        
+
                     }
                 }
             }
@@ -60,22 +60,62 @@ namespace Lotto
                 }
             }
 
-            if ()
-            {
-                Console.WriteLine("Hurra you did win");
-            }
+            Console.WriteLine("The lotto numbers that was drawn is:\n ");
             foreach (int int32 in lottoArray)
             {
-                System.Console.WriteLine("The lotto numbers that was drown is " + int32);
+                System.Console.WriteLine(int32);
             }
 
             Console.WriteLine();
 
+            Console.WriteLine("Your kupon numbers is:\n ");
             foreach (int int32 in kuponArray)
             {
-                System.Console.WriteLine("your kupon numbers is " + int32);
+                System.Console.WriteLine(int32);
             }
 
+            int correctNumbers= 0;
+            foreach (int k in kuponArray)
+            {
+                foreach (int l in lottoArray)
+                {
+                    if (k == l)
+                    {
+                        correctNumbers++;
+                        break;
+                    }
+                }
+            }
+
+            Console.WriteLine();
+            int prize = 0;
+            switch (correctNumbers)
+            {
+                case 3:
+                    prize = 125;
+                    break;
+                case 4:
+                    prize = 250;
+                    break;
+                case 5:
+                    prize = 1250;
+                    break;
+                case 6:
+                    prize = 22500;
+                    break;
+                case 7:
+                    prize = 6000000;
+                    break;
+                default:
+                    Console.WriteLine("To bad you did not win anything, Try again next week.");
+                    break;
+             
+            }
+
+            if (prize > 0)
+            {
+                Console.WriteLine($"Hurray you did win {prize}kr.");
+            }
         }
     }
 }
