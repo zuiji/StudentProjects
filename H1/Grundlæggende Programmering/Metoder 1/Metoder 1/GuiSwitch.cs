@@ -8,50 +8,41 @@ namespace Metoder_1
 {
     class GuiSwitch
     {
-        
-        public static void MainMenuSwitch()
-        {   Gui.Clear();
 
-            Console.WriteLine("{ Main menu }\n");
-            Console.WriteLine("{ 1 } Opg 1");
-            Console.WriteLine("{ 0 } Exit");
-            char MainMenu = Console.ReadKey().KeyChar;
-            switch (MainMenu)
+        public static void MainMenuSwitch(char mainMenu)
+        {
+            switch (mainMenu)
             {
                 case '0':
-                    
+
                     break;
-                    
+
                 case '1':
-                    Opg1();
+                    Gui.Opg1();
                     break;
-                
+
             }
         }
 
-        public static void Opg1()
+        public static double Opg1(char mainMenu, double firstNumber, double secondNumber)
         {
-            Gui.Clear();
-            Console.WriteLine("{ Opg1 }\n");
-            Console.WriteLine("{ 1 } Addition");
-            Console.WriteLine("{ 2 } Dividing");
-            Console.WriteLine("{ 3 } Modulus");
-            Console.WriteLine("{ 0 } Return to Main menu");
-            char MainMenu = Console.ReadKey().KeyChar;
-            switch (MainMenu)
+
+            switch (mainMenu)
             {
                 case '1':
-                    Logic.Addition();
-                    break;
+                    return Logic.Addition(firstNumber, secondNumber);
                 case '2':
-                    break;
+                    return Logic.Divided(firstNumber, secondNumber);
                 case '3':
-                    break;
+                    return Logic.Moduls(firstNumber, secondNumber);
                 case '4':
-                    break;
+                    return Logic.Potency(firstNumber, secondNumber);
                 default:
-                    break;
+                    return -1;
+
             }
+
+
 
         }
     }

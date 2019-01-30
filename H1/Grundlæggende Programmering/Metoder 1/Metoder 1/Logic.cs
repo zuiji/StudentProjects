@@ -8,11 +8,32 @@ namespace Metoder_1
 {
     class Logic
     {
-        public static void Addition()
+        public static double Addition(double firstNumber, double secondNumber)
         {
-           Result = FirstNumber + SecondNumber
-                return Result;
-            
+            double result = firstNumber + secondNumber;
+            return result;
+
         }
+
+        public static double Divided(double firstNumber, double secondNumber)
+        {
+            double result = firstNumber / secondNumber;
+            return result;
+
+        }
+
+        public static double Moduls(double firstNumber, double secondNumber)
+        {
+            double result = firstNumber % secondNumber;
+            return result;
+
+        }
+
+        public static double Potency(double firstNumber, double secondNumber)
+        {
+            double result = Math.Pow(firstNumber, secondNumber);
+            return result;
+        }
+
     }
 }
