@@ -35,5 +35,51 @@ namespace Metoder_1
             return result;
         }
 
+        public static double Hypotenuse(double firstNumber, double secondNumber)
+        {
+            double result = Math.Sqrt((firstNumber * firstNumber) + (secondNumber * secondNumber));
+            return result;
+        }
+
+        public static double WhatBiggest(double firstNumber, double secondNumber)
+        {
+            if (firstNumber > secondNumber)
+            {
+                return firstNumber;
+            }
+            else if (firstNumber < secondNumber)
+            {
+                return secondNumber;
+            }
+            else if (firstNumber == secondNumber)
+            {
+                return -1;
+            }
+            return -1;
+
+        }
+
+        public static string WhatCanUserDo(double userAge)
+        {
+            if (userAge <=3)
+            {
+                return "1";
+            }
+            else if (userAge >= 4 && userAge <= 15)
+            {
+                return "2";
+            }
+            else if (userAge >= 15 && userAge <18)
+            {
+                return "3";
+            }
+            else if (userAge >= 18)
+            {
+                return "4";
+            }
+
+            return "userAge";
+
+        }
     }
 }
