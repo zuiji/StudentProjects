@@ -68,10 +68,12 @@ namespace Metoder_1
             string userName = Console.ReadLine();
             Console.WriteLine("Please enter your Age");
             double userAge = double.Parse(Console.ReadLine());
+
+            string[] printNumber = new string[5];
+                
             char mainMenu = Console.ReadKey(true).KeyChar;
-            Console.WriteLine(GuiSwitch.Opg3GuiSwitch(mainMenu,userName, userAge));
-            string 1 = "";
-            1 = Console.WriteLine();
+            Console.WriteLine(GuiSwitch.Opg3GuiSwitch(mainMenu, userName, userAge, ));
+            
         }
 
         public static void Clear()

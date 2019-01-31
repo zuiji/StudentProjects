@@ -59,7 +59,7 @@ namespace Metoder_1
 
         }
 
-        public static string WhatCanUserDo(double userAge)
+        public static string WhatCanUserDo(double userAge, String printNumber)
         {
             if (userAge <=3)
             {
@@ -78,7 +78,7 @@ namespace Metoder_1
                 return "4";
             }
 
-            return "userAge";
+            return printNumber;
 
         }
     }

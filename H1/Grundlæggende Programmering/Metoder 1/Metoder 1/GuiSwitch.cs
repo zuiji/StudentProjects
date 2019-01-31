@@ -63,12 +63,12 @@ namespace Metoder_1
             }
         }
 
-        public static string Opg3GuiSwitch(char mainMenu, string userName, double userAge, string number)
+        public static string Opg3GuiSwitch(char mainMenu, string userName, double userAge, string printNumber)
         {
             switch (mainMenu)
             {
                 case '1':
-                    return Logic.WhatCanUserDo(userAge);
+                    return Logic.WhatCanUserDo(userAge, printNumber);
 
             }
             
