@@ -72,7 +72,7 @@ namespace Metoder_1
             string[] printNumber = new string[5];
                 
             char mainMenu = Console.ReadKey(true).KeyChar;
-            Console.WriteLine(GuiSwitch.Opg3GuiSwitch(mainMenu, userName, userAge, ));
+            Console.WriteLine(GuiSwitch.Opg3GuiSwitch(mainMenu, userName, userAge));
             
         }
 
