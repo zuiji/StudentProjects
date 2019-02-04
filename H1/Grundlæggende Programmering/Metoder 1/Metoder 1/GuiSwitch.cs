@@ -26,15 +26,6 @@ namespace Metoder_1
                 case '3':
                     Gui.Opg3();
                     break;
-                case '4':
-                    Gui.Opg4();
-                   break;
-                case '5':
-                    Gui.Opg5();
-                    break;
-                case '6':
-                    Gui.Opg6();
-                    break;
 
             }
         }
@@ -58,7 +49,7 @@ namespace Metoder_1
             }
         }
 
-        public static string Opg2GuiSwitch(char mainMenu, double firstNumber, double secondNumber)
+        public static double Opg2GuiSwitch(char mainMenu, double firstNumber, double secondNumber)
         {
 
             switch (mainMenu)
@@ -68,27 +59,19 @@ namespace Metoder_1
                 case '2':
                     return Logic.WhatBiggest(firstNumber, secondNumber);
                 default:
-                    return "Error";
+                    return -1;
             }
         }
 
-        public static string Opg3GuiSwitch(string userName, double userAge)
+        public static string Opg3GuiSwitch(char mainMenu, string userName, double userAge, string printNumber)
         {
+            switch (mainMenu)
+            {
+                case '1':
+                    return Logic.WhatCanUserDo(userAge, printNumber);
 
-            return Logic.WhatCanUserDo(userAge, userName);
-        }
-
-        public static string Opg4GuiSwitch()
-        {
-            return Logic.GetNumbersAcending();
-        }
-        public static string Opg5GuiSwitch()
-        {
-            return Logic.GetNumbersDecending();
-        }
-        public static string Opg6GuiSwitch(int firstNumber)
-        {
-            return Logic.GetNumbers(firstNumber);
+            }
+            
         }
     }
 }

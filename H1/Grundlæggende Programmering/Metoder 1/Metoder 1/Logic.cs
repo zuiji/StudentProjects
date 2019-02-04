@@ -35,81 +35,51 @@ namespace Metoder_1
             return result;
         }
 
-        public static string Hypotenuse(double firstNumber, double secondNumber)
+        public static double Hypotenuse(double firstNumber, double secondNumber)
         {
             double result = Math.Sqrt((firstNumber * firstNumber) + (secondNumber * secondNumber));
-            return result.ToString();
+            return result;
         }
 
-        public static string WhatBiggest(double firstNumber, double secondNumber)
+        public static double WhatBiggest(double firstNumber, double secondNumber)
         {
             if (firstNumber > secondNumber)
             {
-                return firstNumber.ToString();
+                return firstNumber;
             }
             else if (firstNumber < secondNumber)
             {
-                return secondNumber.ToString();
+                return secondNumber;
             }
-            else
+            else if (firstNumber == secondNumber)
             {
-                return "same size";
+                return -1;
             }
-           
+            return -1;
 
         }
 
-        public static string WhatCanUserDo(double userAge, string userName)
+        public static string WhatCanUserDo(double userAge, String printNumber)
         {
             if (userAge <=3)
             {
-                return $"{userName}, du må gå med ble";
-            } 
-            else if (userAge <= 15)
-            {
-                return $"{userName}, du må ingenting";
+                return "1";
             }
-            else if (userAge <18)
+            else if (userAge >= 4 && userAge <= 15)
             {
-                return $"{userName},du må drikke";
+                return "2";
             }
-            else
+            else if (userAge >= 15 && userAge <18)
             {
-                return $"{userName}, du må stemme og køre bil";
+                return "3";
             }
-                   
-
-        }
-
-        public static string GetNumbersAcending()
-        {
-            string Numbers = "";
-            for (int i = 1; i < 11; i++)
+            else if (userAge >= 18)
             {
-                Numbers += i +" ";
+                return "4";
             }
 
-            return Numbers;
-        }
-        public static string GetNumbersDecending()
-        {
-            string Numbers = "";
-            for (int i = 10; i > 0; i--)
-            {
-                Numbers += i + " ";
-            }
+            return printNumber;
 
-            return Numbers;
-        }
-        public static string GetNumbers(int firstNumber)
-        {
-            string Numbers = "";
-            for (int i = firstNumber +32; i < 297; i++)
-            {
-                Numbers += i + " ";
-            }
-
-            return Numbers;
         }
     }
 }

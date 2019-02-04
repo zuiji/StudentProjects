@@ -1,7 +1,5 @@
 using System;
-using System.Diagnostics;
 using System.Runtime.InteropServices;
-using System.Text;
 
 namespace Metoder_1
 {
@@ -9,23 +7,22 @@ namespace Metoder_1
     {
         public static void Main()
         {
-
             Gui.Clear();
 
             Console.WriteLine("{ Main menu }\n");
             Console.WriteLine("{ 0 } Exit");
             Console.WriteLine("{ 1 } Opg 1");
             Console.WriteLine("{ 2 } Opg 2");
-            Console.WriteLine("{ 3 } Opg 3");
-            Console.WriteLine("{ 4 } Opg 4");
-            Console.WriteLine("{ 5 } Opg 5");
-            Console.WriteLine("{ 6 } Opg 6");
+            Console.WriteLine("{ 3 } ToDo");
+            Console.WriteLine("{ 4 } ToDo");
+            Console.WriteLine("{ 5 } ToDo");
+            Console.WriteLine("{ 6 } ToDo");
             Console.WriteLine("{ 7 } ToDo");
             Console.WriteLine("{ 8 } ToDo");
             Console.WriteLine("{ 9 } ToDo");
             Console.WriteLine("{ 10 } ToDo");
             Console.WriteLine("{ 11 } ToDo");
-
+            
             char mainMenu = Console.ReadKey(true).KeyChar;
             GuiSwitch.MainMenuSwitch(mainMenu);
         }
@@ -71,29 +68,14 @@ namespace Metoder_1
             string userName = Console.ReadLine();
             Console.WriteLine("Please enter your Age");
             double userAge = double.Parse(Console.ReadLine());
+
+            string[] printNumber = new string[5];
+                
             char mainMenu = Console.ReadKey(true).KeyChar;
-            Console.WriteLine(GuiSwitch.Opg3GuiSwitch(userName, userAge));
-
-
+            Console.WriteLine(GuiSwitch.Opg3GuiSwitch(mainMenu, userName, userAge));
+            
         }
 
-        public static void Opg4()
-        {
-            Clear();
-            Console.WriteLine(GuiSwitch.Opg4GuiSwitch());
-        }
-        public static void Opg5()
-        {
-            Clear();
-            Console.WriteLine(GuiSwitch.Opg5GuiSwitch());
-        }
-        public static void Opg6()
-        {
-            Clear();
-            Console.WriteLine("Please enter a number");
-            int firstNumber = int.Parse(Console.ReadLine());
-            Console.WriteLine(GuiSwitch.Opg6GuiSwitch(firstNumber));
-        }
         public static void Clear()
         {
             Console.Clear();
