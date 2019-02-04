@@ -81,7 +81,7 @@ namespace Metoder_1
 
         }
 
-        public static string GetNumbersAcending()
+        public static string GetNumbersAscending()
         {
             string Numbers = "";
             for (int i = 1; i < 11; i++)
@@ -91,7 +91,7 @@ namespace Metoder_1
 
             return Numbers;
         }
-        public static string GetNumbersDecending()
+        public static string GetNumbersDescending()
         {
             string Numbers = "";
             for (int i = 10; i > 0; i--)
@@ -110,6 +110,25 @@ namespace Metoder_1
             }
 
             return Numbers;
+        }
+
+        public static string ArrayWith9Elements()
+        {
+            int[] array1 = new int[10];
+            for (int i = 0; i < 10; i++)
+            {
+                if (i == 5)
+                {
+                    array1[i] = i * 2;
+
+                }
+                else
+                {
+                    array1[i] = i;
+                }
+
+            }
+            return ;
         }
     }
 }

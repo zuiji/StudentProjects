@@ -35,6 +35,9 @@ namespace Metoder_1
                 case '6':
                     Gui.Opg6();
                     break;
+                case '7':
+                    Gui.Opg7();
+                    break;
 
             }
         }
@@ -80,15 +83,19 @@ namespace Metoder_1
 
         public static string Opg4GuiSwitch()
         {
-            return Logic.GetNumbersAcending();
+            return Logic.GetNumbersAscending();
         }
         public static string Opg5GuiSwitch()
         {
-            return Logic.GetNumbersDecending();
+            return Logic.GetNumbersDescending();
         }
         public static string Opg6GuiSwitch(int firstNumber)
         {
             return Logic.GetNumbers(firstNumber);
+        }
+        public static string Opg7GuiSwitch()
+        {
+            return Logic.ArrayWith9Elements();
         }
     }
 }

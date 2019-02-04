@@ -20,7 +20,7 @@ namespace Metoder_1
             Console.WriteLine("{ 4 } Opg 4");
             Console.WriteLine("{ 5 } Opg 5");
             Console.WriteLine("{ 6 } Opg 6");
-            Console.WriteLine("{ 7 } ToDo");
+            Console.WriteLine("{ 7 } Opg 7");
             Console.WriteLine("{ 8 } ToDo");
             Console.WriteLine("{ 9 } ToDo");
             Console.WriteLine("{ 10 } ToDo");
@@ -94,6 +94,13 @@ namespace Metoder_1
             int firstNumber = int.Parse(Console.ReadLine());
             Console.WriteLine(GuiSwitch.Opg6GuiSwitch(firstNumber));
         }
+
+        public static void Opg7()
+        {
+            Clear();
+            Console.WriteLine(GuiSwitch.Opg7GuiSwitch());
+        }
+
         public static void Clear()
         {
             Console.Clear();
