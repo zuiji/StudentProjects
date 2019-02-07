@@ -9,34 +9,41 @@ namespace Metoder_1
     class GuiSwitch
     {
 
-        public static void MainMenuSwitch(char mainMenu)
+        public static void MainMenuSwitch(string mainMenu)
         {
             switch (mainMenu)
             {
-                case '0':
-
+                case "0":
                     break;
-
-                case '1':
+                case "1":
                     Gui.Opg1();
                     break;
-                case '2':
+                case "2":
                     Gui.Opg2();
                     break;
-                case '3':
+                case "3":
                     Gui.Opg3();
                     break;
-                case '4':
+                case "4":
                     Gui.Opg4();
                     break;
-                case '5':
+                case "5":
                     Gui.Opg5();
                     break;
-                case '6':
+                case "6":
                     Gui.Opg6();
                     break;
-                case '7':
+                case "7":
                     Gui.Opg7();
+                    break;
+                case "8":
+                    Gui.Opg8();
+                    break;
+                case "9":
+                    Gui.Opg9();
+                    break;
+                case "10":
+                    Gui.Opg10();
                     break;
 
             }
@@ -96,6 +103,18 @@ namespace Metoder_1
         public static string Opg7GuiSwitch()
         {
             return Logic.ArrayWith9Elements();
+        }
+        public static string Opg8GuiSwitch()
+        {
+            return Logic.ListWith20Elements();
+        }
+        public static string Opg9GuiSwitch()
+        {
+            return Logic.Lotto();
+        }
+        public static string Opg10GuiSwitch()
+        {
+            return Logic.GuessANumber();
         }
     }
 }

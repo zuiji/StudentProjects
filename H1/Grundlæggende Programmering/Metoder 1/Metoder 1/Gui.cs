@@ -13,20 +13,21 @@ namespace Metoder_1
             Gui.Clear();
 
             Console.WriteLine("{ Main menu }\n");
-            Console.WriteLine("{ 0 } Exit");
-            Console.WriteLine("{ 1 } Opg 1");
-            Console.WriteLine("{ 2 } Opg 2");
-            Console.WriteLine("{ 3 } Opg 3");
-            Console.WriteLine("{ 4 } Opg 4");
-            Console.WriteLine("{ 5 } Opg 5");
-            Console.WriteLine("{ 6 } Opg 6");
-            Console.WriteLine("{ 7 } Opg 7");
-            Console.WriteLine("{ 8 } ToDo");
-            Console.WriteLine("{ 9 } ToDo");
-            Console.WriteLine("{ 10 } ToDo");
+            Console.WriteLine("{ 0 }\t Exit");
+            Console.WriteLine("{ 1 }\t Opg 1");
+            Console.WriteLine("{ 2 }\t Opg 2");
+            Console.WriteLine("{ 3 }\t Opg 3");
+            Console.WriteLine("{ 4 }\t Opg 4");
+            Console.WriteLine("{ 5 }\t Opg 5");
+            Console.WriteLine("{ 6 }\t Opg 6");
+            Console.WriteLine("{ 7 }\t Opg 7");
+            Console.WriteLine("{ 8 }\t Opg 8");
+            Console.WriteLine("{ 9 }\t Opg 9");
+            Console.WriteLine("{ 10 } Opg 10");
             Console.WriteLine("{ 11 } ToDo");
 
-            char mainMenu = Console.ReadKey(true).KeyChar;
+            string mainMenu = Console.ReadLine();
+            Clear();
             GuiSwitch.MainMenuSwitch(mainMenu);
         }
 
@@ -101,6 +102,21 @@ namespace Metoder_1
             Console.WriteLine(GuiSwitch.Opg7GuiSwitch());
         }
 
+        public static void Opg8()
+        {
+            Clear();
+            Console.WriteLine(GuiSwitch.Opg8GuiSwitch());
+        }
+        public static void Opg9()
+        {
+            Clear();
+            Console.WriteLine(GuiSwitch.Opg9GuiSwitch());
+        }
+        public static void Opg10()
+        {
+            Clear();
+            Console.WriteLine(GuiSwitch.Opg10GuiSwitch());
+        }
         public static void Clear()
         {
             Console.Clear();
