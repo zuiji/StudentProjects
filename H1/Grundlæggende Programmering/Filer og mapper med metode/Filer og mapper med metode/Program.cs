@@ -23,6 +23,11 @@ namespace Filer_og_mapper_med_metode
             DeleteFolderAndFiles();
 
             EnumerateFiles();
+
+
+            var file = new FileStream(@".\Movies.txt" , FileMode.Create);
+            var writer = new StreamWriter(file);
+            var reader = new StreamReader(file);
         }
 
         private static void EnumerateFiles()
