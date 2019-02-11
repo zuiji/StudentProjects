@@ -24,7 +24,7 @@ namespace Array
             string[] userNameArrays = new string[5] { "user1", "user2", "user3", "User4", "user5" };
             string[] passwordArrays = new string[5] { "pass1", "pass2", "pass3", "pass4", "pass5" };
 
-            bool answers = true;
+            int guesses = 0;
             do
             {
                 Console.WriteLine("Enter your UserName");
@@ -42,35 +42,33 @@ namespace Array
 
                 for (int j = 0; j < passwordArrays.Length; j++)
                 {
-                    if (password != passwordArrays[j]) ;
+                    if (password != passwordArrays[j]) { }
                     
                 }
 
-                foreach (string k in userNameArrays)
+                foreach (string k in passwordArrays)
                 {
-                    foreach (string l in passwordArrays)
+                    foreach (string l in userNameArrays)
                     {
                         if (k == l)
                         {
                             Console.WriteLine("You have logged in");
-
+                            guesses = 3;
                         }
-                        /*else if (k != l)
-                        {
-
-                            Console.WriteLine("Try again.");
-
-                        }*/
-                        else
+                        
+                       /* else
                         {
                             Console.WriteLine("Your Username or Password are not Correct");
-                        }
+                            guesses++;
+                        }*/
 
                     }
 
                 }
-                
-            } while (true);
+               
+                guesses++;
+
+            } while (guesses < 3);
             #endregion
         }
     }
