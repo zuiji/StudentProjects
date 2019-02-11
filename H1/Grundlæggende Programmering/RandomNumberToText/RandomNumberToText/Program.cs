@@ -16,7 +16,7 @@ namespace RandomNumberToText
 
             for (int i = 0; i < 1000000; i++)
             {
-                Lines[i] = $"{rand.Next(0, 10000)},{rand.Next(0, 10000)}";
+                Lines[i] = $"{i},{rand.Next(0, 10000)}";
             }
             File.WriteAllLines(@".\Numberlist.txt",Lines);
         }
