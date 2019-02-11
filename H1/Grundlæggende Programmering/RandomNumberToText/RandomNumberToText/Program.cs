@@ -11,12 +11,12 @@ namespace RandomNumberToText
     {
         static void Main(string[] args)
         {
-            string[] Lines = new string[1000000];
+            string[] Lines = new string[999999];
             Random rand = new Random();
 
-            for (int i = 0; i < 1000000; i++)
+            for (int i = 0; i < 999999; i++)
             {
-                Lines[i] = $"{i},{rand.Next(0, 10000)}";
+                Lines[i] = $"{i},{rand.Next(0, 9999)}";
             }
             File.WriteAllLines(@".\Numberlist.txt",Lines);
         }
