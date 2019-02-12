@@ -11,10 +11,10 @@ namespace RandomNumberToText
     {
         static void Main(string[] args)
         {
-            string[] Lines = new string[999999];
+            string[] Lines = new string[1000001];
             Random rand = new Random();
 
-            for (int i = 0; i < 999999; i++)
+            for (int i = 0; i <= 1000000; i++)
             {
                 Lines[i] = $"{i},{rand.Next(0, 9999)}";
             }
