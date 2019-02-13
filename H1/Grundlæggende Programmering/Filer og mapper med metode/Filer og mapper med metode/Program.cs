@@ -12,6 +12,9 @@ namespace Filer_og_mapper_med_metode
     {
         static void Main(string[] args)
         {
+
+
+
             CreateTxTFile();
 
             ReadTxTFile();
@@ -24,10 +27,87 @@ namespace Filer_og_mapper_med_metode
 
             EnumerateFiles();
 
+            StreamReaderFromTxt();
 
-            var file = new FileStream(@".\Movies.txt" , FileMode.Create);
-            var writer = new StreamWriter(file);
-            var reader = new StreamReader(file);
+            StreamWriterToTxT();
+            Console.WriteLine(@"
+1: Add file 
+2: Delete file
+3: Display files
+4: Add folder
+5: Search file
+6: Other stuff ex JPEG
+7: Exit
+            ");
+            Console.WriteLine("type in a number of what exersice you want to do.. ");
+            char MainMenu = Console.ReadKey().KeyChar;
+
+            switch (MainMenu)
+            {
+                case '1':
+                    CreateTxTFile();
+                    break;
+                case '2':
+                    DeleteTxTFile();
+                    break;
+                case '3':
+                    EnumerateFiles();
+                    break;
+                case '4':
+                    CreateFolderAndTxt();
+                    break;
+                case '5':
+
+                    break;
+                case '6':
+
+                    break;
+                case '7':
+                    Environment.Exit(0);
+                    break;
+                    default:
+                    Console.WriteLine("Wrong keyChar try with 1 - 7, Please :') ");
+                    break;
+            }
+
+
+        }
+
+        private static void StreamWriterToTxT()
+        {
+            List<string> actors = new List<string>()
+            {
+                "Mark Hamill",
+                "Harrison Ford",
+                "Carrie Fisher"
+            };
+            FileStream file = new FileStream(@".\Movies.txt", FileMode.Create);
+            using (StreamWriter writer = new StreamWriter(file))
+            {
+                foreach (string actor in actors)
+                {
+                    writer.WriteLine(actor);
+                }
+            }
+        }
+
+        private static void StreamReaderFromTxt()
+        {
+            File.WriteAllText(@".\Movies.txt", "Star Wars\nThe Empire Strikes Back\nReturn Of The Jedi\n");
+            FileStream file = new FileStream(@".\Movies.txt", FileMode.Open);
+
+            using (StreamReader reader = new StreamReader(file))
+            {
+                while (!reader.EndOfStream)
+                {
+                    string line = reader.ReadLine();
+                    Console.WriteLine(line);
+                }
+
+                reader.Close();
+            }
+
+            file.Close();
         }
 
         private static void EnumerateFiles()
