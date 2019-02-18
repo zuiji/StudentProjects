@@ -12,11 +12,29 @@ namespace Array
     {
         static void Main(string[] args)
         {
+            bool isLogIn = Opg1();
 
-            Opg1();
+            if (!isLogIn)
+            {
+                return;
+            }
+
+            string[] BoysName = new string[20] {"William","Oliver","Noah","Emil","Victor","Magnus","Frederik","Mikkel","Lucas","Alexander","Oscar","Mathias","Sebastian","Malthe","Elias","Christian","Mads","Gustav","Villads","Tobias"};
+            Console.WriteLine("You can do a partial search");
+            String inputFromUser = Console.ReadLine();
+
+            foreach (string i in BoysName)
+            {
+                if (i.Contains(inputFromUser))
+                {
+                    Console.WriteLine(i);
+                    
+                }
+            }
+
         }
 
-        private static void Opg1()
+        private static bool Opg1()
         {
             #region Øvelse 1: login
 
@@ -29,49 +47,33 @@ namespace Array
             {
                 Console.WriteLine("Enter your UserName");
                 string username = Console.ReadLine();
-
+             
                 for (int i = 0; i < userNameArrays.Length; i++)
                 {
                     if (username == userNameArrays[i])
                     {
                         Console.WriteLine("Enter your Password");
-
-                    }
-                }
-                string password = Console.ReadLine();
-
-                for (int j = 0; j < passwordArrays.Length; j++)
-                {
-                    if (password != passwordArrays[j]) { }
-                    
-                }
-
-                foreach (string k in passwordArrays)
-                {
-                    foreach (string l in userNameArrays)
-                    {
-                        if (k == l)
+                        string password = Console.ReadLine();
+                        if (passwordArrays[i] == password)
                         {
+
                             Console.WriteLine("You have logged in");
                             guesses = 3;
+                            return true;
                         }
-                        
-                       /* else
-                        {
-                            Console.WriteLine("Your Username or Password are not Correct");
-                            guesses++;
-                        }*/
 
                     }
 
+
                 }
-               
+                
+                Console.WriteLine("Your Username or Password are not Correct");
                 guesses++;
 
             } while (guesses < 3);
+
+            return false;
             #endregion
         }
     }
-
-
 }
