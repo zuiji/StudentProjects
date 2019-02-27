@@ -1,11 +1,7 @@
 using System;
 using System.CodeDom;
 using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Array
 {
@@ -13,6 +9,9 @@ namespace Array
     {
         static void Main(string[] args)
         {
+            Console.BackgroundColor = ConsoleColor.DarkBlue;
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Clear();
             //#region Login
             //bool isLogIn = Opg1();
 
@@ -20,35 +19,98 @@ namespace Array
             //{
             //    return;
             //} 
+            //PauseAndClear();
             //#endregion
 
-            string[] BoysName = new string[20] { "William", "Oliver", "Noah", "Emil", "Victor", "Magnus", "Frederik", "Mikkel", "Lucas", "Alexander", "Oscar", "Mathias", "Sebastian", "Malthe", "Elias", "Christian", "Mads", "Gustav", "Villads", "Tobias" };
+            // Opg2And3();
+            //PauseAndClear();
 
-
-            ArrayList boysNameArrayList = new ArrayList();
-            boysNameArrayList.AddRange(Opg2(BoysName));
-            Console.WriteLine("Press any Button to Continue");
-            Console.ReadKey();
-            Console.Clear();
-            Console.WriteLine("Opg3 Delete Username From List");
-            Console.WriteLine("Press 1 for Delete Name");
-            Console.WriteLine("Press 2 for Add Name");
-            Console.WriteLine("Press 3 to add a Women Name");
-            char inputFromUser = Console.ReadKey(true).KeyChar;
-            switch (inputFromUser)
+            float[,] punctuations = new float[10, 10];
+            for (int i = 0; i < 2; i++)
             {
-                case '1':
-                    boysNameArrayList = DeleteNameFromOpg3(boysNameArrayList);
-                    break;
-                case '2':
-                    boysNameArrayList = AddNameFromOpg3(boysNameArrayList);
-                    break;
-                case '3':
-                    break;
+                for (int j = 0; j < 10; j++)
+                {
+                    Console.WriteLine("Enter the punctuation {0} group {1}: ", j + 1, i + 1);
+                    punctuations[i, j] = Convert.ToSingle(Console.ReadLine());
+                }
             }
-            
+            PauseAndClear();
+            for (int i = 0; i < 2; i++)
+            {
+                float avg = 0;
+                for (int j = 0; j < 10; j++)
+                {
+                  avg += punctuations[i, j];
+                }
+
+                Console.WriteLine($"Average in punctuation {i+1}: {avg / 10}");
+            }
 
         }
+        
+        private static void PauseAndClear()
+        {
+            Console.WriteLine("Press any Button to Continue");
+            Console.ReadKey(true);
+            Console.Clear();
+        }
+        private static void Opg2And3()
+        {
+            string[] boysName = new string[20]
+            {
+                "William", "Oliver", "Noah", "Emil", "Victor", "Magnus", "Frederik", "Mikkel", "Lucas", "Alexander", "Oscar",
+                "Mathias", "Sebastian", "Malthe", "Elias", "Christian", "Mads", "Gustav", "Villads", "Tobias"
+            };
+            string[] girlName = new string [20]
+            {
+                "Ann", "Helle", "Aloha", "Fe", "Gift", "Mynte", "Myrtille", "Krushbakht", "Rikkepippih", "Lisa", "Yrsavickie",
+                "Lise", "Tigerlilly", "Ninja", "Musling", "Jytta", "Europa", "Altan", "Lilly", "Josephine"
+            };
+
+            ArrayList nameArrayList = new ArrayList();
+            nameArrayList.AddRange(Opg2(boysName));
+            
+          
+            Opg3(nameArrayList, girlName);
+        }
+
+        private static void Opg3(ArrayList nameArrayList, string[] girlName)
+        {
+           
+            bool stop = false;
+            do
+            {
+                PauseAndClear();
+                Console.WriteLine("Opg3 Delete Username From List");
+                Console.WriteLine("Press 1 for Delete Name");
+                Console.WriteLine("Press 2 for Add Name");
+                Console.WriteLine("Press 3 to add Women Names");
+                Console.WriteLine("press anything else to continue");
+                char inputFromUser = Console.ReadKey(true).KeyChar;
+                switch (inputFromUser)
+                {
+                    case '1':
+                        nameArrayList = DeleteNameFromOpg3(nameArrayList);
+                        break;
+                    case '2':
+                        nameArrayList = AddNameFromOpg3(nameArrayList);
+                        break;
+                    case '3':
+                        nameArrayList.AddRange(girlName);
+
+                        foreach (object o in nameArrayList)
+                        {
+                            Console.WriteLine(o);
+                        }
+
+                        break;
+                    default:
+                        stop = true;
+                        break;
+                }
+            } while (!stop);
+        }
+
         /// <summary>
         ///
         /// denne opgave indholder 20 drengenavne som bliver udskrevet i alfabetisk orden og kan søges via bokstaver fra inPutFromUser
@@ -56,22 +118,24 @@ namespace Array
         /// BoysNames = boysname.orderBy(i = objected i Boysname fx "Noah" => i )
         /// .where( x = objected i Boysname fx "Noah" => x.ToLower() laver alt til lowerCaces. Contains kigger efter ( inPutFromUser )).ToArray(); putter tingene i et array.
         /// </summary>
-        /// <param name="BoysName"></param>
-        private static string[] Opg2(string[] BoysName)
+        /// <param name="boysName"></param>
+        private static string[] Opg2(string[] boysName)
         {
             Console.Clear();
             Console.WriteLine("You can do a partial search");
-            String inputFromUser = Console.ReadLine().ToLower();
+            string inputFromUser = Console.ReadLine().ToLower();
 
-            string[] BoysNames = BoysName.OrderBy(i => i).ToArray();
+            string[] boysNames = boysName.OrderBy(i => i).ToArray();
 
-            foreach (string s in BoysNames.Where(x => x.ToLower().Contains(inputFromUser)))
+            foreach (string s in boysNames.Where(x => x.ToLower().Contains(inputFromUser)))
             {
                 Console.WriteLine(s);
             }
 
-            return BoysNames;
+            return boysNames;
         }
+
+        
 
         private static bool Opg1()
         {
