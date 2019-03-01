@@ -12,11 +12,11 @@ namespace Miljø_AD_tool
         static void Main(string[] args)
         {
 
-            Userinfo();
+            UserInfo();
             Console.ReadLine();
         }
 
-        public static void Userinfo()
+        public static void UserInfo()
         {
             Console.Write("Enter user: ");
             string username = Console.ReadLine();
@@ -38,17 +38,17 @@ namespace Miljø_AD_tool
 
                 if (result != null)
                 {
-                    // user exists, cycle through LDAP fields (cn, telephonenumber etc.)  
+                    // user exists, cycle through LDAP fields (cn, telephone number etc.)  
 
                     ResultPropertyCollection fields = result.Properties;
 
-                    foreach (String ldapField in fields.PropertyNames)
+                    foreach (string ldapField in fields.PropertyNames)
                     {
                         // cycle through objects in each field e.g. group membership  
                         // (for many fields there will only be one object such as name)  
 
                         foreach (Object myCollection in fields[ldapField])
-                            Console.WriteLine(String.Format("{0,-20} : {1}",
+                            Console.WriteLine(string.Format("{0,-20} : {1}",
                                           ldapField, myCollection.ToString()));
                     }
                 }
