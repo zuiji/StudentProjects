@@ -2,6 +2,7 @@ using System;
 using System.CodeDom;
 using System.Collections;
 using System.Linq;
+using System.Runtime.InteropServices;
 
 namespace Array
 {
@@ -12,18 +13,27 @@ namespace Array
             Console.BackgroundColor = ConsoleColor.DarkBlue;
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.Clear();
-            //#region Login
-            //bool isLogIn = Opg1();
+            #region Login
 
-            //if (!isLogIn)
-            //{
-            //    return;
-            //} 
-            //PauseAndClear();
-            //#endregion
+            // In here we do a check as log isLogIn is True you will be able to do next exercise.
 
-            // Opg2And3();
-            //PauseAndClear();
+            bool isLogIn = Opg1();
+
+            if (!isLogIn)
+            {
+                return;
+            }
+
+            //Calling PauseAndClear
+            PauseAndClear();
+            #endregion
+            
+
+            // Calling Opg2And3 method.
+            Opg2And3();
+
+            // Calling PauseAndClear
+            PauseAndClear();
 
             float[,] punctuations = new float[10, 10];
             for (int i = 0; i < 2; i++)
@@ -34,93 +44,93 @@ namespace Array
                     punctuations[i, j] = Convert.ToSingle(Console.ReadLine());
                 }
             }
+
+            // Calling PauseAndClear
             PauseAndClear();
+
+
             for (int i = 0; i < 2; i++)
             {
                 float avg = 0;
                 for (int j = 0; j < 10; j++)
                 {
-                  avg += punctuations[i, j];
+                    avg += punctuations[i, j];
                 }
 
-                Console.WriteLine($"Average in punctuation {i+1}: {avg / 10}");
+                Console.WriteLine($"Average in punctuation {i + 1}: {avg / 10}");
             }
 
         }
-        
-        private static void PauseAndClear()
+        private static bool Opg1()
         {
-            Console.WriteLine("Press any Button to Continue");
-            Console.ReadKey(true);
-            Console.Clear();
-        }
-        private static void Opg2And3()
-        {
-            string[] boysName = new string[20]
-            {
-                "William", "Oliver", "Noah", "Emil", "Victor", "Magnus", "Frederik", "Mikkel", "Lucas", "Alexander", "Oscar",
-                "Mathias", "Sebastian", "Malthe", "Elias", "Christian", "Mads", "Gustav", "Villads", "Tobias"
-            };
-            string[] girlName = new string [20]
-            {
-                "Ann", "Helle", "Aloha", "Fe", "Gift", "Mynte", "Myrtille", "Krushbakht", "Rikkepippih", "Lisa", "Yrsavickie",
-                "Lise", "Tigerlilly", "Ninja", "Musling", "Jytta", "Europa", "Altan", "Lilly", "Josephine"
-            };
+            #region Øvelse 1: login
 
-            ArrayList nameArrayList = new ArrayList();
-            nameArrayList.AddRange(Opg2(boysName));
-            
-          
-            Opg3(nameArrayList, girlName);
-        }
+            //string arrays containing usernames and passwords, the index space in usernames corresponds to the index space in password
+            string[] userNameArrays = new string[5] { "user1", "user2", "user3", "User4", "user5" };
+            string[] passwordArrays = new string[5] { "pass1", "pass2", "pass3", "pass4", "pass5" };
 
-        private static void Opg3(ArrayList nameArrayList, string[] girlName)
-        {
-           
-            bool stop = false;
+            //Variable int guesssis used for count.
+            int guesses = 0;
+
+            //Keeps Running until Guesses returns true or false.
             do
             {
-                PauseAndClear();
-                Console.WriteLine("Opg3 Delete Username From List");
-                Console.WriteLine("Press 1 for Delete Name");
-                Console.WriteLine("Press 2 for Add Name");
-                Console.WriteLine("Press 3 to add Women Names");
-                Console.WriteLine("press anything else to continue");
-                char inputFromUser = Console.ReadKey(true).KeyChar;
-                switch (inputFromUser)
-                {
-                    case '1':
-                        nameArrayList = DeleteNameFromOpg3(nameArrayList);
-                        break;
-                    case '2':
-                        nameArrayList = AddNameFromOpg3(nameArrayList);
-                        break;
-                    case '3':
-                        nameArrayList.AddRange(girlName);
+                //writes out to user
+                Console.WriteLine("Enter your UserName");
 
-                        foreach (object o in nameArrayList)
+                // reads users input
+                string username = Console.ReadLine();
+
+                //loops and read if the user and password are correct
+                for (int i = 0; i < userNameArrays.Length; i++)
+                {
+                    //checking if username mach one in the Array and if it does its asks for password. else its returns error 
+                    if (username == userNameArrays[i])
+                    {
+                        //writes to user
+                        Console.WriteLine("Enter your Password");
+
+                        // reads user input
+                        string password = Console.ReadLine();
+
+                        // checks if password mach Name arrays index and if its does its log you in. 
+                        if (passwordArrays[i] == password)
                         {
-                            Console.WriteLine(o);
+                            //writes to user
+                            Console.WriteLine("You have logged in");
+
+                            //sets guesses to 3 and returns True with allows you to login. 
+                            guesses = 3;
+                            return true;
                         }
 
-                        break;
-                    default:
-                        stop = true;
-                        break;
+                    }
+
+
                 }
-            } while (!stop);
+                //Write to user
+                Console.WriteLine("Your Username or Password are not Correct");
+
+                //adds +1 to guesses variable
+                guesses++;
+
+                //stops if it hit 3 and returns false with does you cant login. 
+            } while (guesses < 3);
+
+            //returns you used to many try-es
+            return false;
+            #endregion
         }
 
-        /// <summary>
-        ///
-        /// denne opgave indholder 20 drengenavne som bliver udskrevet i alfabetisk orden og kan søges via bokstaver fra inPutFromUser
-        /// 
-        /// BoysNames = boysname.orderBy(i = objected i Boysname fx "Noah" => i )
-        /// .where( x = objected i Boysname fx "Noah" => x.ToLower() laver alt til lowerCaces. Contains kigger efter ( inPutFromUser )).ToArray(); putter tingene i et array.
-        /// </summary>
-        /// <param name="boysName"></param>
         private static string[] Opg2(string[] boysName)
-        {
+        {/// <summary>
+         ///
+         /// denne opgave indholder 20 drengenavne som bliver udskrevet i alfabetisk orden og kan søges via bokstaver fra inPutFromUser
+         /// 
+         /// BoysNames = boysname.orderBy(i = objected i Boysname fx "Noah" => i )
+         /// .where( x = objected i Boysname fx "Noah" => x.ToLower() laver alt til lowerCaces. Contains kigger efter ( inPutFromUser )).ToArray(); putter tingene i et array.
+         /// </summary>
+         /// <param name="boysName"></param>
             Console.Clear();
             Console.WriteLine("You can do a partial search");
             string inputFromUser = Console.ReadLine().ToLower();
@@ -135,55 +145,118 @@ namespace Array
             return boysNames;
         }
 
-        
-
-        private static bool Opg1()
+        private static void Opg2And3()
         {
-            #region Øvelse 1: login
-
-            //arrays containing usernames and passwords, the index space in usernames corresponds to the index space in password
-            string[] userNameArrays = new string[5] { "user1", "user2", "user3", "User4", "user5" };
-            string[] passwordArrays = new string[5] { "pass1", "pass2", "pass3", "pass4", "pass5" };
-
-            int guesses = 0;
-            do
+            // string Array that size are 20 and contains Boy names
+            string[] boysName = new string[20]
             {
-                Console.WriteLine("Enter your UserName");
-                string username = Console.ReadLine();
+                "William", "Oliver", "Noah", "Emil", "Victor", "Magnus", "Frederik", "Mikkel", "Lucas", "Alexander", "Oscar",
+                "Mathias", "Sebastian", "Malthe", "Elias", "Christian", "Mads", "Gustav", "Villads", "Tobias"
+            };
 
-                for (int i = 0; i < userNameArrays.Length; i++)
-                {
-                    if (username == userNameArrays[i])
-                    {
-                        Console.WriteLine("Enter your Password");
-                        string password = Console.ReadLine();
-                        if (passwordArrays[i] == password)
-                        {
+            // string Array that size are 20 and contains girl names
+            string[] girlName = new string[20]
+            {
+                "Ann", "Helle", "Aloha", "Fe", "Gift", "Mynte", "Myrtille", "Krushbakht", "Rikkepippih", "Lisa", "Yrsavickie",
+                "Lise", "Tigerlilly", "Ninja", "Musling", "Jytta", "Europa", "Altan", "Lilly", "Josephine"
+            };
 
-                            Console.WriteLine("You have logged in");
-                            guesses = 3;
-                            return true;
-                        }
+            //creating new array list. 
+            ArrayList nameArrayList = new ArrayList();
 
-                    }
+            //name array list.add range(Opg2(boysName)); adds the to array boysName 
+            nameArrayList.AddRange(Opg2(boysName));
 
-
-                }
-
-                Console.WriteLine("Your Username or Password are not Correct");
-                guesses++;
-
-            } while (guesses < 3);
-
-            return false;
-            #endregion
+            // calls Opg3 and sends nameArrayList and girlName to Opg3
+            Opg3(nameArrayList, girlName);
         }
 
-        private static ArrayList DeleteNameFromOpg3(ArrayList boysNameArrayList)
+        private static void Opg3(ArrayList nameArrayList, string[] girlName)
+        {
+
+            
+            bool stop = false;
+
+            //keeps running til stop are true.
+            do
+            {   
+                //calls pauseAndClear
+                PauseAndClear();
+
+                //Writes to user
+                Console.WriteLine("Opg3 Delete Username From List");
+                Console.WriteLine("Press 1 for Delete Name");
+                Console.WriteLine("Press 2 for Add Name");
+                Console.WriteLine("Press 3 to add Women Names");
+                Console.WriteLine("press anything else to continue");
+
+                //reading users input. 
+                char inputFromUser = Console.ReadKey(true).KeyChar;
+
+                //gives user some options
+                switch (inputFromUser)
+                {   
+                    //option
+                    case '1':
+
+                        //calls method and send nameArraylist with it. 
+                        nameArrayList = Opg3DeleteName(nameArrayList);
+
+                        // break so its can continue
+                        break;
+
+                    //option 
+                    case '2':
+
+                        //calls method and send nameArrayList with it.
+                        nameArrayList = Opg3AddName(nameArrayList);
+
+                        //breaks
+                        break;
+
+                    //option
+                    case '3':
+
+                        //calls method and sends girlName with it.
+                        nameArrayList.AddRange(girlName);
+
+
+                        //runs truth the nameArrayList and writes it out to the user. 
+                        foreach (object o in nameArrayList)
+                        {
+                            //writes out to user.
+                            Console.WriteLine(o);
+                        }
+
+                        //breaks
+                        break;
+                    default:
+                        stop = true;
+                        break;
+                }
+            } while (!stop);
+        }
+
+        private static ArrayList Opg3AddName(ArrayList boysNameArrayList)
+        {
+            Console.WriteLine("What name will you add from the List\n");
+
+            string inputFromUser = Console.ReadLine();
+            boysNameArrayList.Add(inputFromUser);
+            Console.WriteLine();
+
+
+            foreach (object o in boysNameArrayList)
+            {
+                Console.WriteLine(o);
+            }
+
+            return boysNameArrayList;
+        }
+
+        private static ArrayList Opg3DeleteName(ArrayList boysNameArrayList)
         {
             Console.WriteLine("What name will you delete from the List\n");
-
-
 
             for (int i = 0; i < boysNameArrayList.Count; i++)
             {
@@ -202,21 +275,16 @@ namespace Array
             return boysNameArrayList;
         }
 
-        private static ArrayList AddNameFromOpg3(ArrayList boysNameArrayList)
+        private static void PauseAndClear()
         {
-            Console.WriteLine("What name will you add from the List\n");
-
-            string inputFromUser = Console.ReadLine();
-            boysNameArrayList.Add(inputFromUser);
-            Console.WriteLine();
-            
-
-            foreach (object o in boysNameArrayList)
-            {
-                Console.WriteLine(o);
-            }
-
-            return boysNameArrayList;
+            /// <summary>
+            /// 
+            /// PauseAndClear is a Method that clear the console and waits for the an UserInput.
+            ///
+            /// </summary>
+            Console.WriteLine("Press any Button to Continue");
+            Console.ReadKey(true);
+            Console.Clear();
         }
 
 
