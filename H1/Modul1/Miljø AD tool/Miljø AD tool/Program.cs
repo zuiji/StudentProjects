@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.DirectoryServices;
+using System.DirectoryServices.AccountManagement;
+using System.Security;
 
 namespace Miljø_AD_tool
 {
@@ -11,8 +13,9 @@ namespace Miljø_AD_tool
     {
         static void Main(string[] args)
         {
+           CreateUserAccount();
 
-            UserInfo();
+            //      UserInfo();
             Console.ReadLine();
         }
 
@@ -26,16 +29,15 @@ namespace Miljø_AD_tool
 
                 DirectoryEntry myLdapConnection = CreateDirectoryEntry();
 
+
                 // create search object which operates on LDAP connection object  
                 // and set search object to only find the user specified  
 
                 DirectorySearcher search = new DirectorySearcher(myLdapConnection);
-                search.Filter = "(cn=" + username + ")";
-
+                //  search.Filter = $"(sAMAccountName= {username})";
                 // create results objects from search object  
 
                 SearchResult result = search.FindOne();
-
                 if (result != null)
                 {
                     // user exists, cycle through LDAP fields (cn, telephone number etc.)  
@@ -75,5 +77,58 @@ namespace Miljø_AD_tool
 
             return ldapConnection;
         }
+        public static void CreateUserAccount()
+        {
+            try
+            {
+                // Asking for Users First name and last name 
+                Console.WriteLine("Please enter Firstname");
+                string firstName = Console.ReadLine();
+                Console.WriteLine("Please enter LastName");
+                string lastname = Console.ReadLine();
+
+                // contains Standard Password. 
+                string password = "User1234!";
+
+                // adding a X if Users first name or last name is under 3 chars long. and its added to the right of his name.
+                string loginName = firstName.PadRight(3, 'X').Substring(0, 3) + lastname.PadRight(3, 'X').Substring(0, 3);
+
+                // collects firstname and lastname
+                string fullname = $"{firstName} {lastname}";
+
+                // Using LDAP connection object
+                DirectoryEntry dirEntry = CreateDirectoryEntry();
+
+                // Adding a Child ( new User ) with fullname with are a collection of FirstName and LastName
+                DirectoryEntry newUser = dirEntry.Children.Add($"CN={ fullname}", "user");
+                newUser.Properties["samAccountName"].Value = loginName;
+                newUser.Properties["sn"].Value = lastname;
+                newUser.Properties["givenName"].Value = firstName;
+                newUser.Properties["userPrincipalName"].Value = loginName + "@H1.com";
+
+                // Saves the Changes
+                newUser.CommitChanges();
+
+                //If you dont have an SSL connection you can not set password
+                newUser.Invoke("SetPassword", new object[] { password });
+                newUser.Properties["LockOutTime"].Value = 0;
+                //Enable user
+                int val = (int)newUser.Properties["userAccountControl"].Value;
+                newUser.Properties["userAccountControl"].Value = val & ~0x2;
+                // Saves The changes with Password
+                newUser.CommitChanges();
+
+                // Closing connection
+                dirEntry.Close();
+
+                // Closing connection
+                newUser.Close();
+            }
+            catch (System.DirectoryServices.DirectoryServicesCOMException E)
+            {
+                Console.WriteLine(E);
+            }
+        }
+
     }
-} 
+}
