@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Miljø_AD_tool
 {
-    class ConnectionPath
+    public static class ConnectionPath
     {
         public static DirectoryEntry CreateDirectoryEntry()
         {

@@ -22,7 +22,7 @@ namespace Miljø_AD_tool
 
                     Console.Write("Enter user: ");
                     string username = Console.ReadLine();
-                    GetUserInfo.UserInfo(username, ConnectionPath.CreateDirectoryEntry());
+                    Console.WriteLine(GetUserInfo.UserInfo(username, ConnectionPath.CreateDirectoryEntry()));
                     break;
 
                 case '2':
@@ -31,12 +31,10 @@ namespace Miljø_AD_tool
                     string firstName = Console.ReadLine();
                     Console.WriteLine("Please enter LastName");
                     string lastname = Console.ReadLine();
-                    Console.WriteLine("Where do you work");
-                    string workspace = Console.ReadLine();
                     
 
                     // Calls method and sending variables.
-                    CreateUser.CreateUserAccount(firstName, lastname, workspace, ConnectionPath.CreateDirectoryEntry());
+                    CreateUser.CreateUserAccount(firstName, lastname,  ConnectionPath.CreateDirectoryEntry());
                     break;
 
                 case '9':

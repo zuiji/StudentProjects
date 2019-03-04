@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace Miljø_AD_tool
 {
-    class CreateUser
+    public static class CreateUser
     {
        
-        public static string CreateUserAccount(string firstName, string lastname, string workSpace, DirectoryEntry createDirectoryEntry)
+        public static string CreateUserAccount(string firstName, string lastname, DirectoryEntry createDirectoryEntry)
         {
             try
             {
@@ -56,10 +56,10 @@ namespace Miljø_AD_tool
             }
             catch (System.DirectoryServices.DirectoryServicesCOMException e)
             {
-                return (e.ToString());
+                throw; //return (e.ToString());
             }
 
-            return null;
+            return "User was Created";
         }
 
 
