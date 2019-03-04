@@ -9,14 +9,14 @@ namespace Miljø_AD_tool
 {
     class GetUserInfo
     {
-        public static string UserInfo(string userName, DirectoryEntry CreateDirectoryEntry)
+        public static string UserInfo(string userName, DirectoryEntry createDirectoryEntry)
         {
 
             try
             {
                 // create LDAP connection object  
 
-                DirectoryEntry myLdapConnection = CreateDirectoryEntry;
+                DirectoryEntry myLdapConnection = createDirectoryEntry;
 
 
                 // create search object which operates on LDAP connection object  

@@ -31,9 +31,12 @@ namespace Miljø_AD_tool
                     string firstName = Console.ReadLine();
                     Console.WriteLine("Please enter LastName");
                     string lastname = Console.ReadLine();
+                    Console.WriteLine("Where do you work");
+                    string workspace = Console.ReadLine();
+                    
 
                     // Calls method and sending variables.
-                    CreateUser.CreateUserAccount(firstName, lastname, ConnectionPath.CreateDirectoryEntry());
+                    CreateUser.CreateUserAccount(firstName, lastname, workspace, ConnectionPath.CreateDirectoryEntry());
                     break;
 
                 case '9':

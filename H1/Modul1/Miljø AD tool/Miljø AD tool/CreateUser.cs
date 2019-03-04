@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.DirectoryServices;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,7 +10,8 @@ namespace Miljø_AD_tool
 {
     class CreateUser
     {
-        public static string CreateUserAccount(string firstName, string lastname, DirectoryEntry CreateDirectoryEntry)
+       
+        public static string CreateUserAccount(string firstName, string lastname, string workSpace, DirectoryEntry createDirectoryEntry)
         {
             try
             {
@@ -25,7 +27,7 @@ namespace Miljø_AD_tool
                 string fullname = $"{firstName} {lastname}";
 
                 // Using LDAP connection object
-                DirectoryEntry dirEntry = CreateDirectoryEntry;
+                DirectoryEntry dirEntry = createDirectoryEntry;
 
                 // Adding a Child ( new User ) with fullname with are a collection of FirstName and LastName
                 DirectoryEntry newUser = dirEntry.Children.Add($"CN={ fullname}", "user");
@@ -36,7 +38,7 @@ namespace Miljø_AD_tool
 
                 // Saves the Changes
                 newUser.CommitChanges();
-
+                
                 //If you dont have an SSL connection you can not set password
                 newUser.Invoke("SetPassword", new object[] { password });
                 newUser.Properties["LockOutTime"].Value = 0;
@@ -52,14 +54,15 @@ namespace Miljø_AD_tool
                 // Closing connection
                 newUser.Close();
             }
-            catch (System.DirectoryServices.DirectoryServicesCOMException E)
+            catch (System.DirectoryServices.DirectoryServicesCOMException e)
             {
-                return (E.ToString());
+                return (e.ToString());
             }
 
             return null;
         }
 
-       
+
+
     }
 }
