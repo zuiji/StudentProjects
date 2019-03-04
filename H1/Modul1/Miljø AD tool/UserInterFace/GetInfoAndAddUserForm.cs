@@ -22,6 +22,11 @@ namespace UserInterFace
             DirectoryEntry = ConnectionPath.CreateDirectoryEntry();
         }
 
+        /// <summary>
+        /// this part pulls the info from the server and if the username info not are filled its gives an error. 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Searchbutton_Click(object sender, EventArgs e)
         {
             string username = UserNameTextBox.Text;
@@ -45,7 +50,11 @@ namespace UserInterFace
 
 
         }
-
+        /// <summary>
+        /// this box are to create users to the server if its not work its drop an error if one of the fields not are filled 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CreateUserButton_Click(object sender, EventArgs e)
         {
             string firstName = FirstNameTextBox.Text;
