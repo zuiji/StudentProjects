@@ -4,8 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.DirectoryServices;
-using System.DirectoryServices.AccountManagement;
-using System.Security;
+
 
 namespace Miljø_AD_tool
 {
@@ -13,10 +12,22 @@ namespace Miljø_AD_tool
     {
         static void Main(string[] args)
         {
-           CreateUserAccount();
 
-            //      UserInfo();
-            Console.ReadLine();
+            Console.WriteLine("Press 1 to read userinfo :\nPress 2 to addUser :\nPress any other buttons to stop : ");
+            char inputFromUser = Console.ReadKey(true).KeyChar;
+            switch (inputFromUser)
+            {
+                case '1':
+                    UserInfo();
+                    break;
+
+                case '2':
+                    CreateUserAccount();
+                    break;
+
+                default:
+                    break;
+            }
         }
 
         public static void UserInfo()
