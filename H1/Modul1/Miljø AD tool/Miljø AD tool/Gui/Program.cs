@@ -43,7 +43,7 @@ namespace Miljø_AD_tool
                     break;
 
                 default:
-                    Console.WriteLine("Wrong KeyChar try with 1 - 3, Please :') ");
+                    Console.WriteLine("Wrong KeyChar try with 1 - 2, Please :') ");
                     break;
             }
         }

@@ -100,7 +100,7 @@
             // 
             // CreateUserButton
             // 
-            this.CreateUserButton.Location = new System.Drawing.Point(102, 298);
+            this.CreateUserButton.Location = new System.Drawing.Point(102, 206);
             this.CreateUserButton.Name = "CreateUserButton";
             this.CreateUserButton.Size = new System.Drawing.Size(75, 23);
             this.CreateUserButton.TabIndex = 7;
