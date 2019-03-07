@@ -9,34 +9,27 @@ namespace Geometri
     public class Square
     {
 
-        public double sides
-        {
-            get; set;
+        private double Sides { get; set; }
 
-        }
+        public Square() { }
 
-        public Square()
-        {
-
-        }
         public Square(double sides)
         {
-            this.sides = sides;
+            this.Sides = sides;
         }
 
         public double Perimeter()
         {
             double peri;
-            peri = sides * 4;
+            peri = Sides * 4;
             return peri;
         }
 
-        public double area()
+        public double Area()
         {
             double area;
-            area = sides * sides;
+            area = Sides * Sides;
             return area;
-
         }
 
     }
