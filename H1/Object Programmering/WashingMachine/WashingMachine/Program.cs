@@ -10,13 +10,13 @@ namespace WashingMachine
     {
         static void Main(string[] args)
         {
-           Washer Machine = new Washer();
+            Washer Machine = new Washer();
 
-           Machine.Fill();
-           
+            Machine.Fill();
+
 
             Console.ReadKey();
-            
+
         }
     }
 }
