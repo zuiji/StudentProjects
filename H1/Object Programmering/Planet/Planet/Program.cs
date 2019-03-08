@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,8 +13,8 @@ namespace Planet
         {
             int index = 0;
 
-            //Making a list of all planets and writing to console
-            List<string> planet = new List<string>();
+            // Making a list of all planets and writing to console
+            List<Planet> planet = new List<Planet>();
             planet.Add(new Planet("Mercury", 0.333, 4879, 5472, 3.7, 1407.6, 4222.6, 57.9, 88.0, 47.4, 167, 0, false));
             planet.Add(new Planet("Earth", 5.97, 12756, 5514, 9.8, 23.9, 24.0, 149.6, 365.2, 29.8, 15, 1, false));
             planet.Add(new Planet("Mars", 0.642, 6792, 3933, 3.7, 24.6, 24.7, 227.9, 687.0, 24.1, -65, 2, false));
@@ -23,7 +24,7 @@ namespace Planet
             planet.Add(new Planet("Neptune", 102, 49528, 1638, 11.0, 16.1, 16.1, 4495.1, 60189, 5.4, -200, 14, true));
             planet.Add(new Planet("Pluto", 0.0146, 2370, 2095, 0.7, -153.3, 153.3, 5906.4, 90560, 4.7, -225, 5, false));
 
-            //running it truth an foreach loop
+            // Running it truth an foreach loop
             foreach (Planet item in planet)
             {
                 Console.WriteLine(item.Name);
@@ -31,7 +32,7 @@ namespace Planet
 
             Console.WriteLine("");
 
-            //inserting venus
+            // Inserting venus
 
             planet.Insert(1, new Planet("Venus", 4.87, 12104, 5243, 8.9, -5832.5, 2802.0, 108.2, 224.7, 35.0, 464, 0, false));
 
@@ -42,7 +43,7 @@ namespace Planet
 
             Console.WriteLine("");
 
-            //Searching for pluto, Getting the index number and removing it.
+            // Searching for pluto, Getting the index number and removing it.
             foreach (Planet item in planet)
             {
                 if (item.Name == "Pluto")
@@ -83,14 +84,14 @@ namespace Planet
 
             foreach (Planet item in planet)
             {
-                if (item.Diamenter > 10000 && item.Diamenter < 50000)
+                if (item.Diameter > 10000 && item.Diameter < 50000)
                 {
-                    Console.WriteLine("Planet name : {0} \r\nPlanet diamenter: {1}km", item.Name, item.Diamenter);
+                    Console.WriteLine("Planet name : {0} \r\nPlanet diameter: {1}km", item.Name, item.Diameter);
                 }
             }
 
             Console.WriteLine("");
-            //removing all elements
+            // Removing all elements
             planet.Clear();
             Console.ReadKey();
         }
