@@ -11,10 +11,34 @@ namespace WashingMachine
         static void Main(string[] args)
         {
             Washer machine = new Washer();
+            while (true)
+            {
+                char inputFormUser = Console.ReadKey(true).KeyChar;
+                switch (inputFormUser)
+                {
+                    case '1':
+                        machine.Fill();
+                        break;
+                    case '2':
+                        machine.PowerOnOff();
+                        break;
+                    case '3':
+                        machine.OpenClose();
+                        break;
+                    case '4':
+                        machine.Spin();
+                        break;
+                    case '5':
+                        machine.Wash(false);
+                        break;
 
-            machine.Fill();
-            machine.
+                }
 
+            }
+            
+        
+            
+           
             Console.ReadKey();
 
         }

@@ -12,42 +12,58 @@ namespace WashingMachine
         private bool _isDoorOpen;
         private bool _isRunning;
 
-        public  bool IsPowerOnOrOff
+        public bool IsPowerOnOrOff
         {
-            get {return _isPowerOnOrOff;}
+            get { return _isPowerOnOrOff; }
+            private set
+            {
+                Console.WriteLine("is power on " + value);
+                _isPowerOnOrOff = value;
+            }
         }
 
         public bool IsDoorOpen
         {
-            get {return _isDoorOpen;}
+            get { return _isDoorOpen; }
+
+            private set
+            {
+                Console.WriteLine("is door open " + value);
+                _isDoorOpen = value;
+            }
         }
 
         public bool IsRunning
         {
-            get {return _isRunning;}
+            get { return _isRunning; }
+            private set
+            {
+                Console.WriteLine($"is Running {value}");
+                _isRunning = value;
+            }
         }
 
         public Washer()
         {
-            _isPowerOnOrOff = false;
-            _isRunning = false;
-            _isDoorOpen = false;
+            IsPowerOnOrOff = false;
+            IsRunning = false;
+            IsDoorOpen = true;
         }
 
 
         public void OpenClose()
         {
-            _isRunning = !_isRunning;
-            _isDoorOpen = false;
+            IsRunning = !IsRunning;
+            IsDoorOpen = !IsDoorOpen;
         }
 
         public void Wash(bool eco)
         {
-            if (!_isDoorOpen && _isPowerOnOrOff )
+            if (!IsDoorOpen && IsPowerOnOrOff)
             {
                 if (eco)
                 {
-                    Console.WriteLine("Eco is on");                
+                    Console.WriteLine("Eco is on");
                 }
                 else
                 {
@@ -58,7 +74,7 @@ namespace WashingMachine
 
         public void Fill()
         {
-           if (!_isDoorOpen && _isPowerOnOrOff)
+            if (!IsDoorOpen && IsPowerOnOrOff)
             {
                 Console.WriteLine("Starting to Fill");
             }
@@ -66,7 +82,7 @@ namespace WashingMachine
 
         public void Spin()
         {
-            if (!_isDoorOpen && _isPowerOnOrOff)
+            if (!IsDoorOpen && IsPowerOnOrOff)
             {
                 Console.WriteLine("Lets give it a Spin");
             }
@@ -74,10 +90,10 @@ namespace WashingMachine
 
         public void PowerOnOff()
         {
-            _isRunning = false;
-            Console.WriteLine(_isPowerOnOrOff ? "powering off" : "Powering on");
-            _isPowerOnOrOff = !_isPowerOnOrOff;
+            IsRunning = false;
+            Console.WriteLine(IsPowerOnOrOff ? "powering off" : "Powering on");
+            IsPowerOnOrOff = !IsPowerOnOrOff;
         }
-       
+
     }
 }
