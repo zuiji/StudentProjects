@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Globalization;
 using System.Linq;
 using System.Net;
@@ -11,8 +12,9 @@ namespace aTripToTheLibrary
 {
     public class Book
     {
-        #region Property
         // property
+        #region Property
+
         private string _name;
         public string Name
         {
@@ -26,6 +28,7 @@ namespace aTripToTheLibrary
             get { return _genrer; }
             set { _genrer = value; }
         }
+
         private string _author;
         public string Author
         {
@@ -33,13 +36,13 @@ namespace aTripToTheLibrary
             set { _author = value; }
         }
 
-
         private string _publisher;
         public string Publisher
         {
             get { return _publisher; }
             set { _publisher = value; }
         }
+
         private int _page;
         public int Page
         {
@@ -63,35 +66,64 @@ namespace aTripToTheLibrary
 
         #endregion
 
-        private static void list()
+        //constructor
+        public Book()
         {
-            List<Book> books = new List<Book>();
-            books.Add(new Book("Harry Potter", "fantasi", "j.k roling", "hunkeboller", 508, 2018, true));
-            books.Add(new Book("Harry Potter 2", "fantasi", "j.k roling", "hunkeboller", 508, 2018, true));
-            books.Add(new Book("Harry Potter 3", "fantasi", "j.k roling", "hunkeboller", 508, 2018, true));
-            books.Add(new Book("Harry Potter 4", "fantasi", "j.k roling", "hunkeboller", 508, 2018, true));
-            books.Add(new Book("Harry Potter 5", "fantasi", "j.k roling", "hunkeboller", 508, 2018, true));
-            books.Add(new Book("Harry Potter 6", "fantasi", "j.k roling", "hunkeboller", 508, 2018, true));
-            books.Add(new Book("Harry Potter 7", "fantasi", "j.k roling", "hunkeboller", 508, 2018, true));
-            books.Add(new Book("Harry Potter 8", "fantasi", "j.k roling", "hunkeboller", 508, 2018, true));
-            books.Add(new Book("Lord Of the rings", "fantasi", "j.k roling", "hunkeboller", 508, 2018, true));
-            books.Add(new Book("Lord Of the rings", "fantasi", "j.k roling", "hunkeboller", 508, 2018, true));
-            books.Add(new Book("Lord Of the rings", "fantasi", "j.k roling", "hunkeboller", 508, 2018, true));
-            books.Add(new Book("Percy jackson", "fantasi", "j.k roling", "hunkeboller", 508, 2018, true));
-            books.Add(new Book("Percy jackson 2", "fantasi", "j.k roling", "hunkeboller", 508, 2018, true));
+
         }
 
+
+        // the list we can add books too
+        #region listOfBooks
+
+        private static List<Book> books = new List<Book>
+        {
+            new Book("Harry Potter", "fantasi", "j.k roling", "hunkeboller", 508, 2018, true),
+            new Book("Harry Potter 2", "fantasi", "j.k roling", "hunkeboller", 508, 2018, true),
+            new Book("Harry Potter 3", "fantasi", "j.k roling", "hunkeboller", 508, 2018, true),
+            new Book("Harry Potter 4", "fantasi", "j.k roling", "hunkeboller", 508, 2018, true),
+            new Book("Harry Potter 5", "fantasi", "j.k roling", "hunkeboller", 508, 2018, true),
+            new Book("Harry Potter 6", "fantasi", "j.k roling", "hunkeboller", 508, 2018, true),
+            new Book("Harry Potter 7", "fantasi", "j.k roling", "hunkeboller", 508, 2018, true),
+            new Book("Harry Potter 8", "fantasi", "j.k roling", "hunkeboller", 508, 2018, true),
+            new Book("Lord Of the rings", "fantasi", "j.k roling", "hunkeboller", 508, 2018, true),
+            new Book("Lord Of the rings", "fantasi", "j.k roling", "hunkeboller", 508, 2018, true),
+            new Book("Lord Of the rings", "fantasi", "j.k roling", "hunkeboller", 508, 2018, true),
+            new Book("Percy jackson", "fantasi", "j.k roling", "hunkeboller", 508, 2018, true),
+            new Book("Percy jackson 2", "fantasi", "j.k roling", "hunkeboller", 508, 2018, true)
+        };
+        #endregion
+
+        // stack list of borrowedBooks
+        static Stack<Book> borrowedBooks = new Stack<Book>();
+
+        //uses for references
+        public static List<Book> Books
+        {
+            get { return new List<Book>(books); }
+            set {books = value;}
+        }
+        //uses for references
+        public static Stack<Book> BorrowedBooks
+        {
+            get {return borrowedBooks;}
+            set {borrowedBooks = value;}
+        }
+
+        //uses for references
         public Book(string name, string genrer, string author, string publisher, int page, int releaceYear, bool isSerie)
         {
-            Name = _name;
-            Genrer = _genrer;
-            Author = _author;
-            Publisher = _publisher;
-            Page = _page;
-            ReleaseYear = _releaceYear;
-            IsSerie = _isSerie;
-
+            _name = name;
+            _genrer = genrer;
+            _author = author;
+            _publisher = publisher;
+            _page = page;
+            _releaceYear = releaceYear;
+            _isSerie = isSerie;
         }
-    }
 
+       
+    }
 }
+
+
