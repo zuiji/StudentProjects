@@ -43,6 +43,7 @@ namespace aTripToTheLibraryV._2
             Title = title;
             Genre = genre;
             Pages = pages;
+            
 
         }
     }
