@@ -7,34 +7,34 @@ using System.Threading.Tasks;
 
 namespace aTripToTheLibraryV._2
 {
-    class Book
+    public class Book
     {
-        private string author;
+        private string _author;
         public string Author
         {
-            get { return author; }
-            set { author = value; }
+            get { return _author; }
+            set { _author = value; }
         }
 
-        private string title;
+        private string _title;
         public string Title
         {
-            get { return title; }
-            set { title = value; }
+            get { return _title; }
+            set { _title = value; }
         }
 
-        private string genre;
+        private string _genre;
         public string Genre
         {
-            get { return genre; }
-            set { genre = value; }
+            get { return _genre; }
+            set { _genre = value; }
         }
 
-        private int pages;
+        private int _pages;
         public int Pages
         {
-            get { return pages; }
-            set { pages = value; }
+            get { return _pages; }
+            set { _pages = value; }
         }
 
         public Book(string author, string title, string genre, int pages)
