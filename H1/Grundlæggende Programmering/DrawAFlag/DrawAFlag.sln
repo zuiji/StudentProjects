@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28711.60
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DrawAFlag", "DrawAFlag\DrawAFlag.csproj", "{729D78A6-D2BB-4DB1-ACA6-C6E921473616}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{729D78A6-D2BB-4DB1-ACA6-C6E921473616}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{729D78A6-D2BB-4DB1-ACA6-C6E921473616}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{729D78A6-D2BB-4DB1-ACA6-C6E921473616}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{729D78A6-D2BB-4DB1-ACA6-C6E921473616}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B1CB0D24-37AF-4782-8E11-2C7E58BF9EE3}
+	EndGlobalSection
+EndGlobal
