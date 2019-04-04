@@ -1,0 +1,63 @@
+﻿@model ThePizzaChallenge.Models.CreatePizzaViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+
+<h4>Pizza</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" >
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Pizza.PizzaName" class="control-label"></label>
+                <input asp-for="Pizza.PizzaName" class="form-control" />
+                <span asp-validation-for="Pizza.PizzaName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+       
+   
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AllIngredients.FirstOrDefault().IngredientsName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AllIngredients.FirstOrDefault().PriceDecimal)
+                    </th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach (var item in Model.AllIngredients) {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IngredientsName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PriceDecimal)
+                        </td>
+                        <td>
+                            @Html.CheckBoxFor(modelItem => item.IsSelected)
+                        </td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

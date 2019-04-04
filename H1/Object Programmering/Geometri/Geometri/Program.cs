@@ -30,6 +30,8 @@ namespace Geometri
             Console.WriteLine(sq4.Area());
             Console.WriteLine(sq5.Area());
 
+
+
             Break();
         }
 
