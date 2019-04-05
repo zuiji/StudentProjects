@@ -6,56 +6,54 @@ namespace library.Gui
 {
     public class Program
     {
-        Library lib = new Library();
-        Book Book = new Book();
-        void Main(string[] args)
+        static void Main(string[] args)
         {
+
             Console.WriteLine("What will you do\nPress { 1 } for Print all books out\nPress { 2 } to create new Book.");
-            char inputFromUser = Console.ReadKey(true).KeyChar;
-            MainSwitchMenu(inputFromUser);
+
+            MainSwitchMenu();
 
         }
 
-        private void MainSwitchMenu(char inputFromUser)
-        {
-            throw new NotImplementedException();
-        }
 
-        private void MainSwitchMenu(char inputFromUser, string author, string title, string genre, int pages)
+
+        private static void MainSwitchMenu()
         {
-            switch (inputFromUser)
+            char inputFromUser = Console.ReadKey(true).KeyChar; do
             {
-                case '1':
-                    Console.WriteLine(" Create Book");
-                    Console.WriteLine(" ");
 
-                    Console.WriteLine("author");
-                    author = Console.ReadLine();
-                    Console.WriteLine("Author title genre pages ");
-                    title = Console.ReadLine();
-                    Console.WriteLine("genre");
-                    genre = Console.ReadLine();
-                    Console.WriteLine("pages");
-                    pages = int.Parse(Console.ReadLine());
-                    lib.CreateBooks(author, title,genre,pages);
-                    break;
-                case '2':
-                    Console.WriteLine(" 2 ");
-                    break;
-            }
+                switch (inputFromUser)
+                {
+                    case '1':
+                        do
+                        {
+
+                            Console.WriteLine(" Create Book");
+                            Console.WriteLine(" ");
+                            Console.WriteLine("Author");
+                            string author = Console.ReadLine();
+                            Console.WriteLine("Title ");
+                            string title = Console.ReadLine();
+                            Console.WriteLine("Genre");
+                            string genre = Console.ReadLine();
+                            Console.WriteLine("Pages");
+                            int pages = int.Parse(Console.ReadLine());
+                            Library.CreateBooks(author, title, genre, pages);
+                            Console.WriteLine("press { 1 } to add another book");
+                            
+                            inputFromUser = Console.ReadKey(true).KeyChar;
+                        } while (inputFromUser <= 1);
+                        break;
+
+                    case '2':
+                        Library.PrintBookList(inputFromUser);
+                        break;
+
+                    case '3':
+                        break;
+                }
+            } while (inputFromUser != 3);
         }
 
-        public void SubSwitchMenu(char inputFromUser)
-        {
-            switch (inputFromUser)
-            {
-                case '0':
-                    Console.WriteLine("Return to Main Menu");
-                    break;
-                case '1':
-                    Console.WriteLine("Add another Book");
-                    break;
-            }
-        }
     }
 }

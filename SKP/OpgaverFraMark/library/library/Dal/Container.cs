@@ -2,9 +2,9 @@
 
 namespace library.Dal
 {
-    public class Container
+    public static class Container
     {
-        public List<Book> Hylde = new List<Book>();
+        public static List<Book> Hylde = new List<Book>();
 
     }
 }
