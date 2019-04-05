@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace library
+﻿namespace library
 {
     public class Book
     {
@@ -42,8 +36,10 @@ namespace library
             Title = title;
             Genre = genre;
             Pages = pages;
+        }
 
-
+        public Book()
+        {
         }
     }
 }

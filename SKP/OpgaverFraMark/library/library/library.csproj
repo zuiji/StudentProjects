@@ -43,10 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Book.cs" />
-    <Compile Include="Container.cs" />
-    <Compile Include="library.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Logic\Book.cs" />
+    <Compile Include="Dal\Container.cs" />
+    <Compile Include="Logic\Library.cs" />
+    <Compile Include="Gui\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
