@@ -26,7 +26,17 @@ namespace library.Gui
             switch (inputFromUser)
             {
                 case '1':
-                    Console.WriteLine(" Create Book Author title genre pages ");
+                    Console.WriteLine(" Create Book");
+                    Console.WriteLine(" ");
+
+                    Console.WriteLine("author");
+                    author = Console.ReadLine();
+                    Console.WriteLine("Author title genre pages ");
+                    title = Console.ReadLine();
+                    Console.WriteLine("genre");
+                    genre = Console.ReadLine();
+                    Console.WriteLine("pages");
+                    pages = int.Parse(Console.ReadLine());
                     lib.CreateBooks(author, title,genre,pages);
                     break;
                 case '2':
