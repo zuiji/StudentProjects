@@ -3,7 +3,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
-using Libarry.Logi;
+
 
 namespace Libarry
 {
@@ -23,6 +23,8 @@ namespace Libarry
             Console.WriteLine(library.PrintAllTitles());
 
             CreateBook(library);
+
+            Console.WriteLine(library.PrintAllTitles());
         }
 
         private static void CreateBook(Library library)
@@ -36,7 +38,7 @@ namespace Libarry
             Console.WriteLine("Please add Genre");
             book.Genre = Console.ReadLine();
 
-            library.InventoryOfBooks.Add(book);
+            library.AddNewBook(book);
           
         }
     }
