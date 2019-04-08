@@ -1,0 +1,22 @@
+﻿Opgave 1:
+Lav en Bog klasse som indeholder de dele som en bog gør (Find inspiration fra et bibliotek),
+dette skal senere kunne bruges til at søge efter bøger.
+
+Opgave 2:
+Når det er lavet så er det tid til at lave en container til vores objecter. For bøger ville det
+være normalt at dette var en hylde på et bibliotek. 
+Derfor skal du nu lave et bibliotek som indeholder hylder og de hylder har bøger - fokuser ikke
+på at få sorteret bøgerne, dette er ligemeget. 
+
+Opgave 3:
+Det der nu er blevet lavet er en model klasse (Bog) og en DAL klasse (Bibliotek) nu mangler 
+vi at kunne intereagere via en GUI eller TUI (Text User Interface) - Lav derfor en klasse som 
+kan vise bøger på hylder i et bibliotek, og lave nye bøger og tilføje dem til biblioteket.
+
+Opgave 4:
+Det er ikke god praksis at lade din GUI snakke direkte til din DAL - Det bedste er at have en 
+form for logik lag som eksekverer de metoder du kalder fra GUI. Lav derfor et logik lag som nu 
+tager sig af at hente bøger fra et bibliotek, ligge nye bøger ind, og slette bøger - også kaldt
+CRUD operationer (CREATE, READ, UPDATE, DELETE)
+
+Hvis du har spørgsmål så spørg endelig
