@@ -18,16 +18,16 @@ namespace Libarry
             Console.WriteLine(book.Genre);
 
 
-            Library library = new Library("My lownly library", "never-street 66");
+            Library library = new Library("My lowly library", "never-street 66");
             library.AddNewBook(book);
             Console.WriteLine(library.PrintAllTitles());
 
-            CreateBook(library);
+            CreateNewBook(library);
 
             Console.WriteLine(library.PrintAllTitles());
         }
 
-        private static void CreateBook(Library library)
+        private static void CreateNewBook(Library library)
         {
             Book book; 
             book = new Book();
