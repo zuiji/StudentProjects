@@ -26,8 +26,11 @@ namespace Libarry
         {
             Book book;
             book = new Book();
+            Console.WriteLine("Insert Genre");
             book.Genre = Console.ReadLine();
+            Console.WriteLine("insert Author");
             book.Author = Console.ReadLine();
+            Console.WriteLine("insert Title");
             book.Title = Console.ReadLine();
 
             bookList.Biblotek.Add(book);
