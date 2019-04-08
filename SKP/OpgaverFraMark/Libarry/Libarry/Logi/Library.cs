@@ -32,7 +32,6 @@ namespace Libarry
                 sb.AppendLine(num + ": " + item.Title);
                 num++;
             }
-
             return sb;
         }
 

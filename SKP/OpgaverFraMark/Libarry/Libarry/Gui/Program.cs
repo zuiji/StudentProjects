@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using Libarry.Logi;
@@ -10,40 +11,33 @@ namespace Libarry
     {
         static void Main(string[] args)
         {
-            ListOfBook bookList = new ListOfBook();
-           // CreateBook(bookList);
-            foreach (Book book in bookList.Biblotek)
-            {
-                Console.WriteLine(book.Title);
-            }
+            Book book = new Book("test", "test", "test");
 
-            Book book1 = new Book("test" , "test", "test");
-
-            Console.WriteLine(book1.Author);
-            Console.WriteLine(book1.Title);
-            Console.WriteLine(book1.Genre);
+            Console.WriteLine(book.Author);
+            Console.WriteLine(book.Title);
+            Console.WriteLine(book.Genre);
 
 
-            Library library = new Library("My lownly library", "neverstreet 66");
-            library.AddNewBook(book1);
+            Library library = new Library("My lownly library", "never-street 66");
+            library.AddNewBook(book);
             Console.WriteLine(library.PrintAllTitles());
 
-
-
+            CreateBook(library);
         }
 
-/*        private static void CreateBook(ListOfBook bookList)
+        private static void CreateBook(Library library)
         {
-            Book book;
+            Book book; 
             book = new Book();
-            Console.WriteLine("Insert Genre");
-            book.Genre = Console.ReadLine();
-            Console.WriteLine("insert Author");
+            Console.WriteLine("Please add Author");
             book.Author = Console.ReadLine();
-            Console.WriteLine("insert Title");
+            Console.WriteLine("Please add Title");
             book.Title = Console.ReadLine();
+            Console.WriteLine("Please add Genre");
+            book.Genre = Console.ReadLine();
 
-            bookList.Biblotek.Add(book);
-        }*/
+            library.InventoryOfBooks.Add(book);
+          
+        }
     }
 }
