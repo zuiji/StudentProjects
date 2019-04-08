@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Logi\Book.cs" />
     <Compile Include="Gui\Program.cs" />
+    <Compile Include="Logi\ListOfBook.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
