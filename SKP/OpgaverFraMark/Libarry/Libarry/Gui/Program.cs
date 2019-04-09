@@ -9,7 +9,8 @@ namespace Library.Gui
         {
             //Test Book
             Book book = new Book("test", "test", "test");
-            //test variabls print 
+            
+            //test variables print 
             Console.WriteLine(book.Author);
             Console.WriteLine(book.Title);
             Console.WriteLine(book.Genre);
@@ -30,6 +31,8 @@ namespace Library.Gui
             Console.WriteLine(library.PrintAllTitles());
         }
 
+
+        //user input to create new book
         private static void CreateNewBook(Library.Logi.Library library)
         {
             
