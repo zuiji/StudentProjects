@@ -9,6 +9,7 @@ namespace Library.Gui
     {
         static void Main(string[] args)
         {
+
             //Test Book
             Book book = new Book("test", "test", "test");
 
