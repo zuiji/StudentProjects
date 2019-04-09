@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net.Http.Headers;
 using System.Runtime.CompilerServices;
+using Libarry.Logik;
 using Library.Logi;
 
 namespace Library.Gui
@@ -20,7 +21,7 @@ namespace Library.Gui
 
             //Library Creating and info
             Library.Logi.Library library = new Library.Logi.Library("My lowly library", "never-street 66");
-
+            BookManager bookManager = new BookManager();
             //adds new book
             library.AddNewBook(book);
 
@@ -28,11 +29,11 @@ namespace Library.Gui
             //Console.WriteLine(library.PrintAllTitles());
 
 
-            MainMenuSwitch(library);
+            MainMenuSwitch(library, bookManager);
         }
 
         //this method are used so user can choose what they want to do.
-        private static void MainMenuSwitch(Logi.Library library)
+        private static void MainMenuSwitch(Logi.Library library, BookManager bookManager)
         {
             Console.WriteLine("press 1 to Print all book titles out");
             Console.WriteLine("press 2 to create book");
@@ -45,7 +46,7 @@ namespace Library.Gui
             {
                 //switch case
                 switch (inputFromUser)
-                {   
+                {
                     //breaks out of the switch
                     case '0':
                         break;
@@ -55,12 +56,12 @@ namespace Library.Gui
                         Console.WriteLine(library.PrintAllTitles());
 
                         //calls back to mainmenuswitch method
-                        Program.MainMenuSwitch(library);
+                        Program.MainMenuSwitch(library, bookManager);
                         break;
 
                     case '2':
                         //calling CreateNewBook Method
-                        CreateNewBook(library);
+                        CreateNewBook(library,bookManager);
                         break;
                     case '3':
                         //calling print all titles
@@ -69,7 +70,7 @@ namespace Library.Gui
                         library.RemoveBookFromList(int.Parse(Console.ReadLine()));
 
                         //calls back to mainmenuswitch method
-                        Program.MainMenuSwitch(library);
+                        Program.MainMenuSwitch(library, bookManager);
                         break;
                     default:
                         Console.WriteLine("non of your input does mach please try 0 - 3");
@@ -81,7 +82,7 @@ namespace Library.Gui
         }
 
         //user input to create new book
-        private static void CreateNewBook(Library.Logi.Library library)
+        private static void CreateNewBook(Library.Logi.Library library, BookManager bookManager)
         {
 
             Console.WriteLine("Please add Author");
@@ -90,8 +91,8 @@ namespace Library.Gui
             string title = Console.ReadLine();
             Console.WriteLine("Please add Genre");
             string genre = Console.ReadLine();
-
-            library.AddNewBook(new Book(author, title, genre));
+            bookManager.CreateNewBook(library,author,title,genre);
+            //library.AddNewBook(new Book(author, title, genre));
 
             Console.WriteLine("want to add another Book? ");
             Console.WriteLine("y for Add new book");
@@ -99,12 +100,12 @@ namespace Library.Gui
             if (inputFromUser == 'Y' || inputFromUser == 'y')
             {
                 Console.Clear();
-                CreateNewBook(library);
+                //CreateNewBook(library);
             }
             else
             {
-               // return to mainmenuswitch method
-                Program.MainMenuSwitch(library);
+                // return to mainmenuswitch method
+                Program.MainMenuSwitch(library, bookManager);
             }
         }
     }

@@ -9,6 +9,10 @@ namespace Libarry.Logik
 {
     class BookManager
     {
-       
+        public Book CreateNewBook(Library.Logi.Library library ,string author, string title, string genre)
+        {
+            library.AddNewBook(new Book(author,title,genre));
+            return new Book(author, title, genre);
+        }
     }
 }
