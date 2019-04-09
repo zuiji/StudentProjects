@@ -43,8 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Logi\Library.cs" />
-    <Compile Include="Logi\Book.cs" />
+    <Compile Include="Model\Library.cs" />
+    <Compile Include="Model\Book.cs" />
     <Compile Include="Gui\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Dal\" />
+    <Folder Include="Logik\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="The Exersice File.txt" />

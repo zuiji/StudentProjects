@@ -30,6 +30,7 @@ namespace Library.Gui
             MainMenuSwitch(library);
         }
 
+        //this method are used so user can choose what they want to do.
         private static void MainMenuSwitch(Logi.Library library)
         {
             Console.WriteLine("press 1 to Print all book titles out");
@@ -43,7 +44,8 @@ namespace Library.Gui
             {
                 //switch case
                 switch (inputFromUser)
-                {
+                {   
+                    //breaks out of the switch
                     case '0':
                         break;
 
