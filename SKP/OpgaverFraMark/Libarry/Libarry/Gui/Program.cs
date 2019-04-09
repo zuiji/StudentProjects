@@ -104,6 +104,7 @@ namespace Library.Gui
             }
             else
             {
+
                 // return to mainmenuswitch method
                 Program.MainMenuSwitch(library, bookManager);
             }
