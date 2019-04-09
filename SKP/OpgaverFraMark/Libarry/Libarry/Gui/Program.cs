@@ -29,15 +29,15 @@ namespace Libarry
 
         private static void CreateNewBook(Library library)
         {
-            Book book; 
-            book = new Book();
+            Book book;
             Console.WriteLine("Please add Author");
-            book.Author = Console.ReadLine();
+            string author = Console.ReadLine();
             Console.WriteLine("Please add Title");
-            book.Title = Console.ReadLine();
+            string title = Console.ReadLine();
             Console.WriteLine("Please add Genre");
-            book.Genre = Console.ReadLine();
-
+            string genre = Console.ReadLine();
+            
+            book = new Book(author,title,genre);
             library.AddNewBook(book);
           
         }

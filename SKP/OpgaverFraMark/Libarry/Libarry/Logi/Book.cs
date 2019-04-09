@@ -5,7 +5,7 @@
         public string Author { get; private set; }
         public string Title { get; private set; }
         public string Genre { get; private set; }
-
+        
         public Book(string author, string title, string genre)
         {
             Author = author;
