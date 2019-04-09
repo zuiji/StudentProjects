@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net.Http.Headers;
 using System.Runtime.CompilerServices;
 using Library.Logi;
 
@@ -31,8 +32,9 @@ namespace Library.Gui
 
         private static void MainMenuSwitch(Logi.Library library)
         {
-            Console.WriteLine("press 1 to create book");
-            Console.WriteLine("press 2 to Print all book titles out");
+            Console.WriteLine("press 1 to Print all book titles out");
+            Console.WriteLine("press 2 to create book");
+            Console.WriteLine("press 3 to delete a book");
             Console.WriteLine("press 0 to Exit");
 
             char inputFromUser = Console.ReadKey(true).KeyChar;
@@ -46,17 +48,28 @@ namespace Library.Gui
                         break;
 
                     case '1':
-                        //calling CreateNewBook Method
-                        CreateNewBook(library);
+                        //calling print all titles
+                        Console.WriteLine(library.PrintAllTitles());
+
+                        //calls back to mainmenuswitch method
+                        Program.MainMenuSwitch(library);
                         break;
 
                     case '2':
+                        //calling CreateNewBook Method
+                        CreateNewBook(library);
+                        break;
+                    case '3':
                         //calling print all titles
                         Console.WriteLine(library.PrintAllTitles());
+                        //calls delete Book
+                        library.RemoveBookFromList(int.Parse(Console.ReadLine()));
+
+                        //calls back to mainmenuswitch method
                         Program.MainMenuSwitch(library);
                         break;
                     default:
-                        Console.WriteLine("non of your input does mach please try 0 - 2");
+                        Console.WriteLine("non of your input does mach please try 0 - 3");
                         break;
                 }
 
@@ -87,6 +100,7 @@ namespace Library.Gui
             }
             else
             {
+               // return to mainmenuswitch method
                 Program.MainMenuSwitch(library);
             }
         }

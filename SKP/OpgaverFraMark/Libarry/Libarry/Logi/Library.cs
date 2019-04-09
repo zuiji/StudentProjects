@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Text;
 
 namespace Library.Logi
@@ -33,13 +34,18 @@ namespace Library.Logi
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendLine("All Titles contained in the library: ");
-            int num = 1;
+            int num = 0;
             foreach (Book item in InventoryOfBooks)
             {
                 sb.AppendLine(num + ": " + item.Title);
                 num++;
             }
             return sb;
+        }
+
+        public void RemoveBookFromList(int i)
+        {
+            InventoryOfBooks.RemoveAt(i);
         }
 
     }
