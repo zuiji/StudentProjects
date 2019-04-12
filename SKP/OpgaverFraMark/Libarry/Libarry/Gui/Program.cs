@@ -50,11 +50,22 @@ namespace Library
                     //breaks out of the switch
                     case '0':
                         return;
-                        
+
                     case '1':
                         //calling print all titles
                         PrintAllTitle(library, bookManager);
-                      break;
+                        Console.WriteLine("Press Y to go back to mainmenu");
+                        inputFromUser = Console.ReadKey(true).KeyChar;
+                        if (char.ToUpper(inputFromUser) == 'Y')
+                        {
+                            Console.Clear();
+                            MainMenuSwitch(library, bookManager);
+                        }
+                        else
+                        {
+                            return;
+                        }
+                        break;
 
                     case '2':
                         //calling CreateNewBook Method
@@ -62,7 +73,7 @@ namespace Library
                         break;
                     case '3':
                         //calling print all titles
-                        Console.WriteLine(library.PrintAllTitles());
+                        PrintAllTitle(library, bookManager);
                         //calls delete Book
                         library.RemoveBookFromList(int.Parse(Console.ReadLine()));
 
@@ -87,15 +98,15 @@ namespace Library
             string title = Console.ReadLine();
             Console.WriteLine("Please add Genre");
             string genre = Console.ReadLine();
-            library.AddNewBook(bookManager.CreateNewBook(author, title, genre)); 
-            
+            library.AddNewBook(bookManager.CreateNewBook(author, title, genre));
+
             Console.WriteLine("want to add another Book? ");
             Console.WriteLine("Press Y for Add new book");
             char inputFromUser = Console.ReadKey(true).KeyChar;
-            if (char.ToUpper(inputFromUser) =='Y')
+            if (char.ToUpper(inputFromUser) == 'Y')
             {
                 Console.Clear();
-                CreateNewBook(library,bookManager);
+                CreateNewBook(library, bookManager);
             }
             else
             {
@@ -104,22 +115,10 @@ namespace Library
                 Program.MainMenuSwitch(library, bookManager);
             }
         }
-        
+
         private static void PrintAllTitle(Library library, BookManager bookManager)
         {
             Console.WriteLine(bookManager.PrintBook(library.InventoryOfBooks));
-            Console.WriteLine("Press Y to go back to mainmenu");
-            char inputFromUser = Console.ReadKey(true).KeyChar;
-            if (char.ToUpper(inputFromUser) == 'Y')
-            {
-                Console.Clear();
-                MainMenuSwitch(library, bookManager);
-
-            }
-            else
-            {
-                return;
-            }
 
         }
     }
