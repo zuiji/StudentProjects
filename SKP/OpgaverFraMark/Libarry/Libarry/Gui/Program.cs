@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Net.Http.Headers;
 using System.Runtime.CompilerServices;
-using Libarry.Logik;
-using Library.Logi;
+using Libarry;
 
-namespace Library.Gui
+
+namespace Library
 {
     public class Program
     {
@@ -20,7 +20,7 @@ namespace Library.Gui
             Console.WriteLine(book.Genre);
 
             //Library Creating and info
-            Library.Logi.Library library = new Library.Logi.Library("My lowly library", "never-street 66");
+            Library library = new Library("My lowly library", "never-street 66");
             BookManager bookManager = new BookManager();
             //adds new book
             library.AddNewBook(book);
@@ -33,7 +33,7 @@ namespace Library.Gui
         }
 
         //this method are used so user can choose what they want to do.
-        private static void MainMenuSwitch(Logi.Library library, BookManager bookManager)
+        private static void MainMenuSwitch(Library library, BookManager bookManager)
         {
             Console.WriteLine("press 1 to Print all book titles out");
             Console.WriteLine("press 2 to create book");
@@ -61,7 +61,7 @@ namespace Library.Gui
 
                     case '2':
                         //calling CreateNewBook Method
-                        CreateNewBook(library,bookManager);
+                        CreateNewBook(library, bookManager);
                         break;
                     case '3':
                         //calling print all titles
@@ -82,7 +82,7 @@ namespace Library.Gui
         }
 
         //user input to create new book
-        private static void CreateNewBook(Library.Logi.Library library, BookManager bookManager)
+        private static void CreateNewBook(Library library, BookManager bookManager)
         {
 
             Console.WriteLine("Please add Author");
@@ -91,7 +91,7 @@ namespace Library.Gui
             string title = Console.ReadLine();
             Console.WriteLine("Please add Genre");
             string genre = Console.ReadLine();
-            bookManager.CreateNewBook(library,author,title,genre);
+            library.AddNewBook(bookManager.CreateNewBook(author, title, genre)); 
             //library.AddNewBook(new Book(author, title, genre));
 
             Console.WriteLine("want to add another Book? ");

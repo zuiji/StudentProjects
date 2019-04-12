@@ -1,4 +1,4 @@
-﻿namespace Library.Logi
+﻿namespace Library
 {
     public class Book
     {
