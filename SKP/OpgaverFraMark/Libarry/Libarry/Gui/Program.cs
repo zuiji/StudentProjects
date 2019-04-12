@@ -1,12 +1,10 @@
-﻿using System;
-using System.Net.Http.Headers;
-using System.Runtime.CompilerServices;
-using Libarry;
-
+﻿using Libarry;
+using System;
+using System.Text;
 
 namespace Library
 {
-    public class Program
+    class Program
     {
         static void Main(string[] args)
         {
@@ -84,7 +82,6 @@ namespace Library
         //user input to create new book
         private static void CreateNewBook(Library library, BookManager bookManager)
         {
-
             Console.WriteLine("Please add Author");
             string author = Console.ReadLine();
             Console.WriteLine("Please add Title");
@@ -92,15 +89,14 @@ namespace Library
             Console.WriteLine("Please add Genre");
             string genre = Console.ReadLine();
             library.AddNewBook(bookManager.CreateNewBook(author, title, genre)); 
-            //library.AddNewBook(new Book(author, title, genre));
-
+            
             Console.WriteLine("want to add another Book? ");
-            Console.WriteLine("y for Add new book");
+            Console.WriteLine("Press Y for Add new book");
             char inputFromUser = Console.ReadKey(true).KeyChar;
-            if (inputFromUser == 'Y' || inputFromUser == 'y')
+            if (char.ToUpper(inputFromUser) =='Y')
             {
                 Console.Clear();
-                //CreateNewBook(library);
+                CreateNewBook(library,bookManager);
             }
             else
             {
