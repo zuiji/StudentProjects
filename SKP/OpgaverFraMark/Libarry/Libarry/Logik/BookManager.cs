@@ -13,5 +13,17 @@ namespace Libarry
         {
             return new Book(author, title, genre);
         }
+
+        public string PrintBook(List<Book> ListInput)
+        {
+            string temp = "";
+            foreach (Book book in ListInput)
+            {
+                temp += $"{book.Title}\n";
+            }
+
+            return temp;
+        }
+
     }
 }

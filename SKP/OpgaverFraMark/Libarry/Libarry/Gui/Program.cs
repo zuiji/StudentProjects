@@ -33,10 +33,12 @@ namespace Library
         //this method are used so user can choose what they want to do.
         private static void MainMenuSwitch(Library library, BookManager bookManager)
         {
+            Console.Clear();
             Console.WriteLine("press 1 to Print all book titles out");
             Console.WriteLine("press 2 to create book");
             Console.WriteLine("press 3 to delete a book");
             Console.WriteLine("press 0 to Exit");
+            Console.WriteLine("");
 
             char inputFromUser = Console.ReadKey(true).KeyChar;
 
@@ -47,15 +49,12 @@ namespace Library
                 {
                     //breaks out of the switch
                     case '0':
-                        break;
-
+                        return;
+                        
                     case '1':
                         //calling print all titles
-                        Console.WriteLine(library.PrintAllTitles());
-
-                        //calls back to mainmenuswitch method
-                        Program.MainMenuSwitch(library, bookManager);
-                        break;
+                        PrintAllTitle(library, bookManager);
+                      break;
 
                     case '2':
                         //calling CreateNewBook Method
@@ -104,6 +103,24 @@ namespace Library
                 // return to mainmenuswitch method
                 Program.MainMenuSwitch(library, bookManager);
             }
+        }
+        
+        private static void PrintAllTitle(Library library, BookManager bookManager)
+        {
+            Console.WriteLine(bookManager.PrintBook(library.InventoryOfBooks));
+            Console.WriteLine("Press Y to go back to mainmenu");
+            char inputFromUser = Console.ReadKey(true).KeyChar;
+            if (char.ToUpper(inputFromUser) == 'Y')
+            {
+                Console.Clear();
+                MainMenuSwitch(library, bookManager);
+
+            }
+            else
+            {
+                return;
+            }
+
         }
     }
 }
