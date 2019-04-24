@@ -1,9 +1,9 @@
 ﻿using System;
+using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Library;
 
 namespace Libarry
 {
@@ -23,6 +23,21 @@ namespace Libarry
             }
 
             return temp;
+        }
+
+        public Book DeleteBook(string title, List<Book> listOutPut)
+        {
+           
+            foreach (Book book in listOutPut)
+            {
+                if (book.Title == title)
+                {
+                    listOutPut.Remove(book);
+                }
+
+            }
+
+            return listOutPut;
         }
 
     }

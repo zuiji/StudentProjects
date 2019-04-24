@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 
-
-namespace Library
+namespace Libarry
 {
 
     public class Library
     {   
-        //probertys
+        //property
         public string Name { get; private set; }
         public string Address { get; private set; }
 
@@ -44,11 +43,12 @@ namespace Library
             return sb;
         }
 
-        public void RemoveBookFromList(int i)
+        public void RemoveBookFromList(Book book )
         {
-            InventoryOfBooks.RemoveAt(i);
+            InventoryOfBooks.Remove(book);
         }
 
+       
     }
 
 }

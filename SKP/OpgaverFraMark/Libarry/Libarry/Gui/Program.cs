@@ -1,8 +1,7 @@
-﻿using Libarry;
-using System;
-using System.Text;
+﻿using System;
+using System.Collections.Generic;
 
-namespace Library
+namespace Libarry
 {
     class Program
     {
@@ -72,13 +71,15 @@ namespace Library
                         CreateNewBook(library, bookManager);
                         break;
                     case '3':
+
                         //calling print all titles
-                        PrintAllTitle(library, bookManager);
+                        //PrintAllTitle(library, bookManager);
                         //calls delete Book
-                        library.RemoveBookFromList(int.Parse(Console.ReadLine()));
+                        DeleteBookFromList(library, bookManager);
+                        // library.RemoveBookFromList(int.Parse(Console.ReadLine()));
 
                         //calls back to mainmenuswitch method
-                        Program.MainMenuSwitch(library, bookManager);
+                        // Program.MainMenuSwitch(library, bookManager);
                         break;
                     default:
                         Console.WriteLine("non of your input does mach please try 0 - 3");
@@ -120,6 +121,29 @@ namespace Library
         {
             Console.WriteLine(bookManager.PrintBook(library.InventoryOfBooks));
 
+
+        }
+
+        private static void DeleteBookFromList(Library library, BookManager bookManager)
+        {
+            Console.WriteLine(bookManager.PrintBook(library.InventoryOfBooks));
+            Console.WriteLine("Please insert the title you want to delete");
+            string title = Console.ReadLine();
+            library.RemoveBookFromList(bookManager.DeleteBook(title,library.InventoryOfBooks));
+            Console.WriteLine("want to Delete another Book? ");
+            Console.WriteLine("Press Y for Delete a book");
+            char inputFromUser = Console.ReadKey(true).KeyChar;
+            if (char.ToUpper(inputFromUser) == 'Y')
+            {
+                Console.Clear();
+                DeleteBookFromList(library, bookManager);
+            }
+            else
+            {
+
+                // return to mainmenuswitch method
+                Program.MainMenuSwitch(library, bookManager);
+            }
         }
     }
 }
