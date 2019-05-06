@@ -6,5 +6,6 @@ namespace CQuestionFui
 {
     class Question
     {
+
     }
 }
