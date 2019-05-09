@@ -15,7 +15,7 @@ namespace Lotto
             int[] couponArray = new int[7];
             Random random = new Random();
             #endregion
-            
+
             // Generate numbers for LottoArray and Sorting it.
             #region GeneratsRandomnumbersToLottoArrayAndSorting
             for (int i = 0; i < lottoArray.Length; i++)
@@ -38,7 +38,7 @@ namespace Lotto
                 }
             }
             #endregion
-            
+
             // Generate numbers for Coupon and sorting it.
             #region GenerateNumbersToCouponArrayAndSorting
             for (int k = 0; k < couponArray.Length; k++)
@@ -64,7 +64,7 @@ namespace Lotto
 
             Console.WriteLine();
             #endregion
-            
+
             // Types out what numbers there was Drawn and what numbers the buyer have.
             #region TypesOutToUser
             Console.WriteLine("The lottery numbers:\n ");
@@ -83,7 +83,7 @@ namespace Lotto
 
             Console.WriteLine();
             #endregion
-            
+
             // Checking if the Numbers that's Drawn and the buyer have match's.
             #region CouponAndLottoNumbersChecker
             foreach (int c in couponArray)
@@ -97,9 +97,9 @@ namespace Lotto
                     }
                 }
             }
-            Console.WriteLine(); 
+            Console.WriteLine();
             #endregion
-            
+
             // Under Prize we are paying out the prizes and tells the user how much they won.
             #region Prize
             switch (correctNumber)
@@ -127,7 +127,7 @@ namespace Lotto
             if (prize > 0)
             {
                 Console.WriteLine($"Hurray you did win {prize}kr.");
-            } 
+            }
             #endregion
         }
     }
