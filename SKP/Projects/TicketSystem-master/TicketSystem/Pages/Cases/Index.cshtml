@@ -1,0 +1,79 @@
+﻿@page
+@model TicketSystem.Pages.Cases.IndexModel
+
+@{
+    ViewData["Title"] = "Oversigt sager";
+}
+
+<h1>Oversigt</h1>
+
+<p>
+    <a asp-page="Create">Opret sag</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Case[0].RequestorID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Case[0].OperatorID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Case[0].Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Case[0].StatusID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Case[0].Created)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Case[0].Closed)
+            </th>
+            <th>
+                Handling
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Case)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Requestor.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Operator.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Created)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Closed)
+                </td>
+                <td>
+                    <a asp-page="./Details" asp-route-id="@item.CaseID">Detaljer</a>
+                    <text> | </text>
+
+                    @if ((await AuthorizationService.AuthorizeAsync(User, item, CaseOperations.Update)).Succeeded)
+                    {
+                        <a asp-page="./Edit" asp-route-id="@item.CaseID">Rediger</a>
+                        <text> | </text>
+                    }
+
+                    @if ((await AuthorizationService.AuthorizeAsync(User, item, CaseOperations.Delete)).Succeeded)
+                    {
+                        <a asp-page="./Delete" asp-route-id="@item.CaseID">Slet</a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -126,7 +126,7 @@ namespace Lotto
             }
             if (prize > 0)
             {
-                Console.WriteLine($"Hurray you did win {prize}kr.");
+                Console.WriteLine($"Hurray you had {correctNumber} correct numbers and did win {prize}kr.");
             }
             #endregion
         }

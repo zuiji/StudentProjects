@@ -1,0 +1,70 @@
+﻿@page
+@model TicketSystem.Pages.Cases.DeleteModel
+
+@{
+    ViewData["Title"] = "Slet sag";
+}
+
+<h1>@ViewData</h1>
+
+<h3>Er du sikker på at du vil slette?</h3>
+<div>
+    <h4>Sag</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Case.Requestor)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Case.Requestor)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Case.Operator)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Case.Operator)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Case.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Case.Description)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Case.Details)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Case.Details)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Case.Status)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Case.Status)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Case.Created)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Case.Created)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Case.Closed)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Case.Closed)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Case.Operator.UserName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Case.Operator.UserName)
+        </dd>
+    </dl>
+
+    <form method="post">
+        <input type="hidden" asp-for="Case.CaseID" />
+        <input type="submit" value="Slet" class="btn btn-danger" /> |
+        <a asp-page="./Index">Fortryd</a>
+    </form>
+</div>

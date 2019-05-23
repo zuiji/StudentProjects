@@ -1,0 +1,69 @@
+﻿@page
+@model TicketSystem.Pages.Cases.CreateModel;
+
+@{
+    ViewData["Title"] = "Opret sag";
+}
+
+<h1>Opret sag</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Case.RequestorID" class="control-label"></label>
+                <select asp-for="Case.RequestorID" class="form-control" asp-items="@Model.RequestorSL">
+                    <option value="">-- Vælg Rekvirent --</option>
+                </select>
+                <span asp-validation-for="Case.RequestorID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Case.OperatorID" class="control-label"></label>
+                <select asp-for="Case.OperatorID" class="form-control" asp-items="@Model.OperatorSL">
+                    <option value="">-- Vælg Sagsbehandler --</option>
+                </select>
+                <span asp-validation-for="Case.OperatorID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Case.Description" class="control-label"></label>
+                <input asp-for="Case.Description" class="form-control" />
+                <span asp-validation-for="Case.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Case.Details" class="control-label"></label>
+                <input asp-for="Case.Details" class="form-control" />
+                <span asp-validation-for="Case.Details" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Case.StatusID" class="control-label"></label>
+                <select asp-for="Case.StatusID" class="form-control" asp-items="@Model.StatusSL">
+                    <option value="">-- Vælg status --</option>
+                </select>
+                <span asp-validation-for="Case.StatusID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Case.Created" class="control-label"></label>
+                <input asp-for="Case.Created" value="@DateTime.Now" class="form-control" />
+                <span asp-validation-for="Case.Created" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Case.Closed" class="control-label"></label>
+                <input asp-for="Case.Closed" class="form-control" />
+                <span asp-validation-for="Case.Closed" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Gem" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Fortryd</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
