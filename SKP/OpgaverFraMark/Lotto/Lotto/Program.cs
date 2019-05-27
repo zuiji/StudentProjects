@@ -18,7 +18,7 @@ namespace Lotto
             Random random = new Random();
             #endregion
 
-            NumberGenerator.Generator(lottoArray, random);
+            NumberGenerator.Generator();
             
             // Generate numbers for Coupon and sorting it.
             #region GenerateNumbersToCouponArrayAndSorting
