@@ -5,6 +5,7 @@ namespace Lotto
 {
     public class Program
     {
+
         static void Main(string[] args)
         {
             // All my Variables arrays and Randoms
@@ -17,9 +18,19 @@ namespace Lotto
             Random random = new Random();
             #endregion
 
-
-
+            NumberGenerator.Generator(lottoArray, random);
             
+            // Generate numbers for Coupon and sorting it.
+            #region GenerateNumbersToCouponArrayAndSorting
+            for (int k = 0; k < couponArray.Length; k++)
+            {
+                int ran = random.Next(1, 48);
+                couponArray[k] = ran;
+            }
+            Array.Sort(couponArray);
+           #endregion
+
+
 
             // Types out what numbers there was Drawn and what numbers the buyer have.
             #region TypesOutToUser
