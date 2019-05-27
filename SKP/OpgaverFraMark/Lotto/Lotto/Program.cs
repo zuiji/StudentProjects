@@ -1,8 +1,9 @@
 ﻿using System;
+using System.Globalization;
 
 namespace Lotto
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
@@ -16,54 +17,9 @@ namespace Lotto
             Random random = new Random();
             #endregion
 
-            // Generate numbers for LottoArray and Sorting it.
-            #region GeneratsRandomnumbersToLottoArrayAndSorting
-            for (int i = 0; i < lottoArray.Length; i++)
-            {
-                int ran = random.Next(1, 48);
-                lottoArray[i] = ran;
-            }
-            for (int i = 0; i < lottoArray.Length; i++)
-            {
-                for (int j = 0; j < lottoArray.Length - 1; j++)
-                {
-                    if (lottoArray[j] < lottoArray[j + 1])
-                    {
-                        continue;
-                    }
 
-                    int temp = lottoArray[j];
-                    lottoArray[j] = lottoArray[j + 1];
-                    lottoArray[j + 1] = temp;
-                }
-            }
-            #endregion
 
-            // Generate numbers for Coupon and sorting it.
-            #region GenerateNumbersToCouponArrayAndSorting
-            for (int k = 0; k < couponArray.Length; k++)
-            {
-                int ran = random.Next(1, 48);
-                couponArray[k] = ran;
-            }
-
-            for (int i = 0; i < couponArray.Length; i++)
-            {
-                for (int j = 0; j < couponArray.Length - 1; j++)
-                {
-                    if (couponArray[j] < couponArray[j + 1])
-                    {
-                        continue;
-                    }
-
-                    int temp = couponArray[j];
-                    couponArray[j] = couponArray[j + 1];
-                    couponArray[j + 1] = temp;
-                }
-            }
-
-            Console.WriteLine();
-            #endregion
+            
 
             // Types out what numbers there was Drawn and what numbers the buyer have.
             #region TypesOutToUser
