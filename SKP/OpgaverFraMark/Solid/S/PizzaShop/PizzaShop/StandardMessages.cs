@@ -34,6 +34,8 @@ namespace PizzaShop
             Console.WriteLine("4) Ham");
             Console.WriteLine("5) Bacon");
             Console.WriteLine("6) Salad");
+            Console.WriteLine("press Enter to get a pizza without toppings");
+
         }
 
         public static void ServePizza()
