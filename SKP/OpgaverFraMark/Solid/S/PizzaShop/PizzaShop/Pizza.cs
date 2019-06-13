@@ -10,5 +10,10 @@ namespace PizzaShop
     {
         public string Name { get; set; }
         public List<string> Toppings { get; set; }
+
+        public Pizza()
+        {
+            Toppings = new List<string>();
+        }
     }
 }

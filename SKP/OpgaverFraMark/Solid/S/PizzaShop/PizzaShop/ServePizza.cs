@@ -9,9 +9,17 @@ namespace PizzaShop
     public class ServePizza
     {
         public void Served(Pizza myPizza)
-        {
+        { 
             // Serve
-            Console.WriteLine($"Wuhu the pizza is done. Enjoy your {myPizza.Name}. With {myPizza.Toppings[0]}!");
+            Console.Write($"Wuhu the pizza is done. Enjoy your {myPizza.Name}. With: ");
+            foreach (string topping in myPizza.Toppings)
+            {
+                Console.Write(topping + " ");   
+            }
+
+            Console.WriteLine();
+          
+          
         }
     }
 }

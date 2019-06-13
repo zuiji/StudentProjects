@@ -19,22 +19,11 @@ namespace PizzaShop
             Pizza myPizza = PIC.Capture();
 
             ms.Topping();
-            PIC.Topping();
-            bool isToppingValid = PIC.Topping(myPizza);
-            if (!isToppingValid == false)
-            {
-                myPizza.Toppings.Add(tempTop);
-            }
+            PIC.Topping(myPizza);
+           
+            StandardMessages.ServePizza();
 
             
-
-            // Heat pizza
-            Console.WriteLine("Now let's heat the pizza");
-            for (int i = 0; i < 10; i++)
-            {
-                Thread.Sleep(500);
-                Console.WriteLine("... " + i);
-            }
             
             ServePizza sp = new ServePizza();
             sp.Served(myPizza);

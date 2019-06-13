@@ -18,36 +18,41 @@ namespace PizzaShop
             return myPizzaOutput;
         }
 
-        public List<Pizza> Topping()
+        public void Topping(Pizza Tpizza)
         {
-            List<Pizza> tempTopList = new List<Pizza>();
-            int choice = int.Parse(Console.ReadLine());
-            string tempTop = "";
-            
-            switch (choice)
+            do
             {
-                case 1:
-                    tempTop = "Cheese";
-                    break;
-                case 2:
-                    tempTop = "Pepperoni";
-                    break;
-                case 3:
-                    tempTop = "Pineapple";
-                    break;
-                case 4:
-                    tempTop = "Ham";
-                    break;
-                case 5:
-                    tempTop = "Bacon";
-                    break;
-                case 6:
-                    tempTop = "Salad";
-                    break;
-            }
-            tempTopList.Add(tempTop);
 
-            return tempTopList;
+                int choice = int.Parse(Console.ReadLine());
+                string tempTop = "";
+
+                switch (choice)
+                {
+                    case 1:
+                        tempTop = "Cheese";
+                        break;
+                    case 2:
+                        tempTop = "Pepperoni";
+                        break;
+                    case 3:
+                        tempTop = "Pineapple";
+                        break;
+                    case 4:
+                        tempTop = "Ham";
+                        break;
+                    case 5:
+                        tempTop = "Bacon";
+                        break;
+                    case 6:
+                        tempTop = "Salad";
+                        break;
+                    default: 
+                        return;
+                }
+                Tpizza.Toppings.Add(tempTop);
+
+            } while (true);
+          
         }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace PizzaShop
@@ -33,6 +34,17 @@ namespace PizzaShop
             Console.WriteLine("4) Ham");
             Console.WriteLine("5) Bacon");
             Console.WriteLine("6) Salad");
+        }
+
+        public static void ServePizza()
+        {
+            // Heat pizza
+            Console.WriteLine("Now let's heat the pizza");
+            for (int i = 0; i < 10; i++)
+            {
+                Thread.Sleep(500);
+                Console.WriteLine("... " + i);
+            }
         }
     }
 }
