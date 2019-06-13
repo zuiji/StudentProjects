@@ -32,21 +32,21 @@ namespace TicketSystem.Pages.Cases
 			AuthorizationService = authorizationService;
 		}
 
-		public void PopulateStatusDropDownList(object selectedStatus = null)
+		public void PopulateStatusDropDownList(int? selectedStatus = null)
 		{
 			var itemsQuery = from i in Context.Status select i;
 
 			StatusSL = new SelectList(itemsQuery.AsNoTracking(), "StatusID", "Description", selectedStatus);
 		}
 
-		public async Task PopulateOperatorDropDownListAsync(object selectedOperator = null)
+		public async Task PopulateOperatorDropDownListAsync(string selectedOperator = null)
 		{
 			var operatorsList = await UserManager.GetUsersInRoleAsync(Constants.CaseOperatorsRole);
 
 			OperatorSL = new SelectList(operatorsList, "Id", "UserName", selectedOperator);
 		}
 
-		public async Task PopulateRequestorDropDownListAsync(object selectedRequestor = null)
+		public async Task PopulateRequestorDropDownListAsync(string selectedRequestor = null)
 		{
 			var RequestorsList = await UserManager.GetUsersInRoleAsync(Constants.CaseRequestorsRole);
 

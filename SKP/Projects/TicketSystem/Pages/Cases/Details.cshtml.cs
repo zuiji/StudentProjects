@@ -12,9 +12,9 @@ namespace TicketSystem.Pages.Cases
 {
     public class DetailsModel : PageModel
     {
-        private readonly TicketSystem.Data.ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
 
-        public DetailsModel(TicketSystem.Data.ApplicationDbContext context)
+        public DetailsModel(ApplicationDbContext context)
         {
             _context = context;
         }
@@ -28,12 +28,17 @@ namespace TicketSystem.Pages.Cases
                 return NotFound();
             }
 
-            Case = await _context.Case.FirstOrDefaultAsync(m => m.CaseID == id);
+            Case = await _context.Case
+				.Include(o => o.Operator)
+				.Include(r => r.Requestor)
+				.Include(s => s.Status)
+				.FirstOrDefaultAsync(m => m.CaseID == id);
 
             if (Case == null)
             {
                 return NotFound();
             }
+
             return Page();
         }
     }

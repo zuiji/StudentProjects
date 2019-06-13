@@ -20,7 +20,7 @@ namespace PizzaShop
 
             ms.Topping();
             PIC.Topping();
-            bool isToppingValid = PIC.Topping();
+            bool isToppingValid = PIC.Topping(myPizza);
             if (!isToppingValid == false)
             {
                 myPizza.Toppings.Add(tempTop);

@@ -1,5 +1,6 @@
 ﻿@page
 @model TicketSystem.Pages.Cases.IndexModel
+@using TicketSystem.Models
 
 @{
     ViewData["Title"] = "Oversigt sager";
@@ -7,23 +8,24 @@
 
 <h1>Oversigt</h1>
 
-<p>
-    <a asp-page="Create">Opret sag</a>
-</p>
+@if ((await AuthorizationService.AuthorizeAsync(User, new Case(), CaseOperations.Create)).Succeeded)
+{
+    <p><a asp-page="Create">Opret sag</a></p>
+}
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Case[0].RequestorID)
+                @Html.DisplayNameFor(model => model.Case[0].Requestor)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Case[0].OperatorID)
+                @Html.DisplayNameFor(model => model.Case[0].Operator)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Case[0].Description)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Case[0].StatusID)
+                @Html.DisplayNameFor(model => model.Case[0].Status)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Case[0].Created)
@@ -41,16 +43,16 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Requestor.UserName)
+                    @Html.DisplayFor(modelItem => item.RequestorID)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Operator.UserName)
+                    @Html.DisplayFor(modelItem => item.OperatorID)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Description)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Status.Description)
+                    @Html.DisplayFor(modelItem => item.StatusID)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Created)

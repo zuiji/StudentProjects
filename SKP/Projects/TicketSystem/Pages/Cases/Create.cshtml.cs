@@ -38,7 +38,10 @@ namespace TicketSystem.Pages.Cases
 				return Page();
 			}
 
-			var emptyCase = new Case();
+			var emptyCase = new Case
+			{
+				OwnerID = UserManager.GetUserId(User)
+			};
 
 			// Use TryUpdateModelAsync to prevent overposting!
 			if (await TryUpdateModelAsync(

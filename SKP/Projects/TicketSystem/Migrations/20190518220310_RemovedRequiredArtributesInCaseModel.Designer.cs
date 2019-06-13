@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TicketSystem.Data;
 
 namespace TicketSystem.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190518220310_RemovedRequiredArtributesInCaseModel")]
+    partial class RemovedRequiredArtributesInCaseModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -204,25 +206,21 @@ namespace TicketSystem.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("Closed");
+                    b.Property<DateTime?>("Closed");
 
                     b.Property<DateTime>("Created");
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasMaxLength(50);
 
                     b.Property<string>("Details")
-                        .IsRequired()
                         .HasMaxLength(255);
 
-                    b.Property<string>("OperatorID")
-                        .IsRequired();
+                    b.Property<string>("OperatorID");
 
                     b.Property<string>("OwnerID");
 
-                    b.Property<string>("RequestorID")
-                        .IsRequired();
+                    b.Property<string>("RequestorID");
 
                     b.Property<int>("StatusID");
 
@@ -315,13 +313,11 @@ namespace TicketSystem.Migrations
                 {
                     b.HasOne("TicketSystem.Areas.Identity.Data.ApplicationUser", "Operator")
                         .WithMany()
-                        .HasForeignKey("OperatorID")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("OperatorID");
 
                     b.HasOne("TicketSystem.Areas.Identity.Data.ApplicationUser", "Requestor")
                         .WithMany()
-                        .HasForeignKey("RequestorID")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("RequestorID");
 
                     b.HasOne("TicketSystem.Models.Status", "Status")
                         .WithMany()

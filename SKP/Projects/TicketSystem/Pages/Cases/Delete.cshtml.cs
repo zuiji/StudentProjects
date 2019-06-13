@@ -12,9 +12,9 @@ namespace TicketSystem.Pages.Cases
 {
     public class DeleteModel : PageModel
     {
-        private readonly TicketSystem.Data.ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
 
-        public DeleteModel(TicketSystem.Data.ApplicationDbContext context)
+        public DeleteModel(ApplicationDbContext context)
         {
             _context = context;
         }
@@ -29,7 +29,12 @@ namespace TicketSystem.Pages.Cases
                 return NotFound();
             }
 
-            Case = await _context.Case.FirstOrDefaultAsync(m => m.CaseID == id);
+            Case = await _context.Case
+				.Include(c => c.Requestor)
+				.Include(c => c.Operator)
+				.Include(c => c.Status)
+				.AsNoTracking()
+				.FirstOrDefaultAsync(m => m.CaseID == id);
 
             if (Case == null)
             {
@@ -45,7 +50,9 @@ namespace TicketSystem.Pages.Cases
                 return NotFound();
             }
 
-            Case = await _context.Case.FindAsync(id);
+            Case = await _context.Case
+				.AsNoTracking()
+				.FirstOrDefaultAsync(c => c.CaseID == id);
 
             if (Case != null)
             {
