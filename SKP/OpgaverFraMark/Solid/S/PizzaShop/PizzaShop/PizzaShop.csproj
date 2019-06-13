@@ -44,7 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Pizza.cs" />
-    <Compile Include="PizzaNameCapture.cs" />
+    <Compile Include="PizzaInfoCapture.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServePizza.cs" />

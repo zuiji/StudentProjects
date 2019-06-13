@@ -8,7 +8,7 @@ namespace PizzaShop
 {
     public class StandardMessages
     {
-        public static void WelcomeMessage()
+        public void WelcomeMessage()
         {
             // Pizza shop
             Console.WriteLine("Welcome to the pizza shop");
@@ -18,13 +18,12 @@ namespace PizzaShop
 
         }
 
-        public static void EndApplication()
+        public void EndApplication()
         {
-            
             Console.ReadLine();
         }
 
-        public static void Topping()
+        public void Topping()
         {
             // Add topping
             Console.WriteLine("Choose topping to add:");

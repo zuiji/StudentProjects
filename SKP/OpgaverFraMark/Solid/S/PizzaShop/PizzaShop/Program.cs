@@ -11,40 +11,23 @@ namespace PizzaShop
     {
         static void Main(string[] args)
         {
-            Pizza myPizza = new Pizza();
-            StandardMessages.WelcomeMessage();
-            StandardMessages.EndApplication();
-                       
-           StandardMessages.Topping();
-            int choice = int.Parse(Console.ReadLine());
-            string tempTop = "";
-            switch (choice)
-            {
-                case 1:
-                    tempTop = "Cheese";
-                    break;
-                case 2:
-                    tempTop = "Pepperoni";
-                    break;
-                case 3:
-                    tempTop = "Pineapple";
-                    break;
-                case 4:
-                    tempTop = "Ham";
-                    break;
-                case 5:
-                    tempTop = "Bacon";
-                    break;
-                case 6:
-                    tempTop = "Salad";
-                    break;
-            }
-            if (!tempTop.Equals(""))
+            StandardMessages ms = new StandardMessages();
+            ms.WelcomeMessage();
+
+            ms.EndApplication();
+            PizzaInfoCapture PIC = new PizzaInfoCapture();
+            Pizza myPizza = PIC.Capture();
+
+            ms.Topping();
+            PIC.Topping();
+            bool isToppingValid = PIC.Topping();
+            if (!isToppingValid == false)
             {
                 myPizza.Toppings.Add(tempTop);
             }
 
-            PizzaNameCapture.Capture();
+            
+
             // Heat pizza
             Console.WriteLine("Now let's heat the pizza");
             for (int i = 0; i < 10; i++)
@@ -52,8 +35,10 @@ namespace PizzaShop
                 Thread.Sleep(500);
                 Console.WriteLine("... " + i);
             }
-            ServePizza.Served(myPizza);
-           
+            
+            ServePizza sp = new ServePizza();
+            sp.Served(myPizza);
+
         }
     }
 }

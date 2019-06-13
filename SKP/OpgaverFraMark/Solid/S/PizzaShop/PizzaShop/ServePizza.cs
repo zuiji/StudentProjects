@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace PizzaShop
 {
-  public  class ServePizza
+    public class ServePizza
     {
-        public static void Served(Pizza myPizza)
+        public void Served(Pizza myPizza)
         {
             // Serve
-            Console.WriteLine($"Wuhu the pizza is done. Enjoy your {myPizza.Name}. With {myPizza.Toppings[0]}");
+            Console.WriteLine($"Wuhu the pizza is done. Enjoy your {myPizza.Name}. With {myPizza.Toppings[0]}!");
         }
     }
 }
