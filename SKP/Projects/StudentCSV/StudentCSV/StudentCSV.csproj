@@ -185,8 +185,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\dk.png" />
-    <Content Include="Resources\dk.svg" />
-    <Content Include="Resources\gb-eng.svg" />
     <Resource Include="Resources\gb.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
