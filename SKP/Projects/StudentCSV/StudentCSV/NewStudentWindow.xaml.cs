@@ -27,9 +27,17 @@ namespace StudentCSV
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void GB_Button_Click(object sender, RoutedEventArgs e)
         {
             StudentCSV.Language.ChangeCulture(new CultureInfo("en"));
+
+            (FindResource("Resources") as ObjectDataProvider).Refresh();
+
+        }
+
+        private void DK_Button_Click(object sender, RoutedEventArgs e)
+        {
+            StudentCSV.Language.ChangeCulture(new CultureInfo("da"));
 
             (FindResource("Resources") as ObjectDataProvider).Refresh();
 

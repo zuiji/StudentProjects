@@ -537,8 +537,7 @@ namespace StudentCSV
 
         public void OnCancelPressed()
         {
-            Language.ChangeCulture(new CultureInfo("en"));
-            OnPropertyChanged("");
+          
             var Confirmation = MessageBox.Show(Properties.Resources.MessageBoxConfirmCanceled, Properties.Resources.MessageBoxConfirmCancel, MessageBoxButton.YesNo);
             if (Confirmation == MessageBoxResult.Yes)
             {
@@ -570,7 +569,7 @@ namespace StudentCSV
                 return;
             }
 
-            if (Validator.IsValidFirstName(FirstName))
+            if (!Validator.IsValidFirstName(FirstName))
             {
                 if (!Errors.Contains(nameof(FirstName)))
                 {
@@ -580,7 +579,7 @@ namespace StudentCSV
                 }
             }
 
-            if (Validator.IsValidLastName(LastName))
+            if (!Validator.IsValidLastName(LastName))
             {
 
                 if (!Errors.Contains(nameof(LastName)))
@@ -591,7 +590,7 @@ namespace StudentCSV
 
                 }
             }
-            if (Validator.IsValidEmail(Email))
+            if (!Validator.IsValidEmail(Email))
             {
                 if (!Errors.Contains(nameof(Email)))
                 {
@@ -600,7 +599,7 @@ namespace StudentCSV
                     EmailValid = false;
                 }
             }
-            if (Validator.IsValidPhoneNumber(PhoneNumber))
+            if (!Validator.IsValidPhoneNumber(PhoneNumber))
             {
                 if (!Errors.Contains(nameof(PhoneNumber)))
                 {
@@ -610,7 +609,7 @@ namespace StudentCSV
                 }
 
             }
-            if (Validator.IsValidCprNr(CprNr))
+            if (!Validator.IsValidCprNr(CprNr))
             {
                 if (!Errors.Contains(nameof(CprNr)))
                 {
