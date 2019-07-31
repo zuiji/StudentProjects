@@ -200,7 +200,7 @@
                 <Label Content="{Binding Path=WantedSkpLocation, Source={StaticResource Resources}}" HorizontalContentAlignment="Center" FontSize="19.2"/>
                 <ComboBox Height="36.8" Text="TextBox" FontSize="19.2" ItemsSource="{Binding WantedSkpLocation}" SelectedIndex="{Binding WantedSkpLocationIndex}"/>
             </StackPanel>
-            <Image Source="ZBCLogo.png" Grid.Row="4" VerticalAlignment="Bottom"/>
+            <Image Source="/Resources/Images/ZBCLogo.png" Grid.Row="4" VerticalAlignment="Bottom"/>
             <StackPanel x:Name="SpecialInfoStackPanel" Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="3" Grid.RowSpan="2">
                 <Label Content="{Binding Path=SpecialInfo, Source={StaticResource Resources}}" HorizontalContentAlignment="Center" FontSize="19.2"/>
                 <Grid Height="220">
@@ -244,10 +244,10 @@
         </Grid>
         <StackPanel Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal" >
             <Button Command="{Binding OnLanguageChangedCommand}" Click="DK_Button_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,10,0">
-                <Image Source="Resources/dk.png" Height="25" Width="25" ></Image>
+                <Image Source="/Resources/Images/dk.png" Height="25" Width="25" ></Image>
             </Button>
             <Button Command="{Binding OnLanguageChangedCommand}" Click="GB_Button_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,0,0">
-                <Image Source="Resources/gb.png" Height="25" Width="25" ></Image>
+                <Image Source="/Resources/Images/gb.png" Height="25" Width="25" ></Image>
             </Button>
         </StackPanel>
         

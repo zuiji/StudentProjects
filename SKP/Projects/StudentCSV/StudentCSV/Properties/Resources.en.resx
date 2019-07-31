@@ -139,13 +139,13 @@
     <value>EUX</value>
   </data>
   <data name="Firstname" xml:space="preserve">
-    <value>Firstname</value>
+    <value>First name</value>
   </data>
   <data name="GfSchool" xml:space="preserve">
-    <value>GfSchool</value>
+    <value>GF2 School</value>
   </data>
   <data name="GfSchoolIndexChecker" xml:space="preserve">
-    <value>GF School is not selected</value>
+    <value>GF 2 School is not selected</value>
   </data>
   <data name="InvalidCPRNr" xml:space="preserve">
     <value>Cpr-number is Invalid</value>
@@ -154,13 +154,13 @@
     <value>Email is Invalid</value>
   </data>
   <data name="InvalidFirstname" xml:space="preserve">
-    <value>Firstname is Invalid</value>
+    <value>First name is Invalid</value>
   </data>
   <data name="InvalidLastname" xml:space="preserve">
-    <value>Lastname is Invalid</value>
+    <value>Last name is Invalid</value>
   </data>
   <data name="InvalidMiddlename" xml:space="preserve">
-    <value>Middlename is Invalid</value>
+    <value>Middle name is Invalid</value>
   </data>
   <data name="InvalidPhonenumber" xml:space="preserve">
     <value>Phonenumber is Invalid</value>
@@ -169,7 +169,7 @@
     <value>Cant contain ;</value>
   </data>
   <data name="Lastname" xml:space="preserve">
-    <value>Lastname</value>
+    <value>Last name</value>
   </data>
   <data name="MessageBoxConfirm" xml:space="preserve">
     <value>Are you sure you will save</value>
@@ -187,7 +187,7 @@
     <value>Unable to access file, the file can already be open </value>
   </data>
   <data name="Middlename" xml:space="preserve">
-    <value>Middlename</value>
+    <value>Middle name</value>
   </data>
   <data name="No" xml:space="preserve">
     <value>No</value>
@@ -199,7 +199,7 @@
     <value>Save</value>
   </data>
   <data name="SpecialInfo" xml:space="preserve">
-    <value>SpecialInfo</value>
+    <value>Special Info</value>
   </data>
   <data name="WantedSkpLocation" xml:space="preserve">
     <value>Wanted Skp Location</value>
