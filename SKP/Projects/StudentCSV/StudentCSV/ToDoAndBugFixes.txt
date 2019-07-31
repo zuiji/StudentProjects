@@ -12,4 +12,11 @@ Bugs that need to be fixed...
 
 Regex middlename needs to be checked up on. 
 
+Email Checker need a Check up on can save mails with :
+
+haha.@hana.haha
+hana@hanacom
+
+
+
 

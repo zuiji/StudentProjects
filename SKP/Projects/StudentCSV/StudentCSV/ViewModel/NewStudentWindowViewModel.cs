@@ -45,8 +45,8 @@ namespace StudentCSV
         private bool _specialInfoValid;
 
         public List<string> EUX { get; set; }
-        public List<string> WantedSkpLocation { get; set; }
-        public List<string> GFSchool { get; set; }
+        public List<string> PreferredSKPlocation { get; set; }
+        public List<string> GF2School { get; set; }
         public List<string> EducationDirection { get; set; }
 
         public RelayCommand OnSpecialInfoFieldLostFocusCommand { get; set; }
@@ -162,7 +162,7 @@ namespace StudentCSV
             set
             {
                 _wantedSkpLocationIndex = value;
-                WantedSkpLocationIndexChecker();
+                PreferredSKPlocationIndexChecker();
                 OnPropertyChanged();
             }
         }
@@ -320,12 +320,12 @@ namespace StudentCSV
             PhoneNumberValid = true;
             SpecialInfoValid = true;
             EUX = new List<string>() { Properties.Resources.Yes, Properties.Resources.No };
-            WantedSkpLocation = new List<string>();
-            GFSchool = new List<string>();
+            PreferredSKPlocation = new List<string>();
+            GF2School = new List<string>();
             EducationDirection = new List<string>();
-            WantedSkpLocation.AddRange(Enum.GetNames(typeof(WantedSkpLocationEnum)));
+            PreferredSKPlocation.AddRange(Enum.GetNames(typeof(WantedSkpLocationEnum)));
             EducationDirection.AddRange(Statics.CorrectEducationDirectionEnumNames);
-            GFSchool.AddRange(Statics.CorrectGfSchoolEnumNames);
+            GF2School.AddRange(Statics.CorrectGfSchoolEnumNames);
             EUXIndex = 1;
             WantedSkpLocationIndex = -1;
             GfSchoolIndex = -1;
@@ -554,7 +554,7 @@ namespace StudentCSV
                 return;
             }
 
-            if (WantedSkpLocationIndexChecker())
+            if (PreferredSKPlocationIndexChecker())
             {
                 return;
             }
@@ -685,40 +685,40 @@ namespace StudentCSV
         {
             if (GfSchoolIndex == -1)
             {
-                if (!Errors.Contains(nameof(GFSchool)))
+                if (!Errors.Contains(nameof(GF2School)))
                 {
-                    Errors.Add(nameof(GFSchool), Properties.Resources.GfSchoolIndexChecker);
+                    Errors.Add(nameof(GF2School), Properties.Resources.GfSchoolIndexChecker);
                     OnPropertyChanged(nameof(LastError));
                 }
 
                 return true;
             }
 
-            if (Errors.Contains(nameof(GFSchool)))
+            if (Errors.Contains(nameof(GF2School)))
             {
-                Errors.Remove(nameof(GFSchool));
+                Errors.Remove(nameof(GF2School));
                 OnPropertyChanged(nameof(LastError));
             }
 
             return false;
         }
 
-        private bool WantedSkpLocationIndexChecker()
+        private bool PreferredSKPlocationIndexChecker()
         {
             if (WantedSkpLocationIndex == -1)
             {
-                if (!Errors.Contains(nameof(WantedSkpLocation)))
+                if (!Errors.Contains(nameof(PreferredSKPlocation)))
                 {
-                    Errors.Add(nameof(WantedSkpLocation), Properties.Resources.WantedSkpLocationIndexChecker);
+                    Errors.Add(nameof(PreferredSKPlocation), Properties.Resources.PreferredSKPlocationIndexChecker);
                     OnPropertyChanged(nameof(LastError));
                 }
 
                 return true;
             }
 
-            if (Errors.Contains(nameof(WantedSkpLocation)))
+            if (Errors.Contains(nameof(PreferredSKPlocation)))
             {
-                Errors.Remove(nameof(WantedSkpLocation));
+                Errors.Remove(nameof(PreferredSKPlocation));
                 OnPropertyChanged(nameof(LastError));
             }
 
@@ -767,11 +767,11 @@ namespace StudentCSV
                     case nameof(EducationDirection):
                         Errors[errorsKey] = Properties.Resources.EducationDirectionIndexChecker;
                         break;
-                    case nameof(GFSchool):
+                    case nameof(GF2School):
                         Errors[errorsKey] = Properties.Resources.GfSchoolIndexChecker;
                         break;
-                    case nameof(WantedSkpLocation):
-                        Errors[errorsKey] = Properties.Resources.WantedSkpLocationIndexChecker;
+                    case nameof(PreferredSKPlocation):
+                        Errors[errorsKey] = Properties.Resources.PreferredSKPlocationIndexChecker;
                         break;
                     case nameof(SpecialInfo):
                         Errors[errorsKey] = Properties.Resources.InvalidSpecialInfo;

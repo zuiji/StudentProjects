@@ -127,7 +127,7 @@
     <value>CPR-number</value>
   </data>
   <data name="EducationDirection" xml:space="preserve">
-    <value>Education Direction</value>
+    <value>Education direction</value>
   </data>
   <data name="EducationDirectionIndexChecker" xml:space="preserve">
     <value>Direction is not selected</value>
@@ -142,10 +142,10 @@
     <value>First name</value>
   </data>
   <data name="GfSchool" xml:space="preserve">
-    <value>GF2 School</value>
+    <value>GF2 school</value>
   </data>
   <data name="GfSchoolIndexChecker" xml:space="preserve">
-    <value>GF 2 School is not selected</value>
+    <value>GF2 school is not selected</value>
   </data>
   <data name="InvalidCPRNr" xml:space="preserve">
     <value>Cpr-number is Invalid</value>
@@ -163,7 +163,7 @@
     <value>Middle name is Invalid</value>
   </data>
   <data name="InvalidPhonenumber" xml:space="preserve">
-    <value>Phonenumber is Invalid</value>
+    <value>Phone number is Invalid</value>
   </data>
   <data name="InvalidSpecialInfo" xml:space="preserve">
     <value>Cant contain ;</value>
@@ -175,10 +175,10 @@
     <value>Are you sure you will save</value>
   </data>
   <data name="MessageBoxConfirmCancel" xml:space="preserve">
-    <value>Confirm Cancel</value>
+    <value>Confirm cancel</value>
   </data>
   <data name="MessageBoxConfirmCanceled" xml:space="preserve">
-    <value>Are you sure you want to Cancel</value>
+    <value>Are you sure you want to cancel</value>
   </data>
   <data name="MessageBoxInfomationSavedString" xml:space="preserve">
     <value>Your info are new saved</value>
@@ -193,19 +193,19 @@
     <value>No</value>
   </data>
   <data name="Phonenumber" xml:space="preserve">
-    <value>Phonenumber</value>
+    <value>Phone number</value>
+  </data>
+  <data name="PreferredSKPlocation" xml:space="preserve">
+    <value>Preferred SKP location</value>
+  </data>
+  <data name="PreferredSKPlocationIndexChecker" xml:space="preserve">
+    <value>Preferred SKP location is not selected</value>
   </data>
   <data name="Save" xml:space="preserve">
     <value>Save</value>
   </data>
   <data name="SpecialInfo" xml:space="preserve">
     <value>Special Info</value>
-  </data>
-  <data name="WantedSkpLocation" xml:space="preserve">
-    <value>Wanted Skp Location</value>
-  </data>
-  <data name="WantedSkpLocationIndexChecker" xml:space="preserve">
-    <value>Wanted SKP Location is not selected</value>
   </data>
   <data name="Yes" xml:space="preserve">
     <value>Yes</value>

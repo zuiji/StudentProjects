@@ -195,17 +195,17 @@
   <data name="Phonenumber" xml:space="preserve">
     <value>Phonenumber</value>
   </data>
+  <data name="PreferredSKPlocation" xml:space="preserve">
+    <value>Wanted Skp Location</value>
+  </data>
+  <data name="PreferredSKPlocationIndexChecker" xml:space="preserve">
+    <value>Wanted SKP Location is not selected</value>
+  </data>
   <data name="Save" xml:space="preserve">
     <value>Save</value>
   </data>
   <data name="SpecialInfo" xml:space="preserve">
     <value>SpecialInfo</value>
-  </data>
-  <data name="WantedSkpLocation" xml:space="preserve">
-    <value>Wanted Skp Location</value>
-  </data>
-  <data name="WantedSkpLocationIndexChecker" xml:space="preserve">
-    <value>Wanted SKP Location is not selected</value>
   </data>
   <data name="Yes" xml:space="preserve">
     <value>Yes</value>

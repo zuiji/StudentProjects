@@ -295,6 +295,24 @@ namespace StudentCSV.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Wanted Skp Location.
+        /// </summary>
+        public static string PreferredSKPlocation {
+            get {
+                return ResourceManager.GetString("PreferredSKPlocation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wanted SKP Location is not selected.
+        /// </summary>
+        public static string PreferredSKPlocationIndexChecker {
+            get {
+                return ResourceManager.GetString("PreferredSKPlocationIndexChecker", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Save.
         /// </summary>
         public static string Save {
@@ -309,24 +327,6 @@ namespace StudentCSV.Properties {
         public static string SpecialInfo {
             get {
                 return ResourceManager.GetString("SpecialInfo", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Wanted Skp Location.
-        /// </summary>
-        public static string WantedSkpLocation {
-            get {
-                return ResourceManager.GetString("WantedSkpLocation", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Wanted SKP Location is not selected.
-        /// </summary>
-        public static string WantedSkpLocationIndexChecker {
-            get {
-                return ResourceManager.GetString("WantedSkpLocationIndexChecker", resourceCulture);
             }
         }
         
