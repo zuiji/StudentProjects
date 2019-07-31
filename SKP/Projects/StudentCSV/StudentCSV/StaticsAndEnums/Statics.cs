@@ -18,6 +18,9 @@ namespace StudentCSV
             "Køge", "Nykøbing F.", "Ringsted", "Roskilde", "Slagelse", "Vordingborg"
 
         };
+        public static string Path { get; set; }
+
 
     }
+
 }

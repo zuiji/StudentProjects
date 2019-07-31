@@ -48,18 +48,31 @@ namespace StudentCSV
             }
         }
 
-        public static bool IsValidEmail(string email)
+        public static bool IsValidEmail(string value)
         {
-            try
+            if (!string.IsNullOrWhiteSpace(value) && Regex.IsMatch(value, @"^[æøåÆØÅa-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[æøåÆØÅa-zA-Z0-9](?:[æøåÆØÅa-zA-Z0-9-]{0,61}[æøåÆØÅa-zA-Z0-9])?(?:\.[æøåÆØÅa-zA-Z0-9](?:[æøåÆØÅa-zA-Z0-9-]{0,61}[æøåÆØÅa-zA-Z0-9])?)*$"))
             {
-                var addr = new MailAddress(email);
-                return addr.Address == email;
+                return true;
             }
-            catch
+            else
             {
                 return false;
             }
-        }
+        }/*public string Email
+        {
+            get { return _email; }
+            set
+            {
+                if (!string.IsNullOrWhiteSpace(value) && Regex.IsMatch(value, @"^[æøåÆØÅa-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[æøåÆØÅa-zA-Z0-9](?:[æøåÆØÅa-zA-Z0-9-]{0,61}[æøåÆØÅa-zA-Z0-9])?(?:\.[æøåÆØÅa-zA-Z0-9](?:[æøåÆØÅa-zA-Z0-9-]{0,61}[æøåÆØÅa-zA-Z0-9])?)*$"))
+                {
+                    _email = value;
+                }
+                else
+                {
+                    throw new ArgumentException("E-mailen er ugyldig");
+                }
+            }
+        }*/
 
         public static bool IsValidCprNr(string value)
         {

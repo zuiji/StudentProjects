@@ -21,7 +21,7 @@ namespace StudentCSV
     {
         #region Props and fields
         private Student student { get; set; }
-        private readonly string _path;
+        
 
         private string _firstname;
         private string _middleName;
@@ -32,7 +32,7 @@ namespace StudentCSV
         private string _specialInfo;
 
         private int _euxIndex;
-        private int _wantedSkpLocationIndex;
+        private int _preferredSkpLocationIndex;
         private int _gfSchoolIndex;
         private int _educationDirectionIndex;
 
@@ -156,12 +156,12 @@ namespace StudentCSV
             }
         }
 
-        public int WantedSkpLocationIndex
+        public int PreferredSkpLocationIndex
         {
-            get { return _wantedSkpLocationIndex; }
+            get { return _preferredSkpLocationIndex; }
             set
             {
-                _wantedSkpLocationIndex = value;
+                _preferredSkpLocationIndex = value;
                 PreferredSKPlocationIndexChecker();
                 OnPropertyChanged();
             }
@@ -269,33 +269,7 @@ namespace StudentCSV
         #region Constructor
         public NewStudentWindowViewModel()
         {
-            SaveFileDialog Dialog = new SaveFileDialog();
-            Dialog.AddExtension = true;
-            Dialog.OverwritePrompt = false;
-            Dialog.Filter = "CSV Files (*.csv)|*.csv|Excel Files (*.xlsx)|*.xlsx";
-            Dialog.FilterIndex = 2;
-            var result = Dialog.ShowDialog();
-
-            if (result == true)
-            {
-                if (Path.GetExtension(Dialog.FileName).ToLower() != ".csv" && Path.GetExtension(Dialog.FileName).ToLower() != ".xlsx")
-                {
-                    switch (Dialog.FilterIndex)
-                    {
-                        case 1:
-                            Dialog.FileName += ".csv";
-                            break;
-                        case 2:
-                            Dialog.FileName += ".xlsx";
-                            break;
-                    }
-                }
-                _path = Dialog.FileName;
-            }
-            else
-            {
-                Environment.Exit(-1);
-            }
+         
             FreshGui();
         }
         #endregion
@@ -327,7 +301,7 @@ namespace StudentCSV
             EducationDirection.AddRange(Statics.CorrectEducationDirectionEnumNames);
             GF2School.AddRange(Statics.CorrectGfSchoolEnumNames);
             EUXIndex = 1;
-            WantedSkpLocationIndex = -1;
+            PreferredSkpLocationIndex = -1;
             GfSchoolIndex = -1;
             EducationDirectionIndex = -1;
             OnFirstNameFieldLostFocusCommand = new RelayCommand(a => OnFirstNameFieldLostFocus());
@@ -635,12 +609,12 @@ namespace StudentCSV
             }
 
             student.EducationDirection = (EducationDirectionEnum)EducationDirectionIndex;
-            student.WantedSkpLocation = (WantedSkpLocationEnum)WantedSkpLocationIndex;
+            student.WantedSkpLocation = (WantedSkpLocationEnum)PreferredSkpLocationIndex;
             student.GfSchool = (GfSchoolEnum)GfSchoolIndex;
             try
             {
 
-                DataSaveLocationAndFileType.SaveStudentFile(student, _path);
+                DataSaveLocationAndFileType.SaveStudentFile(student, Statics.Path);
                 FreshGui();
                 MessageBox.Show(Properties.Resources.MessageBoxInfomationSavedString);
             }
@@ -705,7 +679,7 @@ namespace StudentCSV
 
         private bool PreferredSKPlocationIndexChecker()
         {
-            if (WantedSkpLocationIndex == -1)
+            if (PreferredSkpLocationIndex == -1)
             {
                 if (!Errors.Contains(nameof(PreferredSKPlocation)))
                 {

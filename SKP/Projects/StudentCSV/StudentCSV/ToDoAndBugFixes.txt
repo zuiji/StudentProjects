@@ -4,7 +4,6 @@ Dark Themes.?
 
 Add Who have build it in the buttom and what Version they on gui. 
 
-Better Code Structure like MVVM.
 
 set dlls into the .exe
 https://www.codeproject.com/Articles/35159/WPF-Localization-Using-RESX-Files
