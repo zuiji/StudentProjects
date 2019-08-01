@@ -1,21 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
-using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls.Primitives;
-using Microsoft.Win32;
-using StudentCSV.Annotations;
+using StudentCSV.Helpers;
+using StudentCSV.Properties;
+using StudentCSV.StaticsAndEnums;
+using StudentCSV.StudentValidater;
 
-namespace StudentCSV
+namespace StudentCSV.ViewModel
 {
     public class NewStudentWindowViewModel : INotifyPropertyChanged
     {
@@ -521,6 +517,9 @@ namespace StudentCSV
         #region OnSavePressedRegion
         private void OnSavePressed()
         {
+            var D = File.ReadAllText(Statics.Path);
+
+            MessageBox.Show(StringCipher.Decrypt(D,Statics.Password));
             var Confirmation = MessageBox.Show(Properties.Resources.MessageBoxConfirm, Properties.Resources.Confirm, MessageBoxButton.YesNo);
             if (Confirmation != MessageBoxResult.Yes)
             {

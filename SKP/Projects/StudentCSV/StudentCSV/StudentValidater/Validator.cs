@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Net.Mail;
 using System.Text.RegularExpressions;
 
-namespace StudentCSV
+namespace StudentCSV.StudentValidater
 {
     public class Validator
     {

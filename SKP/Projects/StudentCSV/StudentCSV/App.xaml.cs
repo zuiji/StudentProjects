@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Xml.Linq;
 using Microsoft.Win32;
+using StudentCSV.StaticsAndEnums;
+using StudentCSV.Views;
 
 namespace StudentCSV
 {
@@ -20,26 +22,18 @@ namespace StudentCSV
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
+
             SaveFileDialog Dialog = new SaveFileDialog();
             Dialog.AddExtension = true;
             Dialog.OverwritePrompt = false;
-            Dialog.Filter = "CSV Files (*.csv)|*.csv|Excel Files (*.xlsx)|*.xlsx";
-            Dialog.FilterIndex = 2;
+            Dialog.Filter = "Encrypted File (*.zbc)|*.ZBC";
             var result = Dialog.ShowDialog();
 
             if (result == true)
             {
-                if (Path.GetExtension(Dialog.FileName).ToLower() != ".csv" && Path.GetExtension(Dialog.FileName).ToLower() != ".xlsx")
+                if (Path.GetExtension(Dialog.FileName).ToLower() != ".zbc" )
                 {
-                    switch (Dialog.FilterIndex)
-                    {
-                        case 1:
-                            Dialog.FileName += ".csv";
-                            break;
-                        case 2:
-                            Dialog.FileName += ".xlsx";
-                            break;
-                    }
+
                 }
                 Statics.Path = Dialog.FileName;
             }
@@ -47,6 +41,7 @@ namespace StudentCSV
             {
                 Environment.Exit(-1);
             }
+            
 
         }
     }

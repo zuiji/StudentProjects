@@ -1,21 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Globalization;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
-namespace StudentCSV
+namespace StudentCSV.Views
 {
     /// <summary>
     /// Interaction logic for NewStudentWindow.xaml
@@ -29,7 +16,7 @@ namespace StudentCSV
 
         private void GB_Button_Click(object sender, RoutedEventArgs e)
         {
-            StudentCSV.Language.ChangeCulture(new CultureInfo("en"));
+            StaticsAndEnums.Language.ChangeCulture(new CultureInfo("en"));
 
             (FindResource("Resources") as ObjectDataProvider).Refresh();
 
@@ -37,7 +24,7 @@ namespace StudentCSV
 
         private void DK_Button_Click(object sender, RoutedEventArgs e)
         {
-            StudentCSV.Language.ChangeCulture(new CultureInfo("da"));
+            StaticsAndEnums.Language.ChangeCulture(new CultureInfo("da"));
 
             (FindResource("Resources") as ObjectDataProvider).Refresh();
 

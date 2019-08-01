@@ -1,10 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using ClosedXML.Excel;
+using Microsoft.Win32;
+using StudentCSV.Helpers;
 
-namespace StudentCSV
+namespace StudentCSV.StaticsAndEnums
 {
     public static class DataSaveLocationAndFileType
     {
@@ -18,40 +19,87 @@ namespace StudentCSV
                 filestream.Dispose();
 
             }
+            CreateEncryptedFile(student, filePath);
 
-            if (Path.GetExtension(filePath)?.ToLower() == ".csv")
-            {
-                CreateCvsFile(student, filePath);
-            }
-            else if (Path.GetExtension(filePath)?.ToLower() == ".xlsx")
-            {
-                CreateXlsxFile(student, filePath);
-            }
-            else
-            {
-                throw new FileFormatException("Filtypen skal være csv eller xlsx");
-            }
-        } 
+        }
         #endregion
 
-        #region SaveToCsvFile
-        private static void CreateCvsFile(Student student, string filePath)
+        private static void CreateEncryptedFile(Student student, string filePath)
         {
             // string FilePath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\elevdata.csv";
             // Build the file content
             var csv = new StringBuilder();
 
 
-            if (string.IsNullOrWhiteSpace(File.ReadAllText(filePath)))
+            if (new FileInfo(filePath).Length == 0)
             {
                 csv.AppendLine($"Fornavn;Mellemnavn;Efternavn;CprNr;Telefon Nummer;Email;EUX;Retning;Grundforløbsskole;Ønsket SKP Lokation;Særlige info");
+            }
+            else
+            {
+                csv.AppendLine(StringCipher.Decrypt(File.ReadAllText(filePath), Statics.Password));
             }
 
             var newLine =
                 $"{student.FirstName};{student.MiddleName};{student.LastName};{student.CprNr};{student.PhoneNumber};{student.Email};{Convertbool(student.EUX)};{Statics.CorrectEducationDirectionEnumNames[(int)student.EducationDirection]};{Statics.CorrectGfSchoolEnumNames[(int)student.GfSchool]};{student.WantedSkpLocation};{student.SpecialInfo}";
             csv.AppendLine(newLine);
 
-            File.AppendAllText(filePath, csv.ToString(), Encoding.UTF8);
+            File.WriteAllText(filePath, StringCipher.Encrypt(csv.ToString(), Statics.Password), Encoding.UTF8);
+        }
+
+        public static void DecryptFile()
+        {
+            string filePath;
+            SaveFileDialog Dialog = new SaveFileDialog();
+            Dialog.AddExtension = true;
+            Dialog.OverwritePrompt = false;
+            Dialog.Filter = "CSV Files (*.csv)|*.csv|Excel Files (*.xlsx)|*.xlsx";
+            Dialog.FilterIndex = 2;
+            var result = Dialog.ShowDialog();
+
+            if (result == true)
+            {
+                if (Path.GetExtension(Dialog.FileName).ToLower() != ".csv" && Path.GetExtension(Dialog.FileName).ToLower() != ".xlsx")
+                {
+                    switch (Dialog.FilterIndex)
+                    {
+                        case 1:
+                            Dialog.FileName += ".csv";
+                            break;
+                        case 2:
+                            Dialog.FileName += ".xlsx";
+                            break;
+                    }
+                }
+                filePath = Dialog.FileName;
+            }
+            else
+            {
+                return;
+            }
+
+            string file = StringCipher.Decrypt(File.ReadAllText(Statics.Path), Statics.Password);
+            if (Path.GetExtension(filePath)?.ToLower() == ".csv")
+            {
+                CreateCvsFile(file, filePath);
+            }
+            else if (Path.GetExtension(filePath)?.ToLower() == ".xlsx")
+            {
+                CreateXlsxFile(file, filePath);
+            }
+            else
+            {
+                throw new FileFormatException("Filtypen skal være csv eller xlsx");
+            }
+        }
+
+        #region SaveToCsvFile
+        private static void CreateCvsFile(string file, string filePath)
+        {
+            // string FilePath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\elevdata.csv";
+            // Build the file content
+           
+            File.AppendAllText(filePath, file, Encoding.UTF8);
         }
         #endregion
 
@@ -63,9 +111,16 @@ namespace StudentCSV
         #endregion
 
         #region SaveToExcelFile
-        private static void CreateXlsxFile(Student student, string filePath)
+        private static void CreateXlsxFile(string file, string filePath)
         {
             XLWorkbook workBook = new XLWorkbook();
+
+            var fields = file.Split(';');
+
+            for (int i = 11; i < fields.Length; i++)
+            {
+                
+            }
 
             try
             {
@@ -121,7 +176,7 @@ namespace StudentCSV
             {
                 workBook?.Dispose();
             }
-        } 
+        }
         #endregion
     }
 }
