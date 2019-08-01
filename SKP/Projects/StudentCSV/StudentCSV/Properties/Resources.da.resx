@@ -121,16 +121,16 @@
     <value>Annuller</value>
   </data>
   <data name="Confirm" xml:space="preserve">
-    <value>Confirm</value>
+    <value>Bekræfte</value>
   </data>
   <data name="CPRNr" xml:space="preserve">
     <value>CPR-nummer</value>
   </data>
   <data name="EducationDirection" xml:space="preserve">
-    <value>Retning</value>
+    <value>Uddannelsesretning</value>
   </data>
   <data name="EducationDirectionIndexChecker" xml:space="preserve">
-    <value>Retning ej valgt</value>
+    <value>Uddannelsesretning ej valgt</value>
   </data>
   <data name="Email" xml:space="preserve">
     <value>Email</value>
@@ -145,7 +145,7 @@
     <value>Grundforløb 2 skole </value>
   </data>
   <data name="GfSchoolIndexChecker" xml:space="preserve">
-    <value>Hvor tog du dit GF2 ej valgt</value>
+    <value>Hvor tog du dit grundforløb ej valgt</value>
   </data>
   <data name="InvalidCPRNr" xml:space="preserve">
     <value>Cpr-nummert er ugyldigt</value>
@@ -163,7 +163,7 @@
     <value>Mellemnavnet er ugyldigt</value>
   </data>
   <data name="InvalidPhonenumber" xml:space="preserve">
-    <value>Telefonnummert er ugyldigt</value>
+    <value>Telefon nummert er ugyldigt</value>
   </data>
   <data name="InvalidSpecialInfo" xml:space="preserve">
     <value>Kan ikke indholde ;</value>
@@ -172,13 +172,13 @@
     <value>Efternavn</value>
   </data>
   <data name="MessageBoxConfirm" xml:space="preserve">
-    <value>Er du sikker på at du vil Gemme</value>
+    <value>Er du sikker på at du vil gemme</value>
   </data>
   <data name="MessageBoxConfirmCancel" xml:space="preserve">
-    <value>Bekræft Annullering</value>
+    <value>Bekræft annullering</value>
   </data>
   <data name="MessageBoxConfirmCanceled" xml:space="preserve">
-    <value>Er du sikker på at du vil Annuller</value>
+    <value>Er du sikker på at du vil annuller</value>
   </data>
   <data name="MessageBoxInfomationSavedString" xml:space="preserve">
     <value>Oplysningerne er nu gemt</value>
@@ -195,17 +195,17 @@
   <data name="Phonenumber" xml:space="preserve">
     <value>Telefon nummer</value>
   </data>
+  <data name="PreferredSKPlocation" xml:space="preserve">
+    <value>Fortruken SKP</value>
+  </data>
+  <data name="PreferredSKPlocationIndexChecker" xml:space="preserve">
+    <value>Fortruken SKP ej valgt</value>
+  </data>
   <data name="Save" xml:space="preserve">
     <value>Gem</value>
   </data>
   <data name="SpecialInfo" xml:space="preserve">
-    <value>SpecialInfo</value>
-  </data>
-  <data name="WantedSkpLocation" xml:space="preserve">
-    <value>Ønsket SKP Lokation</value>
-  </data>
-  <data name="WantedSkpLocationIndexChecker" xml:space="preserve">
-    <value>Ønsket SKP Lokation ej valgt</value>
+    <value>Special Info</value>
   </data>
   <data name="Yes" xml:space="preserve">
     <value>Ja</value>

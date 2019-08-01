@@ -52,13 +52,15 @@ namespace StudentCSV
             csv.AppendLine(newLine);
 
             File.AppendAllText(filePath, csv.ToString(), Encoding.UTF8);
-        } 
+        }
         #endregion
 
+        #region ConvertBool
         private static string Convertbool(bool bbool)
         {
             if (bbool) { return "ja"; } else { return "nej"; }
         }
+        #endregion
 
         #region SaveToExcelFile
         private static void CreateXlsxFile(Student student, string filePath)

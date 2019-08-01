@@ -2,16 +2,20 @@
 
 Dark Themes.?
 
-Multi Langs. 
-
 Add Who have build it in the buttom and what Version they on gui. 
 
-Better Code Structure like MVVM.
 
 set dlls into the .exe
 https://www.codeproject.com/Articles/35159/WPF-Localization-Using-RESX-Files
 Bugs that need to be fixed... 
 
-To Do till Weensday
+Regex middlename needs to be checked up on. 
+
+Email Checker need a Check up on can save mails with :
+
+haha.@hana.haha
+hana@hanacom
+
+
 
 

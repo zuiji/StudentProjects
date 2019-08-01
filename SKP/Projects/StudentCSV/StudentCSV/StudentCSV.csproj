@@ -104,15 +104,17 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="RelayCommand.cs" />
+    <Compile Include="Helpers\RelayCommand.cs" />
+    <Compile Include="StaticsAndEnums\Language.cs" />
     <Compile Include="StaticsAndEnums\Statics.cs" />
     <Compile Include="StaticsAndEnums\EducationDirectionEnum.cs" />
     <Compile Include="StaticsAndEnums\GfSchoolEnum.cs" />
-    <Compile Include="NewStudentWindowViewModel.cs" />
+    <Compile Include="StudentValidater\Validator.cs" />
+    <Compile Include="ViewModel\NewStudentWindowViewModel.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Student.cs" />
     <Compile Include="StaticsAndEnums\WantedSkpLocationEnum.cs" />
-    <Page Include="NewStudentWindow.xaml">
+    <Page Include="Views\NewStudentWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -120,8 +122,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DataSaveLocationAndFileType.cs" />
-    <Compile Include="NewStudentWindow.xaml.cs">
+    <Compile Include="StaticsAndEnums\DataSaveLocationAndFileType.cs" />
+    <Compile Include="Views\NewStudentWindow.xaml.cs">
       <DependentUpon>NewStudentWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
@@ -162,7 +164,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="ZBCLogo.png" />
+    <Resource Include="Resources\Images\ZBCLogo.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="ToDoAndBugFixes.txt" />
@@ -184,8 +186,8 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\dk.png" />
-    <Resource Include="Resources\gb.png" />
+    <Resource Include="Resources\Images\dk.png" />
+    <Resource Include="Resources\Images\gb.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
