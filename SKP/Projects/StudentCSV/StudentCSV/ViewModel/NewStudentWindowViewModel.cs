@@ -21,7 +21,7 @@ namespace StudentCSV
     {
         #region Props and fields
         private Student student { get; set; }
-        
+
 
         private string _firstname;
         private string _middleName;
@@ -58,7 +58,7 @@ namespace StudentCSV
         public RelayCommand OnFirstNameFieldLostFocusCommand { get; set; }
         public RelayCommand OnCancelPressedCommand { get; set; }
         public RelayCommand OnSavePressedCommand { get; set; }
-        public RelayCommand OnLanguageChangedCommand {get; set;}
+        public RelayCommand OnLanguageChangedCommand { get; set; }
 
         public OrderedDictionary Errors { get; set; }
 
@@ -269,7 +269,6 @@ namespace StudentCSV
         #region Constructor
         public NewStudentWindowViewModel()
         {
-         
             FreshGui();
         }
         #endregion
@@ -511,7 +510,7 @@ namespace StudentCSV
 
         public void OnCancelPressed()
         {
-          
+
             var Confirmation = MessageBox.Show(Properties.Resources.MessageBoxConfirmCanceled, Properties.Resources.MessageBoxConfirmCancel, MessageBoxButton.YesNo);
             if (Confirmation == MessageBoxResult.Yes)
             {
@@ -714,7 +713,7 @@ namespace StudentCSV
             OnPropertyChanged(nameof(EUX));
             EUXIndex = OldEUXIndex;
             var keys = new List<string>();
-            keys.AddRange( Errors.Keys.Cast<string>());
+            keys.AddRange(Errors.Keys.Cast<string>());
             foreach (string errorsKey in keys)
             {
                 string obj = errorsKey.ToString();
@@ -750,7 +749,7 @@ namespace StudentCSV
                     case nameof(SpecialInfo):
                         Errors[errorsKey] = Properties.Resources.InvalidSpecialInfo;
                         break;
-                    
+
                 }
             }
             OnPropertyChanged(nameof(LastError));

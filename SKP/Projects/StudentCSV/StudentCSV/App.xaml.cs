@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Xml.Linq;
 using Microsoft.Win32;
 
 namespace StudentCSV
@@ -15,6 +16,7 @@ namespace StudentCSV
     /// </summary>
     public partial class App : Application
     {
+       
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
@@ -46,7 +48,6 @@ namespace StudentCSV
                 Environment.Exit(-1);
             }
 
-            // here you take control
         }
     }
 }
