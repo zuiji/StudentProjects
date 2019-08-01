@@ -9,7 +9,7 @@ namespace PizzaShop
 {
     class Exersice
     {
-        ////static voidMain(string[] args)
+        ////static void Main(string[] args)
         ////{
         ////    Pizza shop
         ////    Console.WriteLine("Welcome to the pizza shop");

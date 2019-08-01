@@ -187,7 +187,7 @@ namespace StudentCSV
                 value = "";
             }
 
-            if (Regex.IsMatch(value, @"^(((?!\d)[^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]](?!;).))*$"))
+            if (Regex.IsMatch(value, @"^[\w'\-][^0-9,_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]$"))
             {
                 return true;
             }

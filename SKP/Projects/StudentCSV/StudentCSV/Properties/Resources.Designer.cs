@@ -133,7 +133,7 @@ namespace StudentCSV.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to GfSchool.
+        ///   Looks up a localized string similar to Gf School.
         /// </summary>
         public static string GfSchool {
             get {
