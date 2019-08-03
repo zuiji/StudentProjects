@@ -1,0 +1,255 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:StudentEmmaRegistrationForm"
+        xmlns:Interactions="http://schemas.microsoft.com/xaml/behaviors" x:Class="StudentEmmaRegistrationForm.NewStudentWindow"
+        mc:Ignorable="d"
+        Title="Nye Skp Elever" Height="720" Width="1080">
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="UIElement.LostFocus"/>
+    </Window.Triggers>
+    <Window.Resources>
+        <ObjectDataProvider x:Name="Provider" x:Key="Resources" ObjectType="{x:Type local:Language}" MethodName="GetResourceInstance"/>
+    </Window.Resources>
+    <Grid>
+        <Grid.DataContext>
+            <local:NewStudentWindowViewModel/>
+        </Grid.DataContext>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="80*"/>
+            <RowDefinition Height="10*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition Width="80*"/>
+            <ColumnDefinition Width="10*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding LastError, Mode=OneWay}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="36" Foreground="#FFFF0101" />
+
+        <Grid Grid.Column="1" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="30*"/>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="30*"/>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="30*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="17.5*"/>
+                <RowDefinition Height="17.5*"/>
+                <RowDefinition Height="17.5*"/>
+                <RowDefinition Height="17.5*"/>
+                <RowDefinition Height="30*"/>
+            </Grid.RowDefinitions>
+            <StackPanel x:Name="FirstnameStackPanel" Grid.Row="0">
+                <Label Content="{Binding Path=Firstname, Source={StaticResource Resources}}" HorizontalContentAlignment="Center" FontSize="19.2"/>
+                <TextBox x:Name="textBox" TextWrapping="Wrap" Height="36.8" FontSize="19.2">
+                    <TextBox.Style>
+                        <Style>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding FirstNameValid}" Value="True">
+                                    <Setter Property="TextBox.BorderBrush" Value="#FFABADB3"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding FirstNameValid}" Value="False">
+                                    <Setter Property="TextBox.BorderBrush" Value="#FFE90D0D"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBox.Style>
+                    <Interactions:Interaction.Triggers>
+                        <Interactions:EventTrigger EventName="LostFocus">
+                            <Interactions:InvokeCommandAction Command="{Binding OnFirstNameFieldLostFocusCommand}"/>
+                        </Interactions:EventTrigger>
+                    </Interactions:Interaction.Triggers>
+                    <Binding x:Name="FirstNameBinding" Mode="TwoWay" Path="FirstName"/>
+                </TextBox>
+            </StackPanel>
+            <StackPanel x:Name="MiddleNameStackPanel" Grid.Row="1">
+                <Label Content="{Binding Path=Middlename, Source={StaticResource Resources}}" HorizontalContentAlignment="Center" FontSize="19.2"/>
+                <TextBox Height="36.8" TextWrapping="Wrap" FontSize="19.2">
+                    <TextBox.Style>
+                        <Style>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding MiddleNameValid}" Value="True">
+                                    <Setter Property="TextBox.BorderBrush" Value="#FFABADB3"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding MiddleNameValid}" Value="False">
+                                    <Setter Property="TextBox.BorderBrush" Value="#FFE90D0D"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBox.Style>
+                    <Interactions:Interaction.Triggers>
+                        <Interactions:EventTrigger EventName="LostFocus">
+                            <Interactions:InvokeCommandAction Command="{Binding OnMiddleNameFieldLostFocusCommand}"/>
+                        </Interactions:EventTrigger>
+                    </Interactions:Interaction.Triggers>
+                    <Binding x:Name="MiddleNameBinding" Path="MiddleName"/>
+                </TextBox>
+            </StackPanel>
+            <StackPanel x:Name="LastNameStackPanel" Grid.Row="2">
+                <Label Content="{Binding Path=Lastname, Source={StaticResource Resources}}" HorizontalContentAlignment="Center" FontSize="19.2"/>
+                <TextBox Height="36.8" TextWrapping="Wrap" FontSize="19.2">
+                    <TextBox.Style>
+                        <Style>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding LastNameValid}" Value="True">
+                                    <Setter Property="TextBox.BorderBrush" Value="#FFABADB3"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding LastNameValid}" Value="False">
+                                    <Setter Property="TextBox.BorderBrush" Value="#FFE90D0D"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBox.Style>
+                    <Interactions:Interaction.Triggers>
+                        <Interactions:EventTrigger EventName="LostFocus">
+                            <Interactions:InvokeCommandAction Command="{Binding OnLastNameFieldLostFocusCommand}"/>
+                        </Interactions:EventTrigger>
+                    </Interactions:Interaction.Triggers>
+                    <Binding x:Name="LastNameBinding" Path="LastName"/>
+                </TextBox>
+            </StackPanel>
+            <StackPanel x:Name="EmailStackpanel" Grid.Row="3">
+                <Label Content="{Binding Path=Email, Source={StaticResource Resources}}" HorizontalContentAlignment="Center" FontSize="19.2"/>
+                <TextBox Height="36.8" TextWrapping="Wrap" FontSize="19.2">
+                    <TextBox.Style>
+                        <Style>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding EmailValid}" Value="True">
+                                    <Setter Property="TextBox.BorderBrush" Value="#FFABADB3"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding EmailValid}" Value="False">
+                                    <Setter Property="TextBox.BorderBrush" Value="#FFE90D0D"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBox.Style>
+                    <Interactions:Interaction.Triggers>
+                        <Interactions:EventTrigger EventName="LostFocus">
+                            <Interactions:InvokeCommandAction Command="{Binding OnEmailFieldLostFocusCommand}" />
+                        </Interactions:EventTrigger>
+                    </Interactions:Interaction.Triggers>
+                    <Binding x:Name="EmailBinding" Path="Email"/>
+                </TextBox>
+            </StackPanel>
+
+            <StackPanel x:Name="PhoneNumberStackPanel" Grid.Row="0" Grid.Column="2">
+                <Label Content="{Binding Path=Phonenumber, Source={StaticResource Resources}}" HorizontalContentAlignment="Center" FontSize="19.2"/>
+                <TextBox TextWrapping="Wrap" Height="36.8" FontSize="19.2">
+                    <TextBox.Style>
+                        <Style>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding PhoneNumberValid}" Value="True">
+                                    <Setter Property="TextBox.BorderBrush" Value="#FFABADB3"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding PhoneNumberValid}" Value="False">
+                                    <Setter Property="TextBox.BorderBrush" Value="#FFE90D0D"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBox.Style>
+                    <Interactions:Interaction.Triggers>
+                        <Interactions:EventTrigger EventName="LostFocus">
+                            <Interactions:InvokeCommandAction Command="{Binding OnPhoneNumberFieldLostFocusCommand}"/>
+                        </Interactions:EventTrigger>
+                    </Interactions:Interaction.Triggers>
+                    <Binding x:Name="PhoneNumberBinding" Path="PhoneNumber"/>
+                </TextBox>
+            </StackPanel>
+            <StackPanel x:Name="CprNrStackPanel" Grid.Row="1" Grid.Column="2">
+                <Label Content="{Binding Path=CPRNr, Source={StaticResource Resources}}" HorizontalContentAlignment="Center" FontSize="19.2"/>
+                <TextBox Height="36.8" TextWrapping="Wrap" FontSize="19.2">
+                    <TextBox.Style>
+                        <Style>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding CprNrValid}" Value="True">
+                                    <Setter Property="TextBox.BorderBrush" Value="#FFABADB3"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding CprNrValid}" Value="False">
+                                    <Setter Property="TextBox.BorderBrush" Value="#FFE90D0D"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBox.Style>
+                    <Interactions:Interaction.Triggers>
+                        <Interactions:EventTrigger EventName="LostFocus">
+                            <Interactions:InvokeCommandAction Command="{Binding OnCprNrFieldLostFocusCommand}"/>
+                        </Interactions:EventTrigger>
+                    </Interactions:Interaction.Triggers>
+                    <Binding x:Name="CprNrBinding" Path="CprNr"/>
+                </TextBox>
+            </StackPanel>
+            <StackPanel x:Name="EuxStackPanel" Grid.Row="2" Grid.Column="2">
+                <Label Content="{Binding Path=EUX, Source={StaticResource Resources}}" HorizontalContentAlignment="Center" FontSize="19.2"/>
+                <ComboBox Height="36.8" Text="TextBox" FontSize="19.2" ItemsSource="{Binding EUX}" SelectedIndex="{Binding EUXIndex}"/>
+            </StackPanel>
+
+            <StackPanel x:Name="EducationDirectionStackPanel" Grid.Row="0" Grid.Column="4">
+                <Label Content="{Binding Path=EducationDirection, Source={StaticResource Resources}}" HorizontalContentAlignment="Center" FontSize="19.2"/>
+                <ComboBox Height="36.8" FontSize="19.2" ItemsSource="{Binding EducationDirection}" SelectedIndex="{Binding EducationDirectionIndex}"/>
+            </StackPanel>
+            <StackPanel x:Name="GFSchoolStackPanel" Grid.Row="1" Grid.Column="4">
+                <Label Content="{Binding Path=GfSchool, Source={StaticResource Resources}}" HorizontalContentAlignment="Center" FontSize="19.2"/>
+                <ComboBox Height="36.8" Text="TextBox" FontSize="19.2" IsSynchronizedWithCurrentItem="False" ItemsSource="{Binding GF2School}" SelectedIndex="{Binding GfSchoolIndex}"/>
+            </StackPanel>
+            <StackPanel x:Name="WantedSkpLocationStackPanel" Grid.Row="2" Grid.Column="4">
+                <Label Content="{Binding Path=PreferredSKPlocation, Source={StaticResource Resources}}" HorizontalContentAlignment="Center" FontSize="19.2"/>
+                <ComboBox Height="36.8" Text="TextBox" FontSize="19.2" ItemsSource="{Binding PreferredSKPlocation}" SelectedIndex="{Binding PreferredSkpLocationIndex}"/>
+            </StackPanel>
+            <Image Source="/Resources/Images/ZBCLogo.png" Grid.Row="4" VerticalAlignment="Bottom"/>
+            <StackPanel x:Name="SpecialInfoStackPanel" Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="3" Grid.RowSpan="2">
+                <Label Content="{Binding Path=SpecialInfo, Source={StaticResource Resources}}" HorizontalContentAlignment="Center" FontSize="19.2"/>
+                <Grid Height="220">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="45*"/>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="45*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="70*"/>
+                        <RowDefinition Height="10*"/>
+                        <RowDefinition Height="20*"/>
+
+                    </Grid.RowDefinitions>
+                    <TextBox Margin="0,0,0,0" FontSize="19.2" HorizontalScrollBarVisibility="Visible" TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="True" SpellCheck.IsEnabled="True" Grid.ColumnSpan="3">
+                        <TextBox.Style>
+                            <Style>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding SpecialInfoValid}" Value="True">
+                                        <Setter Property="TextBox.BorderBrush" Value="#FFABADB3"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding SpecialInfoValid}" Value="False">
+                                        <Setter Property="TextBox.BorderBrush" Value="#FFE90D0D"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBox.Style>
+                        <Interactions:Interaction.Triggers>
+                            <Interactions:EventTrigger EventName="LostFocus">
+                                <Interactions:InvokeCommandAction Command="{Binding OnSpecialInfoFieldLostFocusCommand}"/>
+                            </Interactions:EventTrigger>
+                        </Interactions:Interaction.Triggers>
+                        <Binding x:Name="SpecialInfoBinding" Path="SpecialInfo"/>
+                    </TextBox>
+                    <Button Grid.Column="0" Grid.Row="2" Content="{Binding Path=Save, Source={StaticResource Resources}}" Command="{Binding OnSavePressedCommand}"/>
+                    <Button Grid.Column="2" Grid.Row="2" Content="{Binding Path=Cancel, Source={StaticResource Resources}}" Command="{Binding OnCancelPressedCommand}" />
+                </Grid>
+                    <Button Grid.ColumnSpan="3" Margin="0" Grid.Row="2" Command="{Binding OnLanguageChangedCommand}" Click="DK_Button_Click" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Left" VerticalContentAlignment="Top"/>
+            </StackPanel>
+
+        </Grid>
+        <StackPanel Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal" >
+            <Button Command="{Binding OnLanguageChangedCommand}" Click="DK_Button_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,10,0">
+                <Image Source="/Resources/Images/dk.png" Height="25" Width="25" ></Image>
+            </Button>
+            <Button Command="{Binding OnLanguageChangedCommand}" Click="GB_Button_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,0,0">
+                <Image Source="/Resources/Images/gb.png" Height="25" Width="25" ></Image>
+            </Button>
+        </StackPanel>
+        
+    </Grid>
+</Window>
