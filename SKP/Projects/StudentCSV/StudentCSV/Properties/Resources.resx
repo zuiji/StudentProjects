@@ -180,11 +180,23 @@
   <data name="MessageBoxConfirmCanceled" xml:space="preserve">
     <value>Are you sure you want to Cancel</value>
   </data>
+  <data name="MessageBoxEncryptedWrongFormat" xml:space="preserve">
+    <value>The Encrypted File is in worng format</value>
+  </data>
+  <data name="MessageBoxExportFileSaved" xml:space="preserve">
+    <value>The File have been successfully Exported</value>
+  </data>
   <data name="MessageBoxInfomationSavedString" xml:space="preserve">
     <value>Your info are new saved</value>
   </data>
+  <data name="MessageBoxNotEmtyFile" xml:space="preserve">
+    <value>You must use a new or empty file</value>
+  </data>
   <data name="MessageBoxUnableToAccessFileError" xml:space="preserve">
     <value>Unable to access file, the file can already be open</value>
+  </data>
+  <data name="MessageBoxWrongFileFormat" xml:space="preserve">
+    <value>The Filetype must be csv or xlsx</value>
   </data>
   <data name="Middlename" xml:space="preserve">
     <value>Middlename</value>

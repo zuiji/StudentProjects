@@ -252,6 +252,14 @@
                 <Image Source="/Resources/Images/gb.png" Height="25" Width="25" ></Image>
             </Button>
         </StackPanel>
+        <StackPanel Grid.Row="2" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal" >
+            <Button Command="{Binding QuestionMarkPressedCommand}"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,10,0">
+                <Image Source="/Resources/Images/Question_mark.png" Height="25" Width="25" ></Image>
+            </Button>
+            <Button Command="{Binding ExportPressedCommand}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,0,0">
+                <Image Source="/Resources/Images/export.png" Height="25" Width="25" ></Image>
+            </Button>
+        </StackPanel>
         
     </Grid>
 </Window>

@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using StudentCSV.Helpers;
@@ -55,6 +57,8 @@ namespace StudentCSV.ViewModel
         public RelayCommand OnCancelPressedCommand { get; set; }
         public RelayCommand OnSavePressedCommand { get; set; }
         public RelayCommand OnLanguageChangedCommand { get; set; }
+        public RelayCommand QuestionMarkPressedCommand { get; set; }
+        public RelayCommand ExportPressedCommand { get; set; }
 
         public OrderedDictionary Errors { get; set; }
 
@@ -309,10 +313,14 @@ namespace StudentCSV.ViewModel
             OnCancelPressedCommand = new RelayCommand(a => OnCancelPressed());
             OnSavePressedCommand = new RelayCommand(a => OnSavePressed());
             OnLanguageChangedCommand = new RelayCommand(a => OnLanguageChanged());
+            QuestionMarkPressedCommand = new RelayCommand(a => QuestionMarkPressed());
+            ExportPressedCommand = new RelayCommand(a => ExportPressed());
             student = new Student();
             Errors.Clear();
             OnPropertyChanged(nameof(LastError));
         }
+
+
         #endregion
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -517,9 +525,7 @@ namespace StudentCSV.ViewModel
         #region OnSavePressedRegion
         private void OnSavePressed()
         {
-            var D = File.ReadAllText(Statics.Path);
 
-            MessageBox.Show(StringCipher.Decrypt(D,Statics.Password));
             var Confirmation = MessageBox.Show(Properties.Resources.MessageBoxConfirm, Properties.Resources.Confirm, MessageBoxButton.YesNo);
             if (Confirmation != MessageBoxResult.Yes)
             {
@@ -755,6 +761,35 @@ namespace StudentCSV.ViewModel
 
 
         }
+        private void ExportPressed()
+        {
+            try
+            {
+                if (DataSaveLocationAndFileType.DecryptFile())
+                {
+                    MessageBox.Show(Properties.Resources.MessageBoxExportFileSaved);
+                }
+
+            }
+            catch (FileFormatException e)
+            {
+                MessageBox.Show(e.ToString());
+            }
+            catch (IOException)
+            {
+
+                MessageBox.Show(Properties.Resources.MessageBoxUnableToAccessFileError);
+            }
+        }
+
+        private void QuestionMarkPressed()
+        {
+            var versionInfo = FileVersionInfo.GetVersionInfo(Assembly.GetEntryAssembly().Location);
+
+            var companyName = versionInfo.CompanyName;
+            MessageBox.Show(versionInfo.ProductVersion + versionInfo.LegalCopyright);
+        }
+
 
     }
 }

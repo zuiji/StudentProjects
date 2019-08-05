@@ -250,6 +250,24 @@ namespace StudentCSV.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The Encrypted File is in worng format.
+        /// </summary>
+        public static string MessageBoxEncryptedWrongFormat {
+            get {
+                return ResourceManager.GetString("MessageBoxEncryptedWrongFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The File have been successfully Exported.
+        /// </summary>
+        public static string MessageBoxExportFileSaved {
+            get {
+                return ResourceManager.GetString("MessageBoxExportFileSaved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Your info are new saved.
         /// </summary>
         public static string MessageBoxInfomationSavedString {
@@ -259,11 +277,29 @@ namespace StudentCSV.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You must use a new or empty file.
+        /// </summary>
+        public static string MessageBoxNotEmtyFile {
+            get {
+                return ResourceManager.GetString("MessageBoxNotEmtyFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unable to access file, the file can already be open.
         /// </summary>
         public static string MessageBoxUnableToAccessFileError {
             get {
                 return ResourceManager.GetString("MessageBoxUnableToAccessFileError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Filetype must be csv or xlsx.
+        /// </summary>
+        public static string MessageBoxWrongFileFormat {
+            get {
+                return ResourceManager.GetString("MessageBoxWrongFileFormat", resourceCulture);
             }
         }
         

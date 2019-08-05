@@ -6,8 +6,9 @@
 
 Get Password Box to work.. 
 
-fix save as XL. 
-
 Add Who have build it in the buttom and what Version they on gui. 
-
+			Version. 1.2
+	Created by Peter Bøgh Stubberup
+  Copyright © 2019 SKP ZBC Ringsted
+		  
 -----------------------------------------------------------------------------------------------------------------
