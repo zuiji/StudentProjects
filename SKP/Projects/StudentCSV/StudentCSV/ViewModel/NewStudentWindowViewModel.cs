@@ -12,6 +12,7 @@ using StudentCSV.Helpers;
 using StudentCSV.Properties;
 using StudentCSV.StaticsAndEnums;
 using StudentCSV.StudentValidater;
+using StudentCSV.Views;
 
 namespace StudentCSV.ViewModel
 {
@@ -269,9 +270,58 @@ namespace StudentCSV.ViewModel
         #region Constructor
         public NewStudentWindowViewModel()
         {
+            bool correctPassword = false;
+
+            do
+            {
+                string Password = PasswordWindow.Prompt("Please Enter Password", "Password");
+                if (string.IsNullOrWhiteSpace(Password))
+                {
+                    var result2 = MessageBox.Show("Wrong Password\nPassword cannot be empty\nTry Again", "Wrong Password", MessageBoxButton.YesNo, MessageBoxImage.Warning, MessageBoxResult.Cancel, MessageBoxOptions.DefaultDesktopOnly);
+                    if (result2 != MessageBoxResult.Yes)
+                    {
+                        Environment.Exit(0);
+                    }
+                }
+                else
+                {
+
+
+                    Statics.Password = PasswordHelper.HashPassword(Password);
+                    try
+                    {
+                        if (File.Exists(Statics.Path) && new FileInfo(Statics.Path).Length != 0)
+                        {
+                            StringCipher.Decrypt(File.ReadAllText(Statics.Path), Statics.Password);
+                            correctPassword = true;
+                        }
+                        else
+                        {
+                            correctPassword = true;
+                        }
+
+                    }
+                    catch (Exception)
+                    {
+                        var result2 = MessageBox.Show("Wrong Password\nTry Again",
+                                                      "Wrong Password",
+                                                      MessageBoxButton.YesNo,
+                                                      MessageBoxImage.Warning,
+                                                      MessageBoxResult.Cancel,
+                                                      MessageBoxOptions.DefaultDesktopOnly);
+                        if (result2 != MessageBoxResult.Yes)
+                        {
+                            Environment.Exit(0);
+                        }
+                    }
+                }
+            } while (!correctPassword);
+
+
             FreshGui();
         }
         #endregion
+
 
         #region FreshGui
 
@@ -769,6 +819,10 @@ namespace StudentCSV.ViewModel
                 {
                     MessageBox.Show(Properties.Resources.MessageBoxExportFileSaved);
                 }
+                else
+                {
+                    MessageBox.Show(Properties.Resources.MessageBoxFileNotSaved);
+                }
 
             }
             catch (FileFormatException e)
@@ -787,7 +841,7 @@ namespace StudentCSV.ViewModel
             var versionInfo = FileVersionInfo.GetVersionInfo(Assembly.GetEntryAssembly().Location);
 
             var companyName = versionInfo.CompanyName;
-            MessageBox.Show(versionInfo.ProductVersion + versionInfo.LegalCopyright);
+            MessageBox.Show($"{Properties.Resources.CreatedByText} Peter Bøgh Stubberup\n{Properties.Resources.Version_text} {versionInfo.ProductVersion}\n{versionInfo.LegalCopyright}");
         }
 
 

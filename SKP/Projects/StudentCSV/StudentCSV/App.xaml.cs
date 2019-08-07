@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Xml.Linq;
 using Microsoft.Win32;
+using StudentCSV.Helpers;
 using StudentCSV.StaticsAndEnums;
 using StudentCSV.Views;
 
@@ -21,7 +22,6 @@ namespace StudentCSV
        
         protected override void OnStartup(StartupEventArgs e)
         {
-            base.OnStartup(e);
 
             SaveFileDialog Dialog = new SaveFileDialog();
             Dialog.AddExtension = true;
@@ -33,15 +33,17 @@ namespace StudentCSV
             {
                 if (Path.GetExtension(Dialog.FileName).ToLower() != ".zbc" )
                 {
-
+               
                 }
                 Statics.Path = Dialog.FileName;
+               
             }
             else
             {
                 Environment.Exit(-1);
             }
-            
+
+            base.OnStartup(e);
 
         }
     }

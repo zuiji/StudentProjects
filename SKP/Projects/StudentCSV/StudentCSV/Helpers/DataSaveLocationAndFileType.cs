@@ -1,11 +1,15 @@
 ﻿using System;
 using System.IO;
 using System.Text;
+using System.Windows;
+using System.Windows.Controls;
 using ClosedXML.Excel;
 using Microsoft.Win32;
-using StudentCSV.Helpers;
+using Spire.Xls;
+using StudentCSV.StaticsAndEnums;
+using StudentCSV.Views;
 
-namespace StudentCSV.StaticsAndEnums
+namespace StudentCSV.Helpers
 {
     public static class DataSaveLocationAndFileType
     {
@@ -41,7 +45,7 @@ namespace StudentCSV.StaticsAndEnums
             }
 
             var newLine =
-                $"{student.FirstName};{student.MiddleName};{student.LastName};{student.CprNr};{student.PhoneNumber};{student.Email};{Convertbool(student.EUX)};{Statics.CorrectEducationDirectionEnumNames[(int)student.EducationDirection]};{Statics.CorrectGfSchoolEnumNames[(int)student.GfSchool]};{student.WantedSkpLocation};{student.SpecialInfo};";
+                $"{student.FirstName};{student.MiddleName};{student.LastName};{student.CprNr};{student.PhoneNumber};{student.Email};{ConvertBool(student.EUX)};{Statics.CorrectEducationDirectionEnumNames[(int)student.EducationDirection]};{Statics.CorrectGfSchoolEnumNames[(int)student.GfSchool]};{student.WantedSkpLocation};{student.SpecialInfo};";
             csv.AppendLine(newLine);
 
             File.WriteAllText(filePath, StringCipher.Encrypt(csv.ToString(), Statics.Password), Encoding.UTF8);
@@ -49,6 +53,13 @@ namespace StudentCSV.StaticsAndEnums
 
         public static bool DecryptFile()
         {
+            string password = PasswordWindow.Prompt("Please enter password again", "Enter Password");
+            if (!PasswordHelper.VerifyHashedPassword(Statics.Password, password))
+            {
+              return  false;
+            }
+
+           
             string filePath;
             SaveFileDialog Dialog = new SaveFileDialog();
             Dialog.AddExtension = true;
@@ -104,7 +115,7 @@ namespace StudentCSV.StaticsAndEnums
                 }
                 else if (Path.GetExtension(filePath)?.ToLower() == ".xlsx")
                 {
-                    CreateXlsxFile(file, filePath);
+                    CreateXlsxFile(file, filePath,password);
                 }
                 else
                 {
@@ -156,14 +167,14 @@ namespace StudentCSV.StaticsAndEnums
         #endregion
 
         #region ConvertBool
-        private static string Convertbool(bool bbool)
+        private static string ConvertBool(bool bbool)
         {
             if (bbool) { return "ja"; } else { return "nej"; }
         }
         #endregion
 
         #region SaveToExcelFile
-        private static void CreateXlsxFile(string file, string filePath)
+        private static void CreateXlsxFile(string file, string filePath, string password)
         {
             XLWorkbook workBook = new XLWorkbook();
 
@@ -224,12 +235,18 @@ namespace StudentCSV.StaticsAndEnums
                 worksheet.Column("I").AdjustToContents();
                 worksheet.Column("J").AdjustToContents();
                 worksheet.Column("K").AdjustToContents();
-
                 workBook.SaveAs(filePath);
             }
             finally
             {
                 workBook?.Dispose();
+            }
+
+            using (Spire.Xls.Workbook book = new Workbook())
+            {
+                book.LoadFromFile(filePath);
+                book.Protect(password);
+                book.SaveToFile(filePath);
             }
         }
         #endregion
