@@ -180,11 +180,23 @@
   <data name="MessageBoxConfirmCanceled" xml:space="preserve">
     <value>Er du sikker på at du vil annuller</value>
   </data>
+  <data name="MessageBoxEncryptedWrongFormat" xml:space="preserve">
+    <value>Den krypteret fil er i forkert format</value>
+  </data>
+  <data name="MessageBoxExportFileSaved" xml:space="preserve">
+    <value>Din fil er nu blevet expoteret</value>
+  </data>
   <data name="MessageBoxInfomationSavedString" xml:space="preserve">
     <value>Oplysningerne er nu gemt</value>
   </data>
+  <data name="MessageBoxNotEmtyFile" xml:space="preserve">
+    <value>Du skal bruge en ny eller tom fil</value>
+  </data>
   <data name="MessageBoxUnableToAccessFileError" xml:space="preserve">
     <value>Programmet kan ikke tilgå filen da den muligvis er åben i en anden process</value>
+  </data>
+  <data name="MessageBoxWrongFileFormat" xml:space="preserve">
+    <value>Filtypen skal være csv eller xlsx</value>
   </data>
   <data name="Middlename" xml:space="preserve">
     <value>Mellemnavn</value>

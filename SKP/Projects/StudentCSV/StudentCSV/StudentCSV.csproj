@@ -104,6 +104,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Helpers\StringCipher.cs" />
     <Compile Include="Properties\Resources.en.Designer.cs">
       <DependentUpon>Resources.en.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -124,6 +125,10 @@
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Student.cs" />
     <Compile Include="StaticsAndEnums\WantedSkpLocationEnum.cs" />
+    <Compile Include="ViewModel\PasswordWindowViewModel.cs" />
+    <Compile Include="Views\PasswordWindow.xaml.cs">
+      <DependentUpon>PasswordWindow.xaml</DependentUpon>
+    </Compile>
     <Page Include="Views\NewStudentWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -137,6 +142,10 @@
       <DependentUpon>NewStudentWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\PasswordWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -197,6 +206,12 @@
   <ItemGroup>
     <Resource Include="Resources\Images\dk.png" />
     <Resource Include="Resources\Images\gb.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Export.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Question_mark.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

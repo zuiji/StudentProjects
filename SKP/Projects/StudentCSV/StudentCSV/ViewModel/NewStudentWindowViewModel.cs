@@ -1,21 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
-using System.Globalization;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls.Primitives;
-using Microsoft.Win32;
-using StudentCSV.Annotations;
+using StudentCSV.Helpers;
+using StudentCSV.Properties;
+using StudentCSV.StaticsAndEnums;
+using StudentCSV.StudentValidater;
 
-namespace StudentCSV
+namespace StudentCSV.ViewModel
 {
     public class NewStudentWindowViewModel : INotifyPropertyChanged
     {
@@ -59,6 +57,8 @@ namespace StudentCSV
         public RelayCommand OnCancelPressedCommand { get; set; }
         public RelayCommand OnSavePressedCommand { get; set; }
         public RelayCommand OnLanguageChangedCommand { get; set; }
+        public RelayCommand QuestionMarkPressedCommand { get; set; }
+        public RelayCommand ExportPressedCommand { get; set; }
 
         public OrderedDictionary Errors { get; set; }
 
@@ -313,10 +313,14 @@ namespace StudentCSV
             OnCancelPressedCommand = new RelayCommand(a => OnCancelPressed());
             OnSavePressedCommand = new RelayCommand(a => OnSavePressed());
             OnLanguageChangedCommand = new RelayCommand(a => OnLanguageChanged());
+            QuestionMarkPressedCommand = new RelayCommand(a => QuestionMarkPressed());
+            ExportPressedCommand = new RelayCommand(a => ExportPressed());
             student = new Student();
             Errors.Clear();
             OnPropertyChanged(nameof(LastError));
         }
+
+
         #endregion
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -521,6 +525,7 @@ namespace StudentCSV
         #region OnSavePressedRegion
         private void OnSavePressed()
         {
+
             var Confirmation = MessageBox.Show(Properties.Resources.MessageBoxConfirm, Properties.Resources.Confirm, MessageBoxButton.YesNo);
             if (Confirmation != MessageBoxResult.Yes)
             {
@@ -756,6 +761,35 @@ namespace StudentCSV
 
 
         }
+        private void ExportPressed()
+        {
+            try
+            {
+                if (DataSaveLocationAndFileType.DecryptFile())
+                {
+                    MessageBox.Show(Properties.Resources.MessageBoxExportFileSaved);
+                }
+
+            }
+            catch (FileFormatException e)
+            {
+                MessageBox.Show(e.ToString());
+            }
+            catch (IOException)
+            {
+
+                MessageBox.Show(Properties.Resources.MessageBoxUnableToAccessFileError);
+            }
+        }
+
+        private void QuestionMarkPressed()
+        {
+            var versionInfo = FileVersionInfo.GetVersionInfo(Assembly.GetEntryAssembly().Location);
+
+            var companyName = versionInfo.CompanyName;
+            MessageBox.Show(versionInfo.ProductVersion + versionInfo.LegalCopyright);
+        }
+
 
     }
 }

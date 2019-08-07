@@ -1,14 +1,14 @@
 ﻿To Do list.. 
 
 
-Is it posibel to Encrupt the File on Create so you need Passwork to open it and use it..? 
+
+!!!!!!!!!!!!!!! HASH PASSWORD !!!!!!!!!!!!!!!!
+
+Get Password Box to work.. 
 
 Add Who have build it in the buttom and what Version they on gui. 
-
-
-Bugs that need to be fixed... 
-
-
-
-
-
+			Version. 1.2
+	Created by Peter Bøgh Stubberup
+  Copyright © 2019 SKP ZBC Ringsted
+		  
+-----------------------------------------------------------------------------------------------------------------

@@ -1,4 +1,4 @@
-﻿namespace StudentCSV
+﻿namespace StudentCSV.StaticsAndEnums
 {
     public enum EducationDirectionEnum
     {

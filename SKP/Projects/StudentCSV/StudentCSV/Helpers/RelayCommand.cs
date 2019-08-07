@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace StudentCSV
+namespace StudentCSV.Helpers
 {
     public class RelayCommand : ICommand
     {

@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Reflection;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
-namespace StudentCSV
+namespace StudentCSV.StaticsAndEnums
 {
     public static class Statics
     {
@@ -19,7 +15,7 @@ namespace StudentCSV
 
         };
         public static string Path { get; set; }
-
+        public static string Password {get; set;} = "Password";
 
     }
 

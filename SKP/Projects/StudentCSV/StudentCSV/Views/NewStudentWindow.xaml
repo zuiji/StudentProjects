@@ -4,18 +4,21 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:StudentCSV"
-        xmlns:Interactions="http://schemas.microsoft.com/xaml/behaviors" x:Class="StudentCSV.NewStudentWindow"
+        xmlns:Interactions="http://schemas.microsoft.com/xaml/behaviors"
+        xmlns:staticsAndEnums="clr-namespace:StudentCSV.StaticsAndEnums"
+        xmlns:viewModel="clr-namespace:StudentCSV.ViewModel"
+        x:Class="StudentCSV.Views.NewStudentWindow"
         mc:Ignorable="d"
         Title="Nye Skp Elever" Height="720" Width="1080">
     <Window.Triggers>
         <EventTrigger RoutedEvent="UIElement.LostFocus"/>
     </Window.Triggers>
     <Window.Resources>
-        <ObjectDataProvider x:Name="Provider" x:Key="Resources" ObjectType="{x:Type local:Language}" MethodName="GetResourceInstance"/>
+        <ObjectDataProvider x:Name="Provider" x:Key="Resources" ObjectType="{x:Type staticsAndEnums:Language}" MethodName="GetResourceInstance"/>
     </Window.Resources>
     <Grid>
         <Grid.DataContext>
-            <local:NewStudentWindowViewModel/>
+            <viewModel:NewStudentWindowViewModel/>
         </Grid.DataContext>
         <Grid.RowDefinitions>
             <RowDefinition Height="10*"/>
@@ -247,6 +250,14 @@
             </Button>
             <Button Command="{Binding OnLanguageChangedCommand}" Click="GB_Button_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,0,0">
                 <Image Source="/Resources/Images/gb.png" Height="25" Width="25" ></Image>
+            </Button>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal" >
+            <Button Command="{Binding QuestionMarkPressedCommand}"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,10,0">
+                <Image Source="/Resources/Images/Question_mark.png" Height="25" Width="25" ></Image>
+            </Button>
+            <Button Command="{Binding ExportPressedCommand}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,0,0">
+                <Image Source="/Resources/Images/export.png" Height="25" Width="25" ></Image>
             </Button>
         </StackPanel>
         
