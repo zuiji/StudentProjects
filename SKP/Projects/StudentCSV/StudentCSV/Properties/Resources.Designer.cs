@@ -88,6 +88,15 @@ namespace StudentCSV.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Created By.
+        /// </summary>
+        public static string CreatedByText {
+            get {
+                return ResourceManager.GetString("CreatedByText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Education Direction.
         /// </summary>
         public static string EducationDirection {
@@ -268,6 +277,15 @@ namespace StudentCSV.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to File not saved.
+        /// </summary>
+        public static string MessageBoxFileNotSaved {
+            get {
+                return ResourceManager.GetString("MessageBoxFileNotSaved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Your info are new saved.
         /// </summary>
         public static string MessageBoxInfomationSavedString {
@@ -363,6 +381,15 @@ namespace StudentCSV.Properties {
         public static string SpecialInfo {
             get {
                 return ResourceManager.GetString("SpecialInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Current Version.
+        /// </summary>
+        public static string Version_text {
+            get {
+                return ResourceManager.GetString("Version text", resourceCulture);
             }
         }
         

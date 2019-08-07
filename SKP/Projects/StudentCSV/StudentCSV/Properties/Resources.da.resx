@@ -126,6 +126,9 @@
   <data name="CPRNr" xml:space="preserve">
     <value>CPR-nummer</value>
   </data>
+  <data name="CreatedByText" xml:space="preserve">
+    <value>Lavet af</value>
+  </data>
   <data name="EducationDirection" xml:space="preserve">
     <value>Uddannelsesretning</value>
   </data>
@@ -186,6 +189,9 @@
   <data name="MessageBoxExportFileSaved" xml:space="preserve">
     <value>Din fil er nu blevet expoteret</value>
   </data>
+  <data name="MessageBoxFileNotSaved" xml:space="preserve">
+    <value>Filen blev ikke gemt</value>
+  </data>
   <data name="MessageBoxInfomationSavedString" xml:space="preserve">
     <value>Oplysningerne er nu gemt</value>
   </data>
@@ -218,6 +224,9 @@
   </data>
   <data name="SpecialInfo" xml:space="preserve">
     <value>Special Info</value>
+  </data>
+  <data name="Version text" xml:space="preserve">
+    <value>Nuverende version</value>
   </data>
   <data name="Yes" xml:space="preserve">
     <value>Ja</value>

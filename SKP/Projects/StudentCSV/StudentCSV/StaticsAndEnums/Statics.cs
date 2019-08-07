@@ -15,7 +15,7 @@ namespace StudentCSV.StaticsAndEnums
 
         };
         public static string Path { get; set; }
-        public static string Password {get; set;} = "Password";
+        public static string Password {get; set;}
 
     }
 
