@@ -21,9 +21,9 @@
             <viewModel:NewStudentWindowViewModel/>
         </Grid.DataContext>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="7.5*"/>
+            <RowDefinition Height="80*"/>
+            <RowDefinition Height="6.5*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10*"/>
@@ -41,11 +41,11 @@
                 <ColumnDefinition Width="30*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="17.5*"/>
-                <RowDefinition Height="17.5*"/>
-                <RowDefinition Height="17.5*"/>
-                <RowDefinition Height="17.5*"/>
-                <RowDefinition Height="17.5*"/>
+                <RowDefinition Height="14*"/>
+                <RowDefinition Height="14*"/>
+                <RowDefinition Height="14*"/>
+                <RowDefinition Height="14*"/>
+                <RowDefinition Height="14*"/>
                 <RowDefinition Height="30*"/>
             </Grid.RowDefinitions>
             <StackPanel x:Name="FirstnameStackPanel" Grid.Row="0">
