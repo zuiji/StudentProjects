@@ -57,7 +57,20 @@ namespace StudentCSV.StudentValidater
             {
                 return false;
             }
-        }/*public string Email
+        }
+        public static bool IsValidZbcEmail(string value)
+        {
+            if (!string.IsNullOrWhiteSpace(value) && Regex.IsMatch(value, @"^[æøåÆØÅa-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[æøåÆØÅa-zA-Z0-9](?:[æøåÆØÅa-zA-Z0-9-]{0,61}[æøåÆØÅa-zA-Z0-9])?(?:\.[æøåÆØÅa-zA-Z0-9](?:[æøåÆØÅa-zA-Z0-9-]{0,61}[æøåÆØÅa-zA-Z0-9])?)*$"))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        
+        /*public string Email
         {
             get { return _email; }
             set

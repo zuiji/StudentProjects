@@ -1,0 +1,78 @@
+﻿@page "/calender"
+@using InfoBoard.Models
+<style>
+    table {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+        table td, table th {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        table tr:hover {
+            background-color: #ddd;
+        }
+
+        table th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            background-color: #454351;
+            color: white;
+            text-align: center
+        }
+</style>
+
+<h3>Calender</h3>
+
+<table>
+    <thead>
+        <tr>
+            <th>
+                Person
+            </th>
+            @foreach (DateTime day in days)
+            {
+                <th>
+                    @day.Date.ToString("d'/'M")
+                </th>
+            }
+
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            @foreach (Person person in persons)
+            {
+
+
+                <td>
+                    @person.FirstName
+                </td>
+                @foreach (DateTime day in days)
+                {
+                    <td>
+                        @person.GetWatchesForDay(day)
+                    </td>
+                }
+
+            }
+        </tr>
+    </tbody>
+</table>
+
+@code {
+
+
+    List<DateTime> days = Helpers.DateHelpers.GetDates(2019, 9);
+    List<Person> persons = Data.PersonDbContext.GetPersons();
+
+}

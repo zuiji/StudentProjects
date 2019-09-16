@@ -26,6 +26,7 @@ namespace StudentCSV.ViewModel
         private string _middleName;
         private string _lastname;
         private string _email;
+        private string _zbcEmail;
         private string _cprNr;
         private string _phoneNumber;
         private string _specialInfo;
@@ -39,6 +40,7 @@ namespace StudentCSV.ViewModel
         private bool _middleNameValid;
         private bool _lastNameValid;
         private bool _emailValid;
+        private bool _zbcEmailValid;
         private bool _cprNrValid;
         private bool _phoneNumberValid;
         private bool _specialInfoValid;
@@ -52,6 +54,7 @@ namespace StudentCSV.ViewModel
         public RelayCommand OnPhoneNumberFieldLostFocusCommand { get; set; }
         public RelayCommand OnCprNrFieldLostFocusCommand { get; set; }
         public RelayCommand OnEmailFieldLostFocusCommand { get; set; }
+        public RelayCommand OnZbcEmailFieldLostFocusCommand { get; set; }
         public RelayCommand OnLastNameFieldLostFocusCommand { get; set; }
         public RelayCommand OnMiddleNameFieldLostFocusCommand { get; set; }
         public RelayCommand OnFirstNameFieldLostFocusCommand { get; set; }
@@ -113,6 +116,15 @@ namespace StudentCSV.ViewModel
             set
             {
                 _email = value;
+                OnPropertyChanged();
+            }
+        }
+        public string ZbcEmail
+        {
+            get { return _zbcEmail; }
+            set
+            {
+                _zbcEmail = value;
                 OnPropertyChanged();
             }
         }
@@ -232,6 +244,16 @@ namespace StudentCSV.ViewModel
 
             }
         }
+        public bool ZbcEmailValid
+        {
+            get { return _zbcEmailValid; }
+            set
+            {
+                _zbcEmailValid = value;
+                OnPropertyChanged();
+
+            }
+        }
 
         public bool CprNrValid
         {
@@ -332,6 +354,7 @@ namespace StudentCSV.ViewModel
             MiddleName = string.Empty;
             LastName = string.Empty;
             Email = string.Empty;
+            ZbcEmail = string.Empty;
             CprNr = string.Empty;
             PhoneNumber = string.Empty;
             SpecialInfo = string.Empty;
@@ -339,6 +362,7 @@ namespace StudentCSV.ViewModel
             MiddleNameValid = true;
             LastNameValid = true;
             EmailValid = true;
+            ZbcEmailValid = true;
             CprNrValid = true;
             PhoneNumberValid = true;
             SpecialInfoValid = true;
@@ -357,6 +381,7 @@ namespace StudentCSV.ViewModel
             OnMiddleNameFieldLostFocusCommand = new RelayCommand(a => OnMiddleNameFieldLostFocus());
             OnLastNameFieldLostFocusCommand = new RelayCommand(a => OnLastNameFieldLostFocus());
             OnEmailFieldLostFocusCommand = new RelayCommand(a => OnEmailFieldLostFocus());
+            OnZbcEmailFieldLostFocusCommand = new RelayCommand(a => OnZbcEmailFieldLostFocus());
             OnCprNrFieldLostFocusCommand = new RelayCommand(a => OnCprNrFieldLostFocus());
             OnPhoneNumberFieldLostFocusCommand = new RelayCommand(a => OnPhoneNumberFieldLostFocus());
             OnSpecialInfoFieldLostFocusCommand = new RelayCommand(a => OnSpecialInfoFieldLostFocus());
@@ -476,6 +501,32 @@ namespace StudentCSV.ViewModel
                 }
 
                 EmailValid = false;
+                OnPropertyChanged(nameof(LastError));
+
+            }
+        }
+        public void OnZbcEmailFieldLostFocus()
+        {
+            try
+            {
+                student.ZbcEmail = ZbcEmail;
+                if (Errors.Contains(nameof(ZbcEmail)))
+                {
+                    Errors.Remove(nameof(ZbcEmail));
+                   ZbcEmailValid = true;
+                }
+
+                OnPropertyChanged(nameof(LastError));
+            }
+            catch (ArgumentException e)
+            {
+                // MessageBox.Show(e.InnerException.Message);
+                if (!Errors.Contains(nameof(ZbcEmail)))
+                {
+                    Errors.Add(nameof(ZbcEmail), e.Message);
+                }
+
+                ZbcEmailValid = false;
                 OnPropertyChanged(nameof(LastError));
 
             }

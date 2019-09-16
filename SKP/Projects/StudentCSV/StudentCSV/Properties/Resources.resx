@@ -171,6 +171,9 @@
   <data name="InvalidSpecialInfo" xml:space="preserve">
     <value>Cant contain ;</value>
   </data>
+  <data name="IsValidZbcEmail" xml:space="preserve">
+    <value>Zbc Email is Invalid</value>
+  </data>
   <data name="Lastname" xml:space="preserve">
     <value>Lastname</value>
   </data>
@@ -230,5 +233,8 @@
   </data>
   <data name="Yes" xml:space="preserve">
     <value>Yes</value>
+  </data>
+  <data name="ZbcEmail" xml:space="preserve">
+    <value>Zbc Email</value>
   </data>
 </root>

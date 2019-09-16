@@ -154,10 +154,10 @@
     <value>Cpr-nummert er ugyldigt</value>
   </data>
   <data name="InvalidEmail" xml:space="preserve">
-    <value>Email er uglydig</value>
+    <value>Email er ugyldig</value>
   </data>
   <data name="InvalidFirstname" xml:space="preserve">
-    <value>Fornavnet er ugyldigt</value>
+    <value>Fornavnet er ugyldig</value>
   </data>
   <data name="InvalidLastname" xml:space="preserve">
     <value>Efternavnet er ugyldigt</value>
@@ -170,6 +170,9 @@
   </data>
   <data name="InvalidSpecialInfo" xml:space="preserve">
     <value>Kan ikke indholde ;</value>
+  </data>
+  <data name="IsValidZbcEmail" xml:space="preserve">
+    <value>Zbc Email er ugyldig</value>
   </data>
   <data name="Lastname" xml:space="preserve">
     <value>Efternavn</value>
@@ -230,5 +233,8 @@
   </data>
   <data name="Yes" xml:space="preserve">
     <value>Ja</value>
+  </data>
+  <data name="ZbcEmail" xml:space="preserve">
+    <value>Zbc Email</value>
   </data>
 </root>

@@ -223,6 +223,15 @@ namespace StudentCSV.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Zbc Email is Invalid.
+        /// </summary>
+        public static string IsValidZbcEmail {
+            get {
+                return ResourceManager.GetString("IsValidZbcEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Lastname.
         /// </summary>
         public static string Lastname {
@@ -399,6 +408,15 @@ namespace StudentCSV.Properties {
         public static string Yes {
             get {
                 return ResourceManager.GetString("Yes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zbc Email.
+        /// </summary>
+        public static string ZbcEmail {
+            get {
+                return ResourceManager.GetString("ZbcEmail", resourceCulture);
             }
         }
     }

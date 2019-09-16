@@ -21,9 +21,9 @@
             <viewModel:NewStudentWindowViewModel/>
         </Grid.DataContext>
         <Grid.RowDefinitions>
-            <RowDefinition Height="10*"/>
-            <RowDefinition Height="80*"/>
-            <RowDefinition Height="10*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10*"/>
@@ -41,6 +41,7 @@
                 <ColumnDefinition Width="30*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
+                <RowDefinition Height="17.5*"/>
                 <RowDefinition Height="17.5*"/>
                 <RowDefinition Height="17.5*"/>
                 <RowDefinition Height="17.5*"/>
@@ -139,8 +140,31 @@
                     <Binding x:Name="EmailBinding" Path="Email"/>
                 </TextBox>
             </StackPanel>
+            <StackPanel x:Name="ZbcEmailStackpanel" Grid.Row="0" Grid.Column="2">
+                <Label Content="{Binding Path=ZbcEmail, Source={StaticResource Resources}}" HorizontalContentAlignment="Center" FontSize="19.2"/>
+                <TextBox Height="36.8" TextWrapping="Wrap" FontSize="19.2">
+                    <TextBox.Style>
+                        <Style>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding ZbcEmailValid}" Value="True">
+                                    <Setter Property="TextBox.BorderBrush" Value="#FFABADB3"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding ZbcEmailValid}" Value="False">
+                                    <Setter Property="TextBox.BorderBrush" Value="#FFE90D0D"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBox.Style>
+                    <Interactions:Interaction.Triggers>
+                        <Interactions:EventTrigger EventName="LostFocus">
+                            <Interactions:InvokeCommandAction Command="{Binding OnZbcEmailFieldLostFocusCommand}" />
+                        </Interactions:EventTrigger>
+                    </Interactions:Interaction.Triggers>
+                    <Binding x:Name="ZbcEmailBinding" Path="ZbcEmail"/>
+                </TextBox>
+            </StackPanel>
 
-            <StackPanel x:Name="PhoneNumberStackPanel" Grid.Row="0" Grid.Column="2">
+            <StackPanel x:Name="PhoneNumberStackPanel" Grid.Row="1" Grid.Column="2">
                 <Label Content="{Binding Path=Phonenumber, Source={StaticResource Resources}}" HorizontalContentAlignment="Center" FontSize="19.2"/>
                 <TextBox TextWrapping="Wrap" Height="36.8" FontSize="19.2">
                     <TextBox.Style>
@@ -163,7 +187,7 @@
                     <Binding x:Name="PhoneNumberBinding" Path="PhoneNumber"/>
                 </TextBox>
             </StackPanel>
-            <StackPanel x:Name="CprNrStackPanel" Grid.Row="1" Grid.Column="2">
+            <StackPanel x:Name="CprNrStackPanel" Grid.Row="2" Grid.Column="2">
                 <Label Content="{Binding Path=CPRNr, Source={StaticResource Resources}}" HorizontalContentAlignment="Center" FontSize="19.2"/>
                 <TextBox Height="36.8" TextWrapping="Wrap" FontSize="19.2">
                     <TextBox.Style>
@@ -186,25 +210,25 @@
                     <Binding x:Name="CprNrBinding" Path="CprNr"/>
                 </TextBox>
             </StackPanel>
-            <StackPanel x:Name="EuxStackPanel" Grid.Row="2" Grid.Column="2">
+            <StackPanel x:Name="EuxStackPanel" Grid.Row="0" Grid.Column="4">
                 <Label Content="{Binding Path=EUX, Source={StaticResource Resources}}" HorizontalContentAlignment="Center" FontSize="19.2"/>
                 <ComboBox Height="36.8" Text="TextBox" FontSize="19.2" ItemsSource="{Binding EUX}" SelectedIndex="{Binding EUXIndex}"/>
             </StackPanel>
 
-            <StackPanel x:Name="EducationDirectionStackPanel" Grid.Row="0" Grid.Column="4">
+            <StackPanel x:Name="EducationDirectionStackPanel" Grid.Row="1" Grid.Column="4">
                 <Label Content="{Binding Path=EducationDirection, Source={StaticResource Resources}}" HorizontalContentAlignment="Center" FontSize="19.2"/>
                 <ComboBox Height="36.8" FontSize="19.2" ItemsSource="{Binding EducationDirection}" SelectedIndex="{Binding EducationDirectionIndex}"/>
             </StackPanel>
-            <StackPanel x:Name="GFSchoolStackPanel" Grid.Row="1" Grid.Column="4">
+            <StackPanel x:Name="GFSchoolStackPanel" Grid.Row="2" Grid.Column="4">
                 <Label Content="{Binding Path=GfSchool, Source={StaticResource Resources}}" HorizontalContentAlignment="Center" FontSize="19.2"/>
                 <ComboBox Height="36.8" Text="TextBox" FontSize="19.2" IsSynchronizedWithCurrentItem="False" ItemsSource="{Binding GF2School}" SelectedIndex="{Binding GfSchoolIndex}"/>
             </StackPanel>
-            <StackPanel x:Name="WantedSkpLocationStackPanel" Grid.Row="2" Grid.Column="4">
+            <StackPanel x:Name="WantedSkpLocationStackPanel" Grid.Row="3" Grid.Column="4">
                 <Label Content="{Binding Path=PreferredSKPlocation, Source={StaticResource Resources}}" HorizontalContentAlignment="Center" FontSize="19.2"/>
                 <ComboBox Height="36.8" Text="TextBox" FontSize="19.2" ItemsSource="{Binding PreferredSKPlocation}" SelectedIndex="{Binding PreferredSkpLocationIndex}"/>
             </StackPanel>
-            <Image Source="/Resources/Images/ZBCLogo.png" Grid.Row="4" VerticalAlignment="Bottom"/>
-            <StackPanel x:Name="SpecialInfoStackPanel" Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="3" Grid.RowSpan="2">
+            <Image Source="/Resources/Images/ZBCLogo.png" Grid.Row="5" VerticalAlignment="Bottom"/>
+            <StackPanel x:Name="SpecialInfoStackPanel" Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="3" Grid.RowSpan="2">
                 <Label Content="{Binding Path=SpecialInfo, Source={StaticResource Resources}}" HorizontalContentAlignment="Center" FontSize="19.2"/>
                 <Grid Height="220">
                     <Grid.ColumnDefinitions>
@@ -260,6 +284,6 @@
                 <Image Source="/Resources/Images/export.png" Height="25" Width="25" ></Image>
             </Button>
         </StackPanel>
-        
+
     </Grid>
 </Window>

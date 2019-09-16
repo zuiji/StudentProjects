@@ -10,6 +10,7 @@ namespace StudentCSV
         private string _middleName;
         private string _lastName;
         private string _email;
+        private string _zbcEmail;
         private string _cprNr;
         private string _phoneNumber;
         private string _specialInfo;
@@ -84,7 +85,23 @@ namespace StudentCSV
                 }
                 else
                 {
-                    throw new ArgumentException(Properties.Resources.InvalidEmail);
+                    throw new ArgumentException(Properties.Resources.IsValidZbcEmail);
+                }
+
+            }
+        }
+        public string ZbcEmail
+        {
+            get { return _zbcEmail; }
+            set
+            {
+                if (Validator.IsValidZbcEmail(value))
+                {
+                    _zbcEmail = value;
+                }
+                else
+                {
+                    throw new ArgumentException(Properties.Resources.IsValidZbcEmail);
                 }
 
             }
