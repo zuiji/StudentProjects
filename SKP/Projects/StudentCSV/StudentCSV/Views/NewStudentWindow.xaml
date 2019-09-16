@@ -21,7 +21,7 @@
             <viewModel:NewStudentWindowViewModel/>
         </Grid.DataContext>
         <Grid.RowDefinitions>
-            <RowDefinition Height="7.5*"/>
+            <RowDefinition Height="6.5*"/>
             <RowDefinition Height="80*"/>
             <RowDefinition Height="6.5*"/>
         </Grid.RowDefinitions>
@@ -187,6 +187,29 @@
                     <Binding x:Name="PhoneNumberBinding" Path="PhoneNumber"/>
                 </TextBox>
             </StackPanel>
+            <!--<StackPanel x:Name="CprNrStackPanel" Grid.Row="2" Grid.Column="2">
+                <Label Content="{Binding Path=CPRNr, Source={StaticResource Resources}}" HorizontalContentAlignment="Center" FontSize="19.2"/>
+                <TextBox Height="36.8" TextWrapping="Wrap" FontSize="19.2">
+                    <TextBox.Style>
+                        <Style>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding CprNrValid}" Value="True">
+                                    <Setter Property="TextBox.BorderBrush" Value="#FFABADB3"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding CprNrValid}" Value="False">
+                                    <Setter Property="TextBox.BorderBrush" Value="#FFE90D0D"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBox.Style>
+                    <Interactions:Interaction.Triggers>
+                        <Interactions:EventTrigger EventName="LostFocus">
+                            <Interactions:InvokeCommandAction Command="{Binding OnCprNrFieldLostFocusCommand}"/>
+                        </Interactions:EventTrigger>
+                    </Interactions:Interaction.Triggers>
+                    <Binding x:Name="CprNrBinding" Path="CprNr"/>
+                </TextBox>
+            </StackPanel>-->
             <StackPanel x:Name="CprNrStackPanel" Grid.Row="2" Grid.Column="2">
                 <Label Content="{Binding Path=CPRNr, Source={StaticResource Resources}}" HorizontalContentAlignment="Center" FontSize="19.2"/>
                 <TextBox Height="36.8" TextWrapping="Wrap" FontSize="19.2">
