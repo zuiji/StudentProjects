@@ -892,7 +892,7 @@ namespace StudentCSV.ViewModel
             var versionInfo = FileVersionInfo.GetVersionInfo(Assembly.GetEntryAssembly().Location);
 
             var companyName = versionInfo.CompanyName;
-            MessageBox.Show($"{Properties.Resources.CreatedByText} Peter Bøgh Stubberup\n{Properties.Resources.Version_text} {versionInfo.ProductVersion}\n{versionInfo.LegalCopyright}");
+            MessageBox.Show($"{Properties.Resources.CreatedByText}: Peter Bøgh Stubberup\n{Properties.Resources.Version_text} {versionInfo.ProductVersion}\n{versionInfo.LegalCopyright}\n{versionInfo.Comments}");
         }
 
 
