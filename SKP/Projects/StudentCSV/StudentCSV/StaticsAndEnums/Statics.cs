@@ -11,7 +11,7 @@ namespace StudentCSV.StaticsAndEnums
 
         public static readonly List<string> CorrectGfSchoolEnumNames = new List<string>()
         {
-            "Køge", "Nykøbing F.", "Ringsted", "Roskilde", "Slagelse", "Vordingborg"
+            "Anden","Køge", "Nykøbing F.", "Ringsted", "Roskilde", "Slagelse", "Vordingborg"
 
         };
         public static string Path { get; set; }

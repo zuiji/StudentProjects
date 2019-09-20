@@ -60,10 +60,10 @@
     </StartupObject>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>C7EA474A502C91A097B99851AAED0217F5FE07F7</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>2DAF30903DFD9BE1D14BE0EB8CA423F197368FF6</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>StudentCSV_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>StudentCSV_2_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
@@ -109,6 +109,7 @@
       <HintPath>..\packages\FreeSpire.XLS.9.2.1\lib\net46\Spire.XLS.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.IO.FileSystem.Primitives, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.IO.FileSystem.Primitives.4.3.0\lib\net46\System.IO.FileSystem.Primitives.dll</HintPath>
@@ -119,6 +120,7 @@
       <HintPath>..\packages\System.IO.Packaging.4.5.0\lib\net46\System.IO.Packaging.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -213,6 +215,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="StudentCSV_2_TemporaryKey.pfx" />
     <None Include="StudentCSV_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>

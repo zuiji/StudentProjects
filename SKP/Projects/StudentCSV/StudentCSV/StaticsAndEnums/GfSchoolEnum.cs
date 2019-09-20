@@ -2,6 +2,7 @@
 {
     public enum GfSchoolEnum
     {
+        Anden,
         Køge,
         NykøbingF,
         Ringsted,

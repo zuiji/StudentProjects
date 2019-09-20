@@ -1,6 +1,8 @@
 ﻿using System.Globalization;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Data;
+using StudentCSV.ViewModel;
 
 namespace StudentCSV.Views
 {
@@ -28,6 +30,14 @@ namespace StudentCSV.Views
 
             (FindResource("Resources") as ObjectDataProvider).Refresh();
 
+        }
+
+        private void PasswordBox_OnPasswordChanged(object sender, RoutedEventArgs e)
+        {
+            if (((PasswordBox)sender).DataContext != null)
+            {
+                ((NewStudentWindowViewModel)((PasswordBox)sender).DataContext).CprNr = ((PasswordBox)sender).Password;
+            }
         }
     }
 }
