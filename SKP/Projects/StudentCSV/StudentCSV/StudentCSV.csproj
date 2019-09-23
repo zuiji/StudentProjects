@@ -60,10 +60,10 @@
     </StartupObject>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>2DAF30903DFD9BE1D14BE0EB8CA423F197368FF6</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>A7C16F491812F4056840C64BBEDBA41D707B1017</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>StudentCSV_2_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>StudentCSV_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
@@ -71,9 +71,7 @@
   <PropertyGroup>
     <TargetZone>LocalIntranet</TargetZone>
   </PropertyGroup>
-  <PropertyGroup>
-    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
-  </PropertyGroup>
+  <PropertyGroup />
   <PropertyGroup>
     <SignManifests>true</SignManifests>
   </PropertyGroup>
@@ -210,12 +208,10 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="packages.config" />
-    <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="StudentCSV_2_TemporaryKey.pfx" />
     <None Include="StudentCSV_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>

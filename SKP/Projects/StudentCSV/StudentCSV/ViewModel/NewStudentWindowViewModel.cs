@@ -30,6 +30,7 @@ namespace StudentCSV.ViewModel
         private string _cprNr;
         private string _phoneNumber;
         private string _specialInfo;
+        private string _otherText;
 
         private int _euxIndex;
         private int _preferredSkpLocationIndex;
@@ -65,6 +66,19 @@ namespace StudentCSV.ViewModel
         public RelayCommand ExportPressedCommand { get; set; }
 
         public OrderedDictionary Errors { get; set; }
+
+
+        public string OtherText
+        {
+            get { return _otherText; }
+            set
+            {
+                _otherText = value;
+                OnPropertyChanged();
+
+            }
+        }
+
 
         public string LastError
         {

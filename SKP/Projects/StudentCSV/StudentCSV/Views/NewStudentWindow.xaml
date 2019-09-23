@@ -189,7 +189,26 @@
             </StackPanel>
             <StackPanel x:Name="CprNrStackPanel" Grid.Row="2" Grid.Column="2">
                 <Label Content="{Binding Path=CPRNr, Source={StaticResource Resources}}" HorizontalContentAlignment="Center" FontSize="19.2"/>
-                <PasswordBox Height="36.8" FontSize="19.2" PasswordChanged="PasswordBox_OnPasswordChanged" PasswordChar="☺">
+                <TextBox  Height="36.8" FontSize="19.2" Visibility="{Binding IsChecked, ElementName=ShowPasswordCheckBox, Converter={staticsAndEnums:BooleanToVisibilityConverter}}" Text="{Binding CprNr}">
+                    <TextBox.Style>
+                        <Style>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding CprNrValid}" Value="True">
+                                    <Setter Property="TextBox.BorderBrush" Value="#FFABADB3"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding CprNrValid}" Value="False">
+                                    <Setter Property="TextBox.BorderBrush" Value="#FFE90D0D"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBox.Style>
+                    <Interactions:Interaction.Triggers>
+                        <Interactions:EventTrigger EventName="LostFocus">
+                            <Interactions:InvokeCommandAction Command="{Binding OnCprNrFieldLostFocusCommand}"/>
+                        </Interactions:EventTrigger>
+                    </Interactions:Interaction.Triggers>
+                </TextBox>
+                <PasswordBox x:Name="CprBox" Height="36.8" FontSize="19.2" PasswordChanged="PasswordBox_OnPasswordChanged" PasswordChar="☺" Visibility="{Binding IsChecked, ElementName=ShowPasswordCheckBox, Converter={staticsAndEnums:BooleanToVisibilityConverter InvertVisibility=True}}">
                     <PasswordBox.Style>
                         <Style>
                             <Style.Triggers>
@@ -209,6 +228,17 @@
                     </Interactions:Interaction.Triggers>
                 </PasswordBox>
             </StackPanel>
+
+            <StackPanel x:Name="ShowPasswordStackPanel" Grid.Row="3" Grid.Column="2">
+                <Label Content="{Binding Path=ShowCprNr, Source={StaticResource Resources}}" HorizontalContentAlignment="Center" FontSize="19.2"/>
+                <CheckBox x:Name="ShowPasswordCheckBox"   Padding="0" FontSize="19.2"  VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <CheckBox.LayoutTransform>
+                        <ScaleTransform ScaleX="2" ScaleY="2"></ScaleTransform>
+                    </CheckBox.LayoutTransform>
+                </CheckBox>
+
+            </StackPanel>
+
             <StackPanel x:Name="EuxStackPanel" Grid.Row="0" Grid.Column="4">
                 <Label Content="{Binding Path=EUX, Source={StaticResource Resources}}" HorizontalContentAlignment="Center" FontSize="19.2"/>
                 <ComboBox Height="36.8" Text="TextBox" FontSize="19.2" ItemsSource="{Binding EUX}" SelectedIndex="{Binding EUXIndex}"/>
@@ -220,7 +250,7 @@
             </StackPanel>
             <StackPanel x:Name="GFSchoolStackPanel" Grid.Row="2" Grid.Column="4">
                 <Label Content="{Binding Path=GfSchool, Source={StaticResource Resources}}" HorizontalContentAlignment="Center" FontSize="19.2"/>
-                <ComboBox Height="36.8" Text="TextBox" FontSize="19.2" IsSynchronizedWithCurrentItem="False" ItemsSource="{Binding GF2School}" SelectedIndex="{Binding GfSchoolIndex}"/>
+                <ComboBox Height="36.8" Text="TextBox" FontSize="19.2" IsSynchronizedWithCurrentItem="False" ItemsSource="{Binding GF2School}" SelectedIndex="{Binding GfSchoolIndex}" SelectionChanged="ComboBox_SelectionChanged"/>
             </StackPanel>
             <StackPanel x:Name="WantedSkpLocationStackPanel" Grid.Row="3" Grid.Column="4">
                 <Label Content="{Binding Path=PreferredSKPlocation, Source={StaticResource Resources}}" HorizontalContentAlignment="Center" FontSize="19.2"/>
@@ -228,7 +258,15 @@
             </StackPanel>
             <Image Source="/Resources/Images/ZBCLogo.png" Grid.Row="5" VerticalAlignment="Bottom"/>
             <StackPanel x:Name="SpecialInfoStackPanel" Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="3" Grid.RowSpan="2">
-                <Label Content="{Binding Path=SpecialInfo, Source={StaticResource Resources}}" HorizontalContentAlignment="Center" FontSize="19.2"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="45*"/>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="45*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label x:Name="SpecialInfolabel" Grid.Column="0" Grid.Row="0" Content="{Binding Path=SpecialInfo, Source={StaticResource Resources}}" HorizontalContentAlignment="Center" FontSize="19.2" Grid.ColumnSpan="3"/>
+                    <Label x:Name="OtherLabel"  Grid.Column="2" Grid.Row="0" Content="{Binding Path=EnterGfSchool, Source={StaticResource Resources}}" HorizontalContentAlignment="Center" FontSize="19.2" Grid.ColumnSpan="1" Visibility="Collapsed"/>
+                </Grid>
                 <Grid Height="220">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="45*"/>
@@ -239,9 +277,10 @@
                         <RowDefinition Height="70*"/>
                         <RowDefinition Height="10*"/>
                         <RowDefinition Height="20*"/>
-
                     </Grid.RowDefinitions>
-                    <TextBox Margin="0,0,0,0" FontSize="19.2" HorizontalScrollBarVisibility="Visible" TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="True" SpellCheck.IsEnabled="True" Grid.ColumnSpan="3">
+                    
+
+                    <TextBox x:Name="SpecialInfoTextBox" Grid.Column="0" Grid.Row="0" Margin="0,0,0,0" FontSize="19.2" HorizontalScrollBarVisibility="Visible" TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="True" SpellCheck.IsEnabled="True" Grid.ColumnSpan="3">
                         <TextBox.Style>
                             <Style>
                                 <Style.Triggers>
@@ -260,6 +299,26 @@
                             </Interactions:EventTrigger>
                         </Interactions:Interaction.Triggers>
                         <Binding x:Name="SpecialInfoBinding" Path="SpecialInfo"/>
+                    </TextBox>
+                    <TextBox x:Name="OtherTextBox" Grid.Row ="0" Grid.Column="2" Margin="0,0,0,0" FontSize="19.2" HorizontalScrollBarVisibility="Visible" TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="True" SpellCheck.IsEnabled="True" Grid.ColumnSpan="1" Visibility="Collapsed">
+                        <TextBox.Style>
+                            <Style>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding SpecialInfoValid}" Value="True">
+                                        <Setter Property="TextBox.BorderBrush" Value="#FFABADB3"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding SpecialInfoValid}" Value="False">
+                                        <Setter Property="TextBox.BorderBrush" Value="#FFE90D0D"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBox.Style>
+                        <Interactions:Interaction.Triggers>
+                            <Interactions:EventTrigger EventName="LostFocus">
+                                <Interactions:InvokeCommandAction Command="{Binding OnSpecialInfoFieldLostFocusCommand}"/>
+                            </Interactions:EventTrigger>
+                        </Interactions:Interaction.Triggers>
+                        <Binding x:Name="OtherTextBoxBinding" Path="OtherText"/>
                     </TextBox>
                     <Button Grid.Column="0" Grid.Row="2" Content="{Binding Path=Save, Source={StaticResource Resources}}" Command="{Binding OnSavePressedCommand}"/>
                     <Button Grid.Column="2" Grid.Row="2" Content="{Binding Path=Cancel, Source={StaticResource Resources}}" Command="{Binding OnCancelPressedCommand}" />

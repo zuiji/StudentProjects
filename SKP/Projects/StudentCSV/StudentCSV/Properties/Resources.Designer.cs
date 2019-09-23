@@ -124,6 +124,15 @@ namespace StudentCSV.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Enter Gf School.
+        /// </summary>
+        public static string EnterGfSchool {
+            get {
+                return ResourceManager.GetString("EnterGfSchool", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to EUX.
         /// </summary>
         public static string EUX {
@@ -381,6 +390,15 @@ namespace StudentCSV.Properties {
         public static string Save {
             get {
                 return ResourceManager.GetString("Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show CPR-number.
+        /// </summary>
+        public static string ShowCprNr {
+            get {
+                return ResourceManager.GetString("ShowCprNr", resourceCulture);
             }
         }
         

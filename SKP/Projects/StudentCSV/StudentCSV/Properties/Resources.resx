@@ -138,6 +138,9 @@
   <data name="Email" xml:space="preserve">
     <value>Email</value>
   </data>
+  <data name="EnterGfSchool" xml:space="preserve">
+    <value>Enter Gf School</value>
+  </data>
   <data name="EUX" xml:space="preserve">
     <value>EUX</value>
   </data>
@@ -224,6 +227,9 @@
   </data>
   <data name="Save" xml:space="preserve">
     <value>Save</value>
+  </data>
+  <data name="ShowCprNr" xml:space="preserve">
+    <value>Show CPR-number</value>
   </data>
   <data name="SpecialInfo" xml:space="preserve">
     <value>SpecialInfo</value>
