@@ -162,6 +162,9 @@
   <data name="InvalidFirstname" xml:space="preserve">
     <value>First name is Invalid</value>
   </data>
+  <data name="InvalidGF2School" xml:space="preserve">
+    <value>Cant contain ;</value>
+  </data>
   <data name="InvalidLastname" xml:space="preserve">
     <value>Last name is Invalid</value>
   </data>
@@ -215,6 +218,9 @@
   </data>
   <data name="No" xml:space="preserve">
     <value>No</value>
+  </data>
+  <data name="Other" xml:space="preserve">
+    <value>Other</value>
   </data>
   <data name="Phonenumber" xml:space="preserve">
     <value>Phone number</value>

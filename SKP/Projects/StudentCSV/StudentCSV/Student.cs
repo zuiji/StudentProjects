@@ -14,7 +14,7 @@ namespace StudentCSV
         private string _cprNr;
         private string _phoneNumber;
         private string _specialInfo;
-
+        private string _gfSchool;
 
         #region NameProbs
         public string FirstName
@@ -85,7 +85,7 @@ namespace StudentCSV
                 }
                 else
                 {
-                    throw new ArgumentException(Properties.Resources.IsValidZbcEmail);
+                    throw new ArgumentException(Properties.Resources.InvalidEmail);
                 }
 
             }
@@ -179,7 +179,24 @@ namespace StudentCSV
         #endregion
         public bool EUX { get; set; }
         public WantedSkpLocationEnum WantedSkpLocation { get; set; }
-        public GfSchoolEnum GfSchool { get; set; }
+
+        public string GfSchool
+        {
+            get {return _gfSchool;}
+            set
+            {
+                if (Validator.IsValidSpecialInfo(value))
+                {
+                    _gfSchool = value;
+
+                }
+                else
+                {
+                    throw new ArgumentException(Properties.Resources.InvalidGF2School);
+                }
+            }
+        }
+
         public EducationDirectionEnum EducationDirection { get; set; }
     }
 }

@@ -208,7 +208,7 @@
                         </Interactions:EventTrigger>
                     </Interactions:Interaction.Triggers>
                 </TextBox>
-                <PasswordBox x:Name="CprBox" Height="36.8" FontSize="19.2" PasswordChanged="PasswordBox_OnPasswordChanged" PasswordChar="☺" Visibility="{Binding IsChecked, ElementName=ShowPasswordCheckBox, Converter={staticsAndEnums:BooleanToVisibilityConverter InvertVisibility=True}}">
+                <PasswordBox x:Name="CprBox" Height="36.8" FontSize="19.2" PasswordChanged="PasswordBox_OnPasswordChanged" PasswordChar="3" Visibility="{Binding IsChecked, ElementName=ShowPasswordCheckBox, Converter={staticsAndEnums:BooleanToVisibilityConverter InvertVisibility=True}}">
                     <PasswordBox.Style>
                         <Style>
                             <Style.Triggers>
@@ -304,10 +304,10 @@
                         <TextBox.Style>
                             <Style>
                                 <Style.Triggers>
-                                    <DataTrigger Binding="{Binding SpecialInfoValid}" Value="True">
+                                    <DataTrigger Binding="{Binding OtherGF2SchoolValid}" Value="True">
                                         <Setter Property="TextBox.BorderBrush" Value="#FFABADB3"/>
                                     </DataTrigger>
-                                    <DataTrigger Binding="{Binding SpecialInfoValid}" Value="False">
+                                    <DataTrigger Binding="{Binding OtherGF2SchoolValid}" Value="False">
                                         <Setter Property="TextBox.BorderBrush" Value="#FFE90D0D"/>
                                     </DataTrigger>
                                 </Style.Triggers>
@@ -315,10 +315,10 @@
                         </TextBox.Style>
                         <Interactions:Interaction.Triggers>
                             <Interactions:EventTrigger EventName="LostFocus">
-                                <Interactions:InvokeCommandAction Command="{Binding OnSpecialInfoFieldLostFocusCommand}"/>
+                                <Interactions:InvokeCommandAction Command="{Binding OnOtherGf2SchoolOtherTextLostFocusCommand}"/>
                             </Interactions:EventTrigger>
                         </Interactions:Interaction.Triggers>
-                        <Binding x:Name="OtherTextBoxBinding" Path="OtherText"/>
+                        <Binding x:Name="Gf2SchoolOtherTextBoxBinding" Path="Gf2SchoolOtherText"/>
                     </TextBox>
                     <Button Grid.Column="0" Grid.Row="2" Content="{Binding Path=Save, Source={StaticResource Resources}}" Command="{Binding OnSavePressedCommand}"/>
                     <Button Grid.Column="2" Grid.Row="2" Content="{Binding Path=Cancel, Source={StaticResource Resources}}" Command="{Binding OnCancelPressedCommand}" />
@@ -339,6 +339,10 @@
                 <Image Source="/Resources/Images/Question_mark.png" Height="25" Width="25" ></Image>
             </Button>
             <Button Command="{Binding ExportPressedCommand}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,0,0">
+                <Image Source="/Resources/Images/export.png" Height="25" Width="25" ></Image>
+            </Button>
+
+            <Button Command="{Binding FillDebugInfoIntoFieldsPressedCommand}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,0,0" Visibility ="{Binding ShowDebug}">
                 <Image Source="/Resources/Images/export.png" Height="25" Width="25" ></Image>
             </Button>
         </StackPanel>

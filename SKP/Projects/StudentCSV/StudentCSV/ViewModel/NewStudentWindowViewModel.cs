@@ -30,7 +30,7 @@ namespace StudentCSV.ViewModel
         private string _cprNr;
         private string _phoneNumber;
         private string _specialInfo;
-        private string _otherText;
+        private string _gf2SchoolOtherText;
 
         private int _euxIndex;
         private int _preferredSkpLocationIndex;
@@ -45,12 +45,18 @@ namespace StudentCSV.ViewModel
         private bool _cprNrValid;
         private bool _phoneNumberValid;
         private bool _specialInfoValid;
+        private bool _otherGf2SchoolValid;
+
+
+
+        public Visibility ShowDebug { get; set; } = Visibility.Collapsed;
 
         public List<string> EUX { get; set; }
         public List<string> PreferredSKPlocation { get; set; }
         public List<string> GF2School { get; set; }
         public List<string> EducationDirection { get; set; }
 
+        public RelayCommand OnOtherGf2SchoolOtherTextLostFocusCommand { get; set; }
         public RelayCommand OnSpecialInfoFieldLostFocusCommand { get; set; }
         public RelayCommand OnPhoneNumberFieldLostFocusCommand { get; set; }
         public RelayCommand OnCprNrFieldLostFocusCommand { get; set; }
@@ -64,16 +70,19 @@ namespace StudentCSV.ViewModel
         public RelayCommand OnLanguageChangedCommand { get; set; }
         public RelayCommand QuestionMarkPressedCommand { get; set; }
         public RelayCommand ExportPressedCommand { get; set; }
+#if DEBUG
+        public RelayCommand FillDebugInfoIntoFieldsPressedCommand { get; set; }
 
+#endif
         public OrderedDictionary Errors { get; set; }
 
 
-        public string OtherText
+        public string Gf2SchoolOtherText
         {
-            get { return _otherText; }
+            get { return _gf2SchoolOtherText; }
             set
             {
-                _otherText = value;
+                _gf2SchoolOtherText = value;
                 OnPropertyChanged();
 
             }
@@ -301,6 +310,16 @@ namespace StudentCSV.ViewModel
 
             }
         }
+        public bool OtherGF2SchoolValid
+        {
+            get { return _otherGf2SchoolValid; }
+            set
+            {
+                _otherGf2SchoolValid = value;
+                OnPropertyChanged();
+
+            }
+        }
         #endregion
 
         #region Constructor
@@ -380,6 +399,7 @@ namespace StudentCSV.ViewModel
             CprNrValid = true;
             PhoneNumberValid = true;
             SpecialInfoValid = true;
+            OtherGF2SchoolValid = true;
             EUX = new List<string>() { Properties.Resources.Yes, Properties.Resources.No };
             PreferredSKPlocation = new List<string>();
             GF2School = new List<string>();
@@ -399,16 +419,41 @@ namespace StudentCSV.ViewModel
             OnCprNrFieldLostFocusCommand = new RelayCommand(a => OnCprNrFieldLostFocus());
             OnPhoneNumberFieldLostFocusCommand = new RelayCommand(a => OnPhoneNumberFieldLostFocus());
             OnSpecialInfoFieldLostFocusCommand = new RelayCommand(a => OnSpecialInfoFieldLostFocus());
+            OnOtherGf2SchoolOtherTextLostFocusCommand = new RelayCommand(a => OnOtherGf2SchoolOtherTextFieldLostFocus());
             OnCancelPressedCommand = new RelayCommand(a => OnCancelPressed());
             OnSavePressedCommand = new RelayCommand(a => OnSavePressed());
             OnLanguageChangedCommand = new RelayCommand(a => OnLanguageChanged());
             QuestionMarkPressedCommand = new RelayCommand(a => QuestionMarkPressed());
             ExportPressedCommand = new RelayCommand(a => ExportPressed());
+#if DEBUG
+            FillDebugInfoIntoFieldsPressedCommand = new RelayCommand(a => FillDebugInfoIntoFieldsPressed());
+            ShowDebug = Visibility.Visible;
+#endif
+
             student = new Student();
             Errors.Clear();
             OnPropertyChanged(nameof(LastError));
         }
 
+#if DEBUG
+        private void FillDebugInfoIntoFieldsPressed()
+        {
+            student.FirstName = FirstName = "Hans";
+            student.MiddleName = MiddleName = "Jes Man";
+            student.LastName = LastName = "Hansen";
+            student.Email = Email = "HansHansen@hans.dk";
+            student.ZbcEmail = ZbcEmail = "Haha@zbc.dk";
+            student.PhoneNumber = PhoneNumber = "99999999";
+            student.CprNr = CprNr = "121212-1212";
+            EUXIndex = 1;
+            EducationDirectionIndex = 1;
+            GfSchoolIndex = 0;
+            PreferredSkpLocationIndex = 1;
+            student.SpecialInfo = SpecialInfo = "Some very special info cake";
+            student.GfSchool = Gf2SchoolOtherText = "Borup";
+
+        }
+#endif
 
         #endregion
 
@@ -426,7 +471,6 @@ namespace StudentCSV.ViewModel
                     FirstNameValid = true;
                 }
 
-                OnPropertyChanged(nameof(LastError));
             }
             catch (ArgumentException e)
             {
@@ -437,9 +481,9 @@ namespace StudentCSV.ViewModel
                 }
 
                 FirstNameValid = false;
-                OnPropertyChanged(nameof(LastError));
 
             }
+            OnPropertyChanged(nameof(LastError));
         }
         public void OnMiddleNameFieldLostFocus()
         {
@@ -452,7 +496,7 @@ namespace StudentCSV.ViewModel
                     MiddleNameValid = true;
                 }
 
-                OnPropertyChanged(nameof(LastError));
+
             }
             catch (ArgumentException e)
             {
@@ -463,9 +507,10 @@ namespace StudentCSV.ViewModel
                 }
 
                 MiddleNameValid = false;
-                OnPropertyChanged(nameof(LastError));
+
 
             }
+            OnPropertyChanged(nameof(LastError));
         }
         public void OnLastNameFieldLostFocus()
         {
@@ -478,7 +523,6 @@ namespace StudentCSV.ViewModel
                     LastNameValid = true;
                 }
 
-                OnPropertyChanged(nameof(LastError));
             }
             catch (ArgumentException e)
             {
@@ -489,9 +533,10 @@ namespace StudentCSV.ViewModel
                 }
 
                 LastNameValid = false;
-                OnPropertyChanged(nameof(LastError));
 
             }
+            OnPropertyChanged(nameof(LastError));
+
         }
         public void OnEmailFieldLostFocus()
         {
@@ -503,8 +548,6 @@ namespace StudentCSV.ViewModel
                     Errors.Remove(nameof(Email));
                     EmailValid = true;
                 }
-
-                OnPropertyChanged(nameof(LastError));
             }
             catch (ArgumentException e)
             {
@@ -515,9 +558,10 @@ namespace StudentCSV.ViewModel
                 }
 
                 EmailValid = false;
-                OnPropertyChanged(nameof(LastError));
 
             }
+            OnPropertyChanged(nameof(LastError));
+
         }
         public void OnZbcEmailFieldLostFocus()
         {
@@ -527,10 +571,8 @@ namespace StudentCSV.ViewModel
                 if (Errors.Contains(nameof(ZbcEmail)))
                 {
                     Errors.Remove(nameof(ZbcEmail));
-                   ZbcEmailValid = true;
+                    ZbcEmailValid = true;
                 }
-
-                OnPropertyChanged(nameof(LastError));
             }
             catch (ArgumentException e)
             {
@@ -539,11 +581,9 @@ namespace StudentCSV.ViewModel
                 {
                     Errors.Add(nameof(ZbcEmail), e.Message);
                 }
-
                 ZbcEmailValid = false;
-                OnPropertyChanged(nameof(LastError));
-
             }
+            OnPropertyChanged(nameof(LastError));
         }
         public void OnPhoneNumberFieldLostFocus()
         {
@@ -555,8 +595,6 @@ namespace StudentCSV.ViewModel
                     Errors.Remove(nameof(PhoneNumber));
                     PhoneNumberValid = true;
                 }
-
-                OnPropertyChanged(nameof(LastError));
             }
             catch (ArgumentException e)
             {
@@ -565,11 +603,10 @@ namespace StudentCSV.ViewModel
                 {
                     Errors.Add(nameof(PhoneNumber), e.Message);
                 }
-
                 PhoneNumberValid = false;
-                OnPropertyChanged(nameof(LastError));
-
             }
+            OnPropertyChanged(nameof(LastError));
+
         }
         public void OnCprNrFieldLostFocus()
         {
@@ -581,8 +618,6 @@ namespace StudentCSV.ViewModel
                     Errors.Remove(nameof(CprNr));
                     CprNrValid = true;
                 }
-
-                OnPropertyChanged(nameof(LastError));
             }
             catch (ArgumentException e)
             {
@@ -591,11 +626,9 @@ namespace StudentCSV.ViewModel
                 {
                     Errors.Add(nameof(CprNr), e.Message);
                 }
-
                 CprNrValid = false;
-                OnPropertyChanged(nameof(LastError));
-
             }
+            OnPropertyChanged(nameof(LastError));
         }
         public void OnSpecialInfoFieldLostFocus()
         {
@@ -606,10 +639,7 @@ namespace StudentCSV.ViewModel
                 {
                     Errors.Remove(nameof(SpecialInfo));
                     SpecialInfoValid = true;
-
                 }
-
-                OnPropertyChanged(nameof(LastError));
             }
             catch (ArgumentException e)
             {
@@ -618,30 +648,49 @@ namespace StudentCSV.ViewModel
                 {
                     Errors.Add(nameof(SpecialInfo), e.Message);
                 }
-
                 SpecialInfoValid = false;
-                OnPropertyChanged(nameof(LastError));
-
             }
+            OnPropertyChanged(nameof(LastError));
+        }
+
+        public void OnOtherGf2SchoolOtherTextFieldLostFocus()
+        {
+            try
+            {
+                student.GfSchool = Gf2SchoolOtherText;
+                if (Errors.Contains(nameof(Gf2SchoolOtherText)))
+                {
+                    Errors.Remove(nameof(Gf2SchoolOtherText));
+                    OtherGF2SchoolValid = true;
+                }
+            }
+            catch (ArgumentException e)
+            {// MessageBox.Show(e.InnerException.Message);
+                if (!Errors.Contains(nameof(Gf2SchoolOtherText)))
+                {
+                    Errors.Add(nameof(Gf2SchoolOtherText), e.Message);
+                }
+                OtherGF2SchoolValid = false;
+            }
+            OnPropertyChanged(nameof(LastError));
         }
 
         #endregion 
 
         public void OnCancelPressed()
         {
-
             var Confirmation = MessageBox.Show(Properties.Resources.MessageBoxConfirmCanceled, Properties.Resources.MessageBoxConfirmCancel, MessageBoxButton.YesNo);
             if (Confirmation == MessageBoxResult.Yes)
             {
                 FreshGui();
             }
         }
-
         #region OnSavePressedRegion
         private void OnSavePressed()
         {
-
-            var Confirmation = MessageBox.Show(Properties.Resources.MessageBoxConfirm, Properties.Resources.Confirm, MessageBoxButton.YesNo);
+            var Confirmation = MessageBox.Show(Properties.Resources.MessageBoxConfirm,
+                                               Properties.Resources.Confirm,
+                                               MessageBoxButton.YesNo);
             if (Confirmation != MessageBoxResult.Yes)
             {
                 return;
@@ -674,15 +723,14 @@ namespace StudentCSV.ViewModel
 
             if (!Validator.IsValidLastName(LastName))
             {
-
                 if (!Errors.Contains(nameof(LastName)))
                 {
                     Errors.Add(nameof(LastName), Properties.Resources.InvalidLastname);
                     OnPropertyChanged(nameof(LastError));
                     LastNameValid = false;
-
                 }
             }
+
             if (!Validator.IsValidEmail(Email))
             {
                 if (!Errors.Contains(nameof(Email)))
@@ -692,6 +740,7 @@ namespace StudentCSV.ViewModel
                     EmailValid = false;
                 }
             }
+
             if (!Validator.IsValidPhoneNumber(PhoneNumber))
             {
                 if (!Errors.Contains(nameof(PhoneNumber)))
@@ -702,6 +751,7 @@ namespace StudentCSV.ViewModel
                 }
 
             }
+
             if (!Validator.IsValidCprNr(CprNr))
             {
                 if (!Errors.Contains(nameof(CprNr)))
@@ -710,7 +760,18 @@ namespace StudentCSV.ViewModel
                     OnPropertyChanged(nameof(LastError));
                     CprNrValid = false;
                 }
-
+            }
+            if (GfSchoolIndex == 0)
+            {
+                if (!Validator.IsValidSpecialInfo(Gf2SchoolOtherText))
+                {
+                    if (!Errors.Contains(nameof(Gf2SchoolOtherText)))
+                    {
+                        Errors.Add(nameof(Gf2SchoolOtherText), Properties.Resources.InvalidGF2School);
+                        OnPropertyChanged(nameof(Gf2SchoolOtherText));
+                        OtherGF2SchoolValid = false;
+                    }
+                }
             }
 
             if (Errors.Keys.Count > 0)
@@ -729,10 +790,15 @@ namespace StudentCSV.ViewModel
 
             student.EducationDirection = (EducationDirectionEnum)EducationDirectionIndex;
             student.WantedSkpLocation = (WantedSkpLocationEnum)PreferredSkpLocationIndex;
-            student.GfSchool = (GfSchoolEnum)GfSchoolIndex;
+
+            if (GfSchoolIndex != 0)
+            {
+                student.GfSchool = GF2School[GfSchoolIndex];
+            }
+
+
             try
             {
-
                 DataSaveLocationAndFileType.SaveStudentFile(student, Statics.Path);
                 FreshGui();
                 MessageBox.Show(Properties.Resources.MessageBoxInfomationSavedString);
@@ -747,11 +813,9 @@ namespace StudentCSV.ViewModel
                 MessageBox.Show(Properties.Resources.MessageBoxUnableToAccessFileError);
             }
         }
-
         #endregion
 
         #region EnumIndexCheckersRegion
-
         private bool EducationDirectionIndexChecker()
         {
             if (EducationDirectionIndex == -1)
@@ -761,7 +825,6 @@ namespace StudentCSV.ViewModel
                     Errors.Add(nameof(EducationDirection), Properties.Resources.EducationDirectionIndexChecker);
                     OnPropertyChanged(nameof(LastError));
                 }
-
                 return true;
             }
 
@@ -770,7 +833,6 @@ namespace StudentCSV.ViewModel
                 Errors.Remove(nameof(EducationDirection));
                 OnPropertyChanged(nameof(LastError));
             }
-
             return false;
         }
 
@@ -783,7 +845,6 @@ namespace StudentCSV.ViewModel
                     Errors.Add(nameof(GF2School), Properties.Resources.GfSchoolIndexChecker);
                     OnPropertyChanged(nameof(LastError));
                 }
-
                 return true;
             }
 
@@ -792,7 +853,6 @@ namespace StudentCSV.ViewModel
                 Errors.Remove(nameof(GF2School));
                 OnPropertyChanged(nameof(LastError));
             }
-
             return false;
         }
 
@@ -805,7 +865,6 @@ namespace StudentCSV.ViewModel
                     Errors.Add(nameof(PreferredSKPlocation), Properties.Resources.PreferredSKPlocationIndexChecker);
                     OnPropertyChanged(nameof(LastError));
                 }
-
                 return true;
             }
 
@@ -814,7 +873,6 @@ namespace StudentCSV.ViewModel
                 Errors.Remove(nameof(PreferredSKPlocation));
                 OnPropertyChanged(nameof(LastError));
             }
-
             return false;
         }
 
@@ -834,6 +892,17 @@ namespace StudentCSV.ViewModel
             EUXIndex = OldEUXIndex;
             var keys = new List<string>();
             keys.AddRange(Errors.Keys.Cast<string>());
+            var Gf2SchoolTemp = new List<string>();
+            bool isIndex0 = GfSchoolIndex == 0;
+            Gf2SchoolTemp.AddRange(GF2School);
+            Gf2SchoolTemp[0] = Resources.Other;
+            GF2School = new List<string>();
+            GF2School.AddRange(Gf2SchoolTemp);
+            OnPropertyChanged(nameof(GF2School));
+            if (isIndex0)
+            {
+                GfSchoolIndex = 0;
+            }
             foreach (string errorsKey in keys)
             {
                 string obj = errorsKey.ToString();
@@ -869,12 +938,9 @@ namespace StudentCSV.ViewModel
                     case nameof(SpecialInfo):
                         Errors[errorsKey] = Properties.Resources.InvalidSpecialInfo;
                         break;
-
                 }
             }
             OnPropertyChanged(nameof(LastError));
-
-
         }
         private void ExportPressed()
         {
@@ -888,7 +954,6 @@ namespace StudentCSV.ViewModel
                 {
                     MessageBox.Show(Properties.Resources.MessageBoxFileNotSaved);
                 }
-
             }
             catch (FileFormatException e)
             {
@@ -896,7 +961,6 @@ namespace StudentCSV.ViewModel
             }
             catch (IOException)
             {
-
                 MessageBox.Show(Properties.Resources.MessageBoxUnableToAccessFileError);
             }
         }
@@ -904,11 +968,8 @@ namespace StudentCSV.ViewModel
         private void QuestionMarkPressed()
         {
             var versionInfo = FileVersionInfo.GetVersionInfo(Assembly.GetEntryAssembly().Location);
-
             var companyName = versionInfo.CompanyName;
             MessageBox.Show($"{Properties.Resources.CreatedByText}: Peter Bøgh Stubberup\n{Properties.Resources.Version_text} {versionInfo.ProductVersion}\n{versionInfo.LegalCopyright}\n{versionInfo.Comments}");
         }
-
-
     }
 }

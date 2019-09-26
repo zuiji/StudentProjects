@@ -196,6 +196,15 @@ namespace StudentCSV.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cant contain ;.
+        /// </summary>
+        public static string InvalidGF2School {
+            get {
+                return ResourceManager.GetString("InvalidGF2School", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Lastname is Invalid.
         /// </summary>
         public static string InvalidLastname {
@@ -354,6 +363,15 @@ namespace StudentCSV.Properties {
         public static string No {
             get {
                 return ResourceManager.GetString("No", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Other.
+        /// </summary>
+        public static string Other {
+            get {
+                return ResourceManager.GetString("Other", resourceCulture);
             }
         }
         

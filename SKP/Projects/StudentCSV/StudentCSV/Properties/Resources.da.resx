@@ -162,6 +162,9 @@
   <data name="InvalidFirstname" xml:space="preserve">
     <value>Fornavnet er ugyldig</value>
   </data>
+  <data name="InvalidGF2School" xml:space="preserve">
+    <value>Kan ikke indholde ;</value>
+  </data>
   <data name="InvalidLastname" xml:space="preserve">
     <value>Efternavnet er ugyldigt</value>
   </data>
@@ -215,6 +218,9 @@
   </data>
   <data name="No" xml:space="preserve">
     <value>Nej</value>
+  </data>
+  <data name="Other" xml:space="preserve">
+    <value>Anden</value>
   </data>
   <data name="Phonenumber" xml:space="preserve">
     <value>Telefon nummer</value>
