@@ -18,9 +18,11 @@ namespace StudentCSV.ViewModel
 {
     public class NewStudentWindowViewModel : INotifyPropertyChanged
     {
-        #region Props and fields
-        private Student student { get; set; }
+        public event PropertyChangedEventHandler PropertyChanged;
 
+        #region Props and fields
+
+        public Student student { get; set; }
 
         private string _firstname;
         private string _middleName;
@@ -46,8 +48,7 @@ namespace StudentCSV.ViewModel
         private bool _phoneNumberValid;
         private bool _specialInfoValid;
         private bool _otherGf2SchoolValid;
-
-
+        private readonly ButtonPressed _buttonPressed;
 
         public Visibility ShowDebug { get; set; } = Visibility.Collapsed;
 
@@ -75,8 +76,7 @@ namespace StudentCSV.ViewModel
 
 #endif
         public OrderedDictionary Errors { get; set; }
-
-
+        
         public string Gf2SchoolOtherText
         {
             get { return _gf2SchoolOtherText; }
@@ -87,8 +87,7 @@ namespace StudentCSV.ViewModel
 
             }
         }
-
-
+        
         public string LastError
         {
 
@@ -103,6 +102,7 @@ namespace StudentCSV.ViewModel
             }
 
         }
+
         public string FirstName
         {
             get { return _firstname; }
@@ -142,6 +142,7 @@ namespace StudentCSV.ViewModel
                 OnPropertyChanged();
             }
         }
+
         public string ZbcEmail
         {
             get { return _zbcEmail; }
@@ -267,6 +268,7 @@ namespace StudentCSV.ViewModel
 
             }
         }
+
         public bool ZbcEmailValid
         {
             get { return _zbcEmailValid; }
@@ -374,13 +376,13 @@ namespace StudentCSV.ViewModel
 
 
             FreshGui();
+            _buttonPressed = new ButtonPressed(this);
         }
         #endregion
-
-
+        
         #region FreshGui
 
-        private void FreshGui()
+        public void FreshGui()
         {
             Errors = new OrderedDictionary();
             FirstName = string.Empty;
@@ -420,11 +422,11 @@ namespace StudentCSV.ViewModel
             OnPhoneNumberFieldLostFocusCommand = new RelayCommand(a => OnPhoneNumberFieldLostFocus());
             OnSpecialInfoFieldLostFocusCommand = new RelayCommand(a => OnSpecialInfoFieldLostFocus());
             OnOtherGf2SchoolOtherTextLostFocusCommand = new RelayCommand(a => OnOtherGf2SchoolOtherTextFieldLostFocus());
-            OnCancelPressedCommand = new RelayCommand(a => OnCancelPressed());
-            OnSavePressedCommand = new RelayCommand(a => OnSavePressed());
+            OnCancelPressedCommand = new RelayCommand(a => _buttonPressed.OnCancelPressed());
+            OnSavePressedCommand = new RelayCommand(a => _buttonPressed.OnSavePressed());
             OnLanguageChangedCommand = new RelayCommand(a => OnLanguageChanged());
-            QuestionMarkPressedCommand = new RelayCommand(a => QuestionMarkPressed());
-            ExportPressedCommand = new RelayCommand(a => ExportPressed());
+            QuestionMarkPressedCommand = new RelayCommand(a => _buttonPressed.QuestionMarkPressed());
+            ExportPressedCommand = new RelayCommand(a => _buttonPressed.ExportPressed());
 #if DEBUG
             FillDebugInfoIntoFieldsPressedCommand = new RelayCommand(a => FillDebugInfoIntoFieldsPressed());
             ShowDebug = Visibility.Visible;
@@ -456,8 +458,6 @@ namespace StudentCSV.ViewModel
 #endif
 
         #endregion
-
-        public event PropertyChangedEventHandler PropertyChanged;
 
         #region FieldLostFocusCommands
         public void OnFirstNameFieldLostFocus()
@@ -675,148 +675,11 @@ namespace StudentCSV.ViewModel
             OnPropertyChanged(nameof(LastError));
         }
 
-        #endregion 
-
-        public void OnCancelPressed()
-        {
-            var Confirmation = MessageBox.Show(Properties.Resources.MessageBoxConfirmCanceled, Properties.Resources.MessageBoxConfirmCancel, MessageBoxButton.YesNo);
-            if (Confirmation == MessageBoxResult.Yes)
-            {
-                FreshGui();
-            }
-        }
-        #region OnSavePressedRegion
-        private void OnSavePressed()
-        {
-            var Confirmation = MessageBox.Show(Properties.Resources.MessageBoxConfirm,
-                                               Properties.Resources.Confirm,
-                                               MessageBoxButton.YesNo);
-            if (Confirmation != MessageBoxResult.Yes)
-            {
-                return;
-            }
-
-            if (PreferredSKPlocationIndexChecker())
-            {
-                return;
-            }
-
-            if (GfSchoolIndexChecker())
-            {
-                return;
-            }
-
-            if (EducationDirectionIndexChecker())
-            {
-                return;
-            }
-
-            if (!Validator.IsValidFirstName(FirstName))
-            {
-                if (!Errors.Contains(nameof(FirstName)))
-                {
-                    Errors.Add(nameof(FirstName), Properties.Resources.InvalidFirstname);
-                    OnPropertyChanged(nameof(LastError));
-                    FirstNameValid = false;
-                }
-            }
-
-            if (!Validator.IsValidLastName(LastName))
-            {
-                if (!Errors.Contains(nameof(LastName)))
-                {
-                    Errors.Add(nameof(LastName), Properties.Resources.InvalidLastname);
-                    OnPropertyChanged(nameof(LastError));
-                    LastNameValid = false;
-                }
-            }
-
-            if (!Validator.IsValidEmail(Email))
-            {
-                if (!Errors.Contains(nameof(Email)))
-                {
-                    Errors.Add(nameof(Email), Properties.Resources.InvalidEmail);
-                    OnPropertyChanged(nameof(LastError));
-                    EmailValid = false;
-                }
-            }
-
-            if (!Validator.IsValidPhoneNumber(PhoneNumber))
-            {
-                if (!Errors.Contains(nameof(PhoneNumber)))
-                {
-                    Errors.Add(nameof(PhoneNumber), Properties.Resources.InvalidPhonenumber);
-                    OnPropertyChanged(nameof(LastError));
-                    PhoneNumberValid = false;
-                }
-
-            }
-
-            if (!Validator.IsValidCprNr(CprNr))
-            {
-                if (!Errors.Contains(nameof(CprNr)))
-                {
-                    Errors.Add(nameof(CprNr), Properties.Resources.InvalidCPRNr);
-                    OnPropertyChanged(nameof(LastError));
-                    CprNrValid = false;
-                }
-            }
-            if (GfSchoolIndex == 0)
-            {
-                if (!Validator.IsValidSpecialInfo(Gf2SchoolOtherText))
-                {
-                    if (!Errors.Contains(nameof(Gf2SchoolOtherText)))
-                    {
-                        Errors.Add(nameof(Gf2SchoolOtherText), Properties.Resources.InvalidGF2School);
-                        OnPropertyChanged(nameof(Gf2SchoolOtherText));
-                        OtherGF2SchoolValid = false;
-                    }
-                }
-            }
-
-            if (Errors.Keys.Count > 0)
-            {
-                return;
-            }
-
-            if (EUXIndex == 0)
-            {
-                student.EUX = true;
-            }
-            else
-            {
-                student.EUX = false;
-            }
-
-            student.EducationDirection = (EducationDirectionEnum)EducationDirectionIndex;
-            student.WantedSkpLocation = (WantedSkpLocationEnum)PreferredSkpLocationIndex;
-
-            if (GfSchoolIndex != 0)
-            {
-                student.GfSchool = GF2School[GfSchoolIndex];
-            }
-
-
-            try
-            {
-                DataSaveLocationAndFileType.SaveStudentFile(student, Statics.Path);
-                FreshGui();
-                MessageBox.Show(Properties.Resources.MessageBoxInfomationSavedString);
-            }
-            catch (FileFormatException e)
-            {
-                MessageBox.Show(e.ToString());
-            }
-            catch (IOException)
-            {
-
-                MessageBox.Show(Properties.Resources.MessageBoxUnableToAccessFileError);
-            }
-        }
         #endregion
-
+        
         #region EnumIndexCheckersRegion
-        private bool EducationDirectionIndexChecker()
+
+        public bool EducationDirectionIndexChecker()
         {
             if (EducationDirectionIndex == -1)
             {
@@ -836,7 +699,7 @@ namespace StudentCSV.ViewModel
             return false;
         }
 
-        private bool GfSchoolIndexChecker()
+        public bool GfSchoolIndexChecker()
         {
             if (GfSchoolIndex == -1)
             {
@@ -856,7 +719,7 @@ namespace StudentCSV.ViewModel
             return false;
         }
 
-        private bool PreferredSKPlocationIndexChecker()
+        public bool PreferredSKPlocationIndexChecker()
         {
             if (PreferredSkpLocationIndex == -1)
             {
@@ -878,12 +741,15 @@ namespace StudentCSV.ViewModel
 
         #endregion
 
+        #region OnPropertyChangedRegion
         [NotifyPropertyChangedInvocator]
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = "")
+        public virtual void OnPropertyChanged([CallerMemberName] string propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+        #endregion
 
+        #region OnLanguageChangeRegion
         public void OnLanguageChanged()
         {
             var OldEUXIndex = EUXIndex;
@@ -942,34 +808,8 @@ namespace StudentCSV.ViewModel
             }
             OnPropertyChanged(nameof(LastError));
         }
-        private void ExportPressed()
-        {
-            try
-            {
-                if (DataSaveLocationAndFileType.DecryptFile())
-                {
-                    MessageBox.Show(Properties.Resources.MessageBoxExportFileSaved);
-                }
-                else
-                {
-                    MessageBox.Show(Properties.Resources.MessageBoxFileNotSaved);
-                }
-            }
-            catch (FileFormatException e)
-            {
-                MessageBox.Show(e.ToString());
-            }
-            catch (IOException)
-            {
-                MessageBox.Show(Properties.Resources.MessageBoxUnableToAccessFileError);
-            }
-        }
+        #endregion
 
-        private void QuestionMarkPressed()
-        {
-            var versionInfo = FileVersionInfo.GetVersionInfo(Assembly.GetEntryAssembly().Location);
-            var companyName = versionInfo.CompanyName;
-            MessageBox.Show($"{Properties.Resources.CreatedByText}: Peter Bøgh Stubberup\n{Properties.Resources.Version_text} {versionInfo.ProductVersion}\n{versionInfo.LegalCopyright}\n{versionInfo.Comments}");
-        }
+     
     }
 }

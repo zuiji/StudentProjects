@@ -60,10 +60,10 @@
     </StartupObject>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>A7C16F491812F4056840C64BBEDBA41D707B1017</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>9FA07C92A6029A0D57FAADFBBFA16C8E25D75EBC</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>StudentCSV_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>StudentCSV_1_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
@@ -154,6 +154,7 @@
     <Compile Include="StaticsAndEnums\EducationDirectionEnum.cs" />
     <Compile Include="StaticsAndEnums\GfSchoolEnum.cs" />
     <Compile Include="StudentValidater\Validator.cs" />
+    <Compile Include="ViewModel\ButtonPressed.cs" />
     <Compile Include="ViewModel\NewStudentWindowViewModel.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Student.cs" />
@@ -212,6 +213,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="StudentCSV_1_TemporaryKey.pfx" />
     <None Include="StudentCSV_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
