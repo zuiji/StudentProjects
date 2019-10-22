@@ -208,7 +208,7 @@
                         </Interactions:EventTrigger>
                     </Interactions:Interaction.Triggers>
                 </TextBox>
-                <PasswordBox x:Name="CprBox" Height="36.8" FontSize="19.2" PasswordChanged="PasswordBox_OnPasswordChanged" PasswordChar="3" Visibility="{Binding IsChecked, ElementName=ShowPasswordCheckBox, Converter={staticsAndEnums:BooleanToVisibilityConverter InvertVisibility=True}}">
+                <PasswordBox x:Name="CprBox" Height="36.8" FontSize="19.2" PasswordChanged="PasswordBox_OnPasswordChanged" PasswordChar="*" Visibility="{Binding IsChecked, ElementName=ShowPasswordCheckBox, Converter={staticsAndEnums:BooleanToVisibilityConverter InvertVisibility=True}}">
                     <PasswordBox.Style>
                         <Style>
                             <Style.Triggers>

@@ -17,7 +17,8 @@ using System.Windows.Controls;
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 [assembly: AssemblyDescription("\tSpecial Thanks To:\n" +
-                               "My Cousin for the help with:\nEncrypt/Decrypt/Hashing.\n" +
+                               "My Cousin\n" +
+                               "For the help with:\nEncrypt/Decrypt/Hashing.\n" +
                                "\tThe Testers.\n" +
                                "Stefan J Toft\n" +
                                "Mads Arbe Strøm\n" +
