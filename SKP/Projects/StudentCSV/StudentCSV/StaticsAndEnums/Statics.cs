@@ -13,7 +13,7 @@ namespace StudentCSV.StaticsAndEnums
         {
             "IT-Supporter", "Datatekniker med speciale i programmering", "Datatekniker med speciale i infrastruktur"
         };
-
+        
         public static readonly List<string> CorrectGfSchoolEnumNames = new List<string>()
         {
             Properties.Resources.Other,"Køge", "Nykøbing F.", "Ringsted", "Roskilde", "Slagelse", "Vordingborg"
@@ -25,7 +25,6 @@ namespace StudentCSV.StaticsAndEnums
     }
     public class BooleanToVisibilityConverter : MarkupExtension, IValueConverter
     {
-
         public Object Convert(Object value, Type targetType, Object parameter, CultureInfo culture)
         {
             if (targetType == typeof(Visibility))

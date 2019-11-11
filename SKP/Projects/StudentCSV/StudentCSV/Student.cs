@@ -6,6 +6,7 @@ namespace StudentCSV
 {
     public class Student
     {
+        #region Feilds
         private string _firstName;
         private string _middleName;
         private string _lastName;
@@ -14,7 +15,8 @@ namespace StudentCSV
         private string _cprNr;
         private string _phoneNumber;
         private string _specialInfo;
-        private string _gfSchool;
+        private string _gfSchool; 
+        #endregion
 
         #region NameProbs
         public string FirstName
