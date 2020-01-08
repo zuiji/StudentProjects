@@ -6,19 +6,26 @@ namespace StudentCSV
 {
     public class Student
     {
+
+        // Creating defination Object of student.
         #region Feilds
+
+
         private string _firstName;
         private string _middleName;
         private string _lastName;
         private string _email;
-        private string _zbcEmail;
+        private string _unilogin;
         private string _cprNr;
         private string _phoneNumber;
         private string _specialInfo;
-        private string _gfSchool; 
+        private string _gfSchool;
+        
+
         #endregion
 
         #region NameProbs
+
         public string FirstName
         {
             get { return _firstName; }
@@ -72,6 +79,14 @@ namespace StudentCSV
 
 
 
+        public string Fullname
+        {
+            get { return $"{_firstName} {_middleName} {_lastName}"; }
+        }
+
+
+
+
         #endregion#region Email Prop
 
         #region EmailProp
@@ -92,18 +107,18 @@ namespace StudentCSV
 
             }
         }
-        public string ZbcEmail
+        public string Unilogin
         {
-            get { return _zbcEmail; }
+            get { return _unilogin; }
             set
             {
-                if (Validator.IsValidZbcEmail(value))
+                if (Validator.Unilogin(value))
                 {
-                    _zbcEmail = value;
+                    _unilogin = value;
                 }
                 else
                 {
-                    throw new ArgumentException(Properties.Resources.IsValidZbcEmail);
+                    throw new ArgumentException(Properties.Resources.IsValidUnilogin);
                 }
 
             }
@@ -184,7 +199,7 @@ namespace StudentCSV
 
         public string GfSchool
         {
-            get {return _gfSchool;}
+            get { return _gfSchool; }
             set
             {
                 if (Validator.IsValidSpecialInfo(value))

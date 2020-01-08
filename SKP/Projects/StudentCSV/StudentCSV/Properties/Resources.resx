@@ -177,8 +177,8 @@
   <data name="InvalidSpecialInfo" xml:space="preserve">
     <value>Cant contain ;</value>
   </data>
-  <data name="IsValidZbcEmail" xml:space="preserve">
-    <value>Zbc Email is Invalid</value>
+  <data name="IsValidUnilogin" xml:space="preserve">
+    <value>UNI•Login is Invalid</value>
   </data>
   <data name="Lastname" xml:space="preserve">
     <value>Lastname</value>
@@ -240,13 +240,13 @@
   <data name="SpecialInfo" xml:space="preserve">
     <value>SpecialInfo</value>
   </data>
+  <data name="Unilogin" xml:space="preserve">
+    <value>UNI•Login</value>
+  </data>
   <data name="Version text" xml:space="preserve">
     <value>Current Version</value>
   </data>
   <data name="Yes" xml:space="preserve">
     <value>Yes</value>
-  </data>
-  <data name="ZbcEmail" xml:space="preserve">
-    <value>Zbc Email</value>
   </data>
 </root>

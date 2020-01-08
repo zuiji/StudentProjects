@@ -241,11 +241,11 @@ namespace StudentCSV.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Zbc Email is Invalid.
+        ///   Looks up a localized string similar to UNI•Login is Invalid.
         /// </summary>
-        public static string IsValidZbcEmail {
+        public static string IsValidUnilogin {
             get {
-                return ResourceManager.GetString("IsValidZbcEmail", resourceCulture);
+                return ResourceManager.GetString("IsValidUnilogin", resourceCulture);
             }
         }
         
@@ -430,6 +430,15 @@ namespace StudentCSV.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to UNI•Login.
+        /// </summary>
+        public static string Unilogin {
+            get {
+                return ResourceManager.GetString("Unilogin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Current Version.
         /// </summary>
         public static string Version_text {
@@ -444,15 +453,6 @@ namespace StudentCSV.Properties {
         public static string Yes {
             get {
                 return ResourceManager.GetString("Yes", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Zbc Email.
-        /// </summary>
-        public static string ZbcEmail {
-            get {
-                return ResourceManager.GetString("ZbcEmail", resourceCulture);
             }
         }
     }

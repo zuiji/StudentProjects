@@ -30,7 +30,7 @@
             <ColumnDefinition Width="80*"/>
             <ColumnDefinition Width="10*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding LastError, Mode=OneWay}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="36" Foreground="#FFFF0101" />
+        <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding LastError, Mode=OneWay}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="36" Foreground="{DynamicResource MyBackgroundBrush}" Background="{Binding Mode=OneWay, Source={StaticResource MyBackgroundBrush}}" />
 
         <Grid Grid.Column="1" Grid.Row="1">
             <Grid.ColumnDefinitions>
@@ -49,8 +49,8 @@
                 <RowDefinition Height="30*"/>
             </Grid.RowDefinitions>
             <StackPanel x:Name="FirstnameStackPanel" Grid.Row="0">
-                <Label Content="{Binding Path=Firstname, Source={StaticResource Resources}}" HorizontalContentAlignment="Center" FontSize="19.2"/>
-                <TextBox x:Name="textBox" TextWrapping="Wrap" Height="36.8" FontSize="19.2">
+                <Label Content="{Binding Path=Firstname, Source={StaticResource Resources}}" HorizontalContentAlignment="Center" FontSize="19.2" Foreground="{DynamicResource MyBackgroundBrush}"/>
+                <TextBox x:Name="textBox" TextWrapping="Wrap" Height="36.8" FontSize="19.2" Foreground="{Binding Mode=OneWay, Source={StaticResource MyBackgroundBrush}}">
                     <TextBox.Style>
                         <Style>
                             <Style.Triggers>
@@ -140,16 +140,16 @@
                     <Binding x:Name="EmailBinding" Path="Email"/>
                 </TextBox>
             </StackPanel>
-            <StackPanel x:Name="ZbcEmailStackpanel" Grid.Row="0" Grid.Column="2">
-                <Label Content="{Binding Path=ZbcEmail, Source={StaticResource Resources}}" HorizontalContentAlignment="Center" FontSize="19.2"/>
+            <StackPanel x:Name="UnilogStackpanel" Grid.Row="0" Grid.Column="2">
+                <Label Content="{Binding Path=Unilogin, Source={StaticResource Resources}}" HorizontalContentAlignment="Center" FontSize="19.2"/>
                 <TextBox Height="36.8" TextWrapping="Wrap" FontSize="19.2">
                     <TextBox.Style>
                         <Style>
                             <Style.Triggers>
-                                <DataTrigger Binding="{Binding ZbcEmailValid}" Value="True">
+                                <DataTrigger Binding="{Binding UniloginValid}" Value="True">
                                     <Setter Property="TextBox.BorderBrush" Value="#FFABADB3"/>
                                 </DataTrigger>
-                                <DataTrigger Binding="{Binding ZbcEmailValid}" Value="False">
+                                <DataTrigger Binding="{Binding UniloginValid}" Value="False">
                                     <Setter Property="TextBox.BorderBrush" Value="#FFE90D0D"/>
                                 </DataTrigger>
                             </Style.Triggers>
@@ -157,10 +157,10 @@
                     </TextBox.Style>
                     <Interactions:Interaction.Triggers>
                         <Interactions:EventTrigger EventName="LostFocus">
-                            <Interactions:InvokeCommandAction Command="{Binding OnZbcEmailFieldLostFocusCommand}" />
+                            <Interactions:InvokeCommandAction Command="{Binding OnUniloginFieldLostFocusCommand}" />
                         </Interactions:EventTrigger>
                     </Interactions:Interaction.Triggers>
-                    <Binding x:Name="ZbcEmailBinding" Path="ZbcEmail"/>
+                    <Binding x:Name="UniloginBinding" Path="Unilogin"/>
                 </TextBox>
             </StackPanel>
 

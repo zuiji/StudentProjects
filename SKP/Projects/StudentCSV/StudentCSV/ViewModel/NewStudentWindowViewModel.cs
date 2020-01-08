@@ -19,20 +19,21 @@ namespace StudentCSV.ViewModel
     public class NewStudentWindowViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-
+        // Binding to View 
         #region Props and fields
 
         public Student student { get; set; }
 
         private string _firstname;
-        private string _middleName;
+        private string _middlename;
         private string _lastname;
         private string _email;
-        private string _zbcEmail;
+        private string _unilogin;
         private string _cprNr;
         private string _phoneNumber;
         private string _specialInfo;
         private string _gf2SchoolOtherText;
+        
 
         private int _euxIndex;
         private int _preferredSkpLocationIndex;
@@ -43,7 +44,7 @@ namespace StudentCSV.ViewModel
         private bool _middleNameValid;
         private bool _lastNameValid;
         private bool _emailValid;
-        private bool _zbcEmailValid;
+        private bool _uniloginValid;
         private bool _cprNrValid;
         private bool _phoneNumberValid;
         private bool _specialInfoValid;
@@ -62,7 +63,7 @@ namespace StudentCSV.ViewModel
         public RelayCommand OnPhoneNumberFieldLostFocusCommand { get; set; }
         public RelayCommand OnCprNrFieldLostFocusCommand { get; set; }
         public RelayCommand OnEmailFieldLostFocusCommand { get; set; }
-        public RelayCommand OnZbcEmailFieldLostFocusCommand { get; set; }
+        public RelayCommand OnUniloginFieldLostFocusCommand { get; set; }
         public RelayCommand OnLastNameFieldLostFocusCommand { get; set; }
         public RelayCommand OnMiddleNameFieldLostFocusCommand { get; set; }
         public RelayCommand OnFirstNameFieldLostFocusCommand { get; set; }
@@ -115,10 +116,10 @@ namespace StudentCSV.ViewModel
 
         public string MiddleName
         {
-            get { return _middleName; }
+            get { return _middlename; }
             set
             {
-                _middleName = value;
+                _middlename = value;
                 OnPropertyChanged();
             }
         }
@@ -132,6 +133,13 @@ namespace StudentCSV.ViewModel
                 OnPropertyChanged();
             }
         }
+        
+        public string Fullname
+        {
+            get { return $"{_firstname} {_middlename} {_lastname}"; }
+          
+        }
+
 
         public string Email
         {
@@ -143,12 +151,12 @@ namespace StudentCSV.ViewModel
             }
         }
 
-        public string ZbcEmail
+        public string Unilogin
         {
-            get { return _zbcEmail; }
+            get { return _unilogin; }
             set
             {
-                _zbcEmail = value;
+                _unilogin = value;
                 OnPropertyChanged();
             }
         }
@@ -269,12 +277,12 @@ namespace StudentCSV.ViewModel
             }
         }
 
-        public bool ZbcEmailValid
+        public bool UniloginValid
         {
-            get { return _zbcEmailValid; }
+            get { return _uniloginValid; }
             set
             {
-                _zbcEmailValid = value;
+                _uniloginValid = value;
                 OnPropertyChanged();
 
             }
@@ -389,7 +397,7 @@ namespace StudentCSV.ViewModel
             MiddleName = string.Empty;
             LastName = string.Empty;
             Email = string.Empty;
-            ZbcEmail = string.Empty;
+            Unilogin = string.Empty;
             CprNr = string.Empty;
             PhoneNumber = string.Empty;
             SpecialInfo = string.Empty;
@@ -397,7 +405,7 @@ namespace StudentCSV.ViewModel
             MiddleNameValid = true;
             LastNameValid = true;
             EmailValid = true;
-            ZbcEmailValid = true;
+            UniloginValid = true;
             CprNrValid = true;
             PhoneNumberValid = true;
             SpecialInfoValid = true;
@@ -417,7 +425,7 @@ namespace StudentCSV.ViewModel
             OnMiddleNameFieldLostFocusCommand = new RelayCommand(a => OnMiddleNameFieldLostFocus());
             OnLastNameFieldLostFocusCommand = new RelayCommand(a => OnLastNameFieldLostFocus());
             OnEmailFieldLostFocusCommand = new RelayCommand(a => OnEmailFieldLostFocus());
-            OnZbcEmailFieldLostFocusCommand = new RelayCommand(a => OnZbcEmailFieldLostFocus());
+            OnUniloginFieldLostFocusCommand = new RelayCommand(a => OnUnilogFieldLostFocus());
             OnCprNrFieldLostFocusCommand = new RelayCommand(a => OnCprNrFieldLostFocus());
             OnPhoneNumberFieldLostFocusCommand = new RelayCommand(a => OnPhoneNumberFieldLostFocus());
             OnSpecialInfoFieldLostFocusCommand = new RelayCommand(a => OnSpecialInfoFieldLostFocus());
@@ -444,7 +452,7 @@ namespace StudentCSV.ViewModel
             student.MiddleName = MiddleName = "Jes Man";
             student.LastName = LastName = "Hansen";
             student.Email = Email = "HansHansen@hans.dk";
-            student.ZbcEmail = ZbcEmail = "Haha@zbc.dk";
+            student.Unilogin = Unilogin = "Haha656a";
             student.PhoneNumber = PhoneNumber = "99999999";
             student.CprNr = CprNr = "121212-1212";
             EUXIndex = 1;
@@ -563,25 +571,25 @@ namespace StudentCSV.ViewModel
             OnPropertyChanged(nameof(LastError));
 
         }
-        public void OnZbcEmailFieldLostFocus()
+        public void OnUnilogFieldLostFocus()
         {
             try
             {
-                student.ZbcEmail = ZbcEmail;
-                if (Errors.Contains(nameof(ZbcEmail)))
+                student.Unilogin = Unilogin;
+                if (Errors.Contains(nameof(Unilogin)))
                 {
-                    Errors.Remove(nameof(ZbcEmail));
-                    ZbcEmailValid = true;
+                    Errors.Remove(nameof(Unilogin));
+                    UniloginValid = true;
                 }
             }
             catch (ArgumentException e)
             {
                 // MessageBox.Show(e.InnerException.Message);
-                if (!Errors.Contains(nameof(ZbcEmail)))
+                if (!Errors.Contains(nameof(Unilogin)))
                 {
-                    Errors.Add(nameof(ZbcEmail), e.Message);
+                    Errors.Add(nameof(Unilogin), e.Message);
                 }
-                ZbcEmailValid = false;
+                UniloginValid = false;
             }
             OnPropertyChanged(nameof(LastError));
         }

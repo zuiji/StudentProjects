@@ -19,10 +19,11 @@ namespace StudentCSV
     /// </summary>
     public partial class App : Application
     {
-       
+        string appTheme = "Light";
         protected override void OnStartup(StartupEventArgs e)
         {
-
+            this.Resources.MergedDictionaries[0].Source =
+    new Uri($"/Themes/{appTheme}.xaml", UriKind.Relative);
             SaveFileDialog Dialog = new SaveFileDialog();
             Dialog.AddExtension = true;
             Dialog.OverwritePrompt = false;
@@ -31,12 +32,12 @@ namespace StudentCSV
 
             if (result == true)
             {
-                if (Path.GetExtension(Dialog.FileName).ToLower() != ".zbc" )
+                if (Path.GetExtension(Dialog.FileName).ToLower() != ".zbc")
                 {
-               
+
                 }
                 Statics.Path = Dialog.FileName;
-               
+
             }
             else
             {
