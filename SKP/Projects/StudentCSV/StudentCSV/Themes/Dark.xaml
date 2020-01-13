@@ -1,5 +1,5 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:StudentCSV.Themes">
-    <SolidColorBrush x:Key="MyBackgroundBrush" Color="#8EC2FA" />
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <SolidColorBrush x:Key="MyBackgroundBrush" Color="Black" />
+    <SolidColorBrush x:Key="MyForgroundBrush" Color="HotPink" />
 </ResourceDictionary>

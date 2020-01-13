@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
+using System.Configuration;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -33,7 +34,7 @@ namespace StudentCSV.ViewModel
         private string _phoneNumber;
         private string _specialInfo;
         private string _gf2SchoolOtherText;
-        
+
 
         private int _euxIndex;
         private int _preferredSkpLocationIndex;
@@ -77,7 +78,7 @@ namespace StudentCSV.ViewModel
 
 #endif
         public OrderedDictionary Errors { get; set; }
-        
+
         public string Gf2SchoolOtherText
         {
             get { return _gf2SchoolOtherText; }
@@ -88,7 +89,7 @@ namespace StudentCSV.ViewModel
 
             }
         }
-        
+
         public string LastError
         {
 
@@ -133,11 +134,11 @@ namespace StudentCSV.ViewModel
                 OnPropertyChanged();
             }
         }
-        
+
         public string Fullname
         {
             get { return $"{_firstname} {_middlename} {_lastname}"; }
-          
+
         }
 
 
@@ -339,7 +340,15 @@ namespace StudentCSV.ViewModel
 
             do
             {
-                string Password = PasswordWindow.Prompt("Please Enter Password", "Password");
+                string Password;
+                if (DesignerProperties.GetIsInDesignMode(new DependencyObject()))
+                {
+                    Password = "something";
+                }
+                else
+                {
+                    Password = PasswordWindow.Prompt("Please Enter Password", "Password");
+                }
                 if (string.IsNullOrWhiteSpace(Password))
                 {
                     var result2 = MessageBox.Show("Wrong Password\nPassword cannot be empty\nTry Again", "Wrong Password", MessageBoxButton.YesNo, MessageBoxImage.Warning, MessageBoxResult.Cancel, MessageBoxOptions.DefaultDesktopOnly);
@@ -387,7 +396,7 @@ namespace StudentCSV.ViewModel
             _buttonPressed = new ButtonPressed(this);
         }
         #endregion
-        
+
         #region FreshGui
 
         public void FreshGui()
@@ -684,7 +693,7 @@ namespace StudentCSV.ViewModel
         }
 
         #endregion
-        
+
         #region EnumIndexCheckersRegion
 
         public bool EducationDirectionIndexChecker()
@@ -818,6 +827,6 @@ namespace StudentCSV.ViewModel
         }
         #endregion
 
-     
+
     }
 }
