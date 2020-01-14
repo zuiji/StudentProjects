@@ -256,7 +256,7 @@
                 <Label Content="{Binding Path=PreferredSKPlocation, Source={StaticResource Resources}}" HorizontalContentAlignment="Center" FontSize="19.2"/>
                 <ComboBox Height="36.8" Text="TextBox" FontSize="19.2" ItemsSource="{Binding PreferredSKPlocation}" SelectedIndex="{Binding PreferredSkpLocationIndex}"/>
             </StackPanel>
-            <Image Source="/Resources/Images/ZBCLogo.png" Grid.Row="5" VerticalAlignment="Bottom"/>
+            <Image Source="/Resources/Images/zbc_neg.png" Grid.Row="5" VerticalAlignment="Bottom"/>
             <StackPanel x:Name="SpecialInfoStackPanel" Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="3" Grid.RowSpan="2">
                 <Grid>
                     <Grid.ColumnDefinitions>
