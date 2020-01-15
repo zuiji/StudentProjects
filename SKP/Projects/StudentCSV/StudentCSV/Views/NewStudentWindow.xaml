@@ -30,7 +30,7 @@
             <ColumnDefinition Width="80*"/>
             <ColumnDefinition Width="10*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding LastError, Mode=OneWay}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="36" Foreground="{DynamicResource MyBackgroundBrush}" Background="{DynamicResource MyBackgroundBrush}" />
+        <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding LastError, Mode=OneWay}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="36" Foreground="{DynamicResource MyForgroundBrush}" Background="{DynamicResource MyBackgroundBrush}" />
 
         <Grid Grid.Column="1" Grid.Row="1">
             <Grid.ColumnDefinitions>

@@ -22,17 +22,13 @@ namespace StudentCSV
     /// </summary>
     public partial class App : Application
     {
-        string appTheme = "Dark";
-
         private const string RegistryKeyPath = @"Software\Microsoft\Windows\CurrentVersion\Themes\Personalize";
-
 
         private const string RegistryValueName = "AppsUseLightTheme";
 
         protected override void OnStartup(StartupEventArgs e)
         {
             WatchTheme();
-            this.Resources.MergedDictionaries[0].Source = new Uri($"/Themes/{appTheme}.xaml", UriKind.Relative);
             SaveFileDialog Dialog = new SaveFileDialog();
             Dialog.AddExtension = true;
             Dialog.OverwritePrompt = false;
@@ -67,42 +63,62 @@ namespace StudentCSV
                 currentUser.User.Value,
                 RegistryKeyPath.Replace(@"\", @"\\"),
                 RegistryValueName);
-
+            Statics.WindowsThemeChanged += SetAppTheme;
             try
             {
                 var watcher = new ManagementEventWatcher(query);
                 watcher.EventArrived += (sender, args) =>
                 {
-                    WindowsTheme newWindowsTheme = GetWindowsTheme();
+
                     // React to new theme
-                    if (newWindowsTheme == WindowsTheme.Dark)
+                    SetAppThemeFromWindowsTheme();
+                };
+
+                SystemParameters.StaticPropertyChanged += (sender, args) =>
+                {
+                    if (args.PropertyName == nameof(SystemParameters.HighContrast))
                     {
-                        this.Resources.MergedDictionaries[0].Source = new Uri($"/Themes/Dark.xaml", UriKind.Relative);
-                    }
-                    else
-                    {
-                        this.Resources.MergedDictionaries[0].Source = new Uri($"/Themes/Light.xaml", UriKind.Relative);
+                       SetAppThemeFromWindowsTheme();
                     }
                 };
 
                 // Start listening for events
                 watcher.Start();
+                SetAppThemeFromWindowsTheme();
             }
             catch (Exception)
             {
                 // This can fail on Windows 7
             }
 
-            WindowsTheme initialTheme = GetWindowsTheme();
-            if (initialTheme == WindowsTheme.Dark)
+        }
+
+        private void SetAppThemeFromWindowsTheme()
+        {
+            if (SystemParameters.HighContrast)
             {
-                this.Resources.MergedDictionaries[0].Source = new Uri($"/Themes/Dark.xaml", UriKind.Relative);
-            }
-            else
-            {
-                this.Resources.MergedDictionaries[0].Source = new Uri($"/Themes/Light.xaml", UriKind.Relative);
+                Statics.theme = WindowsTheme.HighContrast;
             }
 
+            Statics.theme = GetWindowsTheme();
+
+        }
+
+        private void SetAppTheme()
+        {
+            switch (Statics.theme)
+            {
+
+                case WindowsTheme.Dark:
+                    this.Resources.MergedDictionaries[0].Source = new Uri($"/Themes/Dark.xaml", UriKind.Relative);
+                    break;
+                case WindowsTheme.HighContrast:
+                    this.Resources.MergedDictionaries[0].Source = new Uri($"/Themes/HighContrast.xaml", UriKind.Relative);
+                    break;
+                default:
+                    this.Resources.MergedDictionaries[0].Source = new Uri($"/Themes/Light.xaml", UriKind.Relative);
+                    break;
+            }
         }
 
         private static WindowsTheme GetWindowsTheme()
@@ -119,13 +135,10 @@ namespace StudentCSV
 
                 return registryValue > 0 ? WindowsTheme.Light : WindowsTheme.Dark;
             }
+
         }
 
 
-        private enum WindowsTheme
-        {
-            Light,
-            Dark
-        }
+
     }
 }

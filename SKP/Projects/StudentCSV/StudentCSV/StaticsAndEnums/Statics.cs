@@ -13,14 +13,29 @@ namespace StudentCSV.StaticsAndEnums
         {
             "IT-Supporter", "Datatekniker med speciale i programmering", "Datatekniker med speciale i infrastruktur"
         };
-        
+
         public static readonly List<string> CorrectGfSchoolEnumNames = new List<string>()
         {
             Properties.Resources.Other,"Køge", "Nykøbing F.", "Ringsted", "Roskilde", "Slagelse", "Vordingborg"
 
         };
+
+        private static WindowsTheme _theme;
         public static string Path { get; set; }
-        public static string Password {get; set;}
+        public static string Password { get; set; }
+
+        public static WindowsTheme theme
+        {
+            get => _theme;
+            set
+            {
+                _theme = value;
+                WindowsThemeChanged?.Invoke();
+            }
+        }
+
+        public static event Action WindowsThemeChanged;
+
 
     }
     public class BooleanToVisibilityConverter : MarkupExtension, IValueConverter

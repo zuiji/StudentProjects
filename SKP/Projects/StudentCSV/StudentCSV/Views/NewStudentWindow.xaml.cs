@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using StudentCSV.StaticsAndEnums;
 using StudentCSV.ViewModel;
 
 namespace StudentCSV.Views
@@ -17,8 +18,6 @@ namespace StudentCSV.Views
         {
             InitializeComponent();
             ((NewStudentWindowViewModel)CprBox.DataContext).PropertyChanged += OnPropertyChanged;
-
-
         }
 
         private void GB_Button_Click(object sender, RoutedEventArgs e)

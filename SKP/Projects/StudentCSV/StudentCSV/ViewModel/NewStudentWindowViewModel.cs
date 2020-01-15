@@ -410,6 +410,7 @@ namespace StudentCSV.ViewModel
             CprNr = string.Empty;
             PhoneNumber = string.Empty;
             SpecialInfo = string.Empty;
+            Gf2SchoolOtherText = string.Empty;
             FirstNameValid = true;
             MiddleNameValid = true;
             LastNameValid = true;
