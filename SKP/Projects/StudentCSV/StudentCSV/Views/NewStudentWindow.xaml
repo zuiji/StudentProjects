@@ -30,7 +30,7 @@
             <ColumnDefinition Width="80*"/>
             <ColumnDefinition Width="10*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding LastError, Mode=OneWay}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="36" Foreground="{DynamicResource MyForgroundBrush}" Background="{DynamicResource MyBackgroundBrush}" />
+        <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding LastError, Mode=OneWay}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="36" Foreground="{DynamicResource MyErrorgroundBrush}"/>
 
         <Grid Grid.Column="1" Grid.Row="1">
             <Grid.ColumnDefinitions>
@@ -48,9 +48,10 @@
                 <RowDefinition Height="14*"/>
                 <RowDefinition Height="30*"/>
             </Grid.RowDefinitions>
+
             <StackPanel x:Name="FirstnameStackPanel" Grid.Row="0">
-                <Label Content="{Binding Path=Firstname, Source={StaticResource Resources}}" HorizontalContentAlignment="Center" FontSize="19.2" Foreground="{DynamicResource MyForgroundBrush}"/>
-                <TextBox x:Name="textBox" TextWrapping="Wrap" Height="36.8" FontSize="{DynamicResource mysize}" Foreground="{DynamicResource MyBackgroundBrush}">
+                <Label Content="{Binding Path=Firstname, Source={StaticResource Resources}}" HorizontalContentAlignment="Center" FontSize="19.2" Foreground="{DynamicResource MyForgroundLabelBrush}"/>
+                <TextBox x:Name="textBox" TextWrapping="Wrap" Height="36.8" FontSize="19.2" Foreground="{DynamicResource MyForgroundTexTBrush}">
                     <TextBox.Style>
                         <Style>
                             <Style.Triggers>
@@ -71,9 +72,10 @@
                     <Binding x:Name="FirstNameBinding" Mode="TwoWay" Path="FirstName"/>
                 </TextBox>
             </StackPanel>
+
             <StackPanel x:Name="MiddleNameStackPanel" Grid.Row="1">
-                <Label Content="{Binding Path=Middlename, Source={StaticResource Resources}}" HorizontalContentAlignment="Center" FontSize="19.2"/>
-                <TextBox Height="36.8" TextWrapping="Wrap" FontSize="19.2">
+                <Label Content="{Binding Path=Middlename, Source={StaticResource Resources}}" HorizontalContentAlignment="Center" FontSize="19.2" Foreground="{DynamicResource MyForgroundLabelBrush}"/>
+                <TextBox Height="36.8" TextWrapping="Wrap" FontSize="19.2" Foreground="{DynamicResource MyForgroundTexTBrush}">
                     <TextBox.Style>
                         <Style>
                             <Style.Triggers>
@@ -95,8 +97,8 @@
                 </TextBox>
             </StackPanel>
             <StackPanel x:Name="LastNameStackPanel" Grid.Row="2">
-                <Label Content="{Binding Path=Lastname, Source={StaticResource Resources}}" HorizontalContentAlignment="Center" FontSize="19.2"/>
-                <TextBox Height="36.8" TextWrapping="Wrap" FontSize="19.2">
+                <Label Content="{Binding Path=Lastname, Source={StaticResource Resources}}" HorizontalContentAlignment="Center" FontSize="19.2" Foreground="{DynamicResource MyForgroundLabelBrush}"/>
+                <TextBox Height="36.8" TextWrapping="Wrap" FontSize="19.2" Foreground="{DynamicResource MyForgroundTexTBrush}">
                     <TextBox.Style>
                         <Style>
                             <Style.Triggers>
@@ -118,8 +120,8 @@
                 </TextBox>
             </StackPanel>
             <StackPanel x:Name="EmailStackpanel" Grid.Row="3">
-                <Label Content="{Binding Path=Email, Source={StaticResource Resources}}" HorizontalContentAlignment="Center" FontSize="19.2"/>
-                <TextBox Height="36.8" TextWrapping="Wrap" FontSize="19.2">
+                <Label Content="{Binding Path=Email, Source={StaticResource Resources}}" HorizontalContentAlignment="Center" FontSize="19.2" Foreground="{DynamicResource MyForgroundLabelBrush}"/>
+                <TextBox Height="36.8" TextWrapping="Wrap" FontSize="19.2" Foreground="{DynamicResource MyForgroundTexTBrush}">
                     <TextBox.Style>
                         <Style>
                             <Style.Triggers>
@@ -134,15 +136,15 @@
                     </TextBox.Style>
                     <Interactions:Interaction.Triggers>
                         <Interactions:EventTrigger EventName="LostFocus">
-                            <Interactions:InvokeCommandAction Command="{Binding OnEmailFieldLostFocusCommand}" />
+                            <Interactions:InvokeCommandAction Command="{Binding OnEmailFieldLostFocusCommand}"/>
                         </Interactions:EventTrigger>
                     </Interactions:Interaction.Triggers>
                     <Binding x:Name="EmailBinding" Path="Email"/>
                 </TextBox>
             </StackPanel>
             <StackPanel x:Name="UnilogStackpanel" Grid.Row="0" Grid.Column="2">
-                <Label Content="{Binding Path=Unilogin, Source={StaticResource Resources}}" HorizontalContentAlignment="Center" FontSize="19.2"/>
-                <TextBox Height="36.8" TextWrapping="Wrap" FontSize="19.2">
+                <Label Content="{Binding Path=Unilogin, Source={StaticResource Resources}}" HorizontalContentAlignment="Center" FontSize="19.2" Foreground="{DynamicResource MyForgroundLabelBrush}"/>
+                <TextBox Height="36.8" TextWrapping="Wrap" FontSize="19.2" Foreground="{DynamicResource MyForgroundTexTBrush}">
                     <TextBox.Style>
                         <Style>
                             <Style.Triggers>
@@ -157,7 +159,7 @@
                     </TextBox.Style>
                     <Interactions:Interaction.Triggers>
                         <Interactions:EventTrigger EventName="LostFocus">
-                            <Interactions:InvokeCommandAction Command="{Binding OnUniloginFieldLostFocusCommand}" />
+                            <Interactions:InvokeCommandAction Command="{Binding OnUniloginFieldLostFocusCommand}"/>
                         </Interactions:EventTrigger>
                     </Interactions:Interaction.Triggers>
                     <Binding x:Name="UniloginBinding" Path="Unilogin"/>
@@ -165,8 +167,8 @@
             </StackPanel>
 
             <StackPanel x:Name="PhoneNumberStackPanel" Grid.Row="1" Grid.Column="2">
-                <Label Content="{Binding Path=Phonenumber, Source={StaticResource Resources}}" HorizontalContentAlignment="Center" FontSize="19.2"/>
-                <TextBox TextWrapping="Wrap" Height="36.8" FontSize="19.2">
+                <Label Content="{Binding Path=Phonenumber, Source={StaticResource Resources}}" HorizontalContentAlignment="Center" FontSize="19.2" Foreground="{DynamicResource MyForgroundLabelBrush}"/>
+                <TextBox TextWrapping="Wrap" Height="36.8" FontSize="19.2" Foreground="{DynamicResource MyForgroundTexTBrush}">
                     <TextBox.Style>
                         <Style>
                             <Style.Triggers>
@@ -188,8 +190,8 @@
                 </TextBox>
             </StackPanel>
             <StackPanel x:Name="CprNrStackPanel" Grid.Row="2" Grid.Column="2">
-                <Label Content="{Binding Path=CPRNr, Source={StaticResource Resources}}" HorizontalContentAlignment="Center" FontSize="19.2"/>
-                <TextBox  Height="36.8" FontSize="19.2" Visibility="{Binding IsChecked, ElementName=ShowPasswordCheckBox, Converter={staticsAndEnums:BooleanToVisibilityConverter}}" Text="{Binding CprNr}">
+                <Label Content="{Binding Path=CPRNr, Source={StaticResource Resources}}" HorizontalContentAlignment="Center" FontSize="19.2" Foreground="{DynamicResource MyForgroundLabelBrush}"/>
+                <TextBox  Height="36.8" FontSize="19.2" Visibility="{Binding IsChecked, ElementName=ShowPasswordCheckBox, Converter={staticsAndEnums:BooleanToVisibilityConverter}}" Text="{Binding CprNr}" Foreground="{DynamicResource MyForgroundTexTBrush}">
                     <TextBox.Style>
                         <Style>
                             <Style.Triggers>
@@ -208,7 +210,7 @@
                         </Interactions:EventTrigger>
                     </Interactions:Interaction.Triggers>
                 </TextBox>
-                <PasswordBox x:Name="CprBox" Height="36.8" FontSize="19.2" PasswordChanged="PasswordBox_OnPasswordChanged" PasswordChar="*" Visibility="{Binding IsChecked, ElementName=ShowPasswordCheckBox, Converter={staticsAndEnums:BooleanToVisibilityConverter InvertVisibility=True}}">
+                <PasswordBox x:Name="CprBox" Height="36.8" FontSize="19.2" PasswordChanged="PasswordBox_OnPasswordChanged" PasswordChar="*" Visibility="{Binding IsChecked, ElementName=ShowPasswordCheckBox, Converter={staticsAndEnums:BooleanToVisibilityConverter InvertVisibility=True}}" Foreground="{DynamicResource MyForgroundTexTBrush}">
                     <PasswordBox.Style>
                         <Style>
                             <Style.Triggers>
@@ -240,21 +242,22 @@
             </StackPanel>
 
             <StackPanel x:Name="EuxStackPanel" Grid.Row="0" Grid.Column="4">
-                <Label Content="{Binding Path=EUX, Source={StaticResource Resources}}" HorizontalContentAlignment="Center" FontSize="19.2"/>
-                <ComboBox Height="36.8" Text="TextBox" FontSize="19.2" ItemsSource="{Binding EUX}" SelectedIndex="{Binding EUXIndex}"/>
+                <Label Content="{Binding Path=EUX, Source={StaticResource Resources}}" HorizontalContentAlignment="Center" FontSize="19.2" Foreground="{DynamicResource MyForgroundLabelBrush}"/>
+                <ComboBox Height="36.8" Text="TextBox" FontSize="19.2" ItemsSource="{Binding EUX}" SelectedIndex="{Binding EUXIndex}" Foreground="{DynamicResource MyForgroundTexTBrush}"/>
             </StackPanel>
 
             <StackPanel x:Name="EducationDirectionStackPanel" Grid.Row="1" Grid.Column="4">
-                <Label Content="{Binding Path=EducationDirection, Source={StaticResource Resources}}" HorizontalContentAlignment="Center" FontSize="19.2"/>
-                <ComboBox Height="36.8" FontSize="19.2" ItemsSource="{Binding EducationDirection}" SelectedIndex="{Binding EducationDirectionIndex}"/>
+                <Label Content="{Binding Path=EducationDirection, Source={StaticResource Resources}}" HorizontalContentAlignment="Center" FontSize="19.2" Foreground="{DynamicResource MyForgroundLabelBrush}"/>
+                <ComboBox Height="36.8" FontSize="19.2" ItemsSource="{Binding EducationDirection}" SelectedIndex="{Binding EducationDirectionIndex}" Foreground="{DynamicResource MyForgroundTexTBrush}"/>
             </StackPanel>
             <StackPanel x:Name="GFSchoolStackPanel" Grid.Row="2" Grid.Column="4">
-                <Label Content="{Binding Path=GfSchool, Source={StaticResource Resources}}" HorizontalContentAlignment="Center" FontSize="19.2"/>
-                <ComboBox Height="36.8" Text="TextBox" FontSize="19.2" IsSynchronizedWithCurrentItem="False" ItemsSource="{Binding GF2School}" SelectedIndex="{Binding GfSchoolIndex}" SelectionChanged="ComboBox_SelectionChanged"/>
+                <Label Content="{Binding Path=GfSchool, Source={StaticResource Resources}}" HorizontalContentAlignment="Center" FontSize="19.2" Foreground="{DynamicResource MyForgroundLabelBrush}"/>
+                <ComboBox Height="36.8" Text="TextBox" FontSize="19.2" IsSynchronizedWithCurrentItem="False" ItemsSource="{Binding GF2School}" Foreground="{DynamicResource MyForgroundTexTBrush}"
+                          SelectedIndex="{Binding GfSchoolIndex}" SelectionChanged="ComboBox_SelectionChanged"/>
             </StackPanel>
             <StackPanel x:Name="WantedSkpLocationStackPanel" Grid.Row="3" Grid.Column="4">
-                <Label Content="{Binding Path=PreferredSKPlocation, Source={StaticResource Resources}}" HorizontalContentAlignment="Center" FontSize="19.2"/>
-                <ComboBox Height="36.8" Text="TextBox" FontSize="19.2" ItemsSource="{Binding PreferredSKPlocation}" SelectedIndex="{Binding PreferredSkpLocationIndex}"/>
+                <Label Content="{Binding Path=PreferredSKPlocation, Source={StaticResource Resources}}" HorizontalContentAlignment="Center" FontSize="19.2" Foreground="{DynamicResource MyForgroundLabelBrush}"/>
+                <ComboBox Height="36.8" Text="TextBox" FontSize="19.2" ItemsSource="{Binding PreferredSKPlocation}" SelectedIndex="{Binding PreferredSkpLocationIndex}" Foreground="{DynamicResource MyForgroundTexTBrush}"/>
             </StackPanel>
             <Image Source="/Resources/Images/zbc_neg.png" Grid.Row="5" VerticalAlignment="Bottom"/>
             <StackPanel x:Name="SpecialInfoStackPanel" Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="3" Grid.RowSpan="2">
@@ -264,8 +267,10 @@
                         <ColumnDefinition Width="10*"/>
                         <ColumnDefinition Width="45*"/>
                     </Grid.ColumnDefinitions>
-                    <Label x:Name="SpecialInfolabel" Grid.Column="0" Grid.Row="0" Content="{Binding Path=SpecialInfo, Source={StaticResource Resources}}" HorizontalContentAlignment="Center" FontSize="19.2" Grid.ColumnSpan="3"/>
-                    <Label x:Name="OtherLabel"  Grid.Column="2" Grid.Row="0" Content="{Binding Path=EnterGfSchool, Source={StaticResource Resources}}" HorizontalContentAlignment="Center" FontSize="19.2" Grid.ColumnSpan="1" Visibility="Collapsed"/>
+                    <Label x:Name="SpecialInfolabel" Grid.Column="0" Grid.Row="0" Content="{Binding Path=SpecialInfo, Source={StaticResource Resources}}" Foreground="{DynamicResource MyForgroundLabelBrush}"
+                           HorizontalContentAlignment="Center" FontSize="19.2" Grid.ColumnSpan="3"/>
+                    <Label x:Name="OtherLabel"  Grid.Column="2" Grid.Row="0" Content="{Binding Path=EnterGfSchool, Source={StaticResource Resources}}" Foreground="{DynamicResource MyForgroundLabelBrush}"
+                           HorizontalContentAlignment="Center" FontSize="19.2" Grid.ColumnSpan="1" Visibility="Collapsed"/>
                 </Grid>
                 <Grid Height="220">
                     <Grid.ColumnDefinitions>
@@ -278,9 +283,10 @@
                         <RowDefinition Height="10*"/>
                         <RowDefinition Height="20*"/>
                     </Grid.RowDefinitions>
-                    
 
-                    <TextBox x:Name="SpecialInfoTextBox" Grid.Column="0" Grid.Row="0" Margin="0,0,0,0" FontSize="19.2" HorizontalScrollBarVisibility="Visible" TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="True" SpellCheck.IsEnabled="True" Grid.ColumnSpan="3">
+
+                    <TextBox x:Name="SpecialInfoTextBox" Grid.Column="0" Grid.Row="0" Margin="0,0,0,0" FontSize="19.2" HorizontalScrollBarVisibility="Visible" Foreground="{DynamicResource MyForgroundTexTBrush}"
+                             TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="True" SpellCheck.IsEnabled="True" Grid.ColumnSpan="3">
                         <TextBox.Style>
                             <Style>
                                 <Style.Triggers>
@@ -300,7 +306,8 @@
                         </Interactions:Interaction.Triggers>
                         <Binding x:Name="SpecialInfoBinding" Path="SpecialInfo"/>
                     </TextBox>
-                    <TextBox x:Name="OtherTextBox" Grid.Row ="0" Grid.Column="2" Margin="0,0,0,0" FontSize="19.2" HorizontalScrollBarVisibility="Visible" TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="True" SpellCheck.IsEnabled="True" Grid.ColumnSpan="1" Visibility="Collapsed">
+                    <TextBox x:Name="OtherTextBox" Grid.Row ="0" Grid.Column="2" Margin="0,0,0,0" FontSize="19.2" HorizontalScrollBarVisibility="Visible" Foreground="{DynamicResource MyForgroundTexTBrush}"
+                             TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="True" SpellCheck.IsEnabled="True" Grid.ColumnSpan="1" Visibility="Collapsed">
                         <TextBox.Style>
                             <Style>
                                 <Style.Triggers>
@@ -321,7 +328,7 @@
                         <Binding x:Name="Gf2SchoolOtherTextBoxBinding" Path="Gf2SchoolOtherText"/>
                     </TextBox>
                     <Button Grid.Column="0" Grid.Row="2" Content="{Binding Path=Save, Source={StaticResource Resources}}" Command="{Binding OnSavePressedCommand}"/>
-                    <Button Grid.Column="2" Grid.Row="2" Content="{Binding Path=Cancel, Source={StaticResource Resources}}" Command="{Binding OnCancelPressedCommand}" />
+                    <Button Grid.Column="2" Grid.Row="2" Content="{Binding Path=Cancel, Source={StaticResource Resources}}" Command="{Binding OnCancelPressedCommand}"/>
                 </Grid>
             </StackPanel>
 
@@ -339,11 +346,11 @@
                 <Image Source="/Resources/Images/Question_mark.png" Height="25" Width="25" ></Image>
             </Button>
             <Button Command="{Binding ExportPressedCommand}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,0,0">
-                <Image Source="/Resources/Images/export.png" Height="25" Width="25" ></Image>
+                <Image Source="/Resources/Images/ExclExportLogo.png" Height="25" Width="25" ></Image>
             </Button>
 
             <Button Command="{Binding FillDebugInfoIntoFieldsPressedCommand}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,0,0" Visibility ="{Binding ShowDebug}">
-                <Image Source="/Resources/Images/export.png" Height="25" Width="25" ></Image>
+                <Image Source="/Resources/Images/ExclExportLogo.png" Height="25" Width="25" ></Image>
             </Button>
         </StackPanel>
 
