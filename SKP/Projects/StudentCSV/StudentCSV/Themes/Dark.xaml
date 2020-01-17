@@ -1,8 +1,8 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <SolidColorBrush x:Key="MyBackgroundBrush" Color="#020005" />
+    <SolidColorBrush x:Key="MyBackgroundBrush" Color="#383737" />
     <SolidColorBrush x:Key="MyForgroundLabelBrush" Color="#6aff13" />
-    <SolidColorBrush x:Key="MyForgroundTexTBrush" Color="#ffd013" />
+    <SolidColorBrush x:Key="MyForgroundTexTBrush" Color="#ffffff" />
     <SolidColorBrush x:Key="MyErrorgroundBrush" Color="#ff1375" />
 
 </ResourceDictionary>
