@@ -90,6 +90,19 @@ namespace StudentCSV.ViewModel
             }
         }
 
+        private bool _showCpr;
+
+        public bool ShowCpr
+        {
+            get { return _showCpr; }
+            set
+            {
+                _showCpr = value;
+                OnPropertyChanged();
+            }
+        }
+
+
         public string LastError
         {
 
@@ -445,6 +458,7 @@ namespace StudentCSV.ViewModel
             OnLanguageChangedCommand = new RelayCommand(a => OnLanguageChanged());
             QuestionMarkPressedCommand = new RelayCommand(a => _buttonPressed.QuestionMarkPressed());
             ExportPressedCommand = new RelayCommand(a => _buttonPressed.ExportPressed());
+            ShowCpr = false;
 #if DEBUG
             FillDebugInfoIntoFieldsPressedCommand = new RelayCommand(a => FillDebugInfoIntoFieldsPressed());
             ShowDebug = Visibility.Visible;

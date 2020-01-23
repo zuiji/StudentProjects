@@ -10,6 +10,8 @@
         x:Class="StudentCSV.Views.NewStudentWindow"
         mc:Ignorable="d"
         Title="Nye Skp Elever" Height="720" Width="1080">
+
+
     <Window.Triggers>
         <EventTrigger RoutedEvent="UIElement.LostFocus"/>
     </Window.Triggers>
@@ -233,7 +235,7 @@
 
             <StackPanel x:Name="ShowPasswordStackPanel" Grid.Row="3" Grid.Column="2">
                 <Label Content="{Binding Path=ShowCprNr, Source={StaticResource Resources}}" HorizontalContentAlignment="Center" FontSize="19.2" Foreground="{DynamicResource MyForgroundLabelBrush}"/>
-                <CheckBox x:Name="ShowPasswordCheckBox"   Padding="0" FontSize="19.2"  VerticalAlignment="Center" HorizontalAlignment="Center"  Background="{DynamicResource MyBackgroundBrush}">
+                <CheckBox x:Name="ShowPasswordCheckBox"   Padding="0" FontSize="19.2"  VerticalAlignment="Center" HorizontalAlignment="Center" Background="{DynamicResource MyBackgroundBrush}" IsChecked="{Binding ShowCpr}">
                     <CheckBox.LayoutTransform>
                         <ScaleTransform ScaleX="2" ScaleY="2"></ScaleTransform>
                     </CheckBox.LayoutTransform>
@@ -257,9 +259,9 @@
             </StackPanel>
             <StackPanel x:Name="WantedSkpLocationStackPanel" Grid.Row="3" Grid.Column="4">
                 <Label Content="{Binding Path=PreferredSKPlocation, Source={StaticResource Resources}}" HorizontalContentAlignment="Center" FontSize="19.2" Foreground="{DynamicResource MyForgroundLabelBrush}"/>
-                <ComboBox Height="36.8" Text="TextBox" FontSize="19.2" ItemsSource="{Binding PreferredSKPlocation}" SelectedIndex="{Binding PreferredSkpLocationIndex}" Foreground="{DynamicResource MyForgroundTexTBrush}"  Background="{DynamicResource MyBackgroundBrush}"/>
+                <ComboBox Height="36.8" Text="TextBox" FontSize="19.2" ItemsSource="{Binding PreferredSKPlocation}" SelectedIndex="{Binding PreferredSkpLocationIndex}" Foreground="{DynamicResource MyForgroundTexTBrush}"/>
             </StackPanel>
-            <Image Source="/Resources/Images/zbc_neg.png" Grid.Row="5" VerticalAlignment="Bottom"/>
+            <Image Source="{DynamicResource ZBCLogoPath}" Grid.Row="5" VerticalAlignment="Bottom"/>
             <StackPanel x:Name="SpecialInfoStackPanel" Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="3" Grid.RowSpan="2">
                 <Grid>
                     <Grid.ColumnDefinitions>
