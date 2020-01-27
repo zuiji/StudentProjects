@@ -25,9 +25,7 @@ namespace StudentCSV.ViewModel
 
         public Student student { get; set; }
 
-        private string _firstname;
-        private string _middlename;
-        private string _lastname;
+        private string _fullName;
         private string _email;
         private string _unilogin;
         private string _cprNr;
@@ -41,9 +39,7 @@ namespace StudentCSV.ViewModel
         private int _gfSchoolIndex;
         private int _educationDirectionIndex;
 
-        private bool _firstNameValid;
-        private bool _middleNameValid;
-        private bool _lastNameValid;
+        private bool _fullNameValid;
         private bool _emailValid;
         private bool _uniloginValid;
         private bool _cprNrValid;
@@ -65,9 +61,8 @@ namespace StudentCSV.ViewModel
         public RelayCommand OnCprNrFieldLostFocusCommand { get; set; }
         public RelayCommand OnEmailFieldLostFocusCommand { get; set; }
         public RelayCommand OnUniloginFieldLostFocusCommand { get; set; }
-        public RelayCommand OnLastNameFieldLostFocusCommand { get; set; }
-        public RelayCommand OnMiddleNameFieldLostFocusCommand { get; set; }
-        public RelayCommand OnFirstNameFieldLostFocusCommand { get; set; }
+
+        public RelayCommand OnFullNameFieldLostFocusCommand { get; set; }
         public RelayCommand OnCancelPressedCommand { get; set; }
         public RelayCommand OnSavePressedCommand { get; set; }
         public RelayCommand OnLanguageChangedCommand { get; set; }
@@ -118,42 +113,15 @@ namespace StudentCSV.ViewModel
 
         }
 
-        public string FirstName
+        public string FullName
         {
-            get { return _firstname; }
+            get { return _fullName; }
             set
             {
-                _firstname = value;
+                _fullName = value;
                 OnPropertyChanged();
             }
         }
-
-        public string MiddleName
-        {
-            get { return _middlename; }
-            set
-            {
-                _middlename = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public string LastName
-        {
-            get { return _lastname; }
-            set
-            {
-                _lastname = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public string Fullname
-        {
-            get { return $"{_firstname} {_middlename} {_lastname}"; }
-
-        }
-
 
         public string Email
         {
@@ -248,35 +216,13 @@ namespace StudentCSV.ViewModel
             }
         }
 
-        public bool FirstNameValid
+        public bool FullNameValid
         {
-            get { return _firstNameValid; }
+            get { return _fullNameValid; }
             set
             {
-                _firstNameValid = value;
+                _fullNameValid = value;
                 OnPropertyChanged();
-            }
-        }
-
-        public bool MiddleNameValid
-        {
-            get { return _middleNameValid; }
-            set
-            {
-                _middleNameValid = value;
-                OnPropertyChanged();
-
-            }
-        }
-
-        public bool LastNameValid
-        {
-            get { return _lastNameValid; }
-            set
-            {
-                _lastNameValid = value;
-                OnPropertyChanged();
-
             }
         }
 
@@ -415,18 +361,14 @@ namespace StudentCSV.ViewModel
         public void FreshGui()
         {
             Errors = new OrderedDictionary();
-            FirstName = string.Empty;
-            MiddleName = string.Empty;
-            LastName = string.Empty;
+            FullName = string.Empty;
             Email = string.Empty;
             Unilogin = string.Empty;
             CprNr = string.Empty;
             PhoneNumber = string.Empty;
             SpecialInfo = string.Empty;
             Gf2SchoolOtherText = string.Empty;
-            FirstNameValid = true;
-            MiddleNameValid = true;
-            LastNameValid = true;
+            FullNameValid = true;
             EmailValid = true;
             UniloginValid = true;
             CprNrValid = true;
@@ -444,13 +386,12 @@ namespace StudentCSV.ViewModel
             PreferredSkpLocationIndex = -1;
             GfSchoolIndex = -1;
             EducationDirectionIndex = -1;
-            OnFirstNameFieldLostFocusCommand = new RelayCommand(a => OnFirstNameFieldLostFocus());
-            OnMiddleNameFieldLostFocusCommand = new RelayCommand(a => OnMiddleNameFieldLostFocus());
-            OnLastNameFieldLostFocusCommand = new RelayCommand(a => OnLastNameFieldLostFocus());
+            OnFullNameFieldLostFocusCommand = new RelayCommand(a => OnFullNameFieldLostFocus());
+            OnPhoneNumberFieldLostFocusCommand = new RelayCommand(a => OnPhoneNumberFieldLostFocus());
             OnEmailFieldLostFocusCommand = new RelayCommand(a => OnEmailFieldLostFocus());
             OnUniloginFieldLostFocusCommand = new RelayCommand(a => OnUnilogFieldLostFocus());
             OnCprNrFieldLostFocusCommand = new RelayCommand(a => OnCprNrFieldLostFocus());
-            OnPhoneNumberFieldLostFocusCommand = new RelayCommand(a => OnPhoneNumberFieldLostFocus());
+            
             OnSpecialInfoFieldLostFocusCommand = new RelayCommand(a => OnSpecialInfoFieldLostFocus());
             OnOtherGf2SchoolOtherTextLostFocusCommand = new RelayCommand(a => OnOtherGf2SchoolOtherTextFieldLostFocus());
             OnCancelPressedCommand = new RelayCommand(a => _buttonPressed.OnCancelPressed());
@@ -472,9 +413,7 @@ namespace StudentCSV.ViewModel
 #if DEBUG
         private void FillDebugInfoIntoFieldsPressed()
         {
-            student.FirstName = FirstName = "Hans";
-            student.MiddleName = MiddleName = "Jes Man";
-            student.LastName = LastName = "Hansen";
+            student.FullName = FullName = "Hans Jes Man Hansen";
             student.Email = Email = "HansHansen@hans.dk";
             student.Unilogin = Unilogin = "Haha656a";
             student.PhoneNumber = PhoneNumber = "99999999";
@@ -483,137 +422,36 @@ namespace StudentCSV.ViewModel
             EducationDirectionIndex = 1;
             GfSchoolIndex = 0;
             PreferredSkpLocationIndex = 1;
-            student.SpecialInfo = SpecialInfo = "Some very special info cake";
-            student.GfSchool = Gf2SchoolOtherText = "Borup";
-
+            student.SpecialInfo = SpecialInfo = "a very special birthday cake";
+            student.GfSchool = Gf2SchoolOtherText = "Cake Town";
         }
 #endif
 
         #endregion
 
         #region FieldLostFocusCommands
-        public void OnFirstNameFieldLostFocus()
+        public void OnFullNameFieldLostFocus()
         {
             try
             {
-                student.FirstName = FirstName;
-                if (Errors.Contains(nameof(FirstName)))
+                student.FullName = FullName;
+                if (Errors.Contains(nameof(FullName)))
                 {
-                    Errors.Remove(nameof(FirstName));
-                    FirstNameValid = true;
+                    Errors.Remove(nameof(FullName));
+                    FullNameValid = true;
                 }
 
             }
             catch (ArgumentException e)
             {
                 // MessageBox.Show(e.InnerException.Message);
-                if (!Errors.Contains(nameof(FirstName)))
+                if (!Errors.Contains(nameof(FullName)))
                 {
-                    Errors.Add(nameof(FirstName), e.Message);
+                    Errors.Add(nameof(FullName), e.Message);
                 }
 
-                FirstNameValid = false;
+                FullNameValid = false;
 
-            }
-            OnPropertyChanged(nameof(LastError));
-        }
-        public void OnMiddleNameFieldLostFocus()
-        {
-            try
-            {
-                student.MiddleName = MiddleName;
-                if (Errors.Contains(nameof(MiddleName)))
-                {
-                    Errors.Remove(nameof(MiddleName));
-                    MiddleNameValid = true;
-                }
-
-
-            }
-            catch (ArgumentException e)
-            {
-                // MessageBox.Show(e.InnerException.Message);
-                if (!Errors.Contains(nameof(MiddleName)))
-                {
-                    Errors.Add(nameof(MiddleName), e.Message);
-                }
-
-                MiddleNameValid = false;
-
-
-            }
-            OnPropertyChanged(nameof(LastError));
-        }
-        public void OnLastNameFieldLostFocus()
-        {
-            try
-            {
-                student.LastName = LastName;
-                if (Errors.Contains(nameof(LastName)))
-                {
-                    Errors.Remove(nameof(LastName));
-                    LastNameValid = true;
-                }
-
-            }
-            catch (ArgumentException e)
-            {
-                // MessageBox.Show(e.InnerException.Message);
-                if (!Errors.Contains(nameof(LastName)))
-                {
-                    Errors.Add(nameof(LastName), e.Message);
-                }
-
-                LastNameValid = false;
-
-            }
-            OnPropertyChanged(nameof(LastError));
-
-        }
-        public void OnEmailFieldLostFocus()
-        {
-            try
-            {
-                student.Email = Email;
-                if (Errors.Contains(nameof(Email)))
-                {
-                    Errors.Remove(nameof(Email));
-                    EmailValid = true;
-                }
-            }
-            catch (ArgumentException e)
-            {
-                // MessageBox.Show(e.InnerException.Message);
-                if (!Errors.Contains(nameof(Email)))
-                {
-                    Errors.Add(nameof(Email), e.Message);
-                }
-
-                EmailValid = false;
-
-            }
-            OnPropertyChanged(nameof(LastError));
-
-        }
-        public void OnUnilogFieldLostFocus()
-        {
-            try
-            {
-                student.Unilogin = Unilogin;
-                if (Errors.Contains(nameof(Unilogin)))
-                {
-                    Errors.Remove(nameof(Unilogin));
-                    UniloginValid = true;
-                }
-            }
-            catch (ArgumentException e)
-            {
-                // MessageBox.Show(e.InnerException.Message);
-                if (!Errors.Contains(nameof(Unilogin)))
-                {
-                    Errors.Add(nameof(Unilogin), e.Message);
-                }
-                UniloginValid = false;
             }
             OnPropertyChanged(nameof(LastError));
         }
@@ -640,6 +478,58 @@ namespace StudentCSV.ViewModel
             OnPropertyChanged(nameof(LastError));
 
         }
+
+        public void OnEmailFieldLostFocus()
+        {
+            try
+            {
+                student.Email = Email;
+                if (Errors.Contains(nameof(Email)))
+                {
+                    Errors.Remove(nameof(Email));
+                    EmailValid = true;
+                }
+            }
+            catch (ArgumentException e)
+            {
+                // MessageBox.Show(e.InnerException.Message);
+                if (!Errors.Contains(nameof(Email)))
+                {
+                    Errors.Add(nameof(Email), e.Message);
+                }
+
+                EmailValid = false;
+
+            }
+            OnPropertyChanged(nameof(LastError));
+
+        }
+
+        public void OnUnilogFieldLostFocus()
+        {
+            try
+            {
+                student.Unilogin = Unilogin;
+                if (Errors.Contains(nameof(Unilogin)))
+                {
+                    Errors.Remove(nameof(Unilogin));
+                    UniloginValid = true;
+                }
+            }
+            catch (ArgumentException e)
+            {
+                // MessageBox.Show(e.InnerException.Message);
+                if (!Errors.Contains(nameof(Unilogin)))
+                {
+                    Errors.Add(nameof(Unilogin), e.Message);
+                }
+                UniloginValid = false;
+            }
+            OnPropertyChanged(nameof(LastError));
+        }
+
+      
+
         public void OnCprNrFieldLostFocus()
         {
             try
@@ -662,6 +552,7 @@ namespace StudentCSV.ViewModel
             }
             OnPropertyChanged(nameof(LastError));
         }
+
         public void OnSpecialInfoFieldLostFocus()
         {
             try
@@ -706,11 +597,9 @@ namespace StudentCSV.ViewModel
             }
             OnPropertyChanged(nameof(LastError));
         }
-
         #endregion
 
         #region EnumIndexCheckersRegion
-
         public bool EducationDirectionIndexChecker()
         {
             if (EducationDirectionIndex == -1)
@@ -770,7 +659,6 @@ namespace StudentCSV.ViewModel
             }
             return false;
         }
-
         #endregion
 
         #region OnPropertyChangedRegion
@@ -806,14 +694,8 @@ namespace StudentCSV.ViewModel
                 string obj = errorsKey.ToString();
                 switch (obj)
                 {
-                    case nameof(FirstName):
-                        Errors[errorsKey] = Properties.Resources.InvalidFirstname;
-                        break;
-                    case nameof(MiddleName):
-                        Errors[errorsKey] = Properties.Resources.InvalidMiddlename;
-                        break;
-                    case nameof(LastName):
-                        Errors[errorsKey] = Properties.Resources.InvalidLastname;
+                    case nameof(FullName):
+                        Errors[errorsKey] = Properties.Resources.InvalidFullName;
                         break;
                     case nameof(Email):
                         Errors[errorsKey] = Properties.Resources.InvalidEmail;
@@ -841,7 +723,5 @@ namespace StudentCSV.ViewModel
             OnPropertyChanged(nameof(LastError));
         }
         #endregion
-
-
     }
 }

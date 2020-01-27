@@ -46,9 +46,8 @@ namespace StudentCSV.Helpers
             }
 
             var newLine =
-                $"{student.Fullname};{student.CprNr};{student.PhoneNumber};{student.Email};{student.Unilogin};{ConvertBool(student.EUX)};{Statics.CorrectEducationDirectionEnumNames[(int)student.EducationDirection]};{student.GfSchool};{student.WantedSkpLocation};{student.SpecialInfo};";
+                $"{student.FullName};{student.CprNr};{student.PhoneNumber};{student.Email};{student.Unilogin};{ConvertBool(student.EUX)};{Statics.CorrectEducationDirectionEnumNames[(int)student.EducationDirection]};{student.GfSchool};{student.WantedSkpLocation};{student.SpecialInfo};";
 
-            // $"{student.FirstName};{student.MiddleName};{student.LastName};{student.CprNr};{student.PhoneNumber};{student.Email};{student.Unilogin};{ConvertBool(student.EUX)};{Statics.CorrectEducationDirectionEnumNames[(int)student.EducationDirection]};{student.GfSchool};{student.WantedSkpLocation};{student.SpecialInfo};";
             csv.AppendLine(newLine);
 
             File.WriteAllText(filePath, StringCipher.Encrypt(csv.ToString(), Statics.Password), Encoding.UTF8);

@@ -142,11 +142,11 @@ namespace StudentCSV.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Firstname.
+        ///   Looks up a localized string similar to Full Name.
         /// </summary>
-        public static string Firstname {
+        public static string FullName {
             get {
-                return ResourceManager.GetString("Firstname", resourceCulture);
+                return ResourceManager.GetString("FullName", resourceCulture);
             }
         }
         
@@ -187,11 +187,11 @@ namespace StudentCSV.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Firstname is Invalid.
+        ///   Looks up a localized string similar to Name is Invalid.
         /// </summary>
-        public static string InvalidFirstname {
+        public static string InvalidFullName {
             get {
-                return ResourceManager.GetString("InvalidFirstname", resourceCulture);
+                return ResourceManager.GetString("InvalidFullName", resourceCulture);
             }
         }
         
@@ -246,15 +246,6 @@ namespace StudentCSV.Properties {
         public static string IsValidUnilogin {
             get {
                 return ResourceManager.GetString("IsValidUnilogin", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Lastname.
-        /// </summary>
-        public static string Lastname {
-            get {
-                return ResourceManager.GetString("Lastname", resourceCulture);
             }
         }
         
@@ -345,15 +336,6 @@ namespace StudentCSV.Properties {
         public static string MessageBoxWrongFileFormat {
             get {
                 return ResourceManager.GetString("MessageBoxWrongFileFormat", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Middlename.
-        /// </summary>
-        public static string Middlename {
-            get {
-                return ResourceManager.GetString("Middlename", resourceCulture);
             }
         }
         

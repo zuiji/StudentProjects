@@ -11,83 +11,36 @@ namespace StudentCSV
         #region Feilds
 
 
-        private string _firstName;
-        private string _middleName;
-        private string _lastName;
+        private string _fullName;
         private string _email;
         private string _unilogin;
         private string _cprNr;
         private string _phoneNumber;
         private string _specialInfo;
         private string _gfSchool;
-        
+
 
         #endregion
 
         #region NameProbs
 
-        public string FirstName
+        public string FullName
         {
-            get { return _firstName; }
+            get { return _fullName; }
             set
             {
-                if (Validator.IsValidFirstName(value))
+                if (Validator.IsValidFullName(value))
                 {
-                    _firstName = value;
+                    _fullName = value;
                 }
                 else
                 {
-                    throw new ArgumentException(Properties.Resources.InvalidFirstname);
+                    throw new ArgumentException(Properties.Resources.InvalidFullName);
                 }
             }
         }
 
-        public string MiddleName
-        {
-            get { return _middleName; }
-            set
-            {
-                if (Validator.IsValidMiddleName(value))
-                {
-                    _middleName = value;
-                }
-                else
-                {
-                    throw new ArgumentException(Properties.Resources.InvalidMiddlename);
-
-                }
-            }
-        }
-
-        public string LastName
-        {
-            get { return _lastName; }
-            set
-            {
-                if (Validator.IsValidLastName(value))
-                {
-                    _lastName = value;
-
-                }
-                else
-                {
-                    throw new ArgumentException(Properties.Resources.InvalidLastname);
-                }
-
-            }
-        }
-
-
-
-        public string Fullname
-        {
-            get { return $"{_firstName} {_middleName} {_lastName}"; }
-        }
-
-
-
-
-        #endregion#region Email Prop
+        #endregion
 
         #region EmailProp
 
@@ -107,6 +60,8 @@ namespace StudentCSV
 
             }
         }
+        #endregion#region Email Prop
+
         public string Unilogin
         {
             get { return _unilogin; }
@@ -124,7 +79,7 @@ namespace StudentCSV
             }
         }
 
-        #endregion
+       
 
         #region CprProp
         public string CprNr

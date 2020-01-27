@@ -5,7 +5,7 @@ namespace StudentCSV.StudentValidater
 {
     public class Validator
     {
-        public static bool IsValidFirstName(string value)
+        public static bool IsValidFullName(string value)
         {
             if (!String.IsNullOrWhiteSpace(value) && 
                 Regex.IsMatch(value, @"^[\w'\-][^0-9,._!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{1,30}$"))
@@ -18,36 +18,7 @@ namespace StudentCSV.StudentValidater
             }
         }
 
-        public static bool IsValidMiddleName(string value)
-        {
-            if (value == null)
-            {
-                value = "";
-            }
-
-            if (Regex.IsMatch(value, @"^$|[æøåa-zÆØÅA-Z.][^0-9_!¡?÷?¿/\\,£¤+=@#$%ˆ&*(){}|~<>;:[\]]{1,50}$"))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-
-            }
-        }
-
-        public static bool IsValidLastName(string value)
-        {
-            if (!String.IsNullOrWhiteSpace(value) &&
-                Regex.IsMatch(value, @"^[\w'\-][^0-9,._!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{1,30}$"))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
+       
 
         public static bool IsValidEmail(string value)
         {

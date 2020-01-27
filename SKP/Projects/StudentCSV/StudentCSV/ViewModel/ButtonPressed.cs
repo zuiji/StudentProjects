@@ -65,25 +65,16 @@ namespace StudentCSV.ViewModel
                 return;
             }
 
-            if (!Validator.IsValidFirstName(_newStudentWindowViewModel.FirstName))
+            if (!Validator.IsValidFullName(_newStudentWindowViewModel.FullName))
             {
-                if (!_newStudentWindowViewModel.Errors.Contains(nameof(_newStudentWindowViewModel.FirstName)))
+                if (!_newStudentWindowViewModel.Errors.Contains(nameof(_newStudentWindowViewModel.FullName)))
                 {
-                    _newStudentWindowViewModel.Errors.Add(nameof(_newStudentWindowViewModel.FirstName), Properties.Resources.InvalidFirstname);
+                    _newStudentWindowViewModel.Errors.Add(nameof(_newStudentWindowViewModel.FullName), Properties.Resources.InvalidFullName);
                     OnPropertyChanged(nameof(_newStudentWindowViewModel.LastError));
-                    _newStudentWindowViewModel.FirstNameValid = false;
+                    _newStudentWindowViewModel.FullNameValid = false;
                 }
             }
 
-            if (!Validator.IsValidLastName(_newStudentWindowViewModel.LastName))
-            {
-                if (!_newStudentWindowViewModel.Errors.Contains(nameof(_newStudentWindowViewModel.LastName)))
-                {
-                    _newStudentWindowViewModel.Errors.Add(nameof(_newStudentWindowViewModel.LastName), Properties.Resources.InvalidLastname);
-                    OnPropertyChanged(nameof(_newStudentWindowViewModel.LastError));
-                    _newStudentWindowViewModel.LastNameValid = false;
-                }
-            }
 
             if (!Validator.IsValidEmail(_newStudentWindowViewModel.Email))
             {
