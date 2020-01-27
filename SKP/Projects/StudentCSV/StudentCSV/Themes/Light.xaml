@@ -2,8 +2,8 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:System="clr-namespace:System;assembly=mscorlib">
     <SolidColorBrush x:Key="MyBackgroundBrush" Color="WhiteSmoke" />
-    <SolidColorBrush x:Key="MyForgroundLabelBrush" Color="Black" />
-    <SolidColorBrush x:Key="MyForgroundTexTBrush" Color="Black" />
+    <SolidColorBrush x:Key="MyForegroundLabelBrush" Color="Black" />
+    <SolidColorBrush x:Key="MyForegroundTexTBrush" Color="Black" />
     <SolidColorBrush x:Key="MyErrorgroundBrush" Color="#FFE90D0D" />
     <SolidColorBrush x:Key="{x:Static SystemColors.WindowBrushKey}" Color="WhiteSmoke" />
     <BitmapImage x:Key="ZBCLogoPath" UriSource="/Resources/Images/zbcDark.png"></BitmapImage>

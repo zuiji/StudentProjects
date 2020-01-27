@@ -42,7 +42,7 @@
                 <RowDefinition Height="3.5*"/>
             </Grid.RowDefinitions>
             <DockPanel Grid.Row="0" Grid.ColumnSpan="3" VerticalAlignment="Top" Background="{DynamicResource MyBackgroundBrush}">
-                <Menu DockPanel.Dock="Top" Background="{DynamicResource MyBackgroundBrush}" Foreground="{DynamicResource MyForgroundTexTBrush}">
+                <Menu DockPanel.Dock="Top" Background="{DynamicResource MyBackgroundBrush}" Foreground="{DynamicResource MyForegroundTexTBrush}">
                     <MenuItem Header="_File">
                         <MenuItem Header="_Export" Background="{DynamicResource MyBackgroundBrush}" Command="{Binding ExportPressedCommand}">
                             <MenuItem.Icon>
@@ -81,7 +81,7 @@
                     </MenuItem>
                 </Menu>
             </DockPanel>
-            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding LastError, Mode=OneWay}" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="36" Foreground="{DynamicResource MyErrorgroundBrush}"/>
+            <TextBlock  Text="{Binding LastError, Mode=OneWay}" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="36" Foreground="{DynamicResource MyErrorgroundBrush}" />
         </Grid>
 
         <Grid Grid.Column="1" Grid.Row="1">
@@ -102,8 +102,8 @@
             </Grid.RowDefinitions>
 
             <StackPanel x:Name="FullNameStackPanel" Grid.Row="0">
-                <Label Content="{Binding Path=FullName, Source={StaticResource Resources}}" HorizontalContentAlignment="Center" FontSize="19.2" Foreground="{DynamicResource MyForgroundLabelBrush}"/>
-                <TextBox x:Name="textBox" TextWrapping="Wrap" Height="36.8" FontSize="19.2" Foreground="{DynamicResource MyForgroundTexTBrush }" Background="{DynamicResource MyBackgroundBrush}">
+                <Label Content="{Binding Path=FullName, Source={StaticResource Resources}}" HorizontalContentAlignment="Center" FontSize="19.2" Foreground="{DynamicResource MyForegroundLabelBrush}"/>
+                <TextBox TextWrapping="Wrap" Height="36.8" FontSize="19.2" Foreground="{DynamicResource MyForegroundTexTBrush }" Background="{DynamicResource MyBackgroundBrush}">
                     <TextBox.Style>
                         <Style>
                             <Style.Triggers>
@@ -126,8 +126,8 @@
             </StackPanel>
 
             <StackPanel x:Name="PhoneNumberStackPanel" Grid.Row="1" Grid.Column="0">
-                <Label Content="{Binding Path=Phonenumber, Source={StaticResource Resources}}" HorizontalContentAlignment="Center" FontSize="19.2" Foreground="{DynamicResource MyForgroundLabelBrush}"/>
-                <TextBox TextWrapping="Wrap" Height="36.8" FontSize="19.2" Foreground="{DynamicResource MyForgroundTexTBrush}" Background="{DynamicResource MyBackgroundBrush}">
+                <Label Content="{Binding Path=Phonenumber, Source={StaticResource Resources}}" HorizontalContentAlignment="Center" FontSize="19.2" Foreground="{DynamicResource MyForegroundLabelBrush}"/>
+                <TextBox TextWrapping="Wrap" Height="36.8" FontSize="19.2" Foreground="{DynamicResource MyForegroundTexTBrush}" Background="{DynamicResource MyBackgroundBrush}">
                     <TextBox.Style>
                         <Style>
                             <Style.Triggers>
@@ -150,10 +150,10 @@
             </StackPanel>
 
             <StackPanel x:Name="CprNrStackPanel" Grid.Row="2" Grid.Column="0">
-                <Label Content="{Binding Path=CPRNr, Source={StaticResource Resources}}" HorizontalContentAlignment="Center" FontSize="19.2" Foreground="{DynamicResource MyForgroundLabelBrush}"/>
+                <Label Content="{Binding Path=CPRNr, Source={StaticResource Resources}}" HorizontalContentAlignment="Center" FontSize="19.2" Foreground="{DynamicResource MyForegroundLabelBrush}"/>
                 <Grid>
                     <Grid>
-                        <PasswordBox Name="PasswordHidden"  PasswordChanged="PasswordBox_OnPasswordChanged" PasswordChar="•" FontSize="19.2" Foreground="{DynamicResource MyForgroundTexTBrush}" Background="{DynamicResource MyBackgroundBrush}" Height="37" Margin="0,0,0,-0.333" VerticalAlignment="Top" >
+                        <PasswordBox Name="PasswordHidden"  PasswordChanged="PasswordBox_OnPasswordChanged" PasswordChar="•" FontSize="19.2" Foreground="{DynamicResource MyForegroundTexTBrush}" Background="{DynamicResource MyBackgroundBrush}" Height="37" Margin="0,0,0,-0.333" VerticalAlignment="Top" >
                             <PasswordBox.Style>
                                 <Style>
                                     <Style.Triggers>
@@ -172,7 +172,7 @@
                                 </Interactions:EventTrigger>
                             </Interactions:Interaction.Triggers>
                         </PasswordBox>
-                        <TextBox Name="PasswordUnmask" Visibility="Hidden" TextWrapping="Wrap" Height="36.8" FontSize="19.2" Foreground="{DynamicResource MyForgroundTexTBrush}" Background="{DynamicResource MyBackgroundBrush}">
+                        <TextBox Name="PasswordUnmask" Visibility="Hidden" TextWrapping="Wrap" Height="36.8" FontSize="19.2" Foreground="{DynamicResource MyForegroundTexTBrush}" Background="{DynamicResource MyBackgroundBrush}">
                             <TextBox.Style>
                                 <Style>
                                     <Style.Triggers>
@@ -192,14 +192,14 @@
                             </Interactions:Interaction.Triggers>
                             <Binding x:Name="CprNrBinding" Path="CprNr"/>
                         </TextBox>
-                        <TextBlock x:Name="ShowPassword" Foreground="{DynamicResource MyForgroundTexTBrush}"  Text="👁️" PreviewMouseDown="ShowPassword_PreviewMouseDown" PreviewMouseUp="ShowPassword_PreviewMouseUp" MouseLeave="ShowPassword_MouseLeave" Margin="0,0,10,0" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="19.2" />
+                        <TextBlock x:Name="ShowPassword" Foreground="{DynamicResource MyForegroundTexTBrush}"  Text="👁️" PreviewMouseDown="ShowPassword_PreviewMouseDown" PreviewMouseUp="ShowPassword_PreviewMouseUp" MouseLeave="ShowPassword_MouseLeave" Margin="0,0,10,0" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="19.2" />
                     </Grid>
                 </Grid>                
             </StackPanel>
 
-            <StackPanel x:Name="EmailStackpanel" Grid.Row="3">
-                <Label Content="{Binding Path=Email, Source={StaticResource Resources}}" HorizontalContentAlignment="Center" FontSize="19.2" Foreground="{DynamicResource MyForgroundLabelBrush}"/>
-                <TextBox Height="36.8" TextWrapping="Wrap" FontSize="19.2" Foreground="{DynamicResource MyForgroundTexTBrush}" Background="{DynamicResource MyBackgroundBrush}">
+            <StackPanel x:Name="EmailStackPanel" Grid.Row="3">
+                <Label Content="{Binding Path=Email, Source={StaticResource Resources}}" HorizontalContentAlignment="Center" FontSize="19.2" Foreground="{DynamicResource MyForegroundLabelBrush}"/>
+                <TextBox Height="36.8" TextWrapping="Wrap" FontSize="19.2" Foreground="{DynamicResource MyForegroundTexTBrush}" Background="{DynamicResource MyBackgroundBrush}">
                     <TextBox.Style>
                         <Style>
                             <Style.Triggers>
@@ -220,9 +220,9 @@
                     <Binding x:Name="EmailBinding" Path="Email"/>
                 </TextBox>
             </StackPanel>
-            <StackPanel x:Name="UnilogStackpanel" Grid.Row="0" Grid.Column="2">
-                <Label Content="{Binding Path=Unilogin, Source={StaticResource Resources}}" HorizontalContentAlignment="Center" FontSize="19.2" Foreground="{DynamicResource MyForgroundLabelBrush}"/>
-                <TextBox Height="36.8" TextWrapping="Wrap" FontSize="19.2" Foreground="{DynamicResource MyForgroundTexTBrush}" Background="{DynamicResource MyBackgroundBrush}">
+            <StackPanel x:Name="UnilogStackPanel" Grid.Row="0" Grid.Column="2">
+                <Label Content="{Binding Path=Unilogin, Source={StaticResource Resources}}" HorizontalContentAlignment="Center" FontSize="19.2" Foreground="{DynamicResource MyForegroundLabelBrush}"/>
+                <TextBox Height="36.8" TextWrapping="Wrap" FontSize="19.2" Foreground="{DynamicResource MyForegroundTexTBrush}" Background="{DynamicResource MyBackgroundBrush}">
                     <TextBox.Style>
                         <Style>
                             <Style.Triggers>
@@ -245,23 +245,23 @@
             </StackPanel>
 
             <StackPanel x:Name="EducationDirectionStackPanel" Grid.Row="1" Grid.Column="2">
-                <Label Content="{Binding Path=EducationDirection, Source={StaticResource Resources}}" HorizontalContentAlignment="Center" FontSize="19.2" Foreground="{DynamicResource MyForgroundLabelBrush}"/>
-                <ComboBox Height="36.8" FontSize="19.2" ItemsSource="{Binding EducationDirection}" SelectedIndex="{Binding EducationDirectionIndex}" Foreground="{DynamicResource MyForgroundTexTBrush}"/>
+                <Label Content="{Binding Path=EducationDirection, Source={StaticResource Resources}}" HorizontalContentAlignment="Center" FontSize="19.2" Foreground="{DynamicResource MyForegroundLabelBrush}"/>
+                <ComboBox Height="36.8" FontSize="19.2" ItemsSource="{Binding EducationDirection}" SelectedIndex="{Binding EducationDirectionIndex}" Foreground="{DynamicResource MyForegroundTexTBrush}"/>
             </StackPanel>
 
             <StackPanel x:Name="EuxStackPanel" Grid.Row="2" Grid.Column="2">
-                <Label Content="{Binding Path=EUX, Source={StaticResource Resources}}" HorizontalContentAlignment="Center" FontSize="19.2" Foreground="{DynamicResource MyForgroundLabelBrush}"/>
-                <ComboBox Height="36.8" Text="TextBox" FontSize="19.2" ItemsSource="{Binding EUX}" SelectedIndex="{Binding EUXIndex}" Foreground="{DynamicResource MyForgroundTexTBrush}" />
+                <Label Content="{Binding Path=EUX, Source={StaticResource Resources}}" HorizontalContentAlignment="Center" FontSize="19.2" Foreground="{DynamicResource MyForegroundLabelBrush}"/>
+                <ComboBox Height="36.8" Text="TextBox" FontSize="19.2" ItemsSource="{Binding EUX}" SelectedIndex="{Binding EUXIndex}" Foreground="{DynamicResource MyForegroundTexTBrush}" />
             </StackPanel>
 
             <StackPanel x:Name="WantedSkpLocationStackPanel" Grid.Row="3" Grid.Column="2">
-                <Label Content="{Binding Path=PreferredSKPlocation, Source={StaticResource Resources}}" HorizontalContentAlignment="Center" FontSize="19.2" Foreground="{DynamicResource MyForgroundLabelBrush}"/>
-                <ComboBox Height="36.8" Text="TextBox" FontSize="19.2" ItemsSource="{Binding PreferredSKPlocation}" SelectedIndex="{Binding PreferredSkpLocationIndex}" Foreground="{DynamicResource MyForgroundTexTBrush}"/>
+                <Label Content="{Binding Path=PreferredSKPLocation, Source={StaticResource Resources}}" HorizontalContentAlignment="Center" FontSize="19.2" Foreground="{DynamicResource MyForegroundLabelBrush}"/>
+                <ComboBox Height="36.8" Text="TextBox" FontSize="19.2" ItemsSource="{Binding PreferredSKPLocation}" SelectedIndex="{Binding PreferredSkpLocationIndex}" Foreground="{DynamicResource MyForegroundTexTBrush}"/>
             </StackPanel>
 
             <StackPanel x:Name="GFSchoolStackPanel" Grid.Row="0" Grid.Column="4">
-                <Label Content="{Binding Path=GfSchool, Source={StaticResource Resources}}" HorizontalContentAlignment="Center" FontSize="19.2" Foreground="{DynamicResource MyForgroundLabelBrush}"/>
-                <ComboBox Height="36.8" Text="TextBox" FontSize="19.2" IsSynchronizedWithCurrentItem="False" ItemsSource="{Binding GF2School}" Foreground="{DynamicResource MyForgroundTexTBrush}" 
+                <Label Content="{Binding Path=GfSchool, Source={StaticResource Resources}}" HorizontalContentAlignment="Center" FontSize="19.2" Foreground="{DynamicResource MyForegroundLabelBrush}"/>
+                <ComboBox Height="36.8" Text="TextBox" FontSize="19.2" IsSynchronizedWithCurrentItem="False" ItemsSource="{Binding GF2School}" Foreground="{DynamicResource MyForegroundTexTBrush}" 
                           SelectedIndex="{Binding GfSchoolIndex}" SelectionChanged="ComboBox_SelectionChanged"/>
             </StackPanel>
 
@@ -294,10 +294,10 @@
                         <RowDefinition Height="3*"/>
                         <RowDefinition Height="10*"/>
                     </Grid.RowDefinitions>
-                    <Label x:Name="OtherLabel"  Grid.Row="0" Grid.Column="0" Content="{Binding Path=EnterGfSchool, Source={StaticResource Resources}}" Foreground="{DynamicResource MyForgroundLabelBrush}"
+                    <Label x:Name="OtherLabel"  Grid.Row="0" Grid.Column="0" Content="{Binding Path=EnterGfSchool, Source={StaticResource Resources}}" Foreground="{DynamicResource MyForegroundLabelBrush}"
                            HorizontalContentAlignment="Center" FontSize="19.2" Grid.ColumnSpan="3" Visibility="Collapsed"/>
 
-                    <TextBox x:Name="OtherTextBox" Grid.Row ="1" Grid.Column="0" Margin="0,0,0,0" FontSize="19.2" HorizontalScrollBarVisibility="Visible" Foreground="{DynamicResource MyForgroundTexTBrush}"  Background="{DynamicResource MyBackgroundBrush}"
+                    <TextBox x:Name="OtherTextBox" Grid.Row ="1" Grid.Column="0" Margin="0,0,0,0" FontSize="19.2" HorizontalScrollBarVisibility="Visible" Foreground="{DynamicResource MyForegroundTexTBrush}"  Background="{DynamicResource MyBackgroundBrush}"
                              TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="False" SpellCheck.IsEnabled="True" Grid.ColumnSpan="3" Visibility="Collapsed">
                         <TextBox.Style>
                             <Style>
@@ -319,10 +319,10 @@
                         <Binding x:Name="Gf2SchoolOtherTextBoxBinding" Path="Gf2SchoolOtherText"/>
                     </TextBox>
 
-                    <Label x:Name="SpecialInfolabel" Grid.Row="0" Grid.ColumnSpan="3" Content="{Binding Path=SpecialInfo, Source={StaticResource Resources}}" Foreground="{DynamicResource MyForgroundLabelBrush}"
+                    <Label x:Name="SpecialInfoLabel" Grid.Row="0" Grid.ColumnSpan="3" Content="{Binding Path=SpecialInfo, Source={StaticResource Resources}}" Foreground="{DynamicResource MyForegroundLabelBrush}"
                            HorizontalContentAlignment="Center" FontSize="19.2" />
 
-                    <TextBox x:Name="SpecialInfoTextBox" Grid.ColumnSpan="3" Grid.RowSpan="3" Grid.Column="0" Grid.Row="1" Margin="0,0,0,0" FontSize="19.2" HorizontalScrollBarVisibility="Visible" Foreground="{DynamicResource MyForgroundTexTBrush}" Background="{DynamicResource MyBackgroundBrush}"
+                    <TextBox x:Name="SpecialInfoTextBox" Grid.ColumnSpan="3" Grid.RowSpan="3" Grid.Column="0" Grid.Row="1" Margin="0,0,0,0" FontSize="19.2" HorizontalScrollBarVisibility="Visible" Foreground="{DynamicResource MyForegroundTexTBrush}" Background="{DynamicResource MyBackgroundBrush}"
                              TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="False" SpellCheck.IsEnabled="True">
                         <TextBox.Style>
                             <Style>

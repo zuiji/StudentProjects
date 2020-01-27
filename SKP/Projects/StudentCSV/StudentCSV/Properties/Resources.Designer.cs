@@ -369,7 +369,7 @@ namespace StudentCSV.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Wanted Skp Location.
         /// </summary>
-        public static string PreferredSKPlocation {
+        public static string PreferredSKPLocation {
             get {
                 return ResourceManager.GetString("PreferredSKPlocation", resourceCulture);
             }

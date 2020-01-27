@@ -3,8 +3,8 @@
                     xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2"
                     xmlns:System="clr-namespace:System;assembly=mscorlib">
     <SolidColorBrush x:Key="MyBackgroundBrush" Color="#383737" />
-    <SolidColorBrush x:Key="MyForgroundLabelBrush" Color="#6aff13" />
-    <SolidColorBrush x:Key="MyForgroundTexTBrush" Color="#ffffff" />
+    <SolidColorBrush x:Key="MyForegroundLabelBrush" Color="#6aff13" />
+    <SolidColorBrush x:Key="MyForegroundTexTBrush" Color="#ffffff" />
     <SolidColorBrush x:Key="MyErrorgroundBrush" Color="#FFE90D0D" />
     <SolidColorBrush x:Key="{x:Static SystemColors.WindowBrushKey}" Color="#383737" />
     <BitmapImage x:Key="ZBCLogoPath" UriSource="/Resources/Images/zbc_neg.png"></BitmapImage>

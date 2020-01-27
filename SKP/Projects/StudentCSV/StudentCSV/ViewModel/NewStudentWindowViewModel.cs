@@ -51,7 +51,7 @@ namespace StudentCSV.ViewModel
         public Visibility ShowDebug { get; set; } = Visibility.Collapsed;
 
         public List<string> EUX { get; set; }
-        public List<string> PreferredSKPlocation { get; set; }
+        public List<string> PreferredSKPLocation { get; set; }
         public List<string> GF2School { get; set; }
         public List<string> EducationDirection { get; set; }
 
@@ -377,10 +377,10 @@ namespace StudentCSV.ViewModel
             SpecialInfoValid = true;
             OtherGF2SchoolValid = true;
             EUX = new List<string>() { Properties.Resources.Yes, Properties.Resources.No };
-            PreferredSKPlocation = new List<string>();
+            PreferredSKPLocation = new List<string>();
             GF2School = new List<string>();
             EducationDirection = new List<string>();
-            PreferredSKPlocation.AddRange(Enum.GetNames(typeof(WantedSkpLocationEnum)));
+            PreferredSKPLocation.AddRange(Enum.GetNames(typeof(WantedSkpLocationEnum)));
             EducationDirection.AddRange(Statics.CorrectEducationDirectionEnumNames);
             GF2School.AddRange(Statics.CorrectGfSchoolEnumNames);
             EUXIndex = 1;
@@ -646,17 +646,17 @@ namespace StudentCSV.ViewModel
         {
             if (PreferredSkpLocationIndex == -1)
             {
-                if (!Errors.Contains(nameof(PreferredSKPlocation)))
+                if (!Errors.Contains(nameof(PreferredSKPLocation)))
                 {
-                    Errors.Add(nameof(PreferredSKPlocation), Properties.Resources.PreferredSKPlocationIndexChecker);
+                    Errors.Add(nameof(PreferredSKPLocation), Properties.Resources.PreferredSKPlocationIndexChecker);
                     OnPropertyChanged(nameof(LastError));
                 }
                 return true;
             }
 
-            if (Errors.Contains(nameof(PreferredSKPlocation)))
+            if (Errors.Contains(nameof(PreferredSKPLocation)))
             {
-                Errors.Remove(nameof(PreferredSKPlocation));
+                Errors.Remove(nameof(PreferredSKPLocation));
                 OnPropertyChanged(nameof(LastError));
             }
             return false;
@@ -714,7 +714,7 @@ namespace StudentCSV.ViewModel
                     case nameof(GF2School):
                         Errors[errorsKey] = Properties.Resources.GfSchoolIndexChecker;
                         break;
-                    case nameof(PreferredSKPlocation):
+                    case nameof(PreferredSKPLocation):
                         Errors[errorsKey] = Properties.Resources.PreferredSKPlocationIndexChecker;
                         break;
                     case nameof(SpecialInfo):

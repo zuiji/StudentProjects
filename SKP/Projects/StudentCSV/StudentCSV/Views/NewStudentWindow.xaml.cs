@@ -64,9 +64,9 @@ namespace StudentCSV.Views
             var CorrectSender = (ComboBox)sender;
             if (CorrectSender.SelectedIndex == 0)
             {
-                Grid.SetRow(SpecialInfolabel,2);
+                Grid.SetRow(SpecialInfoLabel,2);
                 Grid.SetRow(SpecialInfoTextBox, 3);
-                Grid.SetColumnSpan(SpecialInfolabel, 3);
+                Grid.SetColumnSpan(SpecialInfoLabel, 3);
                 Grid.SetColumnSpan(SpecialInfoTextBox, 3);
                 Grid.SetRowSpan(SpecialInfoTextBox, 1);
       
@@ -76,9 +76,9 @@ namespace StudentCSV.Views
             }
             else
             {
-                Grid.SetRow(SpecialInfolabel, 0);
+                Grid.SetRow(SpecialInfoLabel, 0);
                 Grid.SetRow(SpecialInfoTextBox, 1);
-                Grid.SetColumnSpan(SpecialInfolabel, 3);
+                Grid.SetColumnSpan(SpecialInfoLabel, 3);
                 Grid.SetColumnSpan(SpecialInfoTextBox, 3);
                 Grid.SetRowSpan(SpecialInfoTextBox, 3);
 
