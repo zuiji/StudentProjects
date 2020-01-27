@@ -66,6 +66,7 @@ namespace StudentCSV.ViewModel
         public RelayCommand OnCancelPressedCommand { get; set; }
         public RelayCommand OnSavePressedCommand { get; set; }
         public RelayCommand OnLanguageChangedCommand { get; set; }
+        public RelayCommand OnThemeChangedCommand { get; set; }
         public RelayCommand QuestionMarkPressedCommand { get; set; }
         public RelayCommand ExportPressedCommand { get; set; }
 #if DEBUG
@@ -397,6 +398,7 @@ namespace StudentCSV.ViewModel
             OnCancelPressedCommand = new RelayCommand(a => _buttonPressed.OnCancelPressed());
             OnSavePressedCommand = new RelayCommand(a => _buttonPressed.OnSavePressed());
             OnLanguageChangedCommand = new RelayCommand(a => OnLanguageChanged());
+            OnThemeChangedCommand = new RelayCommand(a => OnThemeChanged((string)a));
             QuestionMarkPressedCommand = new RelayCommand(a => _buttonPressed.QuestionMarkPressed());
             ExportPressedCommand = new RelayCommand(a => _buttonPressed.ExportPressed());
             ShowCpr = false;
@@ -723,5 +725,19 @@ namespace StudentCSV.ViewModel
             OnPropertyChanged(nameof(LastError));
         }
         #endregion
+
+        private void OnThemeChanged(string Theme)
+        {
+            switch (Theme)
+            {
+                case "Dark":
+                    Statics.theme = WindowsTheme.Dark;
+                    break;
+                default:
+                    Statics.theme = WindowsTheme.Light;
+                    break;
+            }
+        }
     }
+
 }

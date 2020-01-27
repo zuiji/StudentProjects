@@ -271,6 +271,12 @@
   <ItemGroup>
     <Resource Include="Resources\Images\zbcDark.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\sun.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\moon.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

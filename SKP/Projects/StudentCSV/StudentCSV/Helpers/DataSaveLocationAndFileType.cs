@@ -56,7 +56,8 @@ namespace StudentCSV.Helpers
         public static bool DecryptFile()
         {
             string password = PasswordWindow.Prompt("Please enter password again", "Enter Password");
-            if (!PasswordHelper.VerifyHashedPassword(Statics.Password, password))
+
+            if (string.IsNullOrEmpty(password) || !PasswordHelper.VerifyHashedPassword(Statics.Password, password))
             {
                 return false;
             }

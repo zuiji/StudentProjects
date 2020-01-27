@@ -44,16 +44,40 @@
             <DockPanel Grid.Row="0" Grid.ColumnSpan="3" VerticalAlignment="Top" Background="{DynamicResource MyBackgroundBrush}">
                 <Menu DockPanel.Dock="Top" Background="{DynamicResource MyBackgroundBrush}" Foreground="{DynamicResource MyForgroundTexTBrush}">
                     <MenuItem Header="_File">
-                        <MenuItem Header="_Export" Background="{DynamicResource MyBackgroundBrush}" IsCheckable="True" Command="{Binding ExportPressedCommand}"/>
-                        <MenuItem Header="_About" Background="{DynamicResource MyBackgroundBrush}" IsCheckable="True" Command="{Binding QuestionMarkPressedCommand}"/>
+                        <MenuItem Header="_Export" Background="{DynamicResource MyBackgroundBrush}" Command="{Binding ExportPressedCommand}">
+                            <MenuItem.Icon>
+                                <Image Source="/Resources/Images/ExclExportLogo.png"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Header="_About" Background="{DynamicResource MyBackgroundBrush}" Command="{Binding QuestionMarkPressedCommand}">
+                            <MenuItem.Icon>
+                                <Image Source="/Resources/Images/Question_mark.png"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
                     </MenuItem>
                     <MenuItem Header="_Language">
-                        <MenuItem Header="_Danish" IsCheckable="True" Command="{Binding OnLanguageChangedCommand}" Click="DK_Button_Click" Background="{DynamicResource MyBackgroundBrush}"/>
-                        <MenuItem Header="_English" IsCheckable="True" Command="{Binding OnLanguageChangedCommand}" Click="GB_Button_Click" Background="{DynamicResource MyBackgroundBrush}"/>
+                        <MenuItem Header="_Danish" Command="{Binding OnLanguageChangedCommand}" Click="DK_Button_Click" Background="{DynamicResource MyBackgroundBrush}">
+                            <MenuItem.Icon>
+                                <Image Source="/Resources/Images/dk.png"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Header="_English" Command="{Binding OnLanguageChangedCommand}" Click="GB_Button_Click" Background="{DynamicResource MyBackgroundBrush}">
+                            <MenuItem.Icon>
+                                <Image Source="/Resources/Images/gb.png"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
                     </MenuItem>
                     <MenuItem Header="_Theme">
-                        <MenuItem Header="_DarkTheme" Background="{DynamicResource MyBackgroundBrush}" IsCheckable="True"/>
-                        <MenuItem Header="_LightTheme" Background="{DynamicResource MyBackgroundBrush}"/>
+                        <MenuItem Header="_DarkTheme" Background="{DynamicResource MyBackgroundBrush}" Command="{Binding OnThemeChangedCommand}" CommandParameter="Dark">
+                            <MenuItem.Icon>
+                                <Image Source="/Resources/Images/moon.png"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Header="_LightTheme" Background="{DynamicResource MyBackgroundBrush}" Command="{Binding OnThemeChangedCommand}" CommandParameter="Light">
+                            <MenuItem.Icon>
+                                <Image Source="/Resources/Images/sun.png"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
                     </MenuItem>
                 </Menu>
             </DockPanel>
@@ -129,7 +153,7 @@
                 <Label Content="{Binding Path=CPRNr, Source={StaticResource Resources}}" HorizontalContentAlignment="Center" FontSize="19.2" Foreground="{DynamicResource MyForgroundLabelBrush}"/>
                 <Grid>
                     <Grid>
-                        <PasswordBox Name="PasswordHidden" PasswordChar="•" FontSize="19.2" Foreground="{DynamicResource MyForgroundTexTBrush}" Background="{DynamicResource MyBackgroundBrush}" >
+                        <PasswordBox Name="PasswordHidden"  PasswordChanged="PasswordBox_OnPasswordChanged" PasswordChar="•" FontSize="19.2" Foreground="{DynamicResource MyForgroundTexTBrush}" Background="{DynamicResource MyBackgroundBrush}" Height="37" Margin="0,0,0,-0.333" VerticalAlignment="Top" >
                             <PasswordBox.Style>
                                 <Style>
                                     <Style.Triggers>
@@ -168,7 +192,7 @@
                             </Interactions:Interaction.Triggers>
                             <Binding x:Name="CprNrBinding" Path="CprNr"/>
                         </TextBox>
-                        <TextBlock x:Name="ShowPassword" Text="👁️" PreviewMouseDown="ShowPassword_PreviewMouseDown" PreviewMouseUp="ShowPassword_PreviewMouseUp" MouseLeave="ShowPassword_MouseLeave" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0" />
+                        <TextBlock x:Name="ShowPassword" Foreground="{DynamicResource MyForgroundTexTBrush}"  Text="👁️" PreviewMouseDown="ShowPassword_PreviewMouseDown" PreviewMouseUp="ShowPassword_PreviewMouseUp" MouseLeave="ShowPassword_MouseLeave" Margin="0,0,10,0" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="19.2" />
                     </Grid>
                 </Grid>
 
@@ -286,25 +310,22 @@
                           SelectedIndex="{Binding GfSchoolIndex}" SelectionChanged="ComboBox_SelectionChanged"/>
             </StackPanel>
 
-            <Image Source="{DynamicResource ZBCLogoPath}" Grid.Row="5" VerticalAlignment="Bottom"/>
+            <Image Source="{DynamicResource ZBCLogoPath}" Grid.Row="4" VerticalAlignment="Bottom" Grid.ColumnSpan="3" Margin="0,0,10,0" Grid.RowSpan="2"/>
 
             <StackPanel x:Name="SpecialInfoStackPanel" Grid.Column="4" Grid.Row="1" Grid.RowSpan="5">
                 <Grid>
-                    
+
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="45*"/>
                         <ColumnDefinition Width="10*"/>
                         <ColumnDefinition Width="45*"/>
                     </Grid.ColumnDefinitions>
-                    
-                   
-               
-                </Grid>
-                <Label x:Name="SpecialInfolabel"   Content="{Binding Path=SpecialInfo, Source={StaticResource Resources}}" Foreground="{DynamicResource MyForgroundLabelBrush}"
-                           HorizontalContentAlignment="Center" FontSize="19.2" />
 
-                <Label x:Name="OtherLabel"  Grid.Row="0" Grid.Column="0" Content="{Binding Path=EnterGfSchool, Source={StaticResource Resources}}" Foreground="{DynamicResource MyForgroundLabelBrush}"
-                           HorizontalContentAlignment="Center" FontSize="19.2" Grid.ColumnSpan="3" Visibility="Collapsed"/>
+
+
+                </Grid>
+
+
                 <Grid Height="470">
 
                     <Grid.ColumnDefinitions>
@@ -312,16 +333,19 @@
                         <ColumnDefinition Width="10*"/>
                         <ColumnDefinition Width="45*"/>
                     </Grid.ColumnDefinitions>
-                    
+
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="7*"/>
                         <RowDefinition Height="35*"/>
-                        <RowDefinition Height="5*"/>
-                        <RowDefinition Height="30*"/>
-                        <RowDefinition Height="5*"/>
+                        <RowDefinition Height="7*"/>
+                        <RowDefinition Height="35*"/>
+                        <RowDefinition Height="3*"/>
                         <RowDefinition Height="10*"/>
                     </Grid.RowDefinitions>
+                    <Label x:Name="OtherLabel"  Grid.Row="0" Grid.Column="0" Content="{Binding Path=EnterGfSchool, Source={StaticResource Resources}}" Foreground="{DynamicResource MyForgroundLabelBrush}"
+                           HorizontalContentAlignment="Center" FontSize="19.2" Grid.ColumnSpan="3" Visibility="Collapsed"/>
 
-                    <TextBox x:Name="OtherTextBox" Grid.Row ="0" Grid.Column="0" Margin="0,0,0,0" FontSize="19.2" HorizontalScrollBarVisibility="Visible" Foreground="{DynamicResource MyForgroundTexTBrush}"  Background="{DynamicResource MyBackgroundBrush}"
+                    <TextBox x:Name="OtherTextBox" Grid.Row ="1" Grid.Column="0" Margin="0,0,0,0" FontSize="19.2" HorizontalScrollBarVisibility="Visible" Foreground="{DynamicResource MyForgroundTexTBrush}"  Background="{DynamicResource MyBackgroundBrush}"
                              TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="False" SpellCheck.IsEnabled="True" Grid.ColumnSpan="3" Visibility="Collapsed">
                         <TextBox.Style>
                             <Style>
@@ -343,8 +367,11 @@
                         <Binding x:Name="Gf2SchoolOtherTextBoxBinding" Path="Gf2SchoolOtherText"/>
                     </TextBox>
 
-                    <TextBox x:Name="SpecialInfoTextBox" Grid.Column="0" Grid.Row="0" Margin="0,0,0,0" FontSize="19.2" HorizontalScrollBarVisibility="Visible" Foreground="{DynamicResource MyForgroundTexTBrush}" Background="{DynamicResource MyBackgroundBrush}"
-                             TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="False" SpellCheck.IsEnabled="True" Grid.ColumnSpan="3" Grid.RowSpan="3">
+                    <Label x:Name="SpecialInfolabel" Grid.Row="0" Grid.ColumnSpan="3" Content="{Binding Path=SpecialInfo, Source={StaticResource Resources}}" Foreground="{DynamicResource MyForgroundLabelBrush}"
+                           HorizontalContentAlignment="Center" FontSize="19.2" />
+
+                    <TextBox x:Name="SpecialInfoTextBox" Grid.ColumnSpan="3" Grid.RowSpan="3" Grid.Column="0" Grid.Row="1" Margin="0,0,0,0" FontSize="19.2" HorizontalScrollBarVisibility="Visible" Foreground="{DynamicResource MyForgroundTexTBrush}" Background="{DynamicResource MyBackgroundBrush}"
+                             TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="False" SpellCheck.IsEnabled="True">
                         <TextBox.Style>
                             <Style>
                                 <Style.Triggers>
