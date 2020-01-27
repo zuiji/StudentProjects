@@ -194,47 +194,7 @@
                         </TextBox>
                         <TextBlock x:Name="ShowPassword" Foreground="{DynamicResource MyForgroundTexTBrush}"  Text="👁️" PreviewMouseDown="ShowPassword_PreviewMouseDown" PreviewMouseUp="ShowPassword_PreviewMouseUp" MouseLeave="ShowPassword_MouseLeave" Margin="0,0,10,0" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="19.2" />
                     </Grid>
-                </Grid>
-
-                <!--<TextBox  Height="36.8" FontSize="19.2" Visibility="{Binding IsChecked, ElementName=ShowPasswordCheckBox, Converter={staticsAndEnums:BooleanToVisibilityConverter}}" Text="{Binding CprNr}" Foreground="{DynamicResource MyForgroundTexTBrush}" Background="{DynamicResource MyBackgroundBrush}">
-                    <TextBox.Style>
-                        <Style>
-                            <Style.Triggers>
-                                <DataTrigger Binding="{Binding CprNrValid}" Value="True">
-                                    <Setter Property="TextBox.BorderBrush" Value="#FFABADB3"/>
-                                </DataTrigger>
-                                <DataTrigger Binding="{Binding CprNrValid}" Value="False">
-                                    <Setter Property="TextBox.BorderBrush" Value="#FFE90D0D"/>
-                                </DataTrigger>
-                            </Style.Triggers>
-                        </Style>
-                    </TextBox.Style>
-                    <Interactions:Interaction.Triggers>
-                        <Interactions:EventTrigger EventName="LostFocus">
-                            <Interactions:InvokeCommandAction Command="{Binding OnCprNrFieldLostFocusCommand}"/>
-                        </Interactions:EventTrigger>
-                    </Interactions:Interaction.Triggers>
-                </TextBox>
-              
-                <PasswordBox x:Name="CprBox" Height="36.8" FontSize="19.2" PasswordChanged="PasswordBox_OnPasswordChanged" PasswordChar="*" Visibility="{Binding IsChecked, ElementName=ShowPasswordCheckBox, Converter={staticsAndEnums:BooleanToVisibilityConverter InvertVisibility=True}}" Foreground="{DynamicResource MyForgroundTexTBrush}" Background="{DynamicResource MyBackgroundBrush}">
-                    <PasswordBox.Style>
-                        <Style>
-                            <Style.Triggers>
-                                <DataTrigger Binding="{Binding CprNrValid}" Value="True">
-                                    <Setter Property="TextBox.BorderBrush" Value="#FFABADB3"/>
-                                </DataTrigger>
-                                <DataTrigger Binding="{Binding CprNrValid}" Value="False">
-                                    <Setter Property="TextBox.BorderBrush" Value="#FFE90D0D"/>
-                                </DataTrigger>
-                            </Style.Triggers>
-                        </Style>
-                    </PasswordBox.Style>
-                    <Interactions:Interaction.Triggers>
-                        <Interactions:EventTrigger EventName="LostFocus">
-                            <Interactions:InvokeCommandAction Command="{Binding OnCprNrFieldLostFocusCommand}"/>
-                        </Interactions:EventTrigger>
-                    </Interactions:Interaction.Triggers>
-                </PasswordBox>-->
+                </Grid>                
             </StackPanel>
 
             <StackPanel x:Name="EmailStackpanel" Grid.Row="3">
@@ -284,11 +244,6 @@
                 </TextBox>
             </StackPanel>
 
-
-
-
-
-
             <StackPanel x:Name="EducationDirectionStackPanel" Grid.Row="1" Grid.Column="2">
                 <Label Content="{Binding Path=EducationDirection, Source={StaticResource Resources}}" HorizontalContentAlignment="Center" FontSize="19.2" Foreground="{DynamicResource MyForgroundLabelBrush}"/>
                 <ComboBox Height="36.8" FontSize="19.2" ItemsSource="{Binding EducationDirection}" SelectedIndex="{Binding EducationDirectionIndex}" Foreground="{DynamicResource MyForgroundTexTBrush}"/>
@@ -321,10 +276,7 @@
                         <ColumnDefinition Width="45*"/>
                     </Grid.ColumnDefinitions>
 
-
-
                 </Grid>
-
 
                 <Grid Height="470">
 
